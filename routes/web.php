@@ -20,13 +20,12 @@ Route::group(['middleware'=>'auth'], function(){
 
 
 Route::get('/', function () {
-    if(!empty(Auth::user()->id))
+    if(Auth::check())
     {
-        return view('welcome-login');
-    } else {
         return view('welcome');
+    } else {
+        return view('welcome-copy');
     }
-    // return view('welcome');
 });
 
 

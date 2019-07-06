@@ -2,12 +2,9 @@
 
 @section('content')
 
-@if (Route::has('login'))
-   
-@auth
 <div class="wrapper ">
     <div class="sidebar" data-color="green" data-background-color="white" data-image="../assets/img/sidebar-1.jpg">
-      
+
       <div class="logo">
         <a href="{{ url('/') }}" class="simple-text logo-normal">
             {{ config('app.name', 'Laravel') }}
@@ -33,8 +30,8 @@
               <p>Domain</p>
             </a>
           </li>
-          
-          
+
+
         </ul>
       </div>
     </div>
@@ -52,7 +49,7 @@
             <span class="navbar-toggler-icon icon-bar"></span>
           </button>
           <div class="collapse navbar-collapse justify-content-end">
-            
+
             <ul class="navbar-nav">
               <li class="nav-item">
                 <a class="nav-link" href="#">
@@ -87,9 +84,9 @@
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownProfile">
                   <a class="dropdown-item" href="#">{{ Auth::user()->name }}</a>
-                  
+
                   <div class="dropdown-divider"></div>
-                  
+
                   <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -557,15 +554,5 @@
       </footer>
     </div>
 </div>
-
-@else
-        <a href="{{ route('login') }}">Login</a>
-    @if (Route::has('register'))
-        <a href="{{ route('register') }}">Register</a>
-    @endif
-
-@endauth
-    
-@endif
 
 @endsection
