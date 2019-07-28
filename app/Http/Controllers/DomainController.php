@@ -19,11 +19,11 @@ class DomainController extends Controller
     {
         $this->middleware('auth');
     }
-    
+
     public function index($id = null)
     {
         $domains = Domain::all();
-        
+
         if ($id == null) {
             $user = User::findOrFail(Auth::user()->id);
           } else {
@@ -54,10 +54,14 @@ class DomainController extends Controller
         $domain = Domain::create([
             'domain' => $request->domain,
             'pa' => $request->pa,
-            'da' =>$request->da,
+            'da' => $request->da,
+            'expiration' => $request->expiration,
+            'nameserver1' => $request->nameserver1,
+            'nameserver2' => $request->nameserver2,
+            'index_status' => $request->index_status,
             'user_id' => Auth::user()->id,
         ]);
-        
+
         return redirect('domain');
     }
 

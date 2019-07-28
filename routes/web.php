@@ -10,6 +10,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+
 Route::group(['middleware'=>'auth'], function(){
     Route::get('/domain/adddomain', 'DomainController@create')->name('adddomain');
     Route::post('/domain', 'DomainController@store');

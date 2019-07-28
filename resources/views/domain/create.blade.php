@@ -15,6 +15,22 @@
             <label for="da">Domain Autority</label>
             <input class="form-control" type="number" name="da" value="{{old('da')}}">
         </div>
+        <div class="form-group">
+            <label for="da">Expiration</label>
+            <input class="form-control" type="date" name="expiration" value="{{old('expiration')}}">
+        </div>
+        <div class="form-group">
+            <label for="da">Nameserver 1</label>
+            <input class="form-control" type="text" name="nameserver1" value="{{old('nameserver1')}}">
+        </div>
+        <div class="form-group">
+            <label for="da">Nameserver 2</label>
+            <input class="form-control" type="text" name="nameserver2" value="{{old('nameserver2')}}">
+        </div>
+        <div class="form-group">
+            <label for="da">Index Status</label>
+            <input class="form-control" type="text" name="index_status" value="{{old('index_status')}}">
+        </div>
         {{ csrf_field() }}
 
         @if(count($errors)>0)
