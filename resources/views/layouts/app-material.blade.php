@@ -83,6 +83,20 @@
 
   <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
   <script src="{{ asset('assets/js/material-dashboard.min.js?v=2.1.1')}}" type="text/javascript"></script>
-
+  <script>
+  $('.datetimepicker').datetimepicker({
+    icons: {
+        time: "fa fa-clock-o",
+        date: "fa fa-calendar",
+        up: "fa fa-chevron-up",
+        down: "fa fa-chevron-down",
+        previous: 'fa fa-chevron-left',
+        next: 'fa fa-chevron-right',
+        today: 'fa fa-screenshot',
+        clear: 'fa fa-trash',
+        close: 'fa fa-remove'
+    }
+});
+                            </script>
   </body>
 </html>
