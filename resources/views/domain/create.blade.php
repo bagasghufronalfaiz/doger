@@ -111,7 +111,7 @@
                         <h4 class="card-title">Add Domain</h4>
                     </div>
                     <div class="card-body">
-                        <form action="">
+                        <form action="/domain" method="post">
                             <div class="form-group bmd-form-group">
                                 <label class="bmd-label-floating" for="Domain">Domain</label>
                                 <input class="form-control" type="text" name="domain" value="{{old('domain')}}" >
@@ -125,26 +125,22 @@
                                 <input class="form-control" type="number" name="da" value="{{old('da')}}">
                             </div>
                             <div class="form-group bmd-form-group">
-                                <label class="bmd-label-floating" for="da">Expiration</label>
+                                <label class="bmd-label-floating" for="expiration">Expiration</label>
                                 <input class="form-control" type="date" name="expiration" value="none">
                             </div>
                             <div class="form-group bmd-form-group">
-                                <label class="bmd-label-floating" for="da">Nameserver 1</label>
+                                <label class="bmd-label-floating" for="nameserver1">Nameserver 1</label>
                                 <input class="form-control" type="text" name="nameserver1" value="{{old('nameserver1')}}">
                             </div>
                             <div class="form-group bmd-form-group">
-                                <label class="bmd-label-floating" for="da">Nameserver 2</label>
+                                <label class="bmd-label-floating" for="nameserver2">Nameserver 2</label>
                                 <input class="form-control" type="text" name="nameserver2" value="{{old('nameserver2')}}">
                             </div>
                             <div class="form-group bmd-form-group">
-                                <label class="bmd-label-floating" for="da">Index Status</label>
+                                <label class="bmd-label-floating" for="index_status">Index Status</label>
                                 <input class="form-control" type="text" name="index_status" value="{{old('index_status')}}">
                             </div>
-                            <div class="form-group">
-                                <label class="label-control">Datetime Picker</label>
-                                <input type="text" class="form-control datetimepicker" value="21/06/2018"/>
-                            </div>
-                            
+
                             {{ csrf_field() }}
 
                             @if(count($errors)>0)
@@ -155,13 +151,13 @@
                                 </div>
                             @endif
                             <input type="submit" class="btn btn-primary" value="Add Domain">
-                            
+
 
                         </form>
                     </div>
                 </div>
             </div>
-          
+
           </div>
           <div class="row">
             <div class="col-lg-3 col-md-6 col-sm-6">

@@ -106,7 +106,12 @@ class DomainController extends Controller
           $domain->update([
             'domain' => $request->domain,
             'pa' => $request->pa,
-            'da' =>$request->da,
+            'da' => $request->da,
+            'expiration' => $request->expiration,
+            'nameserver1' => $request->nameserver1,
+            'nameserver2' => $request->nameserver2,
+            'index_status' => $request->index_status,
+            'user_id' => Auth::user()->id,
           ]);
         }else {
           abort(403);

@@ -108,7 +108,11 @@
             <div class="col-lg-12 col-md-12 col-sm-12">
             <div class="card">
                 <div class="card-header card-header-success">
-                  <h4 class="card-title">Domain</h4>
+                  <div class="row">
+                    <div class="col-lg-8"><h4 class="card-title">Domain</h4></div>
+                    <div class="col-lg-4 text-right"><a href="/domain/adddomain" class="btn btn-secondary">Add Domain</a></div>
+                  </div>
+
                 </div>
                 <div class="card-body table-responsive">
                   <table class="table table-hover">
@@ -134,14 +138,12 @@
                             <td>{{$domainy->nameserver2}}</td>
                             <td>{{$domainy->index_status}}</td>
                             <td class="td-actions text-right d-flex">
-                            <a href="/domain/{{$domainy->id}}/editdomain/" class="btn btn-success btn-lg"><i class="material-icons">edit</i></a>
+                            <a href="/domain/{{$domainy->id}}/editdomain/" class="btn btn-info  btn-sm"><i class="material-icons">edit</i></a>
                                 <form action="/domain/{{$domainy->id}}" method="post">
                                     {{ csrf_field() }}
                                     <input type="hidden" name="_method" value="DELETE">
-                                    <button type="submit" class="btn btn-danger">
-                                        <i class="material-icons">delete</i>
-                                    </button>
-                                </form> 
+                                    <button type="submit" class="btn btn-danger  btn-sm"><i class="material-icons">close</i></button>
+                                </form>
                             </td>
                         </tr>
                     @endforeach
