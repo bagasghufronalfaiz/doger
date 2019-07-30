@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateDomainsTable extends Migration
+class CreateRegistrarsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,20 +13,15 @@ class CreateDomainsTable extends Migration
      */
     public function up()
     {
-        Schema::create('domains', function (Blueprint $table) {
+        Schema::create('registrars', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('domain', 45);
-            $table->integer('pa');
-            $table->integer('da');
-            $table->date('expiration');
-            $table->string('nameserver1');
-            $table->string('nameserver2');
-            $table->string('index_status');
-            $table->unsignedBigInteger('registrars_id');
+            $table->string('registrar');
+            $table->string('username');
+            $table->string('email');
+            $table->string('password');
             $table->unsignedBigInteger('users_id');
             $table->timestamps();
 
-            $table->foreign('registrars_id')->references('id')->on('registrars');
             $table->foreign('users_id')->references('id')->on('users');
         });
     }
@@ -38,6 +33,6 @@ class CreateDomainsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('domains');
+        Schema::dropIfExists('registrars');
     }
 }

@@ -26,8 +26,14 @@
           </li>
           <li class="nav-item active">
             <a class="nav-link" href="{{ route('domain') }}">
-              <i class="material-icons">list</i>
+              <i class="material-icons">domain</i>
               <p>Domain</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ route('registrar') }}">
+              <i class="material-icons">card_membership</i>
+              <p>Registrar</p>
             </a>
           </li>
 

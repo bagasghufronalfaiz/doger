@@ -42,4 +42,10 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Models\Domain');
     }
+
+    public function registrars()
+    {
+        return $this->hasMany('App\Models\Registrar');
+    }
+
 }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Auth;
 use App\Models\Domain;
 use App\Models\User;
+use App\Models\Registrar;
 use Illuminate\Http\Request;
 
 class DomainController extends Controller
@@ -22,15 +23,15 @@ class DomainController extends Controller
 
     public function index($id = null)
     {
-        $domains = Domain::all();
+        //$domain = Domain::all();
 
-        if ($id == null) {
+        // if ($id == null) {
             $user = User::findOrFail(Auth::user()->id);
-          } else {
-            $user = User::findOrFail($id);
-          }
+        //   } else {
+        //     $user = User::findOrFail($id);
+        //   }
 
-        return view('domain.index', compact('domains','user'));
+        return view('domain.index', compact('user'));
     }
 
     /**
@@ -59,7 +60,7 @@ class DomainController extends Controller
             'nameserver1' => $request->nameserver1,
             'nameserver2' => $request->nameserver2,
             'index_status' => $request->index_status,
-            'user_id' => Auth::user()->id,
+            'users_id' => Auth::user()->id,
         ]);
 
         return redirect('domain');
@@ -111,7 +112,7 @@ class DomainController extends Controller
             'nameserver1' => $request->nameserver1,
             'nameserver2' => $request->nameserver2,
             'index_status' => $request->index_status,
-            'user_id' => Auth::user()->id,
+            'users_id' => Auth::user()->id,
           ]);
         }else {
           abort(403);

@@ -17,6 +17,7 @@ Route::group(['middleware'=>'auth'], function(){
     Route::get('/domain/{id}/editdomain', 'DomainController@edit');
     Route::put('/domain/{id}', 'DomainController@update');
     Route::delete('/domain/{id}', 'DomainController@destroy');
+    Route::get('/registrar/addregistrar', 'RegistrarController@create')->name('addregistrar');
 });
 
 
@@ -32,5 +33,6 @@ Route::get('/', function () {
 
 Auth::routes();
 
+Route::get('/registrar', 'RegistrarController@index')->name('registrar');
 Route::get('/domain', 'DomainController@index')->name('domain');
 Route::get('/home', 'HomeController@index')->name('home');

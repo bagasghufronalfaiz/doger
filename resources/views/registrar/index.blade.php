@@ -12,7 +12,7 @@
       </div>
       <div class="sidebar-wrapper">
         <ul class="nav">
-          <li class="nav-item active  ">
+          <li class="nav-item">
             <a class="nav-link" href="{{ url('/') }}">
               <i class="material-icons">dashboard</i>
               <p>Dashboard</p>
@@ -30,7 +30,7 @@
               <p>Domain</p>
             </a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item active">
             <a class="nav-link" href="{{ route('registrar') }}">
               <i class="material-icons">card_membership</i>
               <p>Registrar</p>

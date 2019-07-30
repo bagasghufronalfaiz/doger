@@ -12,7 +12,7 @@
       </div>
       <div class="sidebar-wrapper">
         <ul class="nav">
-          <li class="nav-item active  ">
+          <li class="nav-item">
             <a class="nav-link" href="{{ url('/') }}">
               <i class="material-icons">dashboard</i>
               <p>Dashboard</p>
@@ -30,7 +30,7 @@
               <p>Domain</p>
             </a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item active">
             <a class="nav-link" href="{{ route('registrar') }}">
               <i class="material-icons">card_membership</i>
               <p>Registrar</p>
@@ -46,7 +46,7 @@
       <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
         <div class="container-fluid">
           <div class="navbar-wrapper">
-            <a class="navbar-brand" href="#">Dashboard</a>
+            <a class="navbar-brand" href="#">Add Domain</a>
           </div>
           <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
             <span class="sr-only">Toggle navigation</span>
@@ -110,6 +110,49 @@
       <!-- End Navbar -->
       <div class="content">
         <div class="container-fluid">
+          <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-header card-header-primary">
+                        <h4 class="card-title">Add Registrar</h4>
+                    </div>
+                    <div class="card-body">
+                        <form action="/registrar" method="post">
+                            <div class="form-group bmd-form-group">
+                                <label class="bmd-label-floating" for="registrar">Registrar</label>
+                                <input class="form-control" type="text" name="registrar" value="{{old('registrar')}}" >
+                            </div>
+                            <div class="form-group bmd-form-group">
+                                <label class="bmd-label-floating" for="username">Username</label>
+                                <input class="form-control" type="text" name="username" value="{{old('username')}}">
+                            </div>
+                            <div class="form-group bmd-form-group">
+                                <label class="bmd-label-floating" for="email">Email</label>
+                                <input class="form-control" type="text" name="email" value="{{old('email')}}">
+                            </div>
+                            <div class="form-group bmd-form-group">
+                                <label class="bmd-label-floating" for="password">Password</label>
+                                <input class="form-control" type="text" name="password" value="{{old('password')}}">
+                            </div>
+
+                            {{ csrf_field() }}
+
+                            @if(count($errors)>0)
+                                <div class="alert alert-danger">
+                                @foreach($errors->all() as $error)
+                                <p>{{$error}}</p>
+                                @endforeach
+                                </div>
+                            @endif
+                            <input type="submit" class="btn btn-primary" value="Add Registrar">
+
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+          </div>
           <div class="row">
             <div class="col-lg-3 col-md-6 col-sm-6">
               <div class="card card-stats">
