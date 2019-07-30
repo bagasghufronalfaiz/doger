@@ -22,12 +22,12 @@ class CreateDomainsTable extends Migration
             $table->string('nameserver1');
             $table->string('nameserver2');
             $table->string('index_status');
-            $table->unsignedBigInteger('registrars_id');
-            $table->unsignedBigInteger('users_id');
+            $table->unsignedBigInteger('registrar_id');
+            $table->unsignedBigInteger('user_id');
             $table->timestamps();
 
-            $table->foreign('registrars_id')->references('id')->on('registrars');
-            $table->foreign('users_id')->references('id')->on('users');
+            $table->foreign('registrar_id')->references('id')->on('registrars');
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 

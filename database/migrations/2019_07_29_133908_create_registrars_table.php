@@ -19,10 +19,10 @@ class CreateRegistrarsTable extends Migration
             $table->string('username');
             $table->string('email');
             $table->string('password');
-            $table->unsignedBigInteger('users_id');
+            $table->unsignedBigInteger('user_id');
             $table->timestamps();
 
-            $table->foreign('users_id')->references('id')->on('users');
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 

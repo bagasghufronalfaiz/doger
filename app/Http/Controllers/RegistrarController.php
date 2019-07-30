@@ -25,7 +25,8 @@ class RegistrarController extends Controller
 
     public function index()
     {
-        return view('registrar.index');
+        $user = User::findOrFail(Auth::user()->id);
+        return view('registrar.index', compact('user'));
     }
 
     /**
@@ -46,7 +47,15 @@ class RegistrarController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $registrar = Registrar::create([
+            'registrar' => $request->registrar,
+            'username' => $request->username,
+            'email' => $request->email,
+            'password' => $request->password,
+            'user_id' => Auth::user()->id,
+        ]);
+
+        return redirect('registrar');
     }
 
     /**
@@ -66,9 +75,14 @@ class RegistrarController extends Controller
      * @param  \App\Models\Registrar  $registrar
      * @return \Illuminate\Http\Response
      */
-    public function edit(Registrar $registrar)
+    public function edit($id)
     {
-        //
+        $registrar = Registrar::findOrFail($id);
+        if($registrar->userisOwner()){
+            return view('registrar.edit', compact('registrar'));
+        } else {
+            abort(403);
+        }
     }
 
     /**
@@ -78,9 +92,22 @@ class RegistrarController extends Controller
      * @param  \App\Models\Registrar  $registrar
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Registrar $registrar)
+    public function update(Request $request, $id)
     {
-        //
+        $registrar = Registrar::findOrFail($id);
+        if ($registrar->userisOwner()) {
+          $registrar->update([
+            'registrar' => $request->registrar,
+            'username' => $request->username,
+            'email' => $request->email,
+            'password' => $request->password,
+            'user_id' => Auth::user()->id,
+          ]);
+        }else {
+          abort(403);
+        }
+
+        return redirect('registrar')->with('msg', 'registrar  berhasil di edit');
     }
 
     /**
@@ -89,8 +116,16 @@ class RegistrarController extends Controller
      * @param  \App\Models\Registrar  $registrar
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Registrar $registrar)
+    public function destroy($id)
     {
-        //
+        $registrar = Registrar::findOrFail($id);
+        // dd($domain->userisOwner());
+        if ($registrar->userisOwner()) {
+            $registrar->delete();
+        }else {
+            abort(403);
+        }
+
+        return redirect('registrar')->with('msg', 'registrar  berhasil di hapus');
     }
 }

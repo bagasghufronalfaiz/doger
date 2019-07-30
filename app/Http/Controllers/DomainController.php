@@ -30,7 +30,7 @@ class DomainController extends Controller
         //   } else {
         //     $user = User::findOrFail($id);
         //   }
-
+        
         return view('domain.index', compact('user'));
     }
 
@@ -41,7 +41,8 @@ class DomainController extends Controller
      */
     public function create()
     {
-        return view('domain.create');
+        $user = User::findOrFail(Auth::user()->id);
+        return view('domain.create', compact('user'));
     }
 
     /**
@@ -60,7 +61,7 @@ class DomainController extends Controller
             'nameserver1' => $request->nameserver1,
             'nameserver2' => $request->nameserver2,
             'index_status' => $request->index_status,
-            'users_id' => Auth::user()->id,
+            'user_id' => Auth::user()->id,
         ]);
 
         return redirect('domain');

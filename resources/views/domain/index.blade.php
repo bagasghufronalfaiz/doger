@@ -133,11 +133,10 @@
                         <th scope="col" class="text-right">Action</th>
                     </thead>
                     <tbody>
-                        {{-- @foreach($user->domains as $domainy) --}}
+                        @foreach($user->domains as $domainy)
 
                         <tr>
-                            {{$user->domains}}
-                            {{-- <td>{{$domainy->domain}}</td>
+                            <td>{{$domainy->domain}}</td>
                             <td>{{$domainy->pa}}</td>
                             <td>{{$domainy->da}}</td>
                             <td>{{$domainy->expiration}}</td>
@@ -151,9 +150,9 @@
                                     <input type="hidden" name="_method" value="DELETE">
                                     <button type="submit" class="btn btn-danger  btn-sm"><i class="material-icons">close</i></button>
                                 </form>
-                            </td>--}}
+                            </td>
                         </tr>
-                        {{-- @endforeach --}}
+                        @endforeach
                     </tbody>
                   </table>
                 </div>

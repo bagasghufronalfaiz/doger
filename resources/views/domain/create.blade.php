@@ -146,6 +146,14 @@
                                 <label class="bmd-label-floating" for="index_status">Index Status</label>
                                 <input class="form-control" type="text" name="index_status" value="{{old('index_status')}}">
                             </div>
+                            <div class="form-group bmd-form-group">
+                                <label class="bmd-label-floating" for="registrar">Registrar</label>
+                                <select id="registrar" class="form-control selectpicker" data-style="btn btn-link">
+                                  @foreach ($user->registrars as $registrary)
+                                    <option>{{$registrary->email}} at {{$registrary->registrar}}</option>    
+                                  @endforeach
+                                </select>
+                              </div>
 
                             {{ csrf_field() }}
 

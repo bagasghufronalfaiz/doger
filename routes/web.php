@@ -18,6 +18,10 @@ Route::group(['middleware'=>'auth'], function(){
     Route::put('/domain/{id}', 'DomainController@update');
     Route::delete('/domain/{id}', 'DomainController@destroy');
     Route::get('/registrar/addregistrar', 'RegistrarController@create')->name('addregistrar');
+    Route::post('/registrar', 'RegistrarController@store');
+    Route::get('/registrar/{id}/editregistrar', 'RegistrarController@edit');
+    Route::put('/registrar/{id}', 'RegistrarController@update');
+    Route::delete('/registrar/{id}', 'RegistrarController@destroy');
 });
 
 

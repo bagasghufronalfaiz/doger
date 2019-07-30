@@ -24,14 +24,14 @@
               <p>Home</p>
             </a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item active">
             <a class="nav-link" href="{{ route('domain') }}">
               <i class="material-icons">domain</i>
               <p>Domain</p>
             </a>
           </li>
-          <li class="nav-item active">
-            <a class="nav-link" href="{{ route('registrar') }}">
+          <li class="nav-item">
+            <a class="nav-link" href="{{ route('domain') }}">
               <i class="material-icons">card_membership</i>
               <p>Registrar</p>
             </a>
@@ -46,7 +46,7 @@
       <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
         <div class="container-fluid">
           <div class="navbar-wrapper">
-            <a class="navbar-brand" href="#">Registrar</a>
+            <a class="navbar-brand" href="#">Edit Registrar</a>
           </div>
           <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
             <span class="sr-only">Toggle navigation</span>
@@ -111,47 +111,48 @@
       <div class="content">
         <div class="container-fluid">
           <div class="row">
-            <div class="col-lg-12 col-md-12 col-sm-12">
-            <div class="card">
-                <div class="card-header card-header-success">
-                  <div class="row">
-                    <div class="col-lg-8"><h4 class="card-title">Registrar</h4></div>
-                    <div class="col-lg-4 text-right"><a href="/registrar/addregistrar" class="btn btn-secondary">Add Registrar</a></div>
-                  </div>
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-header card-header-warning">
+                        <h4 class="card-title">Edit Registrar</h4>
+                    </div>
+                    <div class="card-body">
+                        <form action="/registrar/{{$registrar->id}}" method="post">
+                          <div class="form-group bmd-form-group">
+                              <label class="bmd-label-floating" for="registrar">Registrar</label>
+                              <input class="form-control" type="text" name="registrar" value="{{(old('registrar')) ? old('registrar') : $registrar->registrar}}" >
+                          </div>
+                          <div class="form-group bmd-form-group">
+                              <label class="bmd-label-floating" for="username">Username</label>
+                              <input class="form-control" type="text" name="username" value="{{old('username') ? old('username') : $registrar->username}}">
+                          </div>
+                          <div class="form-group bmd-form-group">
+                              <label class="bmd-label-floating" for="email">Email</label>
+                              <input class="form-control" type="text" name="email" value="{{old('email') ? old('email') : $registrar->email}}">
+                          </div>
+                          <div class="form-group bmd-form-group">
+                              <label class="bmd-label-floating" for="password">Password</label>
+                              <input class="form-control" type="text" name="password" value="{{old('password') ? old('password') : $registrar->password}}">
+                          </div>
+                
 
-                </div>
-                <div class="card-body table-responsive">
-                  <table class="table table-hover">
-                    <thead class="text-success">
-                        <th scope="col">Registrar</th>
-                        <th scope="col">Username</th>
-                        <th scope="col">Email</th>
-                        <th scope="col">Password</th>                        
-                        <th scope="col" class="text-right">Action</th>
-                    </thead>
-                    <tbody>
-                        @foreach($user->registrars as $registrary)
+                            {{ csrf_field() }}
+                            <input type="hidden" name="_method" value="PUT">
+                            @if(count($errors)>0)
+                                <div class="alert alert-danger">
+                                @foreach($errors->all() as $error)
+                                <p>{{$error}}</p>
+                                @endforeach
+                                </div>
+                            @endif
+                            <input type="submit" class="btn btn-warning" value="Edit Registrar">
 
-                        <tr>
-                            <td>{{$registrary->registrar}}</td>
-                            <td>{{$registrary->username}}</td>
-                            <td>{{$registrary->email}}</td>
-                            <td>{{$registrary->password}}</td>                            
-                            <td class="td-actions text-right d-flex">
-                                <a href="/registrar/{{$registrary->id}}/editregistrar/" class="btn btn-info  btn-sm"><i class="material-icons">edit</i></a>
-                                <form action="/registrar/{{$registrary->id}}" method="post">
-                                    {{ csrf_field() }}
-                                    <input type="hidden" name="_method" value="DELETE">
-                                    <button type="submit" class="btn btn-danger  btn-sm"><i class="material-icons">close</i></button>
-                                </form>
-                            </td>
-                        </tr>
-                        @endforeach
-                    </tbody>
-                  </table>
+
+                        </form>
+                    </div>
                 </div>
-              </div>
             </div>
+
           </div>
           <div class="row">
             <div class="col-lg-3 col-md-6 col-sm-6">

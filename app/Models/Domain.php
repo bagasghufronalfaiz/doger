@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Domain extends Model
 {
     protected $fillable = [
-        'domain', 'pa', 'da', 'users_id', 'expiration', 'nameserver1', 'nameserver2', 'index_status', 'registrars_id'
+        'domain', 'pa', 'da', 'user_id', 'expiration', 'nameserver1', 'nameserver2', 'index_status', 'registrar_id'
     ];
 
     public function user()

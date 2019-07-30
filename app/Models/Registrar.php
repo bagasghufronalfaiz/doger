@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Registrar extends Model
 {
     protected $fillable = [
-        'registrar', 'username', 'email', 'password'
+        'registrar', 'username', 'email', 'password', 'user_id'
     ];
 
     public function user()
