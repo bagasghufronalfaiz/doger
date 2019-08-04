@@ -36,7 +36,7 @@
               <p>Registrar</p>
             </a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item {{ (request()->is('server*')) ? 'active' : '' }}">
             <a class="nav-link" href="{{ route('server') }}">
               <i class="material-icons">cloud</i>
               <p>Server</p>
@@ -52,7 +52,7 @@
       <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
         <div class="container-fluid">
           <div class="navbar-wrapper">
-            <a class="navbar-brand" href="#">Edit Registrar</a>
+            <a class="navbar-brand" href="#">Add Server</a>
           </div>
           <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
             <span class="sr-only">Toggle navigation</span>
@@ -119,31 +119,46 @@
           <div class="row">
             <div class="col-lg-12">
                 <div class="card">
-                    <div class="card-header card-header-warning">
-                        <h4 class="card-title">Edit Registrar</h4>
+                    <div class="card-header card-header-primary">
+                        <h4 class="card-title">Add Server</h4>
                     </div>
                     <div class="card-body">
-                        <form action="/registrar/{{$registrar->id}}" method="post">
-                          <div class="form-group bmd-form-group">
-                              <label class="bmd-label-floating" for="registrar">Registrar</label>
-                              <input class="form-control" type="text" name="registrar" value="{{(old('registrar')) ? old('registrar') : $registrar->registrar}}" >
-                          </div>
-                          <div class="form-group bmd-form-group">
-                              <label class="bmd-label-floating" for="username">Username</label>
-                              <input class="form-control" type="text" name="username" value="{{old('username') ? old('username') : $registrar->username}}">
-                          </div>
-                          <div class="form-group bmd-form-group">
-                              <label class="bmd-label-floating" for="email">Email</label>
-                              <input class="form-control" type="text" name="email" value="{{old('email') ? old('email') : $registrar->email}}">
-                          </div>
-                          <div class="form-group bmd-form-group">
-                              <label class="bmd-label-floating" for="password">Password</label>
-                              <input class="form-control" type="text" name="password" value="{{old('password') ? old('password') : $registrar->password}}">
-                          </div>
-
+                        <form action="/server" method="post">
+                            <div class="form-group bmd-form-group">
+                                <label class="bmd-label-floating" for="seller">Seller</label>
+                                <input class="form-control" type="text" name="seller" value="{{old('seller')}}" >
+                            </div>
+                            <div class="form-group bmd-form-group">
+                                <label class="bmd-label-floating" for="location">Location</label>
+                                <input class="form-control" type="text" name="location" value="{{old('location')}}">
+                            </div>
+                            <div class="form-group bmd-form-group">
+                                <label class="bmd-label-floating" for="servername">Server Name</label>
+                                <input class="form-control" type="text" name="servername" value="{{old('servername')}}">
+                            </div>
+                            <div class="form-group bmd-form-group">
+                                <label class="bmd-label-floating" for="ip">IP</label>
+                                <input class="form-control" type="text" name="ip" value="{{old('ip')}}">
+                            </div>
+                            <div class="form-group bmd-form-group">
+                                <label class="bmd-label-floating" for="username">Username</label>
+                                <input class="form-control" type="text" name="username" value="{{old('username')}}">
+                            </div>
+                            <div class="form-group bmd-form-group">
+                                <label class="bmd-label-floating" for="password">Password</label>
+                                <input class="form-control" type="text" name="password" value="{{old('password')}}">
+                            </div>
+                            <div class="form-group bmd-form-group">
+                                <label class="bmd-label-floating" for="price">Price</label>
+                                <input class="form-control" type="decimal" name="price" value="{{old('price')}}">
+                            </div>
+                            <div class="form-group bmd-form-group">
+                                <label class="bmd-label-floating" for="invoice_date">Invoice Date</label>
+                                <input class="form-control" type="date" name="due_date" value="{{old('due_date')}}">
+                            </div>
 
                             {{ csrf_field() }}
-                            <input type="hidden" name="_method" value="PUT">
+
                             @if(count($errors)>0)
                                 <div class="alert alert-danger">
                                 @foreach($errors->all() as $error)
@@ -151,7 +166,7 @@
                                 @endforeach
                                 </div>
                             @endif
-                            <input type="submit" class="btn btn-warning" value="Edit Registrar">
+                            <input type="submit" class="btn btn-primary" value="Add Server">
 
 
                         </form>

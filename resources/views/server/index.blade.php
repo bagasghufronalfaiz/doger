@@ -30,13 +30,14 @@
               <p>Domain</p>
             </a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item {{ (request()->is('registrar*')) ? 'active' : '' }}">
             <a class="nav-link" href="{{ route('registrar') }}">
               <i class="material-icons">card_membership</i>
               <p>Registrar</p>
             </a>
           </li>
-          <li class="nav-item active">
+          
+          <li class="nav-item {{ (request()->is('server*')) ? 'active' : '' }}">
             <a class="nav-link" href="{{ route('server') }}">
               <i class="material-icons">cloud</i>
               <p>Server</p>
@@ -122,21 +123,21 @@
                 <div class="card-header card-header-success">
                   <div class="row">
                     <div class="col-lg-8"><h4 class="card-title">Server</h4></div>
-                    <div class="col-lg-4 text-right"><a href="/domain/adddomain" class="btn btn-secondary">Add Server</a></div>
+                    <div class="col-lg-4 text-right"><a href="{{ route('addserver') }}" class="btn btn-secondary">Add Server</a></div>
                   </div>
 
                 </div>
                 <div class="card-body table-responsive">
                   <table class="table table-hover">
                     <thead class="text-success">
-                        <th scope="col">Domain</th>
-                        <th scope="col">Page Autority</th>
-                        <th scope="col">Domain Autority</th>
-                        <th scope="col">Expiration</th>
-                        <th scope="col">Nameserver 1</th>
-                        <th scope="col">Nameserver 2</th>
-                        <th scope="col">Index Status</th>
-                        <th scope="col">Registrar</th>
+                        <th scope="col">Seller</th>
+                        <th scope="col">Location</th>
+                        <th scope="col">Servername</th>
+                        <th scope="col">Ip</th>
+                        <th scope="col">Username</th>
+                        <th scope="col">Password</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Due Date</th>
                         <th scope="col" class="text-right">Action</th>
                     </thead>
                     <tbody>

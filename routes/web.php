@@ -23,6 +23,9 @@ Route::group(['middleware'=>'auth'], function(){
     Route::get('/registrar/{id}/editregistrar', 'RegistrarController@edit');
     Route::put('/registrar/{id}', 'RegistrarController@update');
     Route::delete('/registrar/{id}', 'RegistrarController@destroy');
+
+    Route::get('/server/addserver', 'ServerController@create')->name('addserver');
+    Route::post('/server', 'ServerController@store');
 });
 
 

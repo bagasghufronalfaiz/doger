@@ -30,7 +30,7 @@
               <p>Domain</p>
             </a>
           </li>
-          <li class="nav-item active">
+          <li class="nav-item {{ (request()->is('registrar*')) ? 'active' : '' }}">
             <a class="nav-link" href="{{ route('registrar') }}">
               <i class="material-icons">card_membership</i>
               <p>Registrar</p>

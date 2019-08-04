@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Auth;
 use App\Models\User;
+use App\Models\Server;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -32,7 +33,7 @@ class ServerController extends Controller
      */
     public function create()
     {
-        //
+        return view('server.create');
     }
 
     /**
@@ -43,7 +44,19 @@ class ServerController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $server = Server::create([
+            'seller'        => $request->seller,
+            'location'      => $request->location,
+            'servername'    => $request->servername,
+            'ip'            => $request->ip,
+            'username'      => $request->username,
+            'password'      => $request->password,
+            'price'         => $request->price,
+            'due_date'      => $request->due_date,
+            'user_id'       => Auth::user()->id,
+        ]);
+
+        return redirect('server');
     }
 
     /**
