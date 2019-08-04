@@ -1,0 +1,24 @@
+<?php
+
+namespace App\Models;
+
+use Auth;
+use Illuminate\Database\Eloquent\Model;
+
+class Server extends Model
+{
+    protected $fillable = [
+        'seller', 'location', 'servername', 'ip', 'username', 'password', 'price', 'due_date', 'user_id'
+    ];
+
+    public function user()
+    {
+        return $this->belongsTo('App\Models\User');
+    }
+
+    public function userisOwner()
+    {
+        return Auth::user()->id == $this->user->id;
+    }
+
+}

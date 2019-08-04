@@ -31,9 +31,15 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{{ route('domain') }}">
+            <a class="nav-link" href="{{ route('registrar') }}">
               <i class="material-icons">card_membership</i>
               <p>Registrar</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ route('server') }}">
+              <i class="material-icons">cloud</i>
+              <p>Server</p>
             </a>
           </li>
 
@@ -145,6 +151,14 @@
                             <div class="form-group bmd-form-group">
                                 <label class="bmd-label-floating" for="index_status">Index Status</label>
                                 <input class="form-control" type="text" name="index_status" value="{{(old('index_status')) ? old('index_status') : $domain->index_status}}">
+                            </div>
+                            <div class="form-group">
+                                <label class="" for="registrar_id">Registrar</label>
+                                <select id="registrar" class="form-control" data-style="btn btn-link" name="registrar_id">
+                                  @foreach ($user->registrars as $registrary)
+                                    <option @if($registrary->id == $domain->registrar_id ) selected @endif value="{{$registrary->id}}">{{$registrary->email}} at {{$registrary->registrar}}</option>
+                                  @endforeach
+                                </select>
                             </div>
 
                             {{ csrf_field() }}

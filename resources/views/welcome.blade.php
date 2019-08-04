@@ -36,6 +36,12 @@
               <p>Registrar</p>
             </a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ route('server') }}">
+              <i class="material-icons">cloud</i>
+              <p>Server</p>
+            </a>
+          </li>
 
 
         </ul>

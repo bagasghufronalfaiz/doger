@@ -36,6 +36,12 @@
               <p>Registrar</p>
             </a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ route('server') }}">
+              <i class="material-icons">cloud</i>
+              <p>Server</p>
+            </a>
+          </li>
 
 
         </ul>
@@ -130,6 +136,7 @@
                         <th scope="col">Nameserver 1</th>
                         <th scope="col">Nameserver 2</th>
                         <th scope="col">Index Status</th>
+                        <th scope="col">Registrar</th>
                         <th scope="col" class="text-right">Action</th>
                     </thead>
                     <tbody>
@@ -143,6 +150,7 @@
                             <td>{{$domainy->nameserver1}}</td>
                             <td>{{$domainy->nameserver2}}</td>
                             <td>{{$domainy->index_status}}</td>
+                            <td>{{$domainy->registrar->email}} at {{$domainy->registrar->registrar}}</td>
                             <td class="td-actions text-right d-flex">
                             <a href="/domain/{{$domainy->id}}/editdomain/" class="btn btn-info  btn-sm"><i class="material-icons">edit</i></a>
                                 <form action="/domain/{{$domainy->id}}" method="post">

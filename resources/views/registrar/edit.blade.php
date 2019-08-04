@@ -36,6 +36,12 @@
               <p>Registrar</p>
             </a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ route('server') }}">
+              <i class="material-icons">cloud</i>
+              <p>Server</p>
+            </a>
+          </li>
 
 
         </ul>
@@ -134,7 +140,7 @@
                               <label class="bmd-label-floating" for="password">Password</label>
                               <input class="form-control" type="text" name="password" value="{{old('password') ? old('password') : $registrar->password}}">
                           </div>
-                
+
 
                             {{ csrf_field() }}
                             <input type="hidden" name="_method" value="PUT">

@@ -18,7 +18,7 @@
               <p>Dashboard</p>
             </a>
           </li>
-          <li class="nav-item ">
+          <li class="nav-item">
             <a class="nav-link" href="{{ route('home') }}">
               <i class="material-icons">home</i>
               <p>Home</p>
@@ -30,13 +30,13 @@
               <p>Domain</p>
             </a>
           </li>
-          <li class="nav-item active">
+          <li class="nav-item">
             <a class="nav-link" href="{{ route('registrar') }}">
               <i class="material-icons">card_membership</i>
               <p>Registrar</p>
             </a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item active">
             <a class="nav-link" href="{{ route('server') }}">
               <i class="material-icons">cloud</i>
               <p>Server</p>
@@ -52,7 +52,7 @@
       <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
         <div class="container-fluid">
           <div class="navbar-wrapper">
-            <a class="navbar-brand" href="#">Add Registrar</a>
+            <a class="navbar-brand" href="#">Server</a>
           </div>
           <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
             <span class="sr-only">Toggle navigation</span>
@@ -117,47 +117,55 @@
       <div class="content">
         <div class="container-fluid">
           <div class="row">
-            <div class="col-lg-12">
-                <div class="card">
-                    <div class="card-header card-header-primary">
-                        <h4 class="card-title">Add Registrar</h4>
-                    </div>
-                    <div class="card-body">
-                        <form action="/registrar" method="post">
-                            <div class="form-group bmd-form-group">
-                                <label class="bmd-label-floating" for="registrar">Registrar</label>
-                                <input class="form-control" type="text" name="registrar" value="{{old('registrar')}}" >
-                            </div>
-                            <div class="form-group bmd-form-group">
-                                <label class="bmd-label-floating" for="username">Username</label>
-                                <input class="form-control" type="text" name="username" value="{{old('username')}}">
-                            </div>
-                            <div class="form-group bmd-form-group">
-                                <label class="bmd-label-floating" for="email">Email</label>
-                                <input class="form-control" type="text" name="email" value="{{old('email')}}">
-                            </div>
-                            <div class="form-group bmd-form-group">
-                                <label class="bmd-label-floating" for="password">Password</label>
-                                <input class="form-control" type="text" name="password" value="{{old('password')}}">
-                            </div>
+            <div class="col-lg-12 col-md-12 col-sm-12">
+            <div class="card">
+                <div class="card-header card-header-success">
+                  <div class="row">
+                    <div class="col-lg-8"><h4 class="card-title">Server</h4></div>
+                    <div class="col-lg-4 text-right"><a href="/domain/adddomain" class="btn btn-secondary">Add Server</a></div>
+                  </div>
 
-                            {{ csrf_field() }}
-
-                            @if(count($errors)>0)
-                                <div class="alert alert-danger">
-                                @foreach($errors->all() as $error)
-                                <p>{{$error}}</p>
-                                @endforeach
-                                </div>
-                            @endif
-                            <input type="submit" class="btn btn-primary" value="Add Registrar">
-
-
-                        </form>
-                    </div>
                 </div>
-            </div>
+                <div class="card-body table-responsive">
+                  <table class="table table-hover">
+                    <thead class="text-success">
+                        <th scope="col">Domain</th>
+                        <th scope="col">Page Autority</th>
+                        <th scope="col">Domain Autority</th>
+                        <th scope="col">Expiration</th>
+                        <th scope="col">Nameserver 1</th>
+                        <th scope="col">Nameserver 2</th>
+                        <th scope="col">Index Status</th>
+                        <th scope="col">Registrar</th>
+                        <th scope="col" class="text-right">Action</th>
+                    </thead>
+                    <tbody>
+                        {{-- @foreach($user->domains as $domainy)
 
+                        <tr>
+                            <td>{{$domainy->domain}}</td>
+                            <td>{{$domainy->pa}}</td>
+                            <td>{{$domainy->da}}</td>
+                            <td>{{$domainy->expiration}}</td>
+                            <td>{{$domainy->nameserver1}}</td>
+                            <td>{{$domainy->nameserver2}}</td>
+                            <td>{{$domainy->index_status}}</td>
+                            <td>{{$domainy->registrar->email}} at {{$domainy->registrar->registrar}}</td>
+                            <td class="td-actions text-right d-flex">
+                            <a href="/domain/{{$domainy->id}}/editdomain/" class="btn btn-info  btn-sm"><i class="material-icons">edit</i></a>
+                                <form action="/domain/{{$domainy->id}}" method="post">
+                                    {{ csrf_field() }}
+                                    <input type="hidden" name="_method" value="DELETE">
+                                    <button type="submit" class="btn btn-danger  btn-sm"><i class="material-icons">close</i></button>
+                                </form>
+                            </td>
+                        </tr>
+                        @endforeach --}}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
           </div>
           <div class="row">
             <div class="col-lg-3 col-md-6 col-sm-6">

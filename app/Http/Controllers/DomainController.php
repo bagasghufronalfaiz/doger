@@ -21,16 +21,10 @@ class DomainController extends Controller
         $this->middleware('auth');
     }
 
-    public function index($id = null)
+    public function index()
     {
-        //$domain = Domain::all();
+        $user = User::findOrFail(Auth::user()->id);
 
-        // if ($id == null) {
-            $user = User::findOrFail(Auth::user()->id);
-        //   } else {
-        //     $user = User::findOrFail($id);
-        //   }
-        
         return view('domain.index', compact('user'));
     }
 
@@ -61,6 +55,7 @@ class DomainController extends Controller
             'nameserver1' => $request->nameserver1,
             'nameserver2' => $request->nameserver2,
             'index_status' => $request->index_status,
+            'registrar_id' => $request->registrar_id,
             'user_id' => Auth::user()->id,
         ]);
 
@@ -88,7 +83,8 @@ class DomainController extends Controller
     {
         $domain = Domain::findOrFail($id);
         if($domain->userisOwner()){
-            return view('domain.edit', compact('domain'));
+            $user = User::findOrFail(Auth::user()->id);
+            return view('domain.edit', compact('domain', 'user'));
         } else {
             abort(403);
         }
@@ -113,6 +109,7 @@ class DomainController extends Controller
             'nameserver1' => $request->nameserver1,
             'nameserver2' => $request->nameserver2,
             'index_status' => $request->index_status,
+            'registrar_id' => $request->registrar_id,
             'users_id' => Auth::user()->id,
           ]);
         }else {
@@ -131,7 +128,6 @@ class DomainController extends Controller
     public function destroy($id)
     {
         $domain = Domain::findOrFail($id);
-        // dd($domain->userisOwner());
         if ($domain->userisOwner()) {
             $domain->delete();
         }else {

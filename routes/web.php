@@ -17,6 +17,7 @@ Route::group(['middleware'=>'auth'], function(){
     Route::get('/domain/{id}/editdomain', 'DomainController@edit');
     Route::put('/domain/{id}', 'DomainController@update');
     Route::delete('/domain/{id}', 'DomainController@destroy');
+
     Route::get('/registrar/addregistrar', 'RegistrarController@create')->name('addregistrar');
     Route::post('/registrar', 'RegistrarController@store');
     Route::get('/registrar/{id}/editregistrar', 'RegistrarController@edit');
@@ -40,3 +41,4 @@ Auth::routes();
 Route::get('/registrar', 'RegistrarController@index')->name('registrar');
 Route::get('/domain', 'DomainController@index')->name('domain');
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/server', 'ServerController@index')->name('server');

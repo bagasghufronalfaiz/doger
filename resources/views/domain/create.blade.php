@@ -36,6 +36,12 @@
               <p>Registrar</p>
             </a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ route('server') }}">
+              <i class="material-icons">cloud</i>
+              <p>Server</p>
+            </a>
+          </li>
 
 
         </ul>
@@ -147,10 +153,10 @@
                                 <input class="form-control" type="text" name="index_status" value="{{old('index_status')}}">
                             </div>
                             <div class="form-group bmd-form-group">
-                                <label class="bmd-label-floating" for="registrar">Registrar</label>
-                                <select id="registrar" class="form-control selectpicker" data-style="btn btn-link">
+                                <label class="bmd-label-floating" for="registrar_id">Registrar</label>
+                                <select id="registrar" class="form-control selectpicker" data-style="btn btn-link" name="registrar_id">
                                   @foreach ($user->registrars as $registrary)
-                                    <option>{{$registrary->email}} at {{$registrary->registrar}}</option>    
+                                <option value="{{$registrary->id}}">{{$registrary->email}} at {{$registrary->registrar}}</option>
                                   @endforeach
                                 </select>
                               </div>

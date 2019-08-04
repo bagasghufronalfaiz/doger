@@ -36,6 +36,12 @@
               <p>Registrar</p>
             </a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ route('server') }}">
+              <i class="material-icons">cloud</i>
+              <p>Server</p>
+            </a>
+          </li>
 
 
         </ul>
@@ -126,7 +132,7 @@
                         <th scope="col">Registrar</th>
                         <th scope="col">Username</th>
                         <th scope="col">Email</th>
-                        <th scope="col">Password</th>                        
+                        <th scope="col">Password</th>
                         <th scope="col" class="text-right">Action</th>
                     </thead>
                     <tbody>
@@ -136,7 +142,7 @@
                             <td>{{$registrary->registrar}}</td>
                             <td>{{$registrary->username}}</td>
                             <td>{{$registrary->email}}</td>
-                            <td>{{$registrary->password}}</td>                            
+                            <td>{{$registrary->password}}</td>
                             <td class="td-actions text-right d-flex">
                                 <a href="/registrar/{{$registrary->id}}/editregistrar/" class="btn btn-info  btn-sm"><i class="material-icons">edit</i></a>
                                 <form action="/registrar/{{$registrary->id}}" method="post">

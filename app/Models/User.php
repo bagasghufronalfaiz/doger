@@ -48,4 +48,9 @@ class User extends Authenticatable
         return $this->hasMany('App\Models\Registrar');
     }
 
+    public function servers()
+    {
+        return $this->hasMany('App\Models\Server');
+    }
+
 }
