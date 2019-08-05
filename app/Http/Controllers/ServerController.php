@@ -46,13 +46,13 @@ class ServerController extends Controller
     {
         $server = Server::create([
             'seller'        => $request->seller,
-            'location'      => $request->location,
             'servername'    => $request->servername,
+            'location'      => $request->location,
             'ip'            => $request->ip,
             'username'      => $request->username,
             'password'      => $request->password,
             'price'         => $request->price,
-            'due_date'      => $request->due_date,
+            'invoice_date'  => $request->invoice_date,
             'user_id'       => Auth::user()->id,
         ]);
 
@@ -78,7 +78,13 @@ class ServerController extends Controller
      */
     public function edit($id)
     {
-        //
+        $server = Server::findOrFail($id);
+        if($server->userisOwner()){
+            return view('server.edit', compact('server'));
+        } else {
+            abort(403);
+        }
+
     }
 
     /**
@@ -90,7 +96,24 @@ class ServerController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $server = Server::findOrFail($id);
+        if($server->userisOwner()){
+            $server->update([
+                'seller'        => $request->seller,
+                'servername'    => $request->servername,
+                'location'      => $request->location,
+                'ip'            => $request->ip,
+                'username'      => $request->username,
+                'password'      => $request->password,
+                'price'         => $request->price,
+                'invoice_date'  => $request->invoice_date,
+                'user_id'       => Auth::user()->id,
+            ]);
+        } else {
+            abort(403);
+        }
+
+        return redirect('server');
     }
 
     /**
@@ -101,6 +124,14 @@ class ServerController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $server = Server::findOrFail($id);
+        // dd($domain->userisOwner());
+        if ($server->userisOwner()) {
+            $server->delete();
+        } else {
+            abort(403);
+        }
+
+        return redirect('server');
     }
 }

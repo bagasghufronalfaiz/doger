@@ -18,7 +18,7 @@
               <p>Dashboard</p>
             </a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item ">
             <a class="nav-link" href="{{ route('home') }}">
               <i class="material-icons">home</i>
               <p>Home</p>
@@ -36,7 +36,6 @@
               <p>Registrar</p>
             </a>
           </li>
-
           <li class="nav-item {{ (request()->is('server*')) ? 'active' : '' }}">
             <a class="nav-link" href="{{ route('server') }}">
               <i class="material-icons">cloud</i>
@@ -53,7 +52,7 @@
       <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
         <div class="container-fluid">
           <div class="navbar-wrapper">
-            <a class="navbar-brand" href="#">Server</a>
+            <a class="navbar-brand" href="#">Edit Server</a>
           </div>
           <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
             <span class="sr-only">Toggle navigation</span>
@@ -118,55 +117,64 @@
       <div class="content">
         <div class="container-fluid">
           <div class="row">
-            <div class="col-lg-12 col-md-12 col-sm-12">
-            <div class="card">
-                <div class="card-header card-header-success">
-                  <div class="row">
-                    <div class="col-lg-8"><h4 class="card-title">Server</h4></div>
-                    <div class="col-lg-4 text-right"><a href="{{ route('addserver') }}" class="btn btn-secondary">Add Server</a></div>
-                  </div>
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-header card-header-warning">
+                        <h4 class="card-title">Edit Server</h4>
+                    </div>
+                    <div class="card-body">
+                        <form action="/server/{{$server->id}}" method="post">
+                          <div class="form-group bmd-form-group">
+                                <label class="bmd-label-floating" for="seller">Seller</label>
+                                <input class="form-control" type="text" name="seller" value="{{(old('seller')) ? old('seller') : $server->seller}}" >
+                            </div>
+                            <div class="form-group bmd-form-group">
+                                <label class="bmd-label-floating" for="location">Location</label>
+                                <input class="form-control" type="text" name="location" value="{{(old('location')) ? old('location') : $server->location}}">
+                            </div>
+                            <div class="form-group bmd-form-group">
+                                <label class="bmd-label-floating" for="servername">Server Name</label>
+                                <input class="form-control" type="text" name="servername" value="{{(old('servername')) ? old('servername') : $server->servername}}">
+                            </div>
+                            <div class="form-group bmd-form-group">
+                                <label class="bmd-label-floating" for="ip">IP</label>
+                                <input class="form-control" type="text" name="ip" value="{{(old('ip')) ? old('ip') : $server->ip}}">
+                            </div>
+                            <div class="form-group bmd-form-group">
+                                <label class="bmd-label-floating" for="username">Username</label>
+                                <input class="form-control" type="text" name="username" value="{{(old('username')) ? old('username') : $server->username}}">
+                            </div>
+                            <div class="form-group bmd-form-group">
+                                <label class="bmd-label-floating" for="password">Password</label>
+                                <input class="form-control" type="text" name="password" value="{{(old('password')) ? old('password') : $server->password}}">
+                            </div>
+                            <div class="form-group bmd-form-group">
+                                <label class="bmd-label-floating" for="price">Price</label>
+                                <input class="form-control" type="decimal" name="price" value="{{(old('price')) ? old('price') : $server->price}}">
+                            </div>
+                            <div class="form-group bmd-form-group">
+                                <label class="bmd-label-floating" for="invoice_date">Invoice Date</label>
+                                <input class="form-control" type="date" name="invoice_date" value="{{(old('invoice_date')) ? old('invoice_date') : $server->invoice_date}}">
+                            </div>
 
-                </div>
-                <div class="card-body table-responsive">
-                  <table class="table table-hover">
-                    <thead class="text-success">
-                        <th scope="col">Seller</th>
-                        <th scope="col">Location</th>
-                        <th scope="col">Servername</th>
-                        <th scope="col">Ip</th>
-                        <th scope="col">Username</th>
-                        <th scope="col">Password</th>
-                        <th scope="col">Price</th>
-                        <th scope="col">Invoice Date</th>
-                        <th scope="col" class="text-right">Action</th>
-                    </thead>
-                    <tbody>
-                        @foreach($user->servers as $servery)
 
-                        <tr>
-                            <td>{{$servery->seller}}</td>
-                            <td>{{$servery->location}}</td>
-                            <td>{{$servery->servername}}</td>
-                            <td>{{$servery->ip}}</td>
-                            <td>{{$servery->username}}</td>
-                            <td>{{$servery->password}}</td>
-                            <td>{{$servery->price}}</td>
-                            <td>{{$servery->invoice_date}}</td>
-                            <td class="td-actions text-right d-flex">
-                            <a href="/server/{{$servery->id}}/editserver/" class="btn btn-info  btn-sm"><i class="material-icons">edit</i></a>
-                                <form action="/server/{{$servery->id}}" method="post">
-                                    {{ csrf_field() }}
-                                    <input type="hidden" name="_method" value="DELETE">
-                                    <button type="submit" class="btn btn-danger  btn-sm"><i class="material-icons">close</i></button>
-                                </form>
-                            </td>
-                        </tr>
-                        @endforeach
-                    </tbody>
-                  </table>
+                            {{ csrf_field() }}
+                            <input type="hidden" name="_method" value="PUT">
+                            @if(count($errors)>0)
+                                <div class="alert alert-danger">
+                                @foreach($errors->all() as $error)
+                                <p>{{$error}}</p>
+                                @endforeach
+                                </div>
+                            @endif
+                            <input type="submit" class="btn btn-warning" value="Edit Registrar">
+
+
+                        </form>
+                    </div>
                 </div>
-              </div>
             </div>
+
           </div>
           <div class="row">
             <div class="col-lg-3 col-md-6 col-sm-6">

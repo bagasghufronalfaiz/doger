@@ -5,10 +5,10 @@ namespace App\Models;
 use Auth;
 use Illuminate\Database\Eloquent\Model;
 
-class Server extends Model
+class Ads extends Model
 {
-    protected $fillable = [
-        'seller', 'location', 'servername', 'ip', 'username', 'password', 'price', 'invoice_date', 'user_id'
+    $fillable = [
+        'adnetwork', 'email', 'name', 'code', 'user_id'
     ];
 
     public function user()
@@ -18,7 +18,6 @@ class Server extends Model
 
     public function userisOwner()
     {
-        return Auth::user()->id == $this->user->id;
+      return Auth::user()->id == $this->user->id;
     }
-
 }

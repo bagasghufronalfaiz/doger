@@ -26,6 +26,11 @@ Route::group(['middleware'=>'auth'], function(){
 
     Route::get('/server/addserver', 'ServerController@create')->name('addserver');
     Route::post('/server', 'ServerController@store');
+    Route::get('/server/{id}/editserver', 'ServerController@edit');
+    Route::put('/server/{id}', 'ServerController@update');
+    Route::delete('/server/{id}','ServerController@destroy');
+
+
 });
 
 

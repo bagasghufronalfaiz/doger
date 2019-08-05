@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateServersTable extends Migration
+class CreateAdsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,12 @@ class CreateServersTable extends Migration
      */
     public function up()
     {
-        Schema::create('servers', function (Blueprint $table) {
+        Schema::create('ads', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('seller');
-            $table->string('location');
-            $table->string('servername');
-            $table->string('ip');
-            $table->string('username');
-            $table->string('password');
-            $table->integer('price');
-            $table->date('invoice_date');
+            $table->string('adnetwork');
+            $table->string('email');
+            $table->string('name');
+            $table->text('code');
             $table->unsignedBigInteger('user_id');
             $table->timestamps();
 
@@ -37,6 +33,6 @@ class CreateServersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('servers');
+        Schema::dropIfExists('ads');
     }
 }

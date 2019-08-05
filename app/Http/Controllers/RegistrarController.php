@@ -107,7 +107,7 @@ class RegistrarController extends Controller
           abort(403);
         }
 
-        return redirect('registrar')->with('msg', 'registrar  berhasil di edit');
+        return redirect('registrar');
     }
 
     /**
