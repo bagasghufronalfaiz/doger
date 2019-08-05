@@ -122,7 +122,7 @@
                 <div class="card-header card-header-success">
                   <div class="row">
                     <div class="col-lg-8"><h4 class="card-title">Domain</h4></div>
-                    <div class="col-lg-4 text-right"><a href="/domain/adddomain" class="btn btn-secondary">Add Domain</a></div>
+                    <div class="col-lg-4 text-right"><a href="{{ route('adddomain') }}" class="btn btn-secondary">Add Domain</a></div>
                   </div>
 
                 </div>

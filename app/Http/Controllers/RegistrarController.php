@@ -100,8 +100,7 @@ class RegistrarController extends Controller
             'registrar' => $request->registrar,
             'username' => $request->username,
             'email' => $request->email,
-            'password' => $request->password,
-            'user_id' => Auth::user()->id,
+            'password' => $request->password
           ]);
         }else {
           abort(403);

@@ -42,6 +42,12 @@
               <p>Server</p>
             </a>
           </li>
+          <li class="nav-item {{ (request()->is('ad*')) ? 'active' : '' }}">
+              <a class="nav-link" href="{{ route('ad') }}">
+                <i class="material-icons">airplay</i>
+                <p>Ad</p>
+              </a>
+          </li>
 
 
         </ul>
@@ -52,7 +58,7 @@
       <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
         <div class="container-fluid">
           <div class="navbar-wrapper">
-            <a class="navbar-brand" href="#">Edit Server</a>
+            <a class="navbar-brand" href="#">Edit Ad</a>
           </div>
           <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
             <span class="sr-only">Toggle navigation</span>
@@ -120,43 +126,26 @@
             <div class="col-lg-12">
                 <div class="card">
                     <div class="card-header card-header-warning">
-                        <h4 class="card-title">Edit Server</h4>
+                        <h4 class="card-title">Edit Ad</h4>
                     </div>
                     <div class="card-body">
-                        <form action="/server/{{$server->id}}" method="post">
-                          <div class="form-group bmd-form-group">
-                                <label class="bmd-label-floating" for="seller">Seller</label>
-                                <input class="form-control" type="text" name="seller" value="{{(old('seller')) ? old('seller') : $server->seller}}" >
+                        <form action="/ad/{{$ad->id}}" method="post">
+                            <div class="form-group bmd-form-group">
+                                <label class="bmd-label-floating" for="adnetwork">Ad Network</label>
+                                <input class="form-control" type="text" name="adnetwork" value="{{(old('adnetwork')) ? old('adnetwork') : $ad->adnetwork}}" >
                             </div>
                             <div class="form-group bmd-form-group">
-                                <label class="bmd-label-floating" for="location">Location</label>
-                                <input class="form-control" type="text" name="location" value="{{(old('location')) ? old('location') : $server->location}}">
+                                <label class="bmd-label-floating" for="email">Email</label>
+                                <input class="form-control" type="text" name="email" value="{{(old('email')) ? old('email') : $ad->email}}">
                             </div>
                             <div class="form-group bmd-form-group">
-                                <label class="bmd-label-floating" for="servername">Server Name</label>
-                                <input class="form-control" type="text" name="servername" value="{{(old('servername')) ? old('servername') : $server->servername}}">
+                                <label class="bmd-label-floating" for="name">Name</label>
+                                <input class="form-control" type="text" name="name" value="{{(old('name')) ? old('name') : $ad->name}}">
                             </div>
                             <div class="form-group bmd-form-group">
-                                <label class="bmd-label-floating" for="ip">IP</label>
-                                <input class="form-control" type="text" name="ip" value="{{(old('ip')) ? old('ip') : $server->ip}}">
+                                <label class="bmd-label-floating" for="code">Code</label>
+                                <input class="form-control" type="text" name="code" value="{{(old('code')) ? old('code') : $ad->code}}">
                             </div>
-                            <div class="form-group bmd-form-group">
-                                <label class="bmd-label-floating" for="username">Username</label>
-                                <input class="form-control" type="text" name="username" value="{{(old('username')) ? old('username') : $server->username}}">
-                            </div>
-                            <div class="form-group bmd-form-group">
-                                <label class="bmd-label-floating" for="password">Password</label>
-                                <input class="form-control" type="text" name="password" value="{{(old('password')) ? old('password') : $server->password}}">
-                            </div>
-                            <div class="form-group bmd-form-group">
-                                <label class="bmd-label-floating" for="price">Price</label>
-                                <input class="form-control" type="decimal" name="price" value="{{(old('price')) ? old('price') : $server->price}}">
-                            </div>
-                            <div class="form-group bmd-form-group">
-                                <label class="bmd-label-floating" for="invoice_date">Invoice Date</label>
-                                <input class="form-control" type="date" name="invoice_date" value="{{(old('invoice_date')) ? old('invoice_date') : $server->invoice_date}}">
-                            </div>
-
 
                             {{ csrf_field() }}
                             <input type="hidden" name="_method" value="PUT">
@@ -167,7 +156,7 @@
                                 @endforeach
                                 </div>
                             @endif
-                            <input type="submit" class="btn btn-warning" value="Edit Registrar">
+                            <input type="submit" class="btn btn-warning" value="Edit Ad">
 
 
                         </form>

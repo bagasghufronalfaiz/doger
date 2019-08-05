@@ -42,6 +42,12 @@
               <p>Server</p>
             </a>
           </li>
+          <li class="nav-item {{ (request()->is('ad*')) ? 'active' : '' }}">
+              <a class="nav-link" href="{{ route('ad') }}">
+                <i class="material-icons">airplay</i>
+                <p>Ad</p>
+              </a>
+          </li>
 
 
         </ul>
@@ -52,7 +58,7 @@
       <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
         <div class="container-fluid">
           <div class="navbar-wrapper">
-            <a class="navbar-brand" href="#">Add Server</a>
+            <a class="navbar-brand" href="#">Add Ad</a>
           </div>
           <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
             <span class="sr-only">Toggle navigation</span>
@@ -120,41 +126,25 @@
             <div class="col-lg-12">
                 <div class="card">
                     <div class="card-header card-header-primary">
-                        <h4 class="card-title">Add Server</h4>
+                        <h4 class="card-title">Add Ad</h4>
                     </div>
                     <div class="card-body">
-                        <form action="/server" method="post">
+                        <form action="/ad" method="post">
                             <div class="form-group bmd-form-group">
-                                <label class="bmd-label-floating" for="seller">Seller</label>
-                                <input class="form-control" type="text" name="seller" value="{{old('seller')}}" >
+                                <label class="bmd-label-floating" for="adnetwork">Ad Network</label>
+                                <input class="form-control" type="text" name="adnetwork" value="{{old('adnetwork')}}" >
                             </div>
                             <div class="form-group bmd-form-group">
-                                <label class="bmd-label-floating" for="location">Location</label>
-                                <input class="form-control" type="text" name="location" value="{{old('location')}}">
+                                <label class="bmd-label-floating" for="email">Email</label>
+                                <input class="form-control" type="text" name="email" value="{{old('email')}}">
                             </div>
                             <div class="form-group bmd-form-group">
-                                <label class="bmd-label-floating" for="servername">Server Name</label>
-                                <input class="form-control" type="text" name="servername" value="{{old('servername')}}">
+                                <label class="bmd-label-floating" for="name">Name</label>
+                                <input class="form-control" type="text" name="name" value="{{old('name')}}">
                             </div>
                             <div class="form-group bmd-form-group">
-                                <label class="bmd-label-floating" for="ip">IP</label>
-                                <input class="form-control" type="text" name="ip" value="{{old('ip')}}">
-                            </div>
-                            <div class="form-group bmd-form-group">
-                                <label class="bmd-label-floating" for="username">Username</label>
-                                <input class="form-control" type="text" name="username" value="{{old('username')}}">
-                            </div>
-                            <div class="form-group bmd-form-group">
-                                <label class="bmd-label-floating" for="password">Password</label>
-                                <input class="form-control" type="text" name="password" value="{{old('password')}}">
-                            </div>
-                            <div class="form-group bmd-form-group">
-                                <label class="bmd-label-floating" for="price">Price</label>
-                                <input class="form-control" type="decimal" name="price" value="{{old('price')}}">
-                            </div>
-                            <div class="form-group bmd-form-group">
-                                <label class="bmd-label-floating" for="invoice_date">Invoice Date</label>
-                                <input class="form-control" type="date" name="invoice_date" value="{{old('invoice_date')}}">
+                                <label class="bmd-label-floating" for="code">Code</label>
+                                <input class="form-control" type="text" name="code" value="{{old('code')}}">
                             </div>
 
                             {{ csrf_field() }}
@@ -166,7 +156,7 @@
                                 @endforeach
                                 </div>
                             @endif
-                            <input type="submit" class="btn btn-primary" value="Add Server">
+                            <input type="submit" class="btn btn-primary" value="Add Ad">
 
 
                         </form>

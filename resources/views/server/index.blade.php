@@ -125,14 +125,13 @@
                     <div class="col-lg-8"><h4 class="card-title">Server</h4></div>
                     <div class="col-lg-4 text-right"><a href="{{ route('addserver') }}" class="btn btn-secondary">Add Server</a></div>
                   </div>
-
                 </div>
                 <div class="card-body table-responsive">
                   <table class="table table-hover">
                     <thead class="text-success">
                         <th scope="col">Seller</th>
                         <th scope="col">Location</th>
-                        <th scope="col">Servername</th>
+                        <th scope="col">Server Name</th>
                         <th scope="col">Ip</th>
                         <th scope="col">Username</th>
                         <th scope="col">Password</th>

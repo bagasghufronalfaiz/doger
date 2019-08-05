@@ -109,8 +109,7 @@ class DomainController extends Controller
             'nameserver1' => $request->nameserver1,
             'nameserver2' => $request->nameserver2,
             'index_status' => $request->index_status,
-            'registrar_id' => $request->registrar_id,
-            'users_id' => Auth::user()->id,
+            'registrar_id' => $request->registrar_id
           ]);
         }else {
           abort(403);

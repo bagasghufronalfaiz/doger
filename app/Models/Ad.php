@@ -5,9 +5,9 @@ namespace App\Models;
 use Auth;
 use Illuminate\Database\Eloquent\Model;
 
-class Ads extends Model
+class Ad extends Model
 {
-    $fillable = [
+    protected $fillable = [
         'adnetwork', 'email', 'name', 'code', 'user_id'
     ];
 

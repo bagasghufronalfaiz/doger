@@ -36,11 +36,16 @@
               <p>Registrar</p>
             </a>
           </li>
-
           <li class="nav-item {{ (request()->is('server*')) ? 'active' : '' }}">
             <a class="nav-link" href="{{ route('server') }}">
               <i class="material-icons">cloud</i>
               <p>Server</p>
+            </a>
+          </li>
+          <li class="nav-item {{ (request()->is('ad*')) ? 'active' : '' }}">
+            <a class="nav-link" href="{{ route('ad') }}">
+              <i class="material-icons">airplay</i>
+              <p>Ad</p>
             </a>
           </li>
 
@@ -53,7 +58,7 @@
       <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
         <div class="container-fluid">
           <div class="navbar-wrapper">
-            <a class="navbar-brand" href="#">Server</a>
+            <a class="navbar-brand" href="#">Ad</a>
           </div>
           <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
             <span class="sr-only">Toggle navigation</span>
@@ -122,39 +127,31 @@
             <div class="card">
                 <div class="card-header card-header-success">
                   <div class="row">
-                    <div class="col-lg-8"><h4 class="card-title">Server</h4></div>
-                    <div class="col-lg-4 text-right"><a href="{{ route('addserver') }}" class="btn btn-secondary">Add Server</a></div>
+                    <div class="col-lg-8"><h4 class="card-title">Ad</h4></div>
+                    <div class="col-lg-4 text-right"><a href="{{ route('addad') }}" class="btn btn-secondary">Add Ad</a></div>
                   </div>
 
                 </div>
                 <div class="card-body table-responsive">
                   <table class="table table-hover">
-                    <thead class="text-success">
-                        <th scope="col">Seller</th>
-                        <th scope="col">Location</th>
-                        <th scope="col">Servername</th>
-                        <th scope="col">Ip</th>
-                        <th scope="col">Username</th>
-                        <th scope="col">Password</th>
-                        <th scope="col">Price</th>
-                        <th scope="col">Invoice Date</th>
+                    <thead class="text-success">                        
+                        <th scope="col">Ad Network</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Code</th>                        
                         <th scope="col" class="text-right">Action</th>
                     </thead>
                     <tbody>
-                        @foreach($user->servers as $servery)
+                        @foreach($user->ads as $adsy)
 
                         <tr>
-                            <td>{{$servery->seller}}</td>
-                            <td>{{$servery->location}}</td>
-                            <td>{{$servery->servername}}</td>
-                            <td>{{$servery->ip}}</td>
-                            <td>{{$servery->username}}</td>
-                            <td>{{$servery->password}}</td>
-                            <td>{{$servery->price}}</td>
-                            <td>{{$servery->invoice_date}}</td>
+                            <td>{{$adsy->adnetwork}}</td>
+                            <td>{{$adsy->email}}</td>
+                            <td>{{$adsy->name}}</td>
+                            <td>{{$adsy->code}}</td>                            
                             <td class="td-actions text-right d-flex">
-                            <a href="/server/{{$servery->id}}/editserver/" class="btn btn-info  btn-sm"><i class="material-icons">edit</i></a>
-                                <form action="/server/{{$servery->id}}" method="post">
+                            <a href="/ad/{{$adsy->id}}/editad/" class="btn btn-info  btn-sm"><i class="material-icons">edit</i></a>
+                                <form action="/ad/{{$adsy->id}}" method="post">
                                     {{ csrf_field() }}
                                     <input type="hidden" name="_method" value="DELETE">
                                     <button type="submit" class="btn btn-danger  btn-sm"><i class="material-icons">close</i></button>

@@ -12,36 +12,42 @@
       </div>
       <div class="sidebar-wrapper">
         <ul class="nav">
-          <li class="nav-item active  ">
+          <li class="nav-item {!!(Route::currentRouteName()=='dashboard') ? 'active' : '' !!}  ">
             <a class="nav-link" href="{{ url('/') }}">
               <i class="material-icons">dashboard</i>
               <p>Dashboard</p>
             </a>
           </li>
-          <li class="nav-item ">
+          <li class="nav-item {{ (request()->is('home*')) ? 'active' : '' }}">
             <a class="nav-link" href="{{ route('home') }}">
               <i class="material-icons">home</i>
               <p>Home</p>
             </a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item {{ (request()->is('domain*')) ? 'active' : '' }}">
             <a class="nav-link" href="{{ route('domain') }}">
-              <i class="material-icons">domain</i>
+              <i class="material-icons">label</i>
               <p>Domain</p>
             </a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item {{ (request()->is('registrar*')) ? 'active' : '' }}">
             <a class="nav-link" href="{{ route('registrar') }}">
-              <i class="material-icons">card_membership</i>
+              <i class="material-icons">launch</i>
               <p>Registrar</p>
             </a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item {{ (request()->is('server*')) ? 'active' : '' }}">
             <a class="nav-link" href="{{ route('server') }}">
               <i class="material-icons">cloud</i>
               <p>Server</p>
             </a>
           </li>
+          <li class="nav-item {{ (request()->is('ad*')) ? 'active' : '' }}">
+              <a class="nav-link" href="{{ route('ad') }}">
+                <i class="material-icons">local_florist</i>
+                <p>Ad</p>
+              </a>
+            </li>
 
 
         </ul>

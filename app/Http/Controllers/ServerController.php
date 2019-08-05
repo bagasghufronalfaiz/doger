@@ -106,8 +106,7 @@ class ServerController extends Controller
                 'username'      => $request->username,
                 'password'      => $request->password,
                 'price'         => $request->price,
-                'invoice_date'  => $request->invoice_date,
-                'user_id'       => Auth::user()->id,
+                'invoice_date'  => $request->invoice_date
             ]);
         } else {
             abort(403);
