@@ -44,7 +44,7 @@
           </li>
           <li class="nav-item {{ (request()->is('ad*')) ? 'active' : '' }}">
             <a class="nav-link" href="{{ route('ad') }}">
-              <i class="material-icons">airplay</i>
+              <i class="material-icons">local_florist</i>
               <p>Ad</p>
             </a>
           </li>

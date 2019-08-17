@@ -19,8 +19,60 @@
 
   </head>
   <body>
-
+    <div class="wrapper ">
+      <div class="sidebar" data-color="green" data-background-color="white" data-image="../assets/img/sidebar-1.jpg">
+        <div class="logo">
+          <a href="{{ url('/') }}" class="simple-text logo-normal">
+              {{ config('app.name', 'Laravel') }}
+          </a>
+        </div>
+        <div class="sidebar-wrapper">
+          <ul class="nav">
+            <li class="nav-item {!!(Route::currentRouteName()=='dashboard') ? 'active' : '' !!}  ">
+              <a class="nav-link" href="{{ url('/') }}">
+                <i class="material-icons">dashboard</i>
+                <p>Dashboard</p>
+              </a>
+            </li>
+            <li class="nav-item {{ (request()->is('home*')) ? 'active' : '' }}">
+              <a class="nav-link" href="{{ route('home') }}">
+                <i class="material-icons">home</i>
+                <p>Home</p>
+              </a>
+            </li>
+            <li class="nav-item {{ (request()->is('domain*')) ? 'active' : '' }}">
+              <a class="nav-link" href="{{ route('domain') }}">
+                <i class="material-icons">label</i>
+                <p>Domain</p>
+              </a>
+            </li>
+            <li class="nav-item {{ (request()->is('registrar*')) ? 'active' : '' }}">
+              <a class="nav-link" href="{{ route('registrar') }}">
+                <i class="material-icons">launch</i>
+                <p>Registrar</p>
+              </a>
+            </li>
+            <li class="nav-item {{ (request()->is('server*')) ? 'active' : '' }}">
+              <a class="nav-link" href="{{ route('server') }}">
+                <i class="material-icons">cloud</i>
+                <p>Server</p>
+              </a>
+            </li>
+            <li class="nav-item {{ (request()->is('ad*')) ? 'active' : '' }}">
+                <a class="nav-link" href="{{ route('ad') }}">
+                  <i class="material-icons">local_florist</i>
+                  <p>Ad</p>
+                </a>
+              </li>
+  
+  
+          </ul>
+        </div>
+      </div>
+      <div class="main-panel">
     @yield('content')
+      </div>
+    </div>
 
   <!--   Core JS Files   -->
   <script src="{{ asset('assets/js/core/jquery.min.js')}}" type="text/javascript"></script>

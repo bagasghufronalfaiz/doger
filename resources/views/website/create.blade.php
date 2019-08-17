@@ -2,7 +2,7 @@
 
 @section('content')
 
-{{-- <div class="wrapper ">
+<div class="wrapper ">
     <div class="sidebar" data-color="green" data-background-color="white" data-image="../assets/img/sidebar-1.jpg">
 
       <div class="logo">
@@ -12,53 +12,47 @@
       </div>
       <div class="sidebar-wrapper">
         <ul class="nav">
-          <li class="nav-item {!!(Route::currentRouteName()=='dashboard') ? 'active' : '' !!}  ">
+          <li class="nav-item active">
             <a class="nav-link" href="{{ url('/') }}">
               <i class="material-icons">dashboard</i>
               <p>Dashboard</p>
             </a>
           </li>
-          <li class="nav-item {{ (request()->is('home*')) ? 'active' : '' }}">
+          <li class="nav-item ">
             <a class="nav-link" href="{{ route('home') }}">
               <i class="material-icons">home</i>
               <p>Home</p>
             </a>
           </li>
-          <li class="nav-item {{ (request()->is('domain*')) ? 'active' : '' }}">
+          <li class="nav-item">
             <a class="nav-link" href="{{ route('domain') }}">
-              <i class="material-icons">label</i>
+              <i class="material-icons">domain</i>
               <p>Domain</p>
             </a>
           </li>
-          <li class="nav-item {{ (request()->is('registrar*')) ? 'active' : '' }}">
+          <li class="nav-item">
             <a class="nav-link" href="{{ route('registrar') }}">
-              <i class="material-icons">launch</i>
+              <i class="material-icons">card_membership</i>
               <p>Registrar</p>
             </a>
           </li>
-          <li class="nav-item {{ (request()->is('server*')) ? 'active' : '' }}">
+          <li class="nav-item">
             <a class="nav-link" href="{{ route('server') }}">
               <i class="material-icons">cloud</i>
               <p>Server</p>
             </a>
           </li>
-          <li class="nav-item {{ (request()->is('ad*')) ? 'active' : '' }}">
-              <a class="nav-link" href="{{ route('ad') }}">
-                <i class="material-icons">local_florist</i>
-                <p>Ad</p>
-              </a>
-            </li>
 
 
         </ul>
       </div>
     </div>
-    <div class="main-panel"> --}}
+    <div class="main-panel">
       <!-- Navbar -->
       <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
         <div class="container-fluid">
           <div class="navbar-wrapper">
-            <a class="navbar-brand" href="#">Dashboard</a>
+            <a class="navbar-brand" href="#">Add Website</a>
           </div>
           <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
             <span class="sr-only">Toggle navigation</span>
@@ -123,58 +117,81 @@
       <div class="content">
         <div class="container-fluid">
           <div class="row">
-              <div class="col-lg-12 col-md-12 col-sm-12">
-              <div class="card">
-                  <div class="card-header card-header-success">
-                    <div class="row">
-                      <div class="col-lg-8"><h4 class="card-title">Website</h4></div>
-                      <div class="col-lg-4 text-right"><a href="{{ route('addwebsite') }}" class="btn btn-secondary">Add Website</a></div>
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-header card-header-primary">
+                        <h4 class="card-title">Add Website</h4>
                     </div>
-  
-                  </div>
-                  <div class="card-body table-responsive">
-                    <table class="table table-hover">
-                      <thead class="text-success">
-                          <th scope="col">Domain</th>
-                          <th scope="col">Index</th>
-                          <th scope="col">Theme</th>
-                          <th scope="col">Keyword</th>
-                          <th scope="col">Server</th>
-                          <th scope="col">Server Folder</th>
-                          <th scope="col">Ad</th>
-                          <th scope="col">Webmaster</th>
-                          <th scope="col">Date</th>
-                          <th scope="col" class="text-right">Action</th>
-                      </thead>
-                      <tbody>
-                          @foreach($user->websites as $websitesy)
-  
-                          <tr>
-                              <td>{{$websitesy->domain->domain}}</td>
-                              <td>{{$websitesy->index}}</td>
-                              <td>{{$websitesy->theme}}</td>
-                              <td>{{$websitesy->keyword}}</td>
-                              <td>{{$websitesy->server->servername}}</td>
-                              <td>{{$websitesy->server_folder}}</td>
-                              <td>{{$websitesy->ad->name}}</td>
-                              <td>{{$websitesy->webmaster}}</td>
-                              <td>{{$websitesy->date}}</td>
-                              <td class="td-actions text-right d-flex">
-                              <a href="/website/{{$websitesy->id}}/editwebsite/" class="btn btn-info  btn-sm"><i class="material-icons">edit</i></a>
-                                  <form action="/website/{{$websitesy->id}}" method="post">
-                                      {{ csrf_field() }}
-                                      <input type="hidden" name="_method" value="DELETE">
-                                      <button type="submit" class="btn btn-danger  btn-sm"><i class="material-icons">close</i></button>
-                                  </form>
-                              </td>
-                          </tr>
-                          @endforeach
-                      </tbody>
-                    </table>
-                  </div>
+                    <div class="card-body">
+                        <form action="/website" method="post">
+                            <div class="form-group bmd-form-group">
+                                <label class="bmd-label" for="domain">Domain</label>
+                                <select id="domain" class="form-control" data-style="btn btn-link" name="domain">
+                                  @foreach ($user->domains as $domainy)
+                                    <option value="{{$domainy->id}}">{{$domainy->domain}}</option>
+                                  @endforeach
+                                </select>
+                            </div>
+                            <div class="form-group bmd-form-group">
+                                <label class="bmd-label-floating" for="theme">Theme</label>
+                                <input class="form-control" type="text" name="theme" value="{{old('theme')}}">
+                            </div>
+                            <div class="form-group bmd-form-group">
+                                <label class="bmd-label-floating" for="index">Index</label>
+                                <input class="form-control" type="number" name="index" value="{{old('index')}}">
+                            </div>
+                            <div class="form-group bmd-form-group">
+                                <label class="bmd-label-floating" for="keyword">Keyword</label>
+                                <input class="form-control" type="text" name="keyword" value="{{old('keyword')}}">
+                            </div>
+                            <div class="form-group bmd-form-group">
+                              <label class="bmd-label" for="servercok">Server</label>
+                              <select id="servercok" class="form-control" data-style="btn btn-link" name="servercok">
+                                @foreach ($user->servers as $servery)
+                                  <option value="{{$servery->id}}">{{$servery->servername}}</option>
+                                @endforeach
+                              </select>
+                            </div>
+                            <div class="form-group bmd-form-group">
+                                <label class="bmd-label-floating" for="server_folder">Server Folder</label>
+                                <input class="form-control" type="text" name="server_folder" value="{{old('server_folder')}}">
+                            </div>
+                            <div class="form-group bmd-form-group">
+                              <label class="bmd-label" for="ad">Ad</label>
+                              <select id="ad" class="form-control" data-style="btn btn-link" name="ad">
+                                  <option value="0">Not Yet</option>
+                                @foreach ($user->ads as $adsy)
+                                  <option value="{{$adsy->id}}">{{$adsy->name}}</option>
+                                @endforeach
+                              </select>
+                            </div>
+                            <div class="form-group bmd-form-group">
+                              <label class="bmd-label" for="date">Date of Birth</label>
+                              <input class="form-control" type="date" name="date" value="none">
+                            </div>
+                            <div class="form-group bmd-form-group">
+                                <label class="bmd-label-floating" for="webmaster">webmaster</label>
+                                <input class="form-control" type="text" name="webmaster" value="{{old('webmaster')}}">
+                            </div>      
+
+                            {{ csrf_field() }}
+
+                            @if(count($errors)>0)
+                                <div class="alert alert-danger">
+                                @foreach($errors->all() as $error)
+                                <p>{{$error}}</p>
+                                @endforeach
+                                </div>
+                            @endif
+                            <input type="submit" class="btn btn-primary" value="Add Website">
+
+
+                        </form>
+                    </div>
                 </div>
-              </div>
             </div>
+
+          </div>
           <div class="row">
             <div class="col-lg-3 col-md-6 col-sm-6">
               <div class="card card-stats">
@@ -623,7 +640,7 @@
           </div>
         </div>
       </footer>
-    {{-- </div>
-</div> --}}
+    </div>
+</div>
 
 @endsection

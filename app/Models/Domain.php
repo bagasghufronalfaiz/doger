@@ -25,4 +25,9 @@ class Domain extends Model
     {
         return $this->belongsTo('App\Models\Registrar');
     }
+
+    public function websites()
+    {
+        return $this->belongsTo('App\Models\Website');
+    }
 }

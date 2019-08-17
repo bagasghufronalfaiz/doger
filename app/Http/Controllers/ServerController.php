@@ -124,7 +124,6 @@ class ServerController extends Controller
     public function destroy($id)
     {
         $server = Server::findOrFail($id);
-        // dd($domain->userisOwner());
         if ($server->userisOwner()) {
             $server->delete();
         } else {

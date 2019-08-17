@@ -21,4 +21,9 @@ class Server extends Model
         return Auth::user()->id == $this->user->id;
     }
 
+    public function websites()
+    {
+        return $this->hasMany('App\Models\Website');
+    }
+
 }
