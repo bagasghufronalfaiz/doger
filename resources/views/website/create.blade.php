@@ -113,7 +113,7 @@
                       <div class="form-group bmd-form-group">
                         <label class="bmd-label" for="ad">Ad</label>
                         <select id="ad" class="form-control" data-style="btn btn-link" name="ad">
-                            <option value="0">Not Yet</option>
+                            <option value="">Not Yet</option>
                           @foreach ($user->ads as $adsy)
                             <option value="{{$adsy->id}}">{{$adsy->name}}</option>
                           @endforeach

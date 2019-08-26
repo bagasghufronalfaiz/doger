@@ -103,7 +103,7 @@
                       <td>{{$domainy->expiration}}</td>
                       <td>{{$domainy->nameserver1}}</td>
                       <td>{{$domainy->nameserver2}}</td>
-                      <td>{{$domainy->index_status}}</td>
+                      <td>@if($domainy->index_status == 1) Yes @elseif($domainy->index_status == 0) No @Else Mboh @endif</td>
                       <td>{{$domainy->registrar->email}} at {{$domainy->registrar->registrar}}</td>
                       <td class="td-actions text-right d-flex">
                       <a href="/domain/{{$domainy->id}}/editdomain/" class="btn btn-info  btn-sm"><i class="material-icons">edit</i></a>

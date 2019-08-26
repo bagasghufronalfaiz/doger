@@ -5,9 +5,11 @@ namespace App\Http\Controllers;
 use Auth;
 use App\Models\User;
 use App\Models\Website;
+use App\Models\Domain;
 use Illuminate\Http\Request;
+use GuzzleHttp\Client;
 
-class DashboardController extends Controller
+class WebsiteController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -45,10 +47,18 @@ class DashboardController extends Controller
      */
     public function store(Request $request)
     {
+        $selectdomain = Domain::where('id', $request->domain)->first();
+        $domeng = $selectdomain->domain;
+
+        $cek_index = self::get_index($domeng);
+        if ($cek_index != null ){
+            $index = (int) filter_var($cek_index, FILTER_SANITIZE_NUMBER_INT);
+        }
+
         $website = Website::create([
             'domain_id' => $request->domain,
             'theme' => $request->theme,
-            'index' => $request->index,
+            'index' => $index,
             'keyword' => $request->keyword,
             'server_id' => $request->servercok,
             'server_folder' => $request->server_folder,
@@ -134,5 +144,27 @@ class DashboardController extends Controller
         }
 
         return redirect('/');
+    }
+
+    private function get_string_between($string, $start, $end){
+        $string = ' ' . $string;
+        $ini = strpos($string, $start);
+        if ($ini == 0) return '';
+        $ini += strlen($start);
+        $len = strpos($string, $end, $ini) - $ini;
+        return substr($string, $ini, $len);
+    }
+
+
+    
+    private function get_index($domaing)
+    {
+        $client = new Client();
+        $asd = 'https://www.google.com/search?q=site:$domain&tbm=isch&sout=1';
+        $url = 'https://www.google.com/search?q=site:'.$domaing.'&tbm=isch&sout=1';
+        $res = $client->request('GET', $url);
+        $hasil = $res->getBody(); 
+        
+        return self::get_string_between($hasil, '<div class="sd" id="resultStats">Sekitar ', ' hasil</div>');
     }
 }

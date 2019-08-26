@@ -156,7 +156,7 @@
                               <td>{{$websitesy->keyword}}</td>
                               <td>{{$websitesy->server->servername}}</td>
                               <td>{{$websitesy->server_folder}}</td>
-                              <td>{{$websitesy->ad->name}}</td>
+                              <td>@if($websitesy->ad_id!=null){{$websitesy->ad->name}} @else Not Yet @endif</td>
                               <td>{{$websitesy->webmaster}}</td>
                               <td>{{$websitesy->date}}</td>
                               <td class="td-actions text-right d-flex">

@@ -102,18 +102,14 @@
                           <label class="bmd-label-floating" for="nameserver2">Nameserver 2</label>
                           <input class="form-control" type="text" name="nameserver2" value="{{old('nameserver2')}}">
                       </div>
-                      <div class="form-group bmd-form-group">
-                          <label class="bmd-label-floating" for="index_status">Index Status</label>
-                          <input class="form-control" type="text" name="index_status" value="{{old('index_status')}}">
-                      </div>
-                      <div class="form-group bmd-form-group">
-                          <label class="bmd-label-floating" for="registrar_id">Registrar</label>
-                          <select id="registrar" class="form-control selectpicker" data-style="btn btn-link" name="registrar_id">
+                      <div class="form-group">
+                          <label for="registrar_id">Registrar</label>
+                          <select id="registrar" class="form-control" data-style="btn btn-link" name="registrar_id">
                             @foreach ($user->registrars as $registrary)
-                          <option value="{{$registrary->id}}">{{$registrary->email}} at {{$registrary->registrar}}</option>
+                              <option class="btn btn-secondary" value="{{$registrary->id}}">{{$registrary->email}} at {{$registrary->registrar}}</option>
                             @endforeach
                           </select>
-                        </div>
+                      </div>   
 
                       {{ csrf_field() }}
 

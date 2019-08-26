@@ -36,11 +36,11 @@ Route::group(['middleware'=>'auth'], function(){
     Route::put('/ad/{id}', 'AdController@update');
     Route::delete('/ad/{id}', 'AdController@destroy');
 
-    Route::get('/website/addwebsite', 'DashboardController@create')->name('addwebsite');
-    Route::post('/website', 'DashboardController@store');
-    Route::get('/website/{id}/editwebsite', 'DashboardController@edit');
-    Route::put('/website/{id}', 'DashboardController@update');
-    Route::delete('/website/{id}', 'DashboardController@destroy');
+    Route::get('/website/addwebsite', 'WebsiteController@create')->name('addwebsite');
+    Route::post('/website', 'WebsiteController@store');
+    Route::get('/website/{id}/editwebsite', 'WebsiteController@edit');
+    Route::put('/website/{id}', 'WebsiteController@update');
+    Route::delete('/website/{id}', 'WebsiteController@destroy');
     
     
 });
@@ -59,7 +59,7 @@ Route::group(['middleware'=>'auth'], function(){
 //     }
 // })->name('dashboard');
 
-Route::get('/', 'DashboardController@index')->name('dashboard');
+Route::get('/', 'WebsiteController@index')->name('dashboard');
 
 Auth::routes();
 
