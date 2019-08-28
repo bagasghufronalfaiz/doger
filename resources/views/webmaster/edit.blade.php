@@ -6,7 +6,7 @@
 <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
   <div class="container-fluid">
     <div class="navbar-wrapper">
-      <a class="navbar-brand" href="#">Add Domain</a>
+      <a class="navbar-brand" href="#">Edit Server</a>
     </div>
     <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
       <span class="sr-only">Toggle navigation</span>
@@ -73,41 +73,23 @@
     <div class="row">
       <div class="col-lg-12">
           <div class="card">
-              <div class="card-header card-header-primary">
-                  <h4 class="card-title">Add Domain</h4>
+              <div class="card-header card-header-warning">
+                  <h4 class="card-title">Edit Server</h4>
               </div>
               <div class="card-body">
-                  <form action="/domain" method="post">
-                      <div class="form-group bmd-form-group">
-                          <label class="bmd-label-floating" for="Domain">Domain</label>
-                          <input class="form-control" type="text" name="domain" value="{{old('domain')}}" >
-                      </div>
-                      <div class="form-group">
-                          <label for="registrar_id">Registrar</label>
-                          <select id="registrar" class="form-control" data-style="btn btn-link" name="registrar_id">
-                            @foreach ($user->registrars as $registrary)
-                              <option class="btn btn-secondary" value="{{$registrary->id}}">{{$registrary->email}} at {{$registrary->registrar}}</option>
-                            @endforeach
-                          </select>
-                      </div>
-                      <div class="form-group">
-                          <label for="expiration">Expiration</label>
-                          <input class="form-control datetimepicker" id="datetimepicker" type="text" value="{{date("m/d/Y")}}" name="expiration">
-                          <script type="text/javascript">
-                            // document.getElementById("today").valueAsDate = new Date();
-                          </script>
+                  <form action="/webmaster/{{$webmaster->id}}" method="post">
+                    <div class="form-group bmd-form-group">
+                          <label class="bmd-label-floating" for="name">Name</label>
+                          <input class="form-control" type="text" name="name" value="{{(old('name')) ? old('name') : $webmaster->name}}" >
                       </div>
                       <div class="form-group bmd-form-group">
-                          <label class="bmd-label-floating" for="nameserver1">Nameserver 1</label>
-                          <input class="form-control" type="text" name="nameserver1" value="{{old('nameserver1')}}">
+                          <label class="bmd-label-floating" for="email">Email</label>
+                          <input class="form-control" type="text" name="email" value="{{(old('email')) ? old('email') : $webmaster->email}}">
                       </div>
-                      <div class="form-group bmd-form-group">
-                          <label class="bmd-label-floating" for="nameserver2">Nameserver 2</label>
-                          <input class="form-control" type="text" name="nameserver2" value="{{old('nameserver2')}}">
-                      </div>
+
 
                       {{ csrf_field() }}
-
+                      <input type="hidden" name="_method" value="PUT">
                       @if(count($errors)>0)
                           <div class="alert alert-danger">
                           @foreach($errors->all() as $error)
@@ -115,7 +97,7 @@
                           @endforeach
                           </div>
                       @endif
-                      <input type="submit" class="btn btn-primary" value="Add Domain">
+                      <input type="submit" class="btn btn-warning" value="Edit Registrar">
 
 
                   </form>

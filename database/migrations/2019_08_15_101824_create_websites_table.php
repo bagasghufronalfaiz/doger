@@ -15,22 +15,23 @@ class CreateWebsitesTable extends Migration
     {
         Schema::create('websites', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('domain_id');
+            $table->unsignedBigInteger('domain_id')->unique();
             $table->string('theme');
             $table->integer('index')->nullable();
             $table->string('keyword');
             $table->unsignedBigInteger('server_id');
-            $table->string('server_folder');
+            $table->string('server_folder')->unique();
             $table->unsignedBigInteger('ad_id')->nullable();
-            $table->string('webmaster');
             $table->date('date');
             $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('webmaster_id')->nullable();
             $table->timestamps();
 
             $table->foreign('ad_id')->references('id')->on('ads');
             $table->foreign('server_id')->references('id')->on('servers');
             $table->foreign('domain_id')->references('id')->on('domains');
             $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('webmaster_id')->references('id')->on('webmasters');
         });
     }
 

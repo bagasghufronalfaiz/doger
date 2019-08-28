@@ -6,7 +6,7 @@
 <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
   <div class="container-fluid">
     <div class="navbar-wrapper">
-      <a class="navbar-brand" href="#">Add Domain</a>
+      <a class="navbar-brand" href="#">Webmaster</a>
     </div>
     <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
       <span class="sr-only">Toggle navigation</span>
@@ -71,58 +71,42 @@
 <div class="content">
   <div class="container-fluid">
     <div class="row">
-      <div class="col-lg-12">
-          <div class="card">
-              <div class="card-header card-header-primary">
-                  <h4 class="card-title">Add Domain</h4>
-              </div>
-              <div class="card-body">
-                  <form action="/domain" method="post">
-                      <div class="form-group bmd-form-group">
-                          <label class="bmd-label-floating" for="Domain">Domain</label>
-                          <input class="form-control" type="text" name="domain" value="{{old('domain')}}" >
-                      </div>
-                      <div class="form-group">
-                          <label for="registrar_id">Registrar</label>
-                          <select id="registrar" class="form-control" data-style="btn btn-link" name="registrar_id">
-                            @foreach ($user->registrars as $registrary)
-                              <option class="btn btn-secondary" value="{{$registrary->id}}">{{$registrary->email}} at {{$registrary->registrar}}</option>
-                            @endforeach
-                          </select>
-                      </div>
-                      <div class="form-group">
-                          <label for="expiration">Expiration</label>
-                          <input class="form-control datetimepicker" id="datetimepicker" type="text" value="{{date("m/d/Y")}}" name="expiration">
-                          <script type="text/javascript">
-                            // document.getElementById("today").valueAsDate = new Date();
-                          </script>
-                      </div>
-                      <div class="form-group bmd-form-group">
-                          <label class="bmd-label-floating" for="nameserver1">Nameserver 1</label>
-                          <input class="form-control" type="text" name="nameserver1" value="{{old('nameserver1')}}">
-                      </div>
-                      <div class="form-group bmd-form-group">
-                          <label class="bmd-label-floating" for="nameserver2">Nameserver 2</label>
-                          <input class="form-control" type="text" name="nameserver2" value="{{old('nameserver2')}}">
-                      </div>
-
-                      {{ csrf_field() }}
-
-                      @if(count($errors)>0)
-                          <div class="alert alert-danger">
-                          @foreach($errors->all() as $error)
-                          <p>{{$error}}</p>
-                          @endforeach
-                          </div>
-                      @endif
-                      <input type="submit" class="btn btn-primary" value="Add Domain">
-
-
-                  </form>
-              </div>
+      <div class="col-lg-12 col-md-12 col-sm-12">
+      <div class="card">
+          <div class="card-header card-header-success">
+            <div class="row">
+              <div class="col-lg-8"><h4 class="card-title">Webmaster</h4></div>
+              <div class="col-lg-4 text-right"><a href="{{ route('addwebmaster') }}" class="btn btn-secondary">Add Webmaster</a></div>
+            </div>
           </div>
-      </div>
+          <div class="card-body table-responsive">
+            <table class="table table-hover">
+              <thead class="text-success">
+                  <th scope="col">Name</th>
+                  <th scope="col">Email</th>                  
+                  <th scope="col" class="text-right">Action</th>
+              </thead>
+              <tbody>
+                  @foreach($user->webmasters as $webmastersy)
 
+                  <tr>
+                      <td>{{$webmastersy->name}}</td>
+                      <td>{{$webmastersy->email}}</td>                      
+                      <td class="td-actions text-right d-flex">
+                      <a href="/webmaster/{{$webmastersy->id}}/editwebmaster/" class="btn btn-info  btn-sm"><i class="material-icons">edit</i></a>
+                          <form action="/webmaster/{{$webmastersy->id}}" method="post">
+                              {{ csrf_field() }}
+                              <input type="hidden" name="_method" value="DELETE">
+                              <button type="submit" class="btn btn-danger  btn-sm"><i class="material-icons">close</i></button>
+                          </form>
+                      </td>
+                  </tr>
+                  @endforeach
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
     </div>
     <div class="row">
       <div class="col-lg-3 col-md-6 col-sm-6">

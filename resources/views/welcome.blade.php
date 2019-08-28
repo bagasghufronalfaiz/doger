@@ -157,7 +157,7 @@
                               <td>{{$websitesy->server->servername}}</td>
                               <td>{{$websitesy->server_folder}}</td>
                               <td>@if($websitesy->ad_id!=null){{$websitesy->ad->name}} @else Not Yet @endif</td>
-                              <td>{{$websitesy->webmaster}}</td>
+                              <td>@if($websitesy->webmaster_id!=null){{$websitesy->webmaster->name}} @else Not Yet @endif</td>
                               <td>{{$websitesy->date}}</td>
                               <td class="td-actions text-right d-flex">
                               <a href="/website/{{$websitesy->id}}/editwebsite/" class="btn btn-info  btn-sm"><i class="material-icons">edit</i></a>

@@ -91,10 +91,6 @@
                           <input class="form-control" type="text" name="theme" value="{{old('theme')}}">
                       </div>
                       <div class="form-group bmd-form-group">
-                          <label class="bmd-label-floating" for="index">Index</label>
-                          <input class="form-control" type="number" name="index" value="{{old('index')}}">
-                      </div>
-                      <div class="form-group bmd-form-group">
                           <label class="bmd-label-floating" for="keyword">Keyword</label>
                           <input class="form-control" type="text" name="keyword" value="{{old('keyword')}}">
                       </div>
@@ -124,8 +120,13 @@
                         <input class="form-control" type="date" name="date" value="none">
                       </div>
                       <div class="form-group bmd-form-group">
-                          <label class="bmd-label-floating" for="webmaster">webmaster</label>
-                          <input class="form-control" type="text" name="webmaster" value="{{old('webmaster')}}">
+                          <label class="bmd-label-floating" for="webmaster">Webmaster</label>
+                          <select id="webmaster" class="form-control" data-style="btn btn-link" name="webmaster">
+                            <option value="">Not Yet</option>
+                            @foreach ($user->webmasters as $webmastersy)
+                            <option value="{{$webmastersy->id}}">{{$webmastersy->name}}</option>
+                            @endforeach
+                        </select>
                       </div>      
 
                       {{ csrf_field() }}

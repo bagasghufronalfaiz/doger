@@ -63,7 +63,13 @@
                   <i class="material-icons">local_florist</i>
                   <p>Ad</p>
                 </a>
-              </li>
+            </li>
+            <li class="nav-item {{ (request()->is('webmaster*')) ? 'active' : '' }}">
+              <a class="nav-link" href="{{ route('webmaster') }}">
+                <i class="material-icons">art_track</i>
+                <p>Webmaster</p>
+              </a>
+          </li>
   
   
           </ul>

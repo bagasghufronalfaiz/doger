@@ -62,4 +62,9 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Models\Website');
     }
+
+    public function webmasters()
+    {
+        return $this->hasMany('App\Models\Webmaster');
+    }
 }

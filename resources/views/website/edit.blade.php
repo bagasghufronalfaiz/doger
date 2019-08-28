@@ -91,10 +91,6 @@
                         <input class="form-control" type="text" name="theme" value="{{(old('theme')) ? old('theme') : $website->theme}}">
                     </div>
                     <div class="form-group bmd-form-group">
-                        <label class="bmd-label-floating" for="index">Index</label>
-                        <input class="form-control" type="number" name="index" value="{{(old('index')) ? old('index') : $website->index}}">
-                    </div>
-                    <div class="form-group bmd-form-group">
                         <label class="bmd-label-floating" for="keyword">Keyword</label>
                         <input class="form-control" type="text" name="keyword" value="{{(old('keyword')) ? old('keyword') : $website->keyword}}">
                     </div>
@@ -113,7 +109,7 @@
                     <div class="form-group bmd-form-group">
                       <label class="bmd-label" for="ad">Ad</label>
                       <select id="ad" class="form-control" data-style="btn btn-link" name="ad">
-                          <option @if ($website->ad_id == 0) selected @endif value="0">Not Yet</option>
+                          <option @if ($website->ad_id == null) selected @endif value="">Not Yet</option>
                         @foreach ($user->ads as $adsy)
                           <option @if ($adsy->id == $website->ad_id) selected @endif value="{{$adsy->id}}">{{$adsy->name}}</option>
                         @endforeach
@@ -124,9 +120,14 @@
                       <input class="form-control" type="date" name="date" value="{{(old('date')) ? old('date') : $website->date}}">
                     </div>
                     <div class="form-group bmd-form-group">
-                        <label class="bmd-label-floating" for="webmaster">webmaster</label>
-                        <input class="form-control" type="text" name="webmaster" value="{{(old('webmaster')) ? old('webmaster') : $website->webmaster}}">
-                    </div>      
+                      <label class="bmd-label-floating" for="webmaster">Webmaster</label>
+                      <select id="webmaster" class="form-control" data-style="btn btn-link" name="webmaster">
+                        <option @if ($website->webmaster_id == null) selected @endif value="">Not Yet</option>
+                        @foreach ($user->webmasters as $webmastersy)
+                        <option @if ($webmastersy->id == $website->webmaster_id) selected @endif value="{{$webmastersy->id}}">{{$webmastersy->name}}</option>
+                        @endforeach
+                      </select>
+                    </div>                       
 
                     {{ csrf_field() }}
                     <input type="hidden" name="_method" value="PUT">

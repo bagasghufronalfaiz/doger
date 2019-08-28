@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Website extends Model
 {
     protected $fillable = [
-        'domain_id', 'theme', 'index', 'keyword', 'server_id', 'server_folder', 'ad_id', 'webmaster', 'date', 'user_id'
+        'domain_id', 'theme', 'index', 'keyword', 'server_id', 'server_folder', 'ad_id', 'webmaster_id', 'date', 'user_id'
     ];
 
     public function user()
@@ -34,5 +34,10 @@ class Website extends Model
     public function ad()
     {
         return $this->belongsTo('App\Models\Ad');
+    }
+
+    public function webmaster()
+    {
+        return $this->belongsTo('App\Models\Webmaster');
     }
 }

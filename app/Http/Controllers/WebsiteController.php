@@ -64,7 +64,7 @@ class WebsiteController extends Controller
             'server_folder' => $request->server_folder,
             'ad_id' => $request->ad,
             'date' => $request->date,
-            'webmaster' => $request->webmaster,
+            'webmaster_id' => $request->webmaster,
             'user_id' => Auth::user()->id,
         ]);
 
@@ -113,13 +113,12 @@ class WebsiteController extends Controller
           $website->update([
             'domain_id' => $request->domain,
             'theme' => $request->theme,
-            'index' => $request->index,
             'keyword' => $request->keyword,
             'server_id' => $request->servercok,
             'server_folder' => $request->server_folder,
             'ad_id' => $request->ad,
             'date' => $request->date,
-            'webmaster' => $request->webmaster
+            'webmaster_id' => $request->webmaster,
           ]);
         }else {
           abort(403);
