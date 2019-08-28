@@ -82,17 +82,20 @@
                           <label class="bmd-label-floating" for="Domain">Domain</label>
                           <input class="form-control" type="text" name="domain" value="{{old('domain')}}" >
                       </div>
-                      <div class="form-group bmd-form-group">
-                          <label class="bmd-label-floating" for="pa">Page Autority</label>
-                          <input class="form-control" type="number" name="pa" value="{{old('pa')}}">
+                      <div class="form-group">
+                          <label for="registrar_id">Registrar</label>
+                          <select id="registrar" class="form-control" data-style="btn btn-link" name="registrar_id">
+                            @foreach ($user->registrars as $registrary)
+                              <option class="btn btn-secondary" value="{{$registrary->id}}">{{$registrary->email}} at {{$registrary->registrar}}</option>
+                            @endforeach
+                          </select>
                       </div>
-                      <div class="form-group bmd-form-group">
-                          <label class="bmd-label-floating" for="da">Domain Autority</label>
-                          <input class="form-control" type="number" name="da" value="{{old('da')}}">
-                      </div>
-                      <div class="form-group bmd-form-group">
-                          <label class="bmd-label-floating" for="expiration">Expiration</label>
-                          <input class="form-control" type="date" name="expiration" value="none">
+                      <div class="form-group">
+                          <label for="expiration">Expiration</label>
+                          <input class="form-control" id="today" type="date" name="expiration">
+                          <script type="text/javascript">
+                            document.getElementById("today").valueAsDate = new Date();
+                          </script>
                       </div>
                       <div class="form-group bmd-form-group">
                           <label class="bmd-label-floating" for="nameserver1">Nameserver 1</label>
@@ -102,14 +105,6 @@
                           <label class="bmd-label-floating" for="nameserver2">Nameserver 2</label>
                           <input class="form-control" type="text" name="nameserver2" value="{{old('nameserver2')}}">
                       </div>
-                      <div class="form-group">
-                          <label for="registrar_id">Registrar</label>
-                          <select id="registrar" class="form-control" data-style="btn btn-link" name="registrar_id">
-                            @foreach ($user->registrars as $registrary)
-                              <option class="btn btn-secondary" value="{{$registrary->id}}">{{$registrary->email}} at {{$registrary->registrar}}</option>
-                            @endforeach
-                          </select>
-                      </div>   
 
                       {{ csrf_field() }}
 

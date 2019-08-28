@@ -16,8 +16,6 @@ class CreateDomainsTable extends Migration
         Schema::create('domains', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('domain', 45);
-            $table->integer('pa');
-            $table->integer('da');
             $table->date('expiration');
             $table->string('nameserver1');
             $table->string('nameserver2');

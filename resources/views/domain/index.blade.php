@@ -84,27 +84,22 @@
             <table class="table table-hover">
               <thead class="text-success">
                   <th scope="col">Domain</th>
-                  <th scope="col">Page Autority</th>
-                  <th scope="col">Domain Autority</th>
+                  <th scope="col">Index Status</th>
+                  <th scope="col">Registrar</th>
                   <th scope="col">Expiration</th>
                   <th scope="col">Nameserver 1</th>
                   <th scope="col">Nameserver 2</th>
-                  <th scope="col">Index Status</th>
-                  <th scope="col">Registrar</th>
                   <th scope="col" class="text-right">Action</th>
               </thead>
               <tbody>
                   @foreach($user->domains as $domainy)
-
                   <tr>
                       <td>{{$domainy->domain}}</td>
-                      <td>{{$domainy->pa}}</td>
-                      <td>{{$domainy->da}}</td>
+                      <td>@if($domainy->index_status == 1) Yes @elseif($domainy->index_status == 0) No @Else Mboh @endif</td>
+                      <td>{{$domainy->registrar->email}} at {{$domainy->registrar->registrar}}</td>
                       <td>{{$domainy->expiration}}</td>
                       <td>{{$domainy->nameserver1}}</td>
                       <td>{{$domainy->nameserver2}}</td>
-                      <td>@if($domainy->index_status == 1) Yes @elseif($domainy->index_status == 0) No @Else Mboh @endif</td>
-                      <td>{{$domainy->registrar->email}} at {{$domainy->registrar->registrar}}</td>
                       <td class="td-actions text-right d-flex">
                       <a href="/domain/{{$domainy->id}}/editdomain/" class="btn btn-info  btn-sm"><i class="material-icons">edit</i></a>
                           <form action="/domain/{{$domainy->id}}" method="post">

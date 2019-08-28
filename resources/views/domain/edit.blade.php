@@ -82,13 +82,13 @@
                           <label class="bmd-label-floating" for="Domain">Domain</label>
                           <input class="form-control" type="text" name="domain" value="{{(old('domain')) ? old('domain') : $domain->domain}}" >
                       </div>
-                      <div class="form-group bmd-form-group">
-                          <label class="bmd-label-floating" for="pa">Page Autority</label>
-                          <input class="form-control" type="number" name="pa" value="{{(old('pa')) ? old('pa') : $domain->pa}}">
-                      </div>
-                      <div class="form-group bmd-form-group">
-                          <label class="bmd-label-floating" for="da">Domain Autority</label>
-                          <input class="form-control" type="number" name="da" value="{{(old('da')) ? old('da') : $domain->da}}">
+                      <div class="form-group">
+                          <label class="" for="registrar_id">Registrar</label>
+                          <select id="registrar" class="form-control" data-style="btn btn-link" name="registrar_id">
+                            @foreach ($user->registrars as $registrary)
+                              <option @if($registrary->id == $domain->registrar_id ) selected @endif value="{{$registrary->id}}">{{$registrary->email}} at {{$registrary->registrar}}</option>
+                            @endforeach
+                          </select>
                       </div>
                       <div class="form-group bmd-form-group">
                           <label class="bmd-label-floating" for="expiration">Expiration</label>
@@ -101,18 +101,6 @@
                       <div class="form-group bmd-form-group">
                           <label class="bmd-label-floating" for="nameserver2">Nameserver 2</label>
                           <input class="form-control" type="text" name="nameserver2" value="{{(old('nameserver2')) ? old('nameserver2') : $domain->nameserver2}}">
-                      </div>
-                      <div class="form-group bmd-form-group">
-                          <label class="bmd-label-floating" for="index_status">Index Status</label>
-                          <input class="form-control" type="text" name="index_status" value="{{(old('index_status')) ? old('index_status') : $domain->index_status}}">
-                      </div>
-                      <div class="form-group">
-                          <label class="" for="registrar_id">Registrar</label>
-                          <select id="registrar" class="form-control" data-style="btn btn-link" name="registrar_id">
-                            @foreach ($user->registrars as $registrary)
-                              <option @if($registrary->id == $domain->registrar_id ) selected @endif value="{{$registrary->id}}">{{$registrary->email}} at {{$registrary->registrar}}</option>
-                            @endforeach
-                          </select>
                       </div>
 
                       {{ csrf_field() }}
