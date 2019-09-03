@@ -1,4 +1,4 @@
-@extends('layouts.app-material')
+@extends('layouts.app-material-online')
 
 @section('content')
 
@@ -92,10 +92,43 @@
                       </div>
                       <div class="form-group">
                           <label for="expiration">Expiration</label>
-                          <input class="form-control datetimepicker" id="datetimepicker" type="text" value="{{date("m/d/Y")}}" name="expiration">
+                          <input class="form-control " id="today" type="date" value="{{date("m/d/Y")}}"  name="expiration" >
                           <script type="text/javascript">
-                            // document.getElementById("today").valueAsDate = new Date();
+                            document.getElementById("today").valueAsDate = new Date();
                           </script>
+                      </div>
+                      <div class="form-group">
+                        <label class="label-control">Datetime Picker</label>
+                        <input type="text" class="form-control datetimepicker"/>
+                        <script type="text/javascript">
+                          $('.datetimepicker').datetimepicker({
+                              icons: {
+                                  time: "fa fa-clock-o",
+                                  date: "fa fa-calendar",
+                                  up: "fa fa-chevron-up",
+                                  down: "fa fa-chevron-down",
+                                  previous: 'fa fa-chevron-left',
+                                  next: 'fa fa-chevron-right',
+                                  today: 'fa fa-screenshot',
+                                  clear: 'fa fa-trash',
+                                  close: 'fa fa-remove',
+                              },
+                              format: 'L',
+                          });
+                        </script>
+                      </div>
+                      <div class="form-group">
+                        <div class='input-group date' id='datetimepicker1'>
+                            <input type='text' class="form-control" />
+                            <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-calendar"></span>
+                            </span>
+                        </div>
+                        <script type="text/javascript">
+                          $(function () {
+                              $('#datetimepicker1').datetimepicker();
+                          });
+                        </script>
                       </div>
                       <div class="form-group bmd-form-group">
                           <label class="bmd-label-floating" for="nameserver1">Nameserver 1</label>

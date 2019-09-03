@@ -117,7 +117,7 @@
                       </div>
                       <div class="form-group bmd-form-group">
                         <label class="bmd-label" for="date">Date of Birth</label>
-                        <input class="form-control" type="date" name="date" value="none">
+                        <input class="form-control" type="date" name="date"  value="{{date("m/d/Y")}}">
                       </div>
                       <div class="form-group bmd-form-group">
                           <label class="bmd-label-floating" for="webmaster">Webmaster</label>

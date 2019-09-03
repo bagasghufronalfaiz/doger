@@ -48,6 +48,8 @@ class DomainController extends Controller
      */
     public function store(Request $request)
     {
+        $expiration = $request->expiration;
+        return $expiration;
         $domeng = $request->domain;
         $cek_index = self::get_index($domeng);
         if ($cek_index==''){

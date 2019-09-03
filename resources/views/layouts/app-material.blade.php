@@ -14,7 +14,7 @@
     {{-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" /> --}}
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
     <!-- Material Dashboard CSS -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    {{-- <link href="{{ asset('css/app.css') }}" rel="stylesheet"> --}}
     <link rel="stylesheet" href="{{ asset('assets/css/material-dashboard.css')}}">
 
   </head>
@@ -140,6 +140,6 @@
   <script src="{{ asset('assets/js/plugins/bootstrap-notify.js')}}"></script>
 
   <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
-  <script src="{{ asset('assets/js/material-dashboard.min.js?v=2.1.1')}}" type="text/javascript"></script>
+  <script src="{{ asset('assets/js/material-dashboard.min.js')}}" type="text/javascript"></script>
   </body>
 </html>
