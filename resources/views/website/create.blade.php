@@ -1,4 +1,4 @@
-@extends('layouts.app-material')
+@extends('layouts.app-material-online')
 
 @section('content')
 
@@ -78,56 +78,72 @@
               </div>
               <div class="card-body">
                   <form action="/website" method="post">
-                      <div class="form-group bmd-form-group">
-                          <label class="bmd-label" for="domain">Domain</label>
-                          <select id="domain" class="form-control" data-style="btn btn-link" name="domain">
+                      <div class="form-group bmd-form-group" style="margin-top:20px;">
+                          <label for="domain">Domain</label>
+                          <select id="domain" class="form-control selectpicker" data-style="btn btn-secondary" name="domain">
                             @foreach ($user->domains as $domainy)
                               <option value="{{$domainy->id}}">{{$domainy->domain}}</option>
                             @endforeach
                           </select>
                       </div>
-                      <div class="form-group bmd-form-group">
+                      <div class="form-group bmd-form-group" style="margin-top:20px;">
                           <label class="bmd-label-floating" for="theme">Theme</label>
                           <input class="form-control" type="text" name="theme" value="{{old('theme')}}">
                       </div>
-                      <div class="form-group bmd-form-group">
+                      <div class="form-group bmd-form-group" style="margin-top:20px;">
                           <label class="bmd-label-floating" for="keyword">Keyword</label>
                           <input class="form-control" type="text" name="keyword" value="{{old('keyword')}}">
                       </div>
-                      <div class="form-group bmd-form-group">
-                        <label class="bmd-label" for="servercok">Server</label>
-                        <select id="servercok" class="form-control" data-style="btn btn-link" name="servercok">
+                      <div class="form-group bmd-form-group" style="margin-top:20px;">
+                        <label for="servercok">Server</label>
+                        <select id="servercok" class="form-control selectpicker" data-style="btn btn-secondary" name="servercok">
                           @foreach ($user->servers as $servery)
                             <option value="{{$servery->id}}">{{$servery->servername}}</option>
                           @endforeach
                         </select>
                       </div>
-                      <div class="form-group bmd-form-group">
+                      <div class="form-group bmd-form-group" style="margin-top:20px;">
                           <label class="bmd-label-floating" for="server_folder">Server Folder</label>
                           <input class="form-control" type="text" name="server_folder" value="{{old('server_folder')}}">
                       </div>
-                      <div class="form-group bmd-form-group">
-                        <label class="bmd-label" for="ad">Ad</label>
-                        <select id="ad" class="form-control" data-style="btn btn-link" name="ad">
+                      <div class="form-group bmd-form-group" style="margin-top:20px;">
+                        <label for="ad">Ad</label>
+                        <select id="ad" class="form-control selectpicker" data-style="btn btn-secondary" name="ad">
                             <option value="">Not Yet</option>
                           @foreach ($user->ads as $adsy)
                             <option value="{{$adsy->id}}">{{$adsy->name}}</option>
                           @endforeach
                         </select>
                       </div>
-                      <div class="form-group bmd-form-group">
-                        <label class="bmd-label" for="date">Date of Birth</label>
-                        <input class="form-control" type="date" name="date"  value="{{date("m/d/Y")}}">
+                      <div class="form-group bmd-form-group" style="margin-top:20px;">
+                        <label for="date">Date of Birth</label>
+                        <input class="form-control datetimepicker" type="text" name="date">
+                        <script type="text/javascript">
+                          $('.datetimepicker').datetimepicker({
+                              icons: {
+                                  time: "fa fa-clock-o",
+                                  date: "fa fa-calendar",
+                                  up: "fa fa-chevron-up",
+                                  down: "fa fa-chevron-down",
+                                  previous: 'fa fa-chevron-left',
+                                  next: 'fa fa-chevron-right',
+                                  today: 'fa fa-screenshot',
+                                  clear: 'fa fa-trash',
+                                  close: 'fa fa-remove',
+                              },
+                              format: 'L',
+                          });
+                        </script>
                       </div>
-                      <div class="form-group bmd-form-group">
-                          <label class="bmd-label-floating" for="webmaster">Webmaster</label>
-                          <select id="webmaster" class="form-control" data-style="btn btn-link" name="webmaster">
+                      <div class="form-group bmd-form-group" style="margin-top:20px;">
+                          <label for="webmaster">Webmaster</label>
+                          <select id="webmaster" class="form-control selectpicker" data-style="btn btn-secondary" name="webmaster">
                             <option value="">Not Yet</option>
                             @foreach ($user->webmasters as $webmastersy)
                             <option value="{{$webmastersy->id}}">{{$webmastersy->name}}</option>
                             @endforeach
                         </select>
-                      </div>      
+                      </div>
 
                       {{ csrf_field() }}
 
@@ -138,9 +154,7 @@
                           @endforeach
                           </div>
                       @endif
-                      <input type="submit" class="btn btn-primary" value="Add Website">
-
-
+                      <input type="submit" class="btn btn-primary" value="Add Website" style="margin-top:20px;">
                   </form>
               </div>
           </div>

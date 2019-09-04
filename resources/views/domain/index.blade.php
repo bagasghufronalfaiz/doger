@@ -74,11 +74,8 @@
       <div class="col-lg-12 col-md-12 col-sm-12">
       <div class="card">
           <div class="card-header card-header-success">
-            <div class="row">
-              <div class="col-lg-8"><h4 class="card-title">Domain</h4></div>
-              <div class="col-lg-4 text-right"><a href="{{ route('adddomain') }}" class="btn btn-secondary">Add Domain</a></div>
-            </div>
-
+            <h4 class="card-title">Domain</h4>
+            <a href="{{ route('adddomain') }}"  class="btn btn-secondary btn-sm">Add Domain</a>
           </div>
           <div class="card-body table-responsive">
             <table class="table table-hover">
@@ -89,7 +86,7 @@
                   <th scope="col">Expiration</th>
                   <th scope="col">Nameserver 1</th>
                   <th scope="col">Nameserver 2</th>
-                  <th scope="col" class="text-right">Action</th>
+                  <th scope="col">Action</th>
               </thead>
               <tbody>
                   @foreach($user->domains as $domainy)

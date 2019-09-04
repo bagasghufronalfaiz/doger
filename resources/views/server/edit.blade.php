@@ -1,4 +1,4 @@
-@extends('layouts.app-material')
+@extends('layouts.app-material-online')
 
 @section('content')
 
@@ -78,37 +78,53 @@
               </div>
               <div class="card-body">
                   <form action="/server/{{$server->id}}" method="post">
-                    <div class="form-group bmd-form-group">
+                    <div class="form-group bmd-form-group" style="margin-top:20px;">
                           <label class="bmd-label-floating" for="seller">Seller</label>
                           <input class="form-control" type="text" name="seller" value="{{(old('seller')) ? old('seller') : $server->seller}}" >
                       </div>
-                      <div class="form-group bmd-form-group">
+                      <div class="form-group bmd-form-group" style="margin-top:20px;">
                           <label class="bmd-label-floating" for="location">Location</label>
                           <input class="form-control" type="text" name="location" value="{{(old('location')) ? old('location') : $server->location}}">
                       </div>
-                      <div class="form-group bmd-form-group">
+                      <div class="form-group bmd-form-group" style="margin-top:20px;">
                           <label class="bmd-label-floating" for="servername">Server Name</label>
                           <input class="form-control" type="text" name="servername" value="{{(old('servername')) ? old('servername') : $server->servername}}">
                       </div>
-                      <div class="form-group bmd-form-group">
+                      <div class="form-group bmd-form-group" style="margin-top:20px;">
                           <label class="bmd-label-floating" for="ip">IP</label>
                           <input class="form-control" type="text" name="ip" value="{{(old('ip')) ? old('ip') : $server->ip}}">
                       </div>
-                      <div class="form-group bmd-form-group">
+                      <div class="form-group bmd-form-group" style="margin-top:20px;">
                           <label class="bmd-label-floating" for="username">Username</label>
                           <input class="form-control" type="text" name="username" value="{{(old('username')) ? old('username') : $server->username}}">
                       </div>
-                      <div class="form-group bmd-form-group">
+                      <div class="form-group bmd-form-group" style="margin-top:20px;">
                           <label class="bmd-label-floating" for="password">Password</label>
                           <input class="form-control" type="text" name="password" value="{{(old('password')) ? old('password') : $server->password}}">
                       </div>
-                      <div class="form-group bmd-form-group">
+                      <div class="form-group bmd-form-group" style="margin-top:20px;">
                           <label class="bmd-label-floating" for="price">Price</label>
                           <input class="form-control" type="decimal" name="price" value="{{(old('price')) ? old('price') : $server->price}}">
                       </div>
-                      <div class="form-group bmd-form-group">
-                          <label class="bmd-label-floating" for="invoice_date">Invoice Date</label>
-                          <input class="form-control" type="date" name="invoice_date" value="{{(old('invoice_date')) ? old('invoice_date') : $server->invoice_date}}">
+                      <div class="form-group bmd-form-group" style="margin-top:20px;">
+                          <label for="invoice_date">Invoice Date</label>
+                          <input class="form-control datetimepicker" type="text" name="invoice_date">
+                            <script type="text/javascript">
+                            $('.datetimepicker').datetimepicker({
+                                icons: {
+                                    time: "fa fa-clock-o",
+                                    date: "fa fa-calendar",
+                                    up: "fa fa-chevron-up",
+                                    down: "fa fa-chevron-down",
+                                    previous: 'fa fa-chevron-left',
+                                    next: 'fa fa-chevron-right',
+                                    today: 'fa fa-screenshot',
+                                    clear: 'fa fa-trash',
+                                    close: 'fa fa-remove',
+                                },
+                                format: 'L',
+                            });
+                            </script>
                       </div>
 
 
@@ -121,9 +137,7 @@
                           @endforeach
                           </div>
                       @endif
-                      <input type="submit" class="btn btn-warning" value="Edit Registrar">
-
-
+                      <input type="submit" class="btn btn-warning" value="Edit Registrar" style="margin-top:20px;">
                   </form>
               </div>
           </div>

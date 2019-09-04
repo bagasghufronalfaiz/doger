@@ -49,7 +49,9 @@ class DomainController extends Controller
     public function store(Request $request)
     {
         $expiration = $request->expiration;
-        return $expiration;
+        $time = strtotime($expiration);
+        $newexpiration = date('Y-m-d', $time);
+
         $domeng = $request->domain;
         $cek_index = self::get_index($domeng);
         if ($cek_index==''){
@@ -57,12 +59,12 @@ class DomainController extends Controller
         } else {
             $index_status = 1;
         }
-        
+
         $domain = Domain::create([
             'domain' => $request->domain,
             'pa' => $request->pa,
             'da' => $request->da,
-            'expiration' => $request->expiration,
+            'expiration' => $newexpiration,
             'nameserver1' => $request->nameserver1,
             'nameserver2' => $request->nameserver2,
             'index_status' => $index_status,
@@ -110,16 +112,19 @@ class DomainController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $expiration = $request->expiration;
+        $time = strtotime($expiration);
+        $newexpiration = date('Y-m-d', $time);
+
         $domain = Domain::findOrFail($id);
         if ($domain->userisOwner()) {
           $domain->update([
             'domain' => $request->domain,
             'pa' => $request->pa,
             'da' => $request->da,
-            'expiration' => $request->expiration,
+            'expiration' => $newexpiration,
             'nameserver1' => $request->nameserver1,
             'nameserver2' => $request->nameserver2,
-            'index_status' => $request->index_status,
             'registrar_id' => $request->registrar_id
           ]);
         }else {
@@ -157,15 +162,15 @@ class DomainController extends Controller
     }
 
 
-    
+
     private function get_index($domaing)
     {
         $client = new Client();
         $asd = 'https://www.google.com/search?q=site:$domain&tbm=isch&sout=1';
         $url = 'https://www.google.com/search?q=site:'.$domaing.'&tbm=isch&sout=1';
         $res = $client->request('GET', $url);
-        $hasil = $res->getBody(); 
-        
+        $hasil = $res->getBody();
+
         return self::get_string_between($hasil, '<div class="sd" id="resultStats">Sekitar ', ' hasil</div>');
     }
 }

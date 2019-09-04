@@ -74,24 +74,22 @@
       <div class="col-lg-12 col-md-12 col-sm-12">
       <div class="card">
           <div class="card-header card-header-success">
-            <div class="row">
-              <div class="col-lg-8"><h4 class="card-title">Webmaster</h4></div>
-              <div class="col-lg-4 text-right"><a href="{{ route('addwebmaster') }}" class="btn btn-secondary">Add Webmaster</a></div>
-            </div>
+              <h4 class="card-title">Webmaster</h4>
+              <a href="{{ route('addwebmaster') }}" class="btn btn-secondary btn-sm">Add Webmaster</a>
           </div>
           <div class="card-body table-responsive">
             <table class="table table-hover">
               <thead class="text-success">
                   <th scope="col">Name</th>
-                  <th scope="col">Email</th>                  
-                  <th scope="col" class="text-right">Action</th>
+                  <th scope="col">Email</th>
+                  <th scope="col">Action</th>
               </thead>
               <tbody>
                   @foreach($user->webmasters as $webmastersy)
 
                   <tr>
                       <td>{{$webmastersy->name}}</td>
-                      <td>{{$webmastersy->email}}</td>                      
+                      <td>{{$webmastersy->email}}</td>
                       <td class="td-actions text-right d-flex">
                       <a href="/webmaster/{{$webmastersy->id}}/editwebmaster/" class="btn btn-info  btn-sm"><i class="material-icons">edit</i></a>
                           <form action="/webmaster/{{$webmastersy->id}}" method="post">

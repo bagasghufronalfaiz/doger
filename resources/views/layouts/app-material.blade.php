@@ -14,73 +14,13 @@
     {{-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" /> --}}
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
     <!-- Material Dashboard CSS -->
-    {{-- <link href="{{ asset('css/app.css') }}" rel="stylesheet"> --}}
+
     <link rel="stylesheet" href="{{ asset('assets/css/material-dashboard.css')}}">
 
-  </head>
-  <body>
-    <div class="wrapper ">
-      <div class="sidebar" data-color="green" data-background-color="white" data-image="../assets/img/sidebar-1.jpg">
-        <div class="logo">
-          <a href="{{ url('/') }}" class="simple-text logo-normal">
-              {{ config('app.name', 'Laravel') }}
-          </a>
-        </div>
-        <div class="sidebar-wrapper">
-          <ul class="nav">
-            <li class="nav-item {!!(Route::currentRouteName()=='dashboard' || request()->is('website*')) ? 'active' : '' !!}  ">
-              <a class="nav-link" href="{{ url('/') }}">
-                <i class="material-icons">dashboard</i>
-                <p>Dashboard</p>
-              </a>
-            </li>
-            <li class="nav-item {{ (request()->is('home*')) ? 'active' : '' }}">
-              <a class="nav-link" href="{{ route('home') }}">
-                <i class="material-icons">home</i>
-                <p>Home</p>
-              </a>
-            </li>
-            <li class="nav-item {{ (request()->is('domain*')) ? 'active' : '' }}">
-              <a class="nav-link" href="{{ route('domain') }}">
-                <i class="material-icons">label</i>
-                <p>Domain</p>
-              </a>
-            </li>
-            <li class="nav-item {{ (request()->is('registrar*')) ? 'active' : '' }}">
-              <a class="nav-link" href="{{ route('registrar') }}">
-                <i class="material-icons">launch</i>
-                <p>Registrar</p>
-              </a>
-            </li>
-            <li class="nav-item {{ (request()->is('server*')) ? 'active' : '' }}">
-              <a class="nav-link" href="{{ route('server') }}">
-                <i class="material-icons">cloud</i>
-                <p>Server</p>
-              </a>
-            </li>
-            <li class="nav-item {{ (request()->is('ad*')) ? 'active' : '' }}">
-                <a class="nav-link" href="{{ route('ad') }}">
-                  <i class="material-icons">local_florist</i>
-                  <p>Ad</p>
-                </a>
-            </li>
-            <li class="nav-item {{ (request()->is('webmaster*')) ? 'active' : '' }}">
-              <a class="nav-link" href="{{ route('webmaster') }}">
-                <i class="material-icons">art_track</i>
-                <p>Webmaster</p>
-              </a>
-          </li>
-  
-  
-          </ul>
-        </div>
-      </div>
-      <div class="main-panel">
-    @yield('content')
-      </div>
-    </div>
+    <!-- Self Edited CSS -->
+    <link href="{{ asset('css/app-material.css') }}" rel="stylesheet">
 
-  <!--   Core JS Files   -->
+<!--   Core JS Files   -->
   <script src="{{ asset('assets/js/core/jquery.min.js')}}" type="text/javascript"></script>
   <script src="{{ asset('assets/js/core/popper.min.js')}}" type="text/javascript"></script>
   <script src="{{ asset('assets/js/core/bootstrap-material-design.min.js')}}" type="text/javascript"></script>
@@ -141,5 +81,69 @@
 
   <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
   <script src="{{ asset('assets/js/material-dashboard.min.js')}}" type="text/javascript"></script>
+
+  <!-- Self Edited JS -->
+  <script src="{{ asset('js/app-material.js') }}" defer></script>
+
+  </head>
+  <body>
+    <div class="wrapper ">
+      <div class="sidebar" data-color="green" data-background-color="white" data-image="../assets/img/sidebar-1.jpg">
+        <div class="logo">
+          <a href="{{ url('/') }}" class="simple-text logo-normal">
+              {{ config('app.name', 'Laravel') }}
+          </a>
+        </div>
+        <div class="sidebar-wrapper">
+          <ul class="nav">
+            <li class="nav-item {!!(Route::currentRouteName()=='dashboard' || request()->is('website*')) ? 'active' : '' !!}  ">
+              <a class="nav-link" href="{{ url('/') }}">
+                <i class="material-icons">dashboard</i>
+                <p>Dashboard</p>
+              </a>
+            </li>
+            <li class="nav-item {{ (request()->is('home*')) ? 'active' : '' }}">
+              <a class="nav-link" href="{{ route('home') }}">
+                <i class="material-icons">home</i>
+                <p>Home</p>
+              </a>
+            </li>
+            <li class="nav-item {{ (request()->is('domain*')) ? 'active' : '' }}">
+              <a class="nav-link" href="{{ route('domain') }}">
+                <i class="material-icons">label</i>
+                <p>Domain</p>
+              </a>
+            </li>
+            <li class="nav-item {{ (request()->is('registrar*')) ? 'active' : '' }}">
+              <a class="nav-link" href="{{ route('registrar') }}">
+                <i class="material-icons">launch</i>
+                <p>Registrar</p>
+              </a>
+            </li>
+            <li class="nav-item {{ (request()->is('server*')) ? 'active' : '' }}">
+              <a class="nav-link" href="{{ route('server') }}">
+                <i class="material-icons">cloud</i>
+                <p>Server</p>
+              </a>
+            </li>
+            <li class="nav-item {{ (request()->is('ad*')) ? 'active' : '' }}">
+                <a class="nav-link" href="{{ route('ad') }}">
+                  <i class="material-icons">local_florist</i>
+                  <p>Ad</p>
+                </a>
+            </li>
+            <li class="nav-item {{ (request()->is('webmaster*')) ? 'active' : '' }}">
+              <a class="nav-link" href="{{ route('webmaster') }}">
+                <i class="material-icons">art_track</i>
+                <p>Webmaster</p>
+              </a>
+          </li>
+          </ul>
+        </div>
+      </div>
+      <div class="main-panel">
+    @yield('content')
+      </div>
+    </div>
   </body>
 </html>

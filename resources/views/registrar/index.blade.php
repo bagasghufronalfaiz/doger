@@ -74,11 +74,8 @@
       <div class="col-lg-12 col-md-12 col-sm-12">
       <div class="card">
           <div class="card-header card-header-success">
-            <div class="row">
-              <div class="col-lg-8"><h4 class="card-title">Registrar</h4></div>
-              <div class="col-lg-4 text-right"><a href="/registrar/addregistrar" class="btn btn-secondary">Add Registrar</a></div>
-            </div>
-
+              <h4 class="card-title">Registrar</h4>
+              <a href="{{ route('addregistrar') }}" class="btn btn-secondary btn-sm">Add Registrar</a>
           </div>
           <div class="card-body table-responsive">
             <table class="table table-hover">
@@ -87,16 +84,15 @@
                   <th scope="col">Username</th>
                   <th scope="col">Email</th>
                   <th scope="col">Password</th>
-                  <th scope="col" class="text-right">Action</th>
+                  <th scope="col">Action</th>
               </thead>
               <tbody>
                   @foreach($user->registrars as $registrary)
-
                   <tr>
                       <td>{{$registrary->registrar}}</td>
                       <td>{{$registrary->username}}</td>
                       <td>{{$registrary->email}}</td>
-                      <td>{{$registrary->password}}</td>
+                      <td><p id="toogle_password" class="password_field pointer">{{$registrary->password}}</p></td>
                       <td class="td-actions text-right d-flex">
                           <a href="/registrar/{{$registrary->id}}/editregistrar/" class="btn btn-info  btn-sm"><i class="material-icons">edit</i></a>
                           <form action="/registrar/{{$registrary->id}}" method="post">

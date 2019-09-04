@@ -74,20 +74,17 @@
       <div class="col-lg-12 col-md-12 col-sm-12">
       <div class="card">
           <div class="card-header card-header-success">
-            <div class="row">
-              <div class="col-lg-8"><h4 class="card-title">Ad</h4></div>
-              <div class="col-lg-4 text-right"><a href="{{ route('addad') }}" class="btn btn-secondary">Add Ad</a></div>
-            </div>
-
+              <h4 class="card-title">Ad</h4>
+              <a href="{{ route('addad') }}" class="btn btn-secondary btn-sm">Add Ad</a>
           </div>
           <div class="card-body table-responsive">
             <table class="table table-hover">
-              <thead class="text-success">                        
+              <thead class="text-success">
                   <th scope="col">Ad Network</th>
                   <th scope="col">Email</th>
                   <th scope="col">Name</th>
-                  <th scope="col">Code</th>                        
-                  <th scope="col" class="text-right">Action</th>
+                  <th scope="col">Code</th>
+                  <th scope="col">Action</th>
               </thead>
               <tbody>
                   @foreach($user->ads as $adsy)
@@ -96,7 +93,7 @@
                       <td>{{$adsy->adnetwork}}</td>
                       <td>{{$adsy->email}}</td>
                       <td>{{$adsy->name}}</td>
-                      <td>{{$adsy->code}}</td>                            
+                      <td>{{$adsy->code}}</td>
                       <td class="td-actions text-right d-flex">
                       <a href="/ad/{{$adsy->id}}/editad/" class="btn btn-info  btn-sm"><i class="material-icons">edit</i></a>
                           <form action="/ad/{{$adsy->id}}" method="post">

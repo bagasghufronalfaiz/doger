@@ -126,11 +126,8 @@
               <div class="col-lg-12 col-md-12 col-sm-12">
               <div class="card">
                   <div class="card-header card-header-success">
-                    <div class="row">
-                      <div class="col-lg-8"><h4 class="card-title">Website</h4></div>
-                      <div class="col-lg-4 text-right"><a href="{{ route('addwebsite') }}" class="btn btn-secondary">Add Website</a></div>
-                    </div>
-  
+                    <h4 class="card-title">Website</h4>
+                    <a href="{{ route('addwebsite') }}" class="btn btn-secondary btn-sm">Add Website</a>
                   </div>
                   <div class="card-body table-responsive">
                     <table class="table table-hover">
@@ -144,11 +141,11 @@
                           <th scope="col">Ad</th>
                           <th scope="col">Webmaster</th>
                           <th scope="col">Date</th>
-                          <th scope="col" class="text-right">Action</th>
+                          <th scope="col">Action</th>
                       </thead>
                       <tbody>
                           @foreach($user->websites as $websitesy)
-  
+
                           <tr>
                               <td>{{$websitesy->domain->domain}}</td>
                               <td>{{$websitesy->index}}</td>

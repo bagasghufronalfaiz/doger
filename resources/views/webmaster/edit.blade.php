@@ -78,15 +78,14 @@
               </div>
               <div class="card-body">
                   <form action="/webmaster/{{$webmaster->id}}" method="post">
-                    <div class="form-group bmd-form-group">
+                    <div class="form-group bmd-form-group" style="margin-top:20px;">
                           <label class="bmd-label-floating" for="name">Name</label>
                           <input class="form-control" type="text" name="name" value="{{(old('name')) ? old('name') : $webmaster->name}}" >
                       </div>
-                      <div class="form-group bmd-form-group">
+                      <div class="form-group bmd-form-group" style="margin-top:20px;">
                           <label class="bmd-label-floating" for="email">Email</label>
                           <input class="form-control" type="text" name="email" value="{{(old('email')) ? old('email') : $webmaster->email}}">
                       </div>
-
 
                       {{ csrf_field() }}
                       <input type="hidden" name="_method" value="PUT">
@@ -97,9 +96,7 @@
                           @endforeach
                           </div>
                       @endif
-                      <input type="submit" class="btn btn-warning" value="Edit Registrar">
-
-
+                      <input type="submit" class="btn btn-warning" value="Edit Registrar" style="margin-top:20px;">
                   </form>
               </div>
           </div>

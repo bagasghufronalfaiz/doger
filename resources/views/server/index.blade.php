@@ -74,10 +74,8 @@
       <div class="col-lg-12 col-md-12 col-sm-12">
       <div class="card">
           <div class="card-header card-header-success">
-            <div class="row">
-              <div class="col-lg-8"><h4 class="card-title">Server</h4></div>
-              <div class="col-lg-4 text-right"><a href="{{ route('addserver') }}" class="btn btn-secondary">Add Server</a></div>
-            </div>
+              <h4 class="card-title">Server</h4>
+              <a href="{{ route('addserver') }}" class="btn btn-secondary btn-sm">Add Server</a>
           </div>
           <div class="card-body table-responsive">
             <table class="table table-hover">
@@ -90,7 +88,7 @@
                   <th scope="col">Password</th>
                   <th scope="col">Price</th>
                   <th scope="col">Invoice Date</th>
-                  <th scope="col" class="text-right">Action</th>
+                  <th scope="col">Action</th>
               </thead>
               <tbody>
                   @foreach($user->servers as $servery)

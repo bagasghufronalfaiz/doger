@@ -12,15 +12,19 @@
     <!--     Fonts and icons     -->
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
-    
+
     <!-- Material Dashboard CSS -->
     {{-- <link rel="stylesheet" href="https://demos.creative-tim.com/material-dashboard/assets/css/material-dashboard.min.css?v=2.0.3"> --}}
     <link rel="stylesheet" href="https://demos.creative-tim.com/test/material-dashboard-pro/assets/css/material-dashboard.min.css?v=2.0.3">
-    <!--   Core JS Files   -->
+
+    <!-- Self Edited CSS -->
+    <link href="{{ asset('css/app-material.css') }}" rel="stylesheet">
+
+  <!--   Core JS Files   -->
   <script src="https://demos.creative-tim.com/material-dashboard/assets/js/core/jquery.min.js" type="text/javascript"></script>
   <script src="https://demos.creative-tim.com/material-dashboard/assets/js/core/popper.min.js" type="text/javascript"></script>
   <script src="https://demos.creative-tim.com/material-dashboard/assets/js/core/bootstrap-material-design.min.js" type="text/javascript"></script>
-  
+
   <!-- Plugin for the Perfect Scrollbar -->
   <script src="https://demos.creative-tim.com/material-dashboard/assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
 
@@ -77,11 +81,16 @@
 
   <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
   <script src="{{ asset('assets/js/material-dashboard.min.js')}}" type="text/javascript"></script>
+
+
+  <!-- Self Edited JS -->
+  <script src="{{ asset('js/app-material.js') }}" defer></script>
+
   </head>
   <body>
     <div class="wrapper ">
       <div class="sidebar" data-color="green" data-background-color="white" data-image="../assets/img/sidebar-1.jpg">
-        <div class="logo">
+        <div class="logo" style="text-align:center;">
           <a href="{{ url('/') }}" class="simple-text logo-normal">
               {{ config('app.name', 'Laravel') }}
           </a>
@@ -130,8 +139,8 @@
                 <p>Webmaster</p>
               </a>
           </li>
-  
-  
+
+
           </ul>
         </div>
       </div>
@@ -140,6 +149,6 @@
       </div>
     </div>
 
-  
+
   </body>
 </html>

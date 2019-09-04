@@ -78,21 +78,21 @@
               </div>
               <div class="card-body">
                   <form action="/ad" method="post">
-                      <div class="form-group bmd-form-group">
+                      <div class="form-group bmd-form-group" style="margin-top:20px;">
                           <label class="bmd-label-floating" for="adnetwork">Ad Network</label>
                           <input class="form-control" type="text" name="adnetwork" value="{{old('adnetwork')}}" >
                       </div>
-                      <div class="form-group bmd-form-group">
+                      <div class="form-group bmd-form-group" style="margin-top:20px;">
                           <label class="bmd-label-floating" for="email">Email</label>
                           <input class="form-control" type="text" name="email" value="{{old('email')}}">
                       </div>
-                      <div class="form-group bmd-form-group">
+                      <div class="form-group bmd-form-group" style="margin-top:20px;">
                           <label class="bmd-label-floating" for="name">Name</label>
                           <input class="form-control" type="text" name="name" value="{{old('name')}}">
                       </div>
-                      <div class="form-group bmd-form-group">
+                      <div class="form-group bmd-form-group" style="margin-top:20px;">
                           <label class="bmd-label-floating" for="code">Code</label>
-                          <input class="form-control" type="text" name="code" value="{{old('code')}}">
+                          <textarea class="form-control" rows="11" name="code">{{old('code')}}</textarea>
                       </div>
 
                       {{ csrf_field() }}
@@ -104,9 +104,7 @@
                           @endforeach
                           </div>
                       @endif
-                      <input type="submit" class="btn btn-primary" value="Add Ad">
-
-
+                      <input type="submit" class="btn btn-primary" value="Add Ad" style="margin-top:20px;">
                   </form>
               </div>
           </div>

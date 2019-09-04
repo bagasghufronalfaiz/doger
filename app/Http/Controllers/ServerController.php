@@ -44,6 +44,10 @@ class ServerController extends Controller
      */
     public function store(Request $request)
     {
+        $invoice_date = $request->invoice_date;
+        $time = strtotime($invoice_date);
+        $newinvoice_date = date('Y-m-d', $time);
+
         $server = Server::create([
             'seller'        => $request->seller,
             'servername'    => $request->servername,
@@ -52,7 +56,7 @@ class ServerController extends Controller
             'username'      => $request->username,
             'password'      => $request->password,
             'price'         => $request->price,
-            'invoice_date'  => $request->invoice_date,
+            'invoice_date'  => $newinvoice_date,
             'user_id'       => Auth::user()->id,
         ]);
 
@@ -96,6 +100,10 @@ class ServerController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $invoice_date = $request->invoice_date;
+        $time = strtotime($invoice_date);
+        $newinvoice_date = date('Y-m-d', $time);
+
         $server = Server::findOrFail($id);
         if($server->userisOwner()){
             $server->update([
@@ -106,7 +114,7 @@ class ServerController extends Controller
                 'username'      => $request->username,
                 'password'      => $request->password,
                 'price'         => $request->price,
-                'invoice_date'  => $request->invoice_date
+                'invoice_date'  => $newinvoice_date
             ]);
         } else {
             abort(403);

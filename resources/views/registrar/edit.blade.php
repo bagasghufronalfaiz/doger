@@ -78,23 +78,22 @@
               </div>
               <div class="card-body">
                   <form action="/registrar/{{$registrar->id}}" method="post">
-                    <div class="form-group bmd-form-group">
+                    <div class="form-group bmd-form-group" style="margin-top:20px;">
                         <label class="bmd-label-floating" for="registrar">Registrar</label>
                         <input class="form-control" type="text" name="registrar" value="{{(old('registrar')) ? old('registrar') : $registrar->registrar}}" >
                     </div>
-                    <div class="form-group bmd-form-group">
+                    <div class="form-group bmd-form-group" style="margin-top:20px;">
                         <label class="bmd-label-floating" for="username">Username</label>
                         <input class="form-control" type="text" name="username" value="{{old('username') ? old('username') : $registrar->username}}">
                     </div>
-                    <div class="form-group bmd-form-group">
+                    <div class="form-group bmd-form-group" style="margin-top:20px;">
                         <label class="bmd-label-floating" for="email">Email</label>
                         <input class="form-control" type="text" name="email" value="{{old('email') ? old('email') : $registrar->email}}">
                     </div>
-                    <div class="form-group bmd-form-group">
+                    <div class="form-group bmd-form-group" style="margin-top:20px;">
                         <label class="bmd-label-floating" for="password">Password</label>
                         <input class="form-control" type="text" name="password" value="{{old('password') ? old('password') : $registrar->password}}">
                     </div>
-
 
                       {{ csrf_field() }}
                       <input type="hidden" name="_method" value="PUT">
@@ -105,9 +104,7 @@
                           @endforeach
                           </div>
                       @endif
-                      <input type="submit" class="btn btn-warning" value="Edit Registrar">
-
-
+                      <input type="submit" class="btn btn-warning" value="Edit Registrar"  style="margin-top:20px;">
                   </form>
               </div>
           </div>

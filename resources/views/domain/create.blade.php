@@ -78,28 +78,21 @@
               </div>
               <div class="card-body">
                   <form action="/domain" method="post">
-                      <div class="form-group bmd-form-group">
+                      <div class="form-group bmd-form-group" style="margin-top:20px;">
                           <label class="bmd-label-floating" for="Domain">Domain</label>
                           <input class="form-control" type="text" name="domain" value="{{old('domain')}}" >
                       </div>
-                      <div class="form-group">
+                      <div class="form-group bmd-form-group">
                           <label for="registrar_id">Registrar</label>
-                          <select id="registrar" class="form-control" data-style="btn btn-link" name="registrar_id">
+                          <select id="registrar" class="form-control selectpicker" data-style="btn btn-secondary" name="registrar_id">
                             @foreach ($user->registrars as $registrary)
-                              <option class="btn btn-secondary" value="{{$registrary->id}}">{{$registrary->email}} at {{$registrary->registrar}}</option>
+                              <option value="{{$registrary->id}}">{{$registrary->email}} at {{$registrary->registrar}}</option>
                             @endforeach
                           </select>
                       </div>
-                      <div class="form-group">
-                          <label for="expiration">Expiration</label>
-                          <input class="form-control " id="today" type="date" value="{{date("m/d/Y")}}"  name="expiration" >
-                          <script type="text/javascript">
-                            document.getElementById("today").valueAsDate = new Date();
-                          </script>
-                      </div>
-                      <div class="form-group">
-                        <label class="label-control">Datetime Picker</label>
-                        <input type="text" class="form-control datetimepicker"/>
+                      <div class="form-group bmd-form-group" style="margin-top:20px;">
+                        <label for="expiration">Expiration</label>
+                        <input type="text" class="form-control datetimepicker" name="expiration"/>
                         <script type="text/javascript">
                           $('.datetimepicker').datetimepicker({
                               icons: {
@@ -117,24 +110,11 @@
                           });
                         </script>
                       </div>
-                      <div class="form-group">
-                        <div class='input-group date' id='datetimepicker1'>
-                            <input type='text' class="form-control" />
-                            <span class="input-group-addon">
-                                <span class="glyphicon glyphicon-calendar"></span>
-                            </span>
-                        </div>
-                        <script type="text/javascript">
-                          $(function () {
-                              $('#datetimepicker1').datetimepicker();
-                          });
-                        </script>
-                      </div>
-                      <div class="form-group bmd-form-group">
+                      <div class="form-group bmd-form-group" style="margin-top:20px;">
                           <label class="bmd-label-floating" for="nameserver1">Nameserver 1</label>
                           <input class="form-control" type="text" name="nameserver1" value="{{old('nameserver1')}}">
                       </div>
-                      <div class="form-group bmd-form-group">
+                      <div class="form-group bmd-form-group" style="margin-top:20px;">
                           <label class="bmd-label-floating" for="nameserver2">Nameserver 2</label>
                           <input class="form-control" type="text" name="nameserver2" value="{{old('nameserver2')}}">
                       </div>
@@ -149,8 +129,6 @@
                           </div>
                       @endif
                       <input type="submit" class="btn btn-primary" value="Add Domain">
-
-
                   </form>
               </div>
           </div>

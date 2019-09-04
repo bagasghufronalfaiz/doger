@@ -1,4 +1,4 @@
-@extends('layouts.app-material')
+@extends('layouts.app-material-online')
 
 @section('content')
 
@@ -76,58 +76,74 @@
               <div class="card-header card-header-warning">
                   <h4 class="card-title">Edit Registrar</h4>
               </div>
-              <div class="card-body">                  
+              <div class="card-body">
                   <form action="/website/{{$website->id}}" method="post">
                     <div class="form-group bmd-form-group">
-                        <label class="bmd-label" for="domain">Domain</label>
-                        <select id="domain" class="form-control" data-style="btn btn-link" name="domain">
+                        <label for="domain">Domain</label>
+                        <select id="domain" class="form-control selectpicker" data-style="btn btn-secondary" name="domain">
                           @foreach ($user->domains as $domainy)
                             <option @if ($domainy->id == $website->domain_id) selected @endif  value="{{$domainy->id}}">{{$domainy->domain}}</option>
                           @endforeach
                         </select>
                     </div>
-                    <div class="form-group bmd-form-group">
+                    <div class="form-group bmd-form-group" style="margin-top:30px;">
                         <label class="bmd-label-floating" for="theme">Theme</label>
                         <input class="form-control" type="text" name="theme" value="{{(old('theme')) ? old('theme') : $website->theme}}">
                     </div>
-                    <div class="form-group bmd-form-group">
+                    <div class="form-group bmd-form-group" style="margin-top:20px;">
                         <label class="bmd-label-floating" for="keyword">Keyword</label>
                         <input class="form-control" type="text" name="keyword" value="{{(old('keyword')) ? old('keyword') : $website->keyword}}">
                     </div>
-                    <div class="form-group bmd-form-group">
-                      <label class="bmd-label" for="servercok">Server</label>
-                      <select id="servercok" class="form-control" data-style="btn btn-link" name="servercok">
+                    <div class="form-group bmd-form-group" style="margin-top:10px;">
+                      <label for="servercok">Server</label>
+                      <select id="servercok" class="form-control selectpicker" data-style="btn btn-secondary" name="servercok">
                         @foreach ($user->servers as $servery)
                           <option @if ($servery->id == $website->server_id) selected @endif value="{{$servery->id}}">{{$servery->servername}}</option>
                         @endforeach
                       </select>
                     </div>
-                    <div class="form-group bmd-form-group">
+                    <div class="form-group bmd-form-group" style="margin-top:30px;">
                         <label class="bmd-label-floating" for="server_folder">Server Folder</label>
                         <input class="form-control" type="text" name="server_folder" value="{{(old('server_folder')) ? old('server_folder') : $website->server_folder}}">
                     </div>
-                    <div class="form-group bmd-form-group">
-                      <label class="bmd-label" for="ad">Ad</label>
-                      <select id="ad" class="form-control" data-style="btn btn-link" name="ad">
+                    <div class="form-group bmd-form-group" style="margin-top:10px;">
+                      <label for="ad">Ad</label>
+                      <select id="ad" class="form-control selectpicker" data-style="btn btn-secondary" name="ad">
                           <option @if ($website->ad_id == null) selected @endif value="">Not Yet</option>
                         @foreach ($user->ads as $adsy)
                           <option @if ($adsy->id == $website->ad_id) selected @endif value="{{$adsy->id}}">{{$adsy->name}}</option>
                         @endforeach
                       </select>
                     </div>
-                    <div class="form-group bmd-form-group">
-                      <label class="bmd-label" for="date">Date of Birth</label>
-                      <input class="form-control" type="date" name="date" value="{{(old('date')) ? old('date') : $website->date}}">
+                    <div class="form-group bmd-form-group" style="margin-top:30px;">
+                      <label for="date">Date of Birth</label>
+                      <input class="form-control datetimepicker" type="text" name="date">
+                        <script type="text/javascript">
+                          $('.datetimepicker').datetimepicker({
+                              icons: {
+                                  time: "fa fa-clock-o",
+                                  date: "fa fa-calendar",
+                                  up: "fa fa-chevron-up",
+                                  down: "fa fa-chevron-down",
+                                  previous: 'fa fa-chevron-left',
+                                  next: 'fa fa-chevron-right',
+                                  today: 'fa fa-screenshot',
+                                  clear: 'fa fa-trash',
+                                  close: 'fa fa-remove',
+                              },
+                              format: 'L',
+                          });
+                        </script>
                     </div>
-                    <div class="form-group bmd-form-group">
-                      <label class="bmd-label-floating" for="webmaster">Webmaster</label>
-                      <select id="webmaster" class="form-control" data-style="btn btn-link" name="webmaster">
+                    <div class="form-group bmd-form-group" style="margin-top:10px;">
+                      <label for="webmaster">Webmaster</label>
+                      <select id="webmaster" class="form-control selectpicker" data-style="btn btn-secondary" name="webmaster">
                         <option @if ($website->webmaster_id == null) selected @endif value="">Not Yet</option>
                         @foreach ($user->webmasters as $webmastersy)
                         <option @if ($webmastersy->id == $website->webmaster_id) selected @endif value="{{$webmastersy->id}}">{{$webmastersy->name}}</option>
                         @endforeach
                       </select>
-                    </div>                       
+                    </div>
 
                     {{ csrf_field() }}
                     <input type="hidden" name="_method" value="PUT">
@@ -138,7 +154,7 @@
                         @endforeach
                         </div>
                     @endif
-                    <input type="submit" class="btn btn-warning" value="Edit Website">
+                    <input type="submit" class="btn btn-warning" value="Edit Website"  style="margin-top:20px;">
 
 
                   </form>

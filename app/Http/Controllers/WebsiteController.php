@@ -23,7 +23,7 @@ class WebsiteController extends Controller
             $user = User::findOrFail(Auth::user()->id);
             return view('welcome', compact('user'));
         } else {
-            
+
             return view('welcome-copy');
         }
     }
@@ -55,6 +55,10 @@ class WebsiteController extends Controller
             $index = (int) filter_var($cek_index, FILTER_SANITIZE_NUMBER_INT);
         }
 
+        $date = $request->date;
+        $time = strtotime($date);
+        $newdate = date('Y-m-d', $time);
+
         $website = Website::create([
             'domain_id' => $request->domain,
             'theme' => $request->theme,
@@ -63,7 +67,7 @@ class WebsiteController extends Controller
             'server_id' => $request->servercok,
             'server_folder' => $request->server_folder,
             'ad_id' => $request->ad,
-            'date' => $request->date,
+            'date' => $newdate,
             'webmaster_id' => $request->webmaster,
             'user_id' => Auth::user()->id,
         ]);
@@ -108,6 +112,10 @@ class WebsiteController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $date = $request->date;
+        $time = strtotime($date);
+        $newdate = date('Y-m-d', $time);
+
         $website = Website::findOrFail($id);
         if ($website->userisOwner()) {
           $website->update([
@@ -117,7 +125,7 @@ class WebsiteController extends Controller
             'server_id' => $request->servercok,
             'server_folder' => $request->server_folder,
             'ad_id' => $request->ad,
-            'date' => $request->date,
+            'date' => $newdate,
             'webmaster_id' => $request->webmaster,
           ]);
         }else {
@@ -155,15 +163,15 @@ class WebsiteController extends Controller
     }
 
 
-    
+
     private function get_index($domaing)
     {
         $client = new Client();
         $asd = 'https://www.google.com/search?q=site:$domain&tbm=isch&sout=1';
         $url = 'https://www.google.com/search?q=site:'.$domaing.'&tbm=isch&sout=1';
         $res = $client->request('GET', $url);
-        $hasil = $res->getBody(); 
-        
+        $hasil = $res->getBody();
+
         return self::get_string_between($hasil, '<div class="sd" id="resultStats">Sekitar ', ' hasil</div>');
     }
 }

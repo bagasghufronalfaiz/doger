@@ -78,11 +78,11 @@
               </div>
               <div class="card-body">
                   <form action="/webmaster" method="post">
-                      <div class="form-group bmd-form-group">
+                      <div class="form-group bmd-form-group" style="margin-top:20px;">
                           <label class="bmd-label-floating" for="name">Name</label>
                           <input class="form-control" type="text" name="name" value="{{old('name')}}" >
                       </div>
-                      <div class="form-group bmd-form-group">
+                      <div class="form-group bmd-form-group" style="margin-top:20px;">
                           <label class="bmd-label-floating" for="email">Email</label>
                           <input class="form-control" type="text" name="email" value="{{old('email')}}">
                       </div>
@@ -96,9 +96,7 @@
                           @endforeach
                           </div>
                       @endif
-                      <input type="submit" class="btn btn-primary" value="Add Webmaster">
-
-
+                      <input type="submit" class="btn btn-primary" value="Add Webmaster" style="margin-top:20px;">
                   </form>
               </div>
           </div>

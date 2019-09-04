@@ -78,19 +78,19 @@
               </div>
               <div class="card-body">
                   <form action="/registrar" method="post">
-                      <div class="form-group bmd-form-group">
+                      <div class="form-group bmd-form-group" style="margin-top:20px;">
                           <label class="bmd-label-floating" for="registrar">Registrar</label>
                           <input class="form-control" type="text" name="registrar" value="{{old('registrar')}}" >
                       </div>
-                      <div class="form-group bmd-form-group">
+                      <div class="form-group bmd-form-group" style="margin-top:20px;">
                           <label class="bmd-label-floating" for="username">Username</label>
                           <input class="form-control" type="text" name="username" value="{{old('username')}}">
                       </div>
-                      <div class="form-group bmd-form-group">
+                      <div class="form-group bmd-form-group" style="margin-top:20px;">
                           <label class="bmd-label-floating" for="email">Email</label>
                           <input class="form-control" type="text" name="email" value="{{old('email')}}">
                       </div>
-                      <div class="form-group bmd-form-group">
+                      <div class="form-group bmd-form-group" style="margin-top:20px;">
                           <label class="bmd-label-floating" for="password">Password</label>
                           <input class="form-control" type="text" name="password" value="{{old('password')}}">
                       </div>
@@ -104,7 +104,7 @@
                           @endforeach
                           </div>
                       @endif
-                      <input type="submit" class="btn btn-primary" value="Add Registrar">
+                      <input type="submit" class="btn btn-primary" value="Add Registrar" style="margin-top:20px;">
 
 
                   </form>
