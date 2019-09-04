@@ -146,4 +146,5 @@
       </div>
     </div>
   </body>
+  @yield('javascript')
 </html>

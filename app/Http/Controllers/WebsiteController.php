@@ -50,10 +50,7 @@ class WebsiteController extends Controller
         $selectdomain = Domain::where('id', $request->domain)->first();
         $domeng = $selectdomain->domain;
 
-        $cek_index = self::get_index($domeng);
-        if ($cek_index != null ){
-            $index = (int) filter_var($cek_index, FILTER_SANITIZE_NUMBER_INT);
-        }
+        $index = self::get_index($domeng);
 
         $date = $request->date;
         $time = strtotime($date);
@@ -162,16 +159,29 @@ class WebsiteController extends Controller
         return substr($string, $ini, $len);
     }
 
-
-
-    private function get_index($domaing)
+    public function get_index($domaing)
     {
         $client = new Client();
-        $asd = 'https://www.google.com/search?q=site:$domain&tbm=isch&sout=1';
         $url = 'https://www.google.com/search?q=site:'.$domaing.'&tbm=isch&sout=1';
         $res = $client->request('GET', $url);
         $hasil = $res->getBody();
 
-        return self::get_string_between($hasil, '<div class="sd" id="resultStats">Sekitar ', ' hasil</div>');
+        $strindex = self::get_string_between($hasil, '<div class="sd" id="resultStats">Sekitar ', ' hasil</div>');
+        $index = (int) filter_var($strindex, FILTER_SANITIZE_NUMBER_INT);
+        return $index;
     }
+
+    // public function save_and_check($domaing)
+    // {
+    //     $check = self::get_index($domaing);
+    //     if ($check != false) {
+    //         /// Save database
+    //         if (saved) {
+    //             return $check;
+    //         } else {
+
+    //         }
+    //         // return $check
+    //     }
+    // }
 }

@@ -92,7 +92,7 @@
                       <td>{{$registrary->registrar}}</td>
                       <td>{{$registrary->username}}</td>
                       <td>{{$registrary->email}}</td>
-                      <td><p id="toogle_password" class="password_field pointer">{{$registrary->password}}</p></td>
+                      <td>{{$registrary->password}}</td>
                       <td class="td-actions text-right d-flex">
                           <a href="/registrar/{{$registrary->id}}/editregistrar/" class="btn btn-info  btn-sm"><i class="material-icons">edit</i></a>
                           <form action="/registrar/{{$registrary->id}}" method="post">

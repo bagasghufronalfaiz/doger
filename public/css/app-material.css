@@ -1,7 +1,3 @@
-.password_field{
- -webkit-text-security:disc;
-
-}
 .pointer{
- cursor: pointer;
+    cursor: pointer;
 }

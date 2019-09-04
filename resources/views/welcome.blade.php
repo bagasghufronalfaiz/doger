@@ -148,7 +148,8 @@
 
                           <tr>
                               <td>{{$websitesy->domain->domain}}</td>
-                              <td>{{$websitesy->index}}</td>
+                              <td><p class="cekindexweb pointer" data-domain="{{$websitesy->domain->domain}}" style="margin:0px;">{{$websitesy->index}}</p></td>
+                                                        
                               <td>{{$websitesy->theme}}</td>
                               <td>{{$websitesy->keyword}}</td>
                               <td>{{$websitesy->server->servername}}</td>
@@ -622,5 +623,17 @@
       </footer>
     {{-- </div>
 </div> --}}
-
+@endsection
+@section('javascript')
+<script>
+  $(function() {
+    $('.cekindexweb').click(function () {
+      var domain = $(this);
+      domain.html('Please wait..');
+      $.get('{{url('/cekindex')}}/' + domain.attr('data-domain'), function(e){
+        domain.html(e);        
+      })
+    });
+  })
+</script>  
 @endsection

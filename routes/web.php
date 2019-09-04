@@ -48,6 +48,8 @@ Route::group(['middleware'=>'auth'], function(){
     Route::get('/webmaster/{id}/editwebmaster', 'WebmasterController@edit')->name('editwebmaster');
     Route::put('/webmaster/{id}', 'WebmasterController@update');
     Route::delete('/webmaster/{id}', 'WebmasterController@destroy')->name('deletewebmaster');
+
+    Route::get('cekindex/{domaing}', 'WebsiteController@get_index')->name('cekindex');
 });
 
 // Route::get('/', function () {
