@@ -630,7 +630,7 @@
     $('.cekindexweb').click(function () {
       var domain = $(this);
       domain.html('Please wait..');
-      $.get('{{url('/cekindex')}}/' + domain.attr('data-domain'), function(e){
+      $.get("{{url('cekindex')}}/" + domain.attr('data-domain'), function(e){
         domain.html(e);        
       })
     });

@@ -159,7 +159,7 @@ class WebsiteController extends Controller
         return substr($string, $ini, $len);
     }
 
-    public function get_index($domaing)
+    private function get_index($domaing)
     {
         $client = new Client();
         $url = 'https://www.google.com/search?q=site:'.$domaing.'&tbm=isch&sout=1';
@@ -168,6 +168,25 @@ class WebsiteController extends Controller
 
         $strindex = self::get_string_between($hasil, '<div class="sd" id="resultStats">Sekitar ', ' hasil</div>');
         $index = (int) filter_var($strindex, FILTER_SANITIZE_NUMBER_INT);
+        return $index;
+    }
+
+    public function refresh_index($domaing)
+    {
+        $client = new Client();
+        $url = 'https://www.google.com/search?q=site:'.$domaing.'&tbm=isch&sout=1';
+        $res = $client->request('GET', $url);
+        $hasil = $res->getBody();
+
+        $strindex = self::get_string_between($hasil, '<div class="sd" id="resultStats">Sekitar ', ' hasil</div>');
+        $index = (int) filter_var($strindex, FILTER_SANITIZE_NUMBER_INT);
+
+        $domainname = Domain::where('domain', $domaing)->first();
+        $domainid = $domainname->id;
+        $website = Website::where('domain_id', $domainid)->first();
+            $website->update([
+                'index' => $index,
+            ]);
         return $index;
     }
 
