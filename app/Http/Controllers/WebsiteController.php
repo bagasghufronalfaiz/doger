@@ -51,7 +51,9 @@ class WebsiteController extends Controller
         $domeng = $selectdomain->domain;
 
         $index = self::get_index($domeng);
+        $index_web = self::get_index_web($domeng);
 
+        return $index.'spasi'.$index_web;
         $date = $request->date;
         $time = strtotime($date);
         $newdate = date('Y-m-d', $time);
@@ -163,13 +165,30 @@ class WebsiteController extends Controller
     {
         $client = new Client();
         $url = 'https://www.google.com/search?q=site:'.$domaing.'&tbm=isch&sout=1';
-        $res = $client->request('GET', $url);
+        $res = $client->request('GET', $url, ['headers' => ['User-Agent' => 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36']]);
         $hasil = $res->getBody();
 
         $strindex = self::get_string_between($hasil, '<div class="sd" id="resultStats">Sekitar ', ' hasil</div>');
         $index = (int) filter_var($strindex, FILTER_SANITIZE_NUMBER_INT);
         return $index;
     }
+
+    private function get_index_web($domaing)
+    {
+        $client = new Client();
+        
+        $url = 'https://www.google.com/search?q=site:'.$domaing.'&sout=1';
+        $url2 = 'https://www.google.com/search?q=site%3A'.$domaing.'&oq=site%3A&aqs=chrome.2.69i57j69i58j69i59j69i65l3.5379j0j9&sourceid=chrome&ie=UTF-8';
+        //$client->Request('GET', 'https://www.google.com/search?q=site:'.$domain->domain_name.'&sout=1', ['headers' => ['User-Agent' => 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36']]);
+        $res = $client->request('GET', $url, ['headers' => ['User-Agent' => 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36']]);
+        $hasil = $res->getBody();
+
+        $strindex = self::get_string_between($hasil, '<div id="resultStats">Sekitar ', ' hasil<nobr>');
+        $index = (int) filter_var($strindex, FILTER_SANITIZE_NUMBER_INT);
+        return $index;
+    }
+
+    
 
     public function refresh_index($domaing)
     {

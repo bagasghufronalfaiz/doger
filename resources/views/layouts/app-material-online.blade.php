@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="https://demos.creative-tim.com/test/material-dashboard-pro/assets/css/material-dashboard.min.css?v=2.0.3">
 
     <!-- Self Edited CSS -->
-    <link href="{{ asset('css/app-material.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('/css/app-material.css') }}">
 
   <!--   Core JS Files   -->
   <script src="https://demos.creative-tim.com/material-dashboard/assets/js/core/jquery.min.js" type="text/javascript"></script>
@@ -85,6 +85,7 @@
 
   <!-- Self Edited JS -->
   <script src="{{ asset('js/app-material.js') }}" defer></script>
+  
 
   </head>
   <body>

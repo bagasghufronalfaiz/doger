@@ -114,6 +114,18 @@
                             <option value="{{$adsy->id}}">{{$adsy->name}}</option>
                           @endforeach
                         </select>
+
+
+                        {{-- @if (count($user->ads) == 0)
+                        <input class="form-control" type="text" name="ad" value="" disabled>
+                        @else
+                        <select id="ad" class="form-control selectpicker" data-style="btn btn-secondary" name="ad" style="color:#333;">
+                          @foreach ($user->ads as $adsy)
+                            <option style="color:#333;" value="{{$adsy->id}}">{{$adsy->name}}</option>
+                          @endforeach 
+                        </select>  
+                        @endif
+                       --}}
                       </div>
                       <div class="form-group bmd-form-group" style="margin-top:20px;">
                         <label for="date">Date of Birth</label>
