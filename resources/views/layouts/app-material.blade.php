@@ -142,9 +142,9 @@
         </div>
       </div>
       <div class="main-panel">
-    @yield('content')
+        @yield('content')
       </div>
     </div>
+    @yield('javascript')
   </body>
-  @yield('javascript')
 </html>

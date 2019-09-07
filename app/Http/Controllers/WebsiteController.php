@@ -11,11 +11,7 @@ use GuzzleHttp\Client;
 
 class WebsiteController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    
     public function index()
     {
         if(Auth::check())
@@ -28,32 +24,21 @@ class WebsiteController extends Controller
         }
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         $user = User::findOrFail(Auth::user()->id);
         return view('website.create', compact('user'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         $selectdomain = Domain::where('id', $request->domain)->first();
         $domeng = $selectdomain->domain;
 
-        $index = self::get_index($domeng);
+        $index_img = self::get_index_img($domeng);
         $index_web = self::get_index_web($domeng);
 
-        return $index.'spasi'.$index_web;
+        return 'Index Image : '.$index_img.'. Index Web : '.$index_web.'.';
         $date = $request->date;
         $time = strtotime($date);
         $newdate = date('Y-m-d', $time);
@@ -61,7 +46,7 @@ class WebsiteController extends Controller
         $website = Website::create([
             'domain_id' => $request->domain,
             'theme' => $request->theme,
-            'index' => $index,
+            'index' => $index_img,
             'keyword' => $request->keyword,
             'server_id' => $request->servercok,
             'server_folder' => $request->server_folder,
@@ -74,23 +59,11 @@ class WebsiteController extends Controller
         return redirect('/');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
-        //
+
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
         $website = Website::findOrFail($id);
@@ -102,13 +75,6 @@ class WebsiteController extends Controller
         }
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
         $date = $request->date;
@@ -134,12 +100,6 @@ class WebsiteController extends Controller
         return redirect('/');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
         $website = Website::findOrFail($id);
@@ -161,9 +121,10 @@ class WebsiteController extends Controller
         return substr($string, $ini, $len);
     }
 
-    private function get_index($domaing)
+    private function get_index_img($domaing)
     {
         $client = new Client();
+
         $url = 'https://www.google.com/search?q=site:'.$domaing.'&tbm=isch&sout=1';
         $res = $client->request('GET', $url, ['headers' => ['User-Agent' => 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36']]);
         $hasil = $res->getBody();
@@ -177,9 +138,7 @@ class WebsiteController extends Controller
     {
         $client = new Client();
         
-        $url = 'https://www.google.com/search?q=site:'.$domaing.'&sout=1';
-        $url2 = 'https://www.google.com/search?q=site%3A'.$domaing.'&oq=site%3A&aqs=chrome.2.69i57j69i58j69i59j69i65l3.5379j0j9&sourceid=chrome&ie=UTF-8';
-        //$client->Request('GET', 'https://www.google.com/search?q=site:'.$domain->domain_name.'&sout=1', ['headers' => ['User-Agent' => 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36']]);
+        $url = 'https://www.google.com/search?q=site:'.$domaing.'&sout=1';        
         $res = $client->request('GET', $url, ['headers' => ['User-Agent' => 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36']]);
         $hasil = $res->getBody();
 
@@ -188,9 +147,26 @@ class WebsiteController extends Controller
         return $index;
     }
 
-    
+    // public function refresh_index($domaing)
+    // {
+    //     $client = new Client();
+    //     $url = 'https://www.google.com/search?q=site:'.$domaing.'&tbm=isch&sout=1';
+    //     $res = $client->request('GET', $url);
+    //     $hasil = $res->getBody();
 
-    public function refresh_index($domaing)
+    //     $strindex = self::get_string_between($hasil, '<div class="sd" id="resultStats">Sekitar ', ' hasil</div>');
+    //     $index = (int) filter_var($strindex, FILTER_SANITIZE_NUMBER_INT);
+
+    //     $domainname = Domain::where('domain', $domaing)->first();
+    //     $domainid = $domainname->id;
+    //     $website = Website::where('domain_id', $domainid)->first();
+    //         $website->update([
+    //             'index' => $index,
+    //         ]);
+    //     return $index;
+    // }
+
+    public function index_img($domaing)
     {
         $client = new Client();
         $url = 'https://www.google.com/search?q=site:'.$domaing.'&tbm=isch&sout=1';

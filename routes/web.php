@@ -49,7 +49,8 @@ Route::group(['middleware'=>'auth'], function(){
     Route::put('/webmaster/{id}', 'WebmasterController@update');
     Route::delete('/webmaster/{id}', 'WebmasterController@destroy')->name('deletewebmaster');
 
-    Route::get('/cekindex/{domaing}', 'WebsiteController@refresh_index')->name('cekindex');
+    //Route::get('/cekindex/{domaing}', 'WebsiteController@refresh_index')->name('cekindex');
+    Route::get('/index-img/{domaing}', 'WebsiteController@index_img')->name('index-img');
     Route::post('');
 });
 

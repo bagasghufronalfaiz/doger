@@ -92,7 +92,8 @@
                   @foreach($user->domains as $domainy)
                   <tr>
                       <td>{{$domainy->domain}}</td>
-                      <td>@if($domainy->index_status == 1) Yes @elseif($domainy->index_status == 0) No @Else Mboh @endif</td>
+                      
+                      <td>@if($domainy->index_status == 1) <p class="cekindexweb pointer" data-domain="{{$domainy->domain}}" style="margin:0px;">Yes</p> @elseif($domainy->index_status == 0) <p class="cekindexweb pointer" data-domain="{{$domainy->domain}}" style="margin:0px;">No</p> @Else Mboh @endif</td>
                       <td>{{$domainy->registrar->email}} at {{$domainy->registrar->registrar}}</td>
                       <td>{{$domainy->expiration}}</td>
                       <td>{{$domainy->nameserver1}}</td>
@@ -561,5 +562,17 @@
     </div>
   </div>
 </footer>
-
+@endsection
+@section('javascript')
+<script>
+  $(function() {
+    $('.cekindexweb').click(function () {
+      var domain = $(this);
+      domain.html('<i class="fa fa-spinner fa-spin" style="font-size:.875rem"></i>');
+      $.get("{{url('cekindex')}}/" + domain.attr('data-domain'), function(e){
+        domain.html(e);
+      })
+    });
+  })
+</script>
 @endsection

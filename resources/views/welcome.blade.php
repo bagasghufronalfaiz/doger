@@ -148,8 +148,7 @@
 
                           <tr>
                               <td>{{$websitesy->domain->domain}}</td>
-                              <td><p class="cekindexweb pointer" data-domain="{{$websitesy->domain->domain}}" style="margin:0px;">{{$websitesy->index}}</p></td>
-
+                              <td><p class="index-image pointer" data-domain="{{$websitesy->domain->domain}}" style="margin:0px;">{{$websitesy->index}}</p></td>
                               <td>{{$websitesy->theme}}</td>
                               <td>{{$websitesy->keyword}}</td>
                               <td>{{$websitesy->server->servername}}</td>
@@ -158,8 +157,10 @@
                               <td>@if($websitesy->webmaster_id!=null){{$websitesy->webmaster->name}} @else Not Yet @endif</td>
                               <td>{{$websitesy->date}}</td>
                               <td class="td-actions text-right d-flex">
-                              <a href="/website/{{$websitesy->id}}/editwebsite/" class="btn btn-info  btn-sm"><i class="material-icons">edit</i></a>
-                                  <form action="/website/{{$websitesy->id}}" method="post">
+                                  <a href="https://www.google.com/search?q=site:{{$websitesy->domain->domain}}&tbm=isch&sout=1" class="btn btn-success btn-sm" style="margin:0px 2px;" target="blank"><i class='fab fa-google' style="padding: 0px 3.55px;"></i></a>
+                                  <a href="http://{{$websitesy->domain->domain}}/wp-admin/" class="btn btn-primary btn-sm" style="margin:0px 2px;" target="blank"><i class='fab fa-wordpress' style="padding: 0px 3.3px;"></i></a>
+                                  <a href="/website/{{$websitesy->id}}/editwebsite/" style="margin:0px 2px;" class="btn btn-info  btn-sm"><i class="material-icons">edit</i></a>
+                                  <form action="/website/{{$websitesy->id}}" method="post" style="margin:0px 2px;">
                                       {{ csrf_field() }}
                                       <input type="hidden" name="_method" value="DELETE">
                                       <button type="submit" class="btn btn-danger  btn-sm"><i class="material-icons">close</i></button>
@@ -627,10 +628,10 @@
 @section('javascript')
 <script>
   $(function() {
-    $('.cekindexweb').click(function () {
+    $('.index-image').click(function () {
       var domain = $(this);
       domain.html('<i class="fa fa-spinner fa-spin" style="font-size:.875rem"></i>');
-      $.get("{{url('cekindex')}}/" + domain.attr('data-domain'), function(e){
+      $.get("{{url('index-img')}}/" + domain.attr('data-domain'), function(e){
         domain.html(e);
       })
     });
