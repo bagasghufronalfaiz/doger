@@ -41,7 +41,7 @@ Route::group(['middleware'=>'auth'], function(){
     Route::get('/website/{id}/editwebsite', 'WebsiteController@edit')->name('editwebsite');
     Route::put('/website/{id}', 'WebsiteController@update');
     Route::delete('/website/{id}', 'WebsiteController@destroy')->name('deletewebsite');
-    
+
     Route::get('/webmaster', 'WebmasterController@index')->name('webmaster');
     Route::get('/webmaster/addwebmaster','WebmasterController@create')->name('addwebmaster');
     Route::post('/webmaster', 'WebmasterController@store');
@@ -49,9 +49,10 @@ Route::group(['middleware'=>'auth'], function(){
     Route::put('/webmaster/{id}', 'WebmasterController@update');
     Route::delete('/webmaster/{id}', 'WebmasterController@destroy')->name('deletewebmaster');
 
-    //Route::get('/cekindex/{domaing}', 'WebsiteController@refresh_index')->name('cekindex');
-    Route::get('/index-img/{domaing}', 'WebsiteController@index_img')->name('index-img');
-    Route::post('');
+    //Index
+    Route::get('/index-web/{domaing}', 'WebsiteController@refreshIndexWeb')->name('index-web');
+    Route::get('/index-image/{domaing}', 'WebsiteController@refreshIndexImage')->name('index-image');
+    Route::get('/status-index/{domaing}', 'DomainController@refreshStatusIndex')->name('status-index');
 });
 
 // Route::get('/', function () {

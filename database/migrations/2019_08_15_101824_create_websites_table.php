@@ -17,7 +17,8 @@ class CreateWebsitesTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('domain_id')->unique();
             $table->string('theme');
-            $table->integer('index')->nullable();
+            $table->integer('index_web');
+            $table->integer('index_image');
             $table->string('keyword');
             $table->unsignedBigInteger('server_id');
             $table->string('server_folder')->unique();

@@ -53,12 +53,7 @@ class DomainController extends Controller
         $newexpiration = date('Y-m-d', $time);
 
         $domeng = $request->domain;
-        $cek_index = self::get_index($domeng);
-        if ($cek_index==''){
-            $index_status = 0;
-        } else {
-            $index_status = 1;
-        }
+        $statusIndex = self::getStatusIndex($domeng);
 
         $domain = Domain::create([
             'domain' => $request->domain,
@@ -67,7 +62,7 @@ class DomainController extends Controller
             'expiration' => $newexpiration,
             'nameserver1' => $request->nameserver1,
             'nameserver2' => $request->nameserver2,
-            'index_status' => $index_status,
+            'index_status' => $statusIndex,
             'registrar_id' => $request->registrar_id,
             'user_id' => Auth::user()->id,
         ]);
@@ -152,7 +147,7 @@ class DomainController extends Controller
         return redirect('domain');
     }
 
-    private function get_string_between($string, $start, $end){
+    private function getStringBetween($string, $start, $end){
         $string = ' ' . $string;
         $ini = strpos($string, $start);
         if ($ini == 0) return '';
@@ -163,14 +158,30 @@ class DomainController extends Controller
 
 
 
-    private function get_index($domaing)
+    private function getStatusIndex($domaing)
     {
         $client = new Client();
-        $asd = 'https://www.google.com/search?q=site:$domain&tbm=isch&sout=1';
         $url = 'https://www.google.com/search?q=site:'.$domaing.'&tbm=isch&sout=1';
         $res = $client->request('GET', $url);
         $hasil = $res->getBody();
 
-        return self::get_string_between($hasil, '<div class="sd" id="resultStats">Sekitar ', ' hasil</div>');
+        $index = self::getStringBetween($hasil, '<div class="sd" id="resultStats">Sekitar ', ' hasil</div>');
+        if ($index == '') {
+            $indexStatus = 'No';
+        } else {
+            $indexStatus = 'Yes';
+        }
+        return $indexStatus;
+    }
+
+    public function refreshStatusIndex($domaing){
+        $statusIndex = self::getStatusIndex($domaing);
+
+        $domain = Domain::where('domain', $domaing)->first();
+        $domain->update([
+            'index_status' => $statusIndex,
+        ]);
+
+        return $statusIndex;
     }
 }

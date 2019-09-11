@@ -11,7 +11,7 @@ use GuzzleHttp\Client;
 
 class WebsiteController extends Controller
 {
-    
+
     public function index()
     {
         if(Auth::check())
@@ -19,7 +19,6 @@ class WebsiteController extends Controller
             $user = User::findOrFail(Auth::user()->id);
             return view('welcome', compact('user'));
         } else {
-
             return view('welcome-copy');
         }
     }
@@ -35,10 +34,10 @@ class WebsiteController extends Controller
         $selectdomain = Domain::where('id', $request->domain)->first();
         $domeng = $selectdomain->domain;
 
-        $index_img = self::get_index_img($domeng);
-        $index_web = self::get_index_web($domeng);
+        $index_image = self::getIndexImage($domeng);
+        $index_web = self::getIndexWeb($domeng);
 
-        return 'Index Image : '.$index_img.'. Index Web : '.$index_web.'.';
+        // return 'Index Image : '.$index_image.'. Index Web : '.$index_web.'.';
         $date = $request->date;
         $time = strtotime($date);
         $newdate = date('Y-m-d', $time);
@@ -46,7 +45,8 @@ class WebsiteController extends Controller
         $website = Website::create([
             'domain_id' => $request->domain,
             'theme' => $request->theme,
-            'index' => $index_img,
+            'index_web' => $index_web,
+            'index_image' => $index_image,
             'keyword' => $request->keyword,
             'server_id' => $request->servercok,
             'server_folder' => $request->server_folder,
@@ -112,7 +112,7 @@ class WebsiteController extends Controller
         return redirect('/');
     }
 
-    private function get_string_between($string, $start, $end){
+    private function getStringBetween($string, $start, $end){
         $string = ' ' . $string;
         $ini = strpos($string, $start);
         if ($ini == 0) return '';
@@ -121,7 +121,7 @@ class WebsiteController extends Controller
         return substr($string, $ini, $len);
     }
 
-    private function get_index_img($domaing)
+    private function getIndexImage($domaing)
     {
         $client = new Client();
 
@@ -129,20 +129,20 @@ class WebsiteController extends Controller
         $res = $client->request('GET', $url, ['headers' => ['User-Agent' => 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36']]);
         $hasil = $res->getBody();
 
-        $strindex = self::get_string_between($hasil, '<div class="sd" id="resultStats">Sekitar ', ' hasil</div>');
+        $strindex = self::getStringBetween($hasil, '<div class="sd" id="resultStats">Sekitar ', ' hasil</div>');
         $index = (int) filter_var($strindex, FILTER_SANITIZE_NUMBER_INT);
         return $index;
     }
 
-    private function get_index_web($domaing)
+    private function getIndexWeb($domaing)
     {
         $client = new Client();
-        
-        $url = 'https://www.google.com/search?q=site:'.$domaing.'&sout=1';        
+
+        $url = 'https://www.google.com/search?q=site:'.$domaing.'&sout=1';
         $res = $client->request('GET', $url, ['headers' => ['User-Agent' => 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36']]);
         $hasil = $res->getBody();
 
-        $strindex = self::get_string_between($hasil, '<div id="resultStats">Sekitar ', ' hasil<nobr>');
+        $strindex = self::getStringBetween($hasil, '<div id="resultStats">Sekitar ', ' hasil<nobr>');
         $index = (int) filter_var($strindex, FILTER_SANITIZE_NUMBER_INT);
         return $index;
     }
@@ -154,7 +154,7 @@ class WebsiteController extends Controller
     //     $res = $client->request('GET', $url);
     //     $hasil = $res->getBody();
 
-    //     $strindex = self::get_string_between($hasil, '<div class="sd" id="resultStats">Sekitar ', ' hasil</div>');
+    //     $strindex = self::getStringBetween($hasil, '<div class="sd" id="resultStats">Sekitar ', ' hasil</div>');
     //     $index = (int) filter_var($strindex, FILTER_SANITIZE_NUMBER_INT);
 
     //     $domainname = Domain::where('domain', $domaing)->first();
@@ -166,36 +166,29 @@ class WebsiteController extends Controller
     //     return $index;
     // }
 
-    public function index_img($domaing)
+    public function refreshIndexImage($domaing)
     {
-        $client = new Client();
-        $url = 'https://www.google.com/search?q=site:'.$domaing.'&tbm=isch&sout=1';
-        $res = $client->request('GET', $url);
-        $hasil = $res->getBody();
-
-        $strindex = self::get_string_between($hasil, '<div class="sd" id="resultStats">Sekitar ', ' hasil</div>');
-        $index = (int) filter_var($strindex, FILTER_SANITIZE_NUMBER_INT);
+        $index = self::getIndexImage($domaing);
 
         $domainname = Domain::where('domain', $domaing)->first();
         $domainid = $domainname->id;
         $website = Website::where('domain_id', $domainid)->first();
             $website->update([
-                'index' => $index,
+                'index_image' => $index,
             ]);
         return $index;
     }
 
-    // public function save_and_check($domaing)
-    // {
-    //     $check = self::get_index($domaing);
-    //     if ($check != false) {
-    //         /// Save database
-    //         if (saved) {
-    //             return $check;
-    //         } else {
+    public function refreshIndexWeb($domaing)
+    {
+        $index = self::getIndexWeb($domaing);
 
-    //         }
-    //         // return $check
-    //     }
-    // }
+        $domainname = Domain::where('domain', $domaing)->first();
+        $domainid = $domainname->id;
+        $website = Website::where('domain_id', $domainid)->first();
+        $website->update([
+            'index_web' => $index,
+        ]);
+        return $index;
+    }
 }

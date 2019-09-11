@@ -133,7 +133,8 @@
                     <table class="table table-hover">
                       <thead class="text-success">
                           <th scope="col">Domain</th>
-                          <th scope="col">Index</th>
+                          <th scope="col">Index Web</th>
+                          <th scope="col">Index Image</th>
                           <th scope="col">Theme</th>
                           <th scope="col">Keyword</th>
                           <th scope="col">Server</th>
@@ -148,7 +149,8 @@
 
                           <tr>
                               <td>{{$websitesy->domain->domain}}</td>
-                              <td><p class="index-image pointer" data-domain="{{$websitesy->domain->domain}}" style="margin:0px;">{{$websitesy->index}}</p></td>
+                              <td><p class="index-web pointer" data-domain="{{$websitesy->domain->domain}}" style="margin:0px;">{{$websitesy->index_web}}</p></td>
+                              <td><p class="index-image pointer" data-domain="{{$websitesy->domain->domain}}" style="margin:0px;">{{$websitesy->index_image}}</p></td>
                               <td>{{$websitesy->theme}}</td>
                               <td>{{$websitesy->keyword}}</td>
                               <td>{{$websitesy->server->servername}}</td>
@@ -157,8 +159,8 @@
                               <td>@if($websitesy->webmaster_id!=null){{$websitesy->webmaster->name}} @else Not Yet @endif</td>
                               <td>{{$websitesy->date}}</td>
                               <td class="td-actions text-right d-flex">
-                                  <a href="https://www.google.com/search?q=site:{{$websitesy->domain->domain}}&tbm=isch&sout=1" class="btn btn-success btn-sm" style="margin:0px 2px;" target="blank"><i class='fab fa-google' style="padding: 0px 3.55px;"></i></a>
-                                  <a href="http://{{$websitesy->domain->domain}}/wp-admin/" class="btn btn-primary btn-sm" style="margin:0px 2px;" target="blank"><i class='fab fa-wordpress' style="padding: 0px 3.3px;"></i></a>
+                                  <a href="https://www.google.com/search?q=site:{{$websitesy->domain->domain}}&tbm=isch&sout=1" class="btn btn-success btn-sm" style="margin:0px 2px;" target="_blank"><i class='fab fa-google' style="padding: 0px 3.55px;"></i></a>
+                                  <a href="http://{{$websitesy->domain->domain}}/wp-admin/" class="btn btn-primary btn-sm" style="margin:0px 2px;" target="_blank"><i class='fab fa-wordpress' style="padding: 0px 3.3px;"></i></a>
                                   <a href="/website/{{$websitesy->id}}/editwebsite/" style="margin:0px 2px;" class="btn btn-info  btn-sm"><i class="material-icons">edit</i></a>
                                   <form action="/website/{{$websitesy->id}}" method="post" style="margin:0px 2px;">
                                       {{ csrf_field() }}
@@ -628,10 +630,17 @@
 @section('javascript')
 <script>
   $(function() {
+    $('.index-web').click(function () {
+      var domain = $(this);
+      domain.html('<i class="fa fa-spinner fa-spin" style="font-size:.875rem"></i>');
+      $.get("{{url('index-web')}}/" + domain.attr('data-domain'), function(e){
+        domain.html(e);
+      })
+    });
     $('.index-image').click(function () {
       var domain = $(this);
       domain.html('<i class="fa fa-spinner fa-spin" style="font-size:.875rem"></i>');
-      $.get("{{url('index-img')}}/" + domain.attr('data-domain'), function(e){
+      $.get("{{url('index-image')}}/" + domain.attr('data-domain'), function(e){
         domain.html(e);
       })
     });
