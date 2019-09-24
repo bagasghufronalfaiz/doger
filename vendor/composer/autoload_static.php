@@ -399,6 +399,7 @@ class ComposerStaticInite0c7d8ea54076f40e2e85643f4c9caef
     );
 
     public static $classMap = array (
+        'App\\Console\\Commands\\DummyCron' => __DIR__ . '/../..' . '/app/Console/Commands/DummyCron.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
         'App\\Http\\Controllers\\AdController' => __DIR__ . '/../..' . '/app/Http/Controllers/AdController.php',
@@ -412,6 +413,7 @@ class ComposerStaticInite0c7d8ea54076f40e2e85643f4c9caef
         'App\\Http\\Controllers\\HomeController' => __DIR__ . '/../..' . '/app/Http/Controllers/HomeController.php',
         'App\\Http\\Controllers\\RegistrarController' => __DIR__ . '/../..' . '/app/Http/Controllers/RegistrarController.php',
         'App\\Http\\Controllers\\ServerController' => __DIR__ . '/../..' . '/app/Http/Controllers/ServerController.php',
+        'App\\Http\\Controllers\\WebmasterController' => __DIR__ . '/../..' . '/app/Http/Controllers/WebmasterController.php',
         'App\\Http\\Controllers\\WebsiteController' => __DIR__ . '/../..' . '/app/Http/Controllers/WebsiteController.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
         'App\\Http\\Middleware\\Authenticate' => __DIR__ . '/../..' . '/app/Http/Middleware/Authenticate.php',
@@ -423,6 +425,7 @@ class ComposerStaticInite0c7d8ea54076f40e2e85643f4c9caef
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
         'App\\Models\\Ad' => __DIR__ . '/../..' . '/app/Models/Ad.php',
         'App\\Models\\Domain' => __DIR__ . '/../..' . '/app/Models/Domain.php',
+        'App\\Models\\DummyCron' => __DIR__ . '/../..' . '/app/Models/DummyCron.php',
         'App\\Models\\Registrar' => __DIR__ . '/../..' . '/app/Models/Registrar.php',
         'App\\Models\\Server' => __DIR__ . '/../..' . '/app/Models/Server.php',
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',

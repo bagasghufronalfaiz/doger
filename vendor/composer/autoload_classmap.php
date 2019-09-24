@@ -6,6 +6,7 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'App\\Console\\Commands\\DummyCron' => $baseDir . '/app/Console/Commands/DummyCron.php',
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
     'App\\Exceptions\\Handler' => $baseDir . '/app/Exceptions/Handler.php',
     'App\\Http\\Controllers\\AdController' => $baseDir . '/app/Http/Controllers/AdController.php',
@@ -19,6 +20,7 @@ return array(
     'App\\Http\\Controllers\\HomeController' => $baseDir . '/app/Http/Controllers/HomeController.php',
     'App\\Http\\Controllers\\RegistrarController' => $baseDir . '/app/Http/Controllers/RegistrarController.php',
     'App\\Http\\Controllers\\ServerController' => $baseDir . '/app/Http/Controllers/ServerController.php',
+    'App\\Http\\Controllers\\WebmasterController' => $baseDir . '/app/Http/Controllers/WebmasterController.php',
     'App\\Http\\Controllers\\WebsiteController' => $baseDir . '/app/Http/Controllers/WebsiteController.php',
     'App\\Http\\Kernel' => $baseDir . '/app/Http/Kernel.php',
     'App\\Http\\Middleware\\Authenticate' => $baseDir . '/app/Http/Middleware/Authenticate.php',
@@ -30,6 +32,7 @@ return array(
     'App\\Http\\Middleware\\VerifyCsrfToken' => $baseDir . '/app/Http/Middleware/VerifyCsrfToken.php',
     'App\\Models\\Ad' => $baseDir . '/app/Models/Ad.php',
     'App\\Models\\Domain' => $baseDir . '/app/Models/Domain.php',
+    'App\\Models\\DummyCron' => $baseDir . '/app/Models/DummyCron.php',
     'App\\Models\\Registrar' => $baseDir . '/app/Models/Registrar.php',
     'App\\Models\\Server' => $baseDir . '/app/Models/Server.php',
     'App\\Models\\User' => $baseDir . '/app/Models/User.php',
