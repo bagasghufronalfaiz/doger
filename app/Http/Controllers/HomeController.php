@@ -26,24 +26,21 @@ class HomeController extends Controller
      */
     public function index()
     {
-        // $idss = 'brand-google.com';
-        // $dua = 'worldivided.com';
-        // $tiga = 'google.com';
-        // $cek_index = self::get_index($idss);
-        // $cek = (int) filter_var($cek_index, FILTER_SANITIZE_NUMBER_INT);
-        // //settype($cek_index, "integer");
-        // if ($cek_index==''){
-        //     $index_status = 0;
-        // } else {
-        //     $index_status = 1;
-        // }
+        //cron job
+        // $dummy = Jajal::create([
+        //     'index' => 'home'
+        // ]);
+        // return view('home');
 
-        // return $index_status;
-        
-        $dummy = Jajal::create([
-            'index' => 'home'
-        ]);
-        return view('home');
+        // wordpress API
+        $damin = 'supercampquin.com';
+        $hasil = self::get_wp_categories($damin);
+        // $kacang = var_dump(json_decode($hasil));
+        $panjang = json_decode($hasil, true);
+        $itung = count($panjang);
+        // return $panjang[1];
+        return $itung;
+
     }
 
     private function get_string_between($string, $start, $end){
@@ -69,4 +66,16 @@ class HomeController extends Controller
         return $hasil;
         //return self::get_string_between($hasil, '<div class="sd" id="resultStats">Sekitar ', ' hasil</div>');
     }
+
+    private function get_wp_categories($domain)
+    {
+        $client = new Client();
+        $url = 'http://'.$domain.'/wp-json/wp/v2/categories';
+        $res = $client->request('GET', $url, ['headers' => ['User-Agent' => 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36']]);
+        $hasil = $res->getBody(); 
+        
+        return $hasil;
+    }
+
+
 }
