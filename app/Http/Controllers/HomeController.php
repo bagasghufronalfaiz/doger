@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Jajal;
 use Illuminate\Http\Request;
 use GuzzleHttp\Client;
 
@@ -39,9 +40,10 @@ class HomeController extends Controller
 
         // return $index_status;
         
-        //return view('home');
-        $domeng = 'matuisichiro.com';
-        return self::get_index($domeng);
+        $dummy = Jajal::create([
+            'index' => 'home'
+        ]);
+        return view('home');
     }
 
     private function get_string_between($string, $start, $end){

@@ -425,7 +425,7 @@ class ComposerStaticInite0c7d8ea54076f40e2e85643f4c9caef
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
         'App\\Models\\Ad' => __DIR__ . '/../..' . '/app/Models/Ad.php',
         'App\\Models\\Domain' => __DIR__ . '/../..' . '/app/Models/Domain.php',
-        'App\\Models\\DummyCron' => __DIR__ . '/../..' . '/app/Models/DummyCron.php',
+        'App\\Models\\Jajal' => __DIR__ . '/../..' . '/app/Models/Jajal.php',
         'App\\Models\\Registrar' => __DIR__ . '/../..' . '/app/Models/Registrar.php',
         'App\\Models\\Server' => __DIR__ . '/../..' . '/app/Models/Server.php',
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',

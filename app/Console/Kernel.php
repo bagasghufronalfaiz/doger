@@ -13,7 +13,7 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        Commands\DummyCron::class,
+        // Commands\DummyCron::class,
     ];
 
     /**
@@ -24,9 +24,7 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('inspire')
-        //          ->hourly();
-        $schedule->command('dummy:cron')->everyMinute();
+        // $schedule->command('dummy:cron')->everyMinute();
     }
 
     /**

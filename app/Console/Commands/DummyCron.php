@@ -2,7 +2,7 @@
 
 namespace App\Console\Commands;
 
-use App\Models\Dummy;
+use App\Models\Jajal;
 use Illuminate\Console\Command;
 
 class DummyCron extends Command
@@ -38,8 +38,8 @@ class DummyCron extends Command
      */
     public function handle()
     {
-        $dummy = Dummy::create([
-            'index' => '1'
+        $dummy = Jajal::create([
+            'index' => 'cron job doger'
         ]);
     }
 }
