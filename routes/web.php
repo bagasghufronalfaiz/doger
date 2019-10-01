@@ -41,6 +41,7 @@ Route::group(['middleware'=>'auth'], function(){
     Route::get('/website/{id}/editwebsite', 'WebsiteController@edit')->name('editwebsite');
     Route::put('/website/{id}', 'WebsiteController@update');
     Route::delete('/website/{id}', 'WebsiteController@destroy')->name('deletewebsite');
+    Route::get('/website/{slug}', 'WebsiteController@show')->name('singlewebsite');
 
     Route::get('/webmaster', 'WebmasterController@index')->name('webmaster');
     Route::get('/webmaster/addwebmaster','WebmasterController@create')->name('addwebmaster');

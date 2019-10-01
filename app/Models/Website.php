@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Website extends Model
 {
     protected $fillable = [
-        'domain_id', 'theme', 'index_web', 'index_image', 'keyword', 'server_id', 'server_folder', 'ad_id', 'webmaster_id', 'date', 'user_id'
+        'domain_id', 'theme', 'index_web', 'index_image', 'keyword', 'server_id', 'server_folder', 'ad_id', 'webmaster_id', 'date', 'user_id', 'slug'
     ];
 
     public function user()

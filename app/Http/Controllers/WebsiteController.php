@@ -31,20 +31,28 @@ class WebsiteController extends Controller
 
     public function store(Request $request)
     {
+        //select domain name from table domain
         $selectdomain = Domain::where('id', $request->domain)->first();
         $domeng = $selectdomain->domain;
 
+        // get index web and index iamge
         $index_image = self::getIndexImage($domeng);
         $index_web = self::getIndexWeb($domeng);
 
-        // return 'Index Image : '.$index_image.'. Index Web : '.$index_web.'.';
+        // set date from string to date
         $date = $request->date;
         $time = strtotime($date);
         $newdate = date('Y-m-d', $time);
 
+        // get wordpress theme
+        $theme = self::getWordpressTheme($domeng);
+
+        //
+        $slug = str_replace_first('.', '', $domeng);
+
         $website = Website::create([
             'domain_id' => $request->domain,
-            'theme' => $request->theme,
+            'theme' => $theme,
             'index_web' => $index_web,
             'index_image' => $index_image,
             'keyword' => $request->keyword,
@@ -53,15 +61,24 @@ class WebsiteController extends Controller
             'ad_id' => $request->ad,
             'date' => $newdate,
             'webmaster_id' => $request->webmaster,
+            'slug'  => $slug,
             'user_id' => Auth::user()->id,
         ]);
 
         return redirect('/');
     }
 
-    public function show($id)
+    public function show($slug)
     {
-
+        $website = Website::where('slug', $slug)->first();
+        if($website->userisOwner()){
+            if (empty($website)) {
+                abort(404);
+            }
+            return view('website.single', compact('website'));
+        } else {
+            abort(403);
+        }
     }
 
     public function edit($id)
@@ -85,7 +102,6 @@ class WebsiteController extends Controller
         if ($website->userisOwner()) {
           $website->update([
             'domain_id' => $request->domain,
-            'theme' => $request->theme,
             'keyword' => $request->keyword,
             'server_id' => $request->servercok,
             'server_folder' => $request->server_folder,
@@ -191,4 +207,16 @@ class WebsiteController extends Controller
         ]);
         return $index;
     }
+
+    private function getWordpressTheme($domain)
+    {
+        $client = new Client();
+        $url = 'http://' . $domain . '/';
+        $res = $client->request('GET', $url, ['headers' => ['User-Agent' => 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36']]);
+        $hasil = $res->getBody();
+        $before = 'http://' . $domain . '/wp-content/themes/';
+        $theme = self::getStringBetween($hasil, $before, '/style.css');
+        return $theme;
+    }
+
 }
