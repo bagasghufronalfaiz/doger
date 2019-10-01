@@ -6,7 +6,7 @@
 <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
   <div class="container-fluid">
     <div class="navbar-wrapper">
-      <a class="navbar-brand" href="#">Registrar</a>
+      <a class="navbar-brand" href="#">{{ucfirst($website->domain->domain)}}</a>
     </div>
     <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
       <span class="sr-only">Toggle navigation</span>
@@ -74,41 +74,92 @@
       <div class="col-lg-12 col-md-12 col-sm-12">
       <div class="card">
           <div class="card-header card-header-success">
-              <h4 class="card-title">Website Single</h4>
-              <a href="{{ route('addregistrar') }}" class="btn btn-secondary btn-sm">Add Registrar</a>
+            <h4 class="card-title">Worpress</h4>
           </div>
           <div class="card-body table-responsive">
             <table class="table table-hover">
-              <thead class="text-success">
-                  <th scope="col">Registrar</th>
-                  <th scope="col">Username</th>
-                  <th scope="col">Email</th>
-                  <th scope="col">Password</th>
-                  <th scope="col">Action</th>
+              <thead>
+                <th>Post Count</th>
+                <th>Category Count</th>
+                <th>Category Titles</th>
+                <th>Page Count</th>
+                <th>Page Titles</th>
+                <th>Theme</th>
               </thead>
-              {{-- <tbody>
-                  @foreach($user->registrars as $registrary)
-                  <tr>
-                      <td>{{$registrary->registrar}}</td>
-                      <td>{{$registrary->username}}</td>
-                      <td>{{$registrary->email}}</td>
-                      <td>{{$registrary->password}}</td>
-                      <td class="td-actions text-right d-flex">
-                          <a href="/registrar/{{$registrary->id}}/editregistrar/" class="btn btn-info  btn-sm"><i class="material-icons">edit</i></a>
-                          <form action="/registrar/{{$registrary->id}}" method="post">
-                              {{ csrf_field() }}
-                              <input type="hidden" name="_method" value="DELETE">
-                              <button type="submit" class="btn btn-danger  btn-sm"><i class="material-icons">close</i></button>
-                          </form>
-                      </td>
-                  </tr>
-                  @endforeach
-              </tbody> --}}
+              <tbody>
+                <td>somedata</td>
+                <td>somedata</td>
+                <td>somedata</td>
+                <td>somedata</td>
+                <td>somedata</td>
+                <td>somedata</td>
+              </tbody>
             </table>
           </div>
         </div>
       </div>
     </div>
+    <div class="row">
+      <div class="col-lg-6 col-md-12 col-sm-12">
+        <div class="card">
+          <div class="card-header card-header-success">
+            <h4 class="card-title">Index</h4>
+          </div>
+          <div class="card-body table-responsive">
+            <table class="table table-hover">
+              <thead>
+                <th>Index Web</th>
+                <th>Index Image</th>
+              </thead>
+              <tbody>
+                <td>somedata</td>
+                <td>somedata</td>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6 col-md-12 col-sm-12">
+        <div class="card">
+          <div class="card-header card-header-success">
+            <h4 class="card-title">Ad & Webmaster</h4>
+          </div>
+          <div class="card-body table-responsive">
+            <table class="table table-hover">
+              <thead>
+                <th>Ad</th>
+                <th>Webmaster</th>
+              </thead>
+              <tbody>
+                <td>somedata</td>
+                <td>somedata</td>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+            <div class="col-lg-6 col-md-12 col-sm-12">
+                <div class="card">
+                    <div class="card-header card-header-success">
+                      <h4 class="card-title">Server</h4>
+                    </div>
+                    <div class="card-body table-responsive">
+                      <table class="table table-hover">
+                        <thead>
+                          <th>Server</th>
+                          <th>Server Folder</th>
+                        </thead>
+                        <tbody>
+                          <td>somedata</td>
+                          <td>somedata</td>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+      </div>
     <div class="row">
       <div class="col-lg-3 col-md-6 col-sm-6">
         <div class="card card-stats">

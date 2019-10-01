@@ -129,48 +129,51 @@
                     <h4 class="card-title">Website</h4>
                     <a href="{{ route('addwebsite') }}" class="btn btn-secondary btn-sm">Add Website</a>
                   </div>
-                  <div class="card-body table-responsive">
-                    <table id="tablesort" class="table table-hover">
-                      <thead class="text-success">
-                          <th scope="col" onclick="sortTable(0)">Domain</th>
-                          <th scope="col" onclick="sortTable(1)">Index Web</th>
-                          <th scope="col" onclick="sortTable(2)">Index Image</th>
-                          <th scope="col" onclick="sortTable(3)">Theme</th>
-                          <th scope="col" onclick="sortTable(4)">Keyword</th>
-                          <th scope="col" onclick="sortTable(5)">Server</th>
-                          <th scope="col" onclick="sortTable(6)">Server Folder</th>
-                          <th scope="col" onclick="sortTable(7)">Ad</th>
-                          <th scope="col" onclick="sortTable(8)">Webmaster</th>
-                          <th scope="col" onclick="sortTable(9)">Date</th>
-                          <th scope="col">Action</th>
-                      </thead>
-                      <tbody>
-                          @foreach($user->websites as $websitesy)
-                          <tr>
-                              <td>{{$websitesy->domain->domain}}</td>
-                              <td><p class="index-web pointer" data-domain="{{$websitesy->domain->domain}}" style="margin:0px;">{{$websitesy->index_web}}</p></td>
-                              <td><p class="index-image pointer" data-domain="{{$websitesy->domain->domain}}" style="margin:0px;">{{$websitesy->index_image}}</p></td>
-                              <td>{{$websitesy->theme}}</td>
-                              <td>{{$websitesy->keyword}}</td>
-                              <td>{{$websitesy->server->servername}}</td>
-                              <td>{{$websitesy->server_folder}}</td>
-                              <td>@if($websitesy->ad_id!=null){{$websitesy->ad->name}} @else Not Yet @endif</td>
-                              <td>@if($websitesy->webmaster_id!=null){{$websitesy->webmaster->name}} @else Not Yet @endif</td>
-                              <td>{{$websitesy->date}}</td>
-                              <td class="td-actions text-right d-flex">
-                                  <a href="https://www.google.com/search?q=site:{{$websitesy->domain->domain}}&tbm=isch&sout=1" class="btn btn-success btn-sm" style="margin:0px 2px;" target="_blank"><i class='fab fa-google' style="padding: 0px 3.55px;"></i></a>
-                                  <a href="http://{{$websitesy->domain->domain}}/wp-admin/" class="btn btn-primary btn-sm" style="margin:0px 2px;" target="_blank"><i class='fab fa-wordpress' style="padding: 0px 3.3px;"></i></a>
-                                  <a href="/website/{{$websitesy->id}}/editwebsite/" style="margin:0px 2px;" class="btn btn-info  btn-sm"><i class="material-icons">edit</i></a>
-                                  <form action="/website/{{$websitesy->id}}" method="post" style="margin:0px 2px;">
-                                      {{ csrf_field() }}
-                                      <input type="hidden" name="_method" value="DELETE">
-                                      <button type="submit" class="btn btn-danger  btn-sm"><i class="material-icons">close</i></button>
-                                  </form>
-                              </td>
-                          </tr>
-                          @endforeach
-                      </tbody>
-                    </table>
+                  <div class="card-body">
+                    <div class="table-responsive">
+                      <table id="tablesort" class="table table-hover">
+                        <thead class="text-success">
+                            <th scope="col" onclick="sortTable(0)">Domain</th>
+                            <th scope="col" onclick="sortTable(1)">Index Web</th>
+                            <th scope="col" onclick="sortTable(2)">Index Image</th>
+                            <th scope="col" onclick="sortTable(3)">Theme</th>
+                            <th scope="col" onclick="sortTable(4)">Keyword</th>
+                            <th scope="col" onclick="sortTable(5)">Server</th>
+                            <th scope="col" onclick="sortTable(6)">Server Folder</th>
+                            <th scope="col" onclick="sortTable(7)">Ad</th>
+                            <th scope="col" onclick="sortTable(8)">Webmaster</th>
+                            <th scope="col" onclick="sortTable(9)">Date</th>
+                            <th scope="col">Action</th>
+                        </thead>
+                        <tbody>
+                            @foreach($user->websites as $websitesy)
+                            <tr>
+                                <td>{{$websitesy->domain->domain}}</td>
+                                <td><p class="index-web pointer" data-domain="{{$websitesy->domain->domain}}" style="margin:0px;">{{$websitesy->index_web}}</p></td>
+                                <td><p class="index-image pointer" data-domain="{{$websitesy->domain->domain}}" style="margin:0px;">{{$websitesy->index_image}}</p></td>
+                                <td>{{$websitesy->theme}}</td>
+                                <td>{{$websitesy->keyword}}</td>
+                                <td>{{$websitesy->server->servername}}</td>
+                                <td>{{$websitesy->server_folder}}</td>
+                                <td>@if($websitesy->ad_id!=null){{$websitesy->ad->name}} @else Not Yet @endif</td>
+                                <td>@if($websitesy->webmaster_id!=null){{$websitesy->webmaster->name}} @else Not Yet @endif</td>
+                                <td>{{$websitesy->date}}</td>
+                                <td class="td-actions text-right d-flex">
+                                    <a href="/website/{{$websitesy->slug}}" class="btn btn-primary btn-sm" style="margin:0px 2px;"><i class="material-icons">search</i></a>
+                                    <a href="https://www.google.com/search?q=site:{{$websitesy->domain->domain}}&tbm=isch&sout=1" class="btn btn-success btn-sm" style="margin:0px 2px;" target="_blank"><i class='fab fa-google' style="padding: 0px 3.55px;"></i></a>
+                                    <a href="http://{{$websitesy->domain->domain}}/wp-admin/" class="btn btn-warning btn-sm" style="margin:0px 2px;" target="_blank"><i class='fab fa-wordpress' style="padding: 0px 3.3px;"></i></a>
+                                    <a href="/website/{{$websitesy->id}}/editwebsite/" style="margin:0px 2px;" class="btn btn-info  btn-sm"><i class="material-icons">edit</i></a>
+                                    <form action="/website/{{$websitesy->id}}" method="post" style="margin:0px 2px;">
+                                        {{ csrf_field() }}
+                                        <input type="hidden" name="_method" value="DELETE">
+                                        <button type="submit" class="btn btn-danger  btn-sm"><i class="material-icons">close</i></button>
+                                    </form>
+                                </td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                      </table>
+                    </div>
                   </div>
                 </div>
               </div>
