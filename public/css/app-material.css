@@ -5,3 +5,10 @@
 .filter-option-inner-inner {
     color:#333;
 }
+table th {
+    cursor: pointer;
+}
+
+table th:last-child {
+    cursor: auto;
+}

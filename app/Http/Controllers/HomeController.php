@@ -41,6 +41,7 @@ class HomeController extends Controller
         // // return $panjang[1];
         // return $itung;
 
+<<<<<<< HEAD
         // //get total post
         // $damin = 'besthdwallpaper.co';
         // $header = self::get_wp_post_count($damin);
@@ -58,8 +59,28 @@ class HomeController extends Controller
         //     $hasil[$i] = self::get_wp_pages_title($damin, $i);
         // }
         // return $hasil[1] . ' dan ' . $hasil[2] . ' dan ' . $hasil[3] . ' dan ' . $hasil[4];
+=======
+        //get total post
+        // $saming = 'bestwallpapers.co';
+        // $header = self::get_wp_post_count($saming);
+        // return $header;
 
+        // //get total pages
+        // $damin = 'wawallletters.com';
+        // $saming = 'bestwallpapers.co';
+        // $header = self::get_wp_page_count($saming);
+        // return $header;
+>>>>>>> master
 
+        // // get theme
+        // $saming = 'bestwallpapers.co';
+        // $result = self::get_theme($saming);
+        // return $result;
+
+        // coba str remove dot
+        $saming = 'brand-google.com';
+        $hasil = str_replace_first('.','', $saming);
+        return $hasil;
     }
 
     private function get_string_between($string, $start, $end){
@@ -71,6 +92,7 @@ class HomeController extends Controller
         return substr($string, $ini, $len);
     }
 
+<<<<<<< HEAD
 
 
     private function get_index($domain)
@@ -88,6 +110,8 @@ class HomeController extends Controller
 
 
 
+=======
+>>>>>>> master
     private function get_wp_categories($domain)
     {
         $client = new Client();
@@ -103,7 +127,7 @@ class HomeController extends Controller
     private function get_wp_post_count($domain)
     {
         $client = new Client();
-        $url = 'http://' . $domain . '/wp-json/wp/v2/posts?per_page=1';
+        $url = 'http://' . $domain . '/wp-json/wp/v2/posts';
         $res = $client->request('GET', $url, ['headers' => ['User-Agent' => 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36']]);
         $header = $res->getHeader('x-wp-total')[0];
         $hasil = $res->getBody();
@@ -116,7 +140,7 @@ class HomeController extends Controller
     private function get_wp_page_count($domain)
     {
         $client = new Client();
-        $url = 'http://' . $domain . '/wp-json/wp/v2/pages?per_page=1';
+        $url = 'http://' . $domain . '/wp-json/wp/v2/pages';
         $res = $client->request('GET', $url, ['headers' => ['User-Agent' => 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36']]);
         $header = $res->getHeader('x-wp-total')[0];
         $hasil = $res->getBody();
@@ -124,6 +148,15 @@ class HomeController extends Controller
         return $header;
     }
 
+    private function get_theme($domain){
+        $client = new Client();
+        $url = 'http://' . $domain . '/';
+        $res = $client->request('GET', $url, ['headers' => ['User-Agent' => 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36']]);
+        $hasil = $res->getBody();
+        $before = 'http://'. $domain.'/wp-content/themes/';
+        $theme = self::get_string_between($hasil, $before, '/style.css');
+        return $theme;
+    }
 
     
     private function get_wp_pages_title($domain, $total_pages){

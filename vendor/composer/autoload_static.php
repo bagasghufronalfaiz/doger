@@ -431,6 +431,7 @@ class ComposerStaticInite0c7d8ea54076f40e2e85643f4c9caef
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',
         'App\\Models\\Webmaster' => __DIR__ . '/../..' . '/app/Models/Webmaster.php',
         'App\\Models\\Website' => __DIR__ . '/../..' . '/app/Models/Website.php',
+        'App\\Models\\Wordpress' => __DIR__ . '/../..' . '/app/Models/Wordpress.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
         'App\\Providers\\AuthServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AuthServiceProvider.php',
         'App\\Providers\\BroadcastServiceProvider' => __DIR__ . '/../..' . '/app/Providers/BroadcastServiceProvider.php',

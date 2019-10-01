@@ -130,23 +130,22 @@
                     <a href="{{ route('addwebsite') }}" class="btn btn-secondary btn-sm">Add Website</a>
                   </div>
                   <div class="card-body table-responsive">
-                    <table class="table table-hover">
+                    <table id="tablesort" class="table table-hover">
                       <thead class="text-success">
-                          <th scope="col">Domain</th>
-                          <th scope="col">Index Web</th>
-                          <th scope="col">Index Image</th>
-                          <th scope="col">Theme</th>
-                          <th scope="col">Keyword</th>
-                          <th scope="col">Server</th>
-                          <th scope="col">Server Folder</th>
-                          <th scope="col">Ad</th>
-                          <th scope="col">Webmaster</th>
-                          <th scope="col">Date</th>
+                          <th scope="col" onclick="sortTable(0)">Domain</th>
+                          <th scope="col" onclick="sortTable(1)">Index Web</th>
+                          <th scope="col" onclick="sortTable(2)">Index Image</th>
+                          <th scope="col" onclick="sortTable(3)">Theme</th>
+                          <th scope="col" onclick="sortTable(4)">Keyword</th>
+                          <th scope="col" onclick="sortTable(5)">Server</th>
+                          <th scope="col" onclick="sortTable(6)">Server Folder</th>
+                          <th scope="col" onclick="sortTable(7)">Ad</th>
+                          <th scope="col" onclick="sortTable(8)">Webmaster</th>
+                          <th scope="col" onclick="sortTable(9)">Date</th>
                           <th scope="col">Action</th>
                       </thead>
                       <tbody>
                           @foreach($user->websites as $websitesy)
-
                           <tr>
                               <td>{{$websitesy->domain->domain}}</td>
                               <td><p class="index-web pointer" data-domain="{{$websitesy->domain->domain}}" style="margin:0px;">{{$websitesy->index_web}}</p></td>
@@ -644,6 +643,6 @@
         domain.html(e);
       })
     });
-  })
+  });
 </script>
 @endsection

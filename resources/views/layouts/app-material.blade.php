@@ -83,7 +83,7 @@
   <script src="{{ asset('assets/js/material-dashboard.min.js')}}" type="text/javascript"></script>
 
   <!-- Self Edited JS -->
-  <script src="{{ asset('js/app-material.js') }}" defer></script>
+  <script src="{{ asset('js/app-material.js') }}"></script>
 
   </head>
   <body>

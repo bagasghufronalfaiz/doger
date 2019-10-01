@@ -38,6 +38,7 @@ return array(
     'App\\Models\\User' => $baseDir . '/app/Models/User.php',
     'App\\Models\\Webmaster' => $baseDir . '/app/Models/Webmaster.php',
     'App\\Models\\Website' => $baseDir . '/app/Models/Website.php',
+    'App\\Models\\Wordpress' => $baseDir . '/app/Models/Wordpress.php',
     'App\\Providers\\AppServiceProvider' => $baseDir . '/app/Providers/AppServiceProvider.php',
     'App\\Providers\\AuthServiceProvider' => $baseDir . '/app/Providers/AuthServiceProvider.php',
     'App\\Providers\\BroadcastServiceProvider' => $baseDir . '/app/Providers/BroadcastServiceProvider.php',
