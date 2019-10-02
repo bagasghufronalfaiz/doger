@@ -73,8 +73,8 @@
     <div class="row">
       <div class="col-lg-12 col-md-12 col-sm-12">
       <div class="card">
-          <div class="card-header card-header-success">
-            <h4 class="card-title">Worpress</h4>
+          <div class="card-header card-header-info">
+            <h4 class="card-title">Wordpress</h4>
           </div>
           <div class="card-body table-responsive">
             <table class="table table-hover">
@@ -100,9 +100,9 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-lg-6 col-md-12 col-sm-12">
+      <div class="col-lg-3 col-md-12 col-sm-12">
         <div class="card">
-          <div class="card-header card-header-success">
+          <div class="card-header card-header-primary">
             <h4 class="card-title">Index</h4>
           </div>
           <div class="card-body table-responsive">
@@ -119,7 +119,41 @@
           </div>
         </div>
       </div>
-      <div class="col-lg-6 col-md-12 col-sm-12">
+      <div class="col-lg-9 col-md-12 col-sm-12">
+        <div class="card">
+          <div class="card-header card-header-warning">
+            <h4 class="card-title">Domain</h4>
+          </div>
+          <div class="card-body table-responsive">
+            <table class="table table-hover">
+              <thead>
+                <th>Domain</th>
+                <th>Registrar</th>
+                <th>Registrar Username</th>
+                <th>Registrar Email</th>
+                <th>Registrar Password</th>
+                <th>Expiration</th>
+                <th>Nameserver 1</th>
+                <th>Nameserver 2</th>
+              </thead>
+              <tbody>
+                <td>somedata</td>
+                <td>somedata</td>
+                <td>somedata</td>
+                <td>somedata</td>
+                <td>somedata</td>
+                <td>somedata</td>
+                <td>somedata</td>
+                <td>somedata</td>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="row">
+        <div class="col-lg-4 col-md-12 col-sm-12">
         <div class="card">
           <div class="card-header card-header-success">
             <h4 class="card-title">Ad & Webmaster</h4>
@@ -129,8 +163,10 @@
               <thead>
                 <th>Ad</th>
                 <th>Webmaster</th>
+                <th>Date</th>
               </thead>
               <tbody>
+                <td>somedata</td>
                 <td>somedata</td>
                 <td>somedata</td>
               </tbody>
@@ -138,28 +174,36 @@
           </div>
         </div>
       </div>
-    </div>
-    <div class="row">
-            <div class="col-lg-6 col-md-12 col-sm-12">
-                <div class="card">
-                    <div class="card-header card-header-success">
-                      <h4 class="card-title">Server</h4>
-                    </div>
-                    <div class="card-body table-responsive">
-                      <table class="table table-hover">
-                        <thead>
-                          <th>Server</th>
-                          <th>Server Folder</th>
-                        </thead>
-                        <tbody>
-                          <td>somedata</td>
-                          <td>somedata</td>
-                        </tbody>
-                      </table>
-                    </div>
-                  </div>
+
+      <div class="col-lg-8 col-md-12 col-sm-12">
+            <div class="card">
+                <div class="card-header card-header-danger">
+                    <h4 class="card-title">Server</h4>
                 </div>
-      </div>
+                <div class="card-body table-responsive">
+                    <table class="table table-hover">
+                    <thead>
+                        <th>Server</th>
+                        <th>Server Folder</th>
+                        <th>Ip</th>
+                        <th>Username</th>
+                        <th>Password</th>
+                    </thead>
+                    <tbody>
+                        <td>somedata</td>
+                        <td>somedata</td>
+                        <td>somedata</td>
+                        <td>somedata</td>
+                        <td>somedata</td>
+                    </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+     <div class="row">
+
+    </div>
     <div class="row">
       <div class="col-lg-3 col-md-6 col-sm-6">
         <div class="card card-stats">

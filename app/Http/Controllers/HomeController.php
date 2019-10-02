@@ -41,7 +41,6 @@ class HomeController extends Controller
         // // return $panjang[1];
         // return $itung;
 
-<<<<<<< HEAD
         // //get total post
         // $damin = 'besthdwallpaper.co';
         // $header = self::get_wp_post_count($damin);
@@ -50,7 +49,7 @@ class HomeController extends Controller
         // get total pages
         // $damin = 'besthdwallpaper.co';
         // $jumlah_page = self::get_wp_page_count($damin);
-        
+
         // // get wp pages title
         // $damin = 'besthdwallpaper.co';
         // $coba = 'worldivided.com';
@@ -59,18 +58,6 @@ class HomeController extends Controller
         //     $hasil[$i] = self::get_wp_pages_title($damin, $i);
         // }
         // return $hasil[1] . ' dan ' . $hasil[2] . ' dan ' . $hasil[3] . ' dan ' . $hasil[4];
-=======
-        //get total post
-        // $saming = 'bestwallpapers.co';
-        // $header = self::get_wp_post_count($saming);
-        // return $header;
-
-        // //get total pages
-        // $damin = 'wawallletters.com';
-        // $saming = 'bestwallpapers.co';
-        // $header = self::get_wp_page_count($saming);
-        // return $header;
->>>>>>> master
 
         // // get theme
         // $saming = 'bestwallpapers.co';
@@ -92,7 +79,6 @@ class HomeController extends Controller
         return substr($string, $ini, $len);
     }
 
-<<<<<<< HEAD
 
 
     private function get_index($domain)
@@ -110,8 +96,6 @@ class HomeController extends Controller
 
 
 
-=======
->>>>>>> master
     private function get_wp_categories($domain)
     {
         $client = new Client();
@@ -158,7 +142,7 @@ class HomeController extends Controller
         return $theme;
     }
 
-    
+
     private function get_wp_pages_title($domain, $total_pages){
         $client = new Client();
         $url = 'http://' . $domain . '/wp-json/wp/v2/pages?per_page=1&page='.$total_pages;
