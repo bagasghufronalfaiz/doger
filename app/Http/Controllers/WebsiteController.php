@@ -219,6 +219,25 @@ class WebsiteController extends Controller
         return $theme;
     }
 
+    public function refreshWordpressTheme($domaing)
+    {
+        $theme = self::getWordpressTheme($domaing);
+
+        $domainName = Domain::where('domain', $domaing)->first();
+        $domainId = $domainName->id;
+        $website = Website::where('domain_id', $domainId)->first();
+        if ($website->userisOwner()) {
+            $website->update([
+                'theme' => $theme,
+            ]);
+            return response()->json([
+                'theme' => $theme,
+            ]);   
+        } else {
+            return 'mbuh';
+        }        
+    }
+
     private function getWordpressPosts($domain)
     {
         $client = new Client();
@@ -227,6 +246,25 @@ class WebsiteController extends Controller
         $posts = $res->getHeader('x-wp-total')[0];
 
         return $posts;
+    }
+
+    public function refreshWordpressPost($domaing)
+    {
+        $post = self::getWordpressPosts($domaing);
+
+        $domainName = Domain::where('domain', $domaing)->first();
+        $domainId = $domainName->id;
+        $website = Website::where('domain_id', $domainId)->first();
+        if ($website->userisOwner()) {
+            $website->update([
+                'wp_posts' => $post,
+            ]);
+            return response()->json([
+                'post' => $post,
+            ]);   
+        } else {
+            return 'mbuh';
+        }        
     }
 
     private function getWordpressPages($domain)
@@ -238,6 +276,25 @@ class WebsiteController extends Controller
 
         return $pages;
     }
+
+    public function refreshWordpressPage($domaing)
+    {
+        $page = self::getWordpressPages($domaing);
+
+        $domainName = Domain::where('domain', $domaing)->first();
+        $domainId = $domainName->id;
+        $website = Website::where('domain_id', $domainId)->first();
+        if ($website->userisOwner()) {
+            $website->update([
+                'wp_pages' => $page,
+            ]);
+            return response()->json([
+                'page' => $page,
+            ]);   
+        } else {
+            return 'mbuh';
+        }        
+    }    
 
     private function getWordpressPageTitles($domain, $total_pages)
     {
@@ -265,6 +322,27 @@ class WebsiteController extends Controller
         return $pageTitles;
     }
 
+    public function refreshWordpressPageTitle($domaing)
+    {
+        $domainName = Domain::where('domain', $domaing)->first();
+        $domainId = $domainName->id;
+        $website = Website::where('domain_id', $domainId)->first();
+
+        $websitePage = $website->wp_pages;
+        $pageTitle = self::getAllWordpressPageTitles($domaing, $websitePage);
+
+        if ($website->userisOwner()) {
+            $website->update([
+                'wp_page_titles' => $pageTitle,
+            ]);
+            return response()->json([
+                'page-title' => $pageTitle,
+            ]);   
+        } else {
+            return 'mbuh';
+        }        
+    }
+
     private function getWordpressCategories($domain)
     {
         $client = new Client();
@@ -273,6 +351,25 @@ class WebsiteController extends Controller
         $header = $res->getHeader('x-wp-total')[0];
 
         return $header;
+    }
+
+    public function refreshWordpressCategory($domaing)
+    {
+        $category = self::getWordpressCategories($domaing);
+
+        $domainName = Domain::where('domain', $domaing)->first();
+        $domainId = $domainName->id;
+        $website = Website::where('domain_id', $domainId)->first();
+        if ($website->userisOwner()) {
+            $website->update([
+                'wp_categories' => $category,
+            ]);
+            return response()->json([
+                'category' => $category,
+            ]);   
+        } else {
+            return 'mbuh';
+        }        
     }
 
     private function getWordpressCategoryTitles($domain, $total_category)
@@ -299,6 +396,27 @@ class WebsiteController extends Controller
             }
         }
         return $categoryTitles;
+    }
+
+    public function refreshWordpressCategoryTitle($domaing)
+    {
+        $domainName = Domain::where('domain', $domaing)->first();
+        $domainId = $domainName->id;
+        $website = Website::where('domain_id', $domainId)->first();
+
+        $websiteCategory = $website->wp_categories;
+        $categoryTitle = self::getAllWordpressCategoryTitles($domaing, $websiteCategory);
+
+        if ($website->userisOwner()) {
+            $website->update([
+                'wp_category_titles' => $categoryTitle,
+            ]);
+            return response()->json([
+                'category-title' => $categoryTitle,
+            ]);   
+        } else {
+            return 'mbuh';
+        }        
     }
 
 }

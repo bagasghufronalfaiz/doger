@@ -54,6 +54,12 @@ Route::group(['middleware'=>'auth'], function(){
     Route::get('/index-web/{domaing}', 'WebsiteController@refreshIndexWeb')->name('index-web');
     Route::get('/index-image/{domaing}', 'WebsiteController@refreshIndexImage')->name('index-image');
     Route::get('/status-index/{domaing}', 'DomainController@refreshStatusIndex')->name('status-index');
+    Route::get('/wordpress-theme/{domaing}', 'WebsiteController@refreshWordpressTheme')->name('wordpress-theme');
+    Route::get('/wordpress-post/{domaing}', 'WebsiteController@refreshWordpressPost')->name('wordpress-post');
+    Route::get('/wordpress-category/{domaing}', 'WebsiteController@refreshWordpressCategory')->name('wordpress-category');
+    Route::get('/wordpress-category-title/{domaing}', 'WebsiteController@refreshWordpressCategoryTitle')->name('wordpress-category-title');
+    Route::get('/wordpress-page/{domaing}', 'WebsiteController@refreshWordpressPage')->name('wordpress-page');
+    Route::get('/wordpress-page-title/{domaing}', 'WebsiteController@refreshWordpressPageTitle')->name('wordpress-page-title');
 });
 
 // Route::get('/', function () {

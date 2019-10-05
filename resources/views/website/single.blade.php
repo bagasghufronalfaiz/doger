@@ -87,12 +87,12 @@
                 <th>Theme</th>
               </thead>
               <tbody>
-                <td>{{$website->wp_posts}}</td>
-                <td>{{$website->wp_categories}}</td>
-                <td>{{$website->wp_category_titles}}</td>
-                <td>{{$website->wp_pages}}</td>
-                <td>{{$website->wp_page_titles}}</td>
-                <td>{{$website->theme}}</td>
+                <td><p class="wordpress-post pointer" data-domain="{{$website->domain->domain}}" style="margin:0px;">{{$website->wp_posts}}</p></td>
+                <td><p class="wordpress-category pointer" data-domain="{{$website->domain->domain}}" style="margin:0px;">{{$website->wp_categories}}</p></td>
+                <td><p class="wordpress-category-title pointer" data-domain="{{$website->domain->domain}}" style="margin:0px;">{{$website->wp_category_titles}}</p></td>
+                <td><p class="wordpress-page pointer" data-domain="{{$website->domain->domain}}" style="margin:0px;">{{$website->wp_pages}}</p></td>
+                <td><p class="wordpress-page-title pointer" data-domain="{{$website->domain->domain}}" style="margin:0px;">{{$website->wp_page_titles}}</p></td>
+                <td><p class="wordpress-theme pointer" data-domain="{{$website->domain->domain}}" style="margin:0px;">{{$website->theme}}</p></td>
               </tbody>
             </table>
           </div>
@@ -112,8 +112,8 @@
                 <th>Index Image</th>
               </thead>
               <tbody>
-                <td>{{$website->index_web}}</td>
-                <td>{{$website->index_image}}</td>
+                <td><p class="index-web pointer" data-domain="{{$website->domain->domain}}" style="margin:0px;">{{$website->index_web}}</p></td>
+                <td><p class="index-image pointer" data-domain="{{$website->domain->domain}}" style="margin:0px;">{{$website->index_image}}</p></td>
               </tbody>
             </table>
           </div>
@@ -653,4 +653,66 @@
   </div>
 </footer>
 
+@endsection
+@section('javascript')
+<script>
+  $(function() {
+    $('.index-web').click(function () {
+      var domain = $(this);
+      domain.html('<i class="fa fa-spinner fa-spin" style="font-size:.875rem"></i>');
+      $.get("{{url('index-web')}}/" + domain.attr('data-domain'), function(e){
+        domain.html(e);
+      });
+    });
+    $('.index-image').click(function () {
+      var domain = $(this);
+      domain.html('<i class="fa fa-spinner fa-spin" style="font-size:.875rem"></i>');
+      $.get("{{url('index-image')}}/" + domain.attr('data-domain'), function(e){
+        domain.html(e);
+      });
+    });
+    $('.wordpress-theme').click(function () {
+      var domain = $(this);
+      domain.html('<i class="fa fa-spinner fa-spin" style="font-size:.875rem"></i>');
+      $.get("{{url('wordpress-theme')}}/" + domain.attr('data-domain'), function(e){
+        domain.html(e['theme']);
+      });
+    });
+    $('.wordpress-post').click(function () {
+      var domain = $(this);
+      domain.html('<i class="fa fa-spinner fa-spin" style="font-size:.875rem"></i>');
+      $.get("{{url('wordpress-post')}}/" + domain.attr('data-domain'), function(e){
+        domain.html(e['post']);
+      });
+    });
+    $('.wordpress-category').click(function () {
+      var domain = $(this);
+      domain.html('<i class="fa fa-spinner fa-spin" style="font-size:.875rem"></i>');
+      $.get("{{url('wordpress-category')}}/" + domain.attr('data-domain'), function(e){
+        domain.html(e['category']);
+      });
+    });
+    $('.wordpress-category-title').click(function () {
+      var domain = $(this);
+      domain.html('<i class="fa fa-spinner fa-spin" style="font-size:.875rem"></i>');
+      $.get("{{url('wordpress-category-title')}}/" + domain.attr('data-domain'), function(e){
+        domain.html(e['category-title']);
+      });
+    });
+    $('.wordpress-page').click(function () {
+      var domain = $(this);
+      domain.html('<i class="fa fa-spinner fa-spin" style="font-size:.875rem"></i>');
+      $.get("{{url('wordpress-page')}}/" + domain.attr('data-domain'), function(e){
+        domain.html(e['page']);
+      });
+    });
+    $('.wordpress-page-title').click(function () {
+      var domain = $(this);
+      domain.html('<i class="fa fa-spinner fa-spin" style="font-size:.875rem"></i>');
+      $.get("{{url('wordpress-page-title')}}/" + domain.attr('data-domain'), function(e){
+        domain.html(e['page-title']);
+      });
+    });
+  });
+</script>
 @endsection

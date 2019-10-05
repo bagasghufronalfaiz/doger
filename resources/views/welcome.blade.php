@@ -151,7 +151,7 @@
                                 <td>{{$websitesy->domain->domain}}</td>
                                 <td><p class="index-web pointer" data-domain="{{$websitesy->domain->domain}}" style="margin:0px;">{{$websitesy->index_web}}</p></td>
                                 <td><p class="index-image pointer" data-domain="{{$websitesy->domain->domain}}" style="margin:0px;">{{$websitesy->index_image}}</p></td>
-                                <td>{{$websitesy->theme}}</td>
+                                <td><p class="wordpress-theme pointer" data-domain="{{$websitesy->domain->domain}}" style="margin:0px;">{{$websitesy->theme}}</p></td>
                                 <td>{{$websitesy->keyword}}</td>
                                 <td>{{$websitesy->server->servername}}</td>
                                 <td>{{$websitesy->server_folder}}</td>
@@ -637,14 +637,21 @@
       domain.html('<i class="fa fa-spinner fa-spin" style="font-size:.875rem"></i>');
       $.get("{{url('index-web')}}/" + domain.attr('data-domain'), function(e){
         domain.html(e);
-      })
+      });
     });
     $('.index-image').click(function () {
       var domain = $(this);
       domain.html('<i class="fa fa-spinner fa-spin" style="font-size:.875rem"></i>');
       $.get("{{url('index-image')}}/" + domain.attr('data-domain'), function(e){
         domain.html(e);
-      })
+      });
+    });
+    $('.wordpress-theme').click(function () {
+      var domain = $(this);
+      domain.html('<i class="fa fa-spinner fa-spin" style="font-size:.875rem"></i>');
+      $.get("{{url('wordpress-theme')}}/" + domain.attr('data-domain'), function(e){
+        domain.html(e['theme']);
+      });
     });
   });
 </script>
