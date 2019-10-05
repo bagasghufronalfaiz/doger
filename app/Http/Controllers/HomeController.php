@@ -41,33 +41,54 @@ class HomeController extends Controller
         // // return $panjang[1];
         // return $itung;
 
-        // //get total post
-        // $damin = 'besthdwallpaper.co';
-        // $header = self::get_wp_post_count($damin);
-        // return $header;
+        //get total post
+        $damin = 'besthdwallpaper.co';
+        $posts = self::get_wp_post_count($damin);
+        // return $posts;
 
         // get total pages
         // $damin = 'besthdwallpaper.co';
-        // $jumlah_page = self::get_wp_page_count($damin);
+        $pages = self::get_wp_page_count($damin);
 
         // // get wp pages title
         // $damin = 'besthdwallpaper.co';
         // $coba = 'worldivided.com';
-        // $jumlah_page = self::get_wp_page_count($damin);
-        // for($i=1;$i<=$jumlah_page;$i++){
-        //     $hasil[$i] = self::get_wp_pages_title($damin, $i);
-        // }
-        // return $hasil[1] . ' dan ' . $hasil[2] . ' dan ' . $hasil[3] . ' dan ' . $hasil[4];
+        // $page_titles = self::get_wp_page_count($damin);
+        $new_page_titles = '';
+        for($i=1;$i<= $pages;$i++){
+            $hasil[$i] = self::get_wp_pages_title($damin, $i);
+            if ($i == $pages) {
+                $new_page_titles = $new_page_titles . $hasil[$i];
+            } else {
+                $new_page_titles = $new_page_titles . $hasil[$i] . ', ';
+            }
+        }
+        // $new_page_titles = $hasil[1] . ', ' . $hasil[2] . ', ' . $hasil[3] . ', ' . $hasil[4];
 
         // // get theme
         // $saming = 'bestwallpapers.co';
-        // $result = self::get_theme($saming);
+        $theme = self::get_theme($damin);
         // return $result;
 
+        // get categories
+        $category = self::get_wp_categories($damin);
+        // get category titles
+        // $category_titles = '';
+        // for ($j = 1; $j <= $category; $j++) {
+        //     $hasil[$j] = self::get_wp_category_titles($damin, $j);
+        //     if($j == $category){
+        //         $category_titles = $category_titles . $hasil[$j];
+        //     } else {
+        //         $category_titles = $category_titles . $hasil[$j] . ', ';
+        //     }
+        //     // $category_titles = $category_titles . $hasil[$j] . ', ';
+        // }
+        $category_titles = self::getAllWpPages($damin, $category);
+
         // coba str remove dot
-        $saming = 'brand-google.com';
-        $hasil = str_replace_first('.','', $saming);
-        return $hasil;
+        // $saming = 'brand-google.com';
+        // $hasil = str_replace_first('.','', $saming);
+        return 'posts : '. $posts.' dan pages : '.$pages.' yaitu '.$new_page_titles.' dan category : '. $category.' yaitu '. $category_titles . ' dan theme : '. $theme;
     }
 
     private function get_string_between($string, $start, $end){
@@ -101,9 +122,20 @@ class HomeController extends Controller
         $client = new Client();
         $url = 'http://'.$domain.'/wp-json/wp/v2/categories';
         $res = $client->request('GET', $url, ['headers' => ['User-Agent' => 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36']]);
-        $hasil = $res->getBody();
+        $header = $res->getHeader('x-wp-total')[0];
 
-        return $hasil;
+        return $header;
+    }
+
+    private function get_wp_category_titles($domain, $total_category)
+    {
+        $client = new Client();
+        $url = 'http://' . $domain . '/wp-json/wp/v2/categories?per_page=1&page=' . $total_category;
+        $res = $client->request('GET', $url, ['headers' => ['User-Agent' => 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36']]);
+        $hasil = $res->getBody();
+        $kacang = json_decode($hasil, true);
+        $panjang = $kacang[0]['name'];
+        return $panjang;
     }
 
 
@@ -151,8 +183,37 @@ class HomeController extends Controller
         $kacang = json_decode($hasil, true);
         $panjang = $kacang[0]['title']['rendered'];
         return $panjang;
+
     }
 
+    private function getAllWpPages($domain, $total_pages)
+    {
+        $category_titles = '';
+        for ($count = 1; $count <= $total_pages; $count++) {
+            $hasil[$count] = self::get_wp_category_titles($domain, $count);
 
+            if ($count == $total_pages) {
+                $category_titles = $category_titles . $hasil[$count];
+            } else {
+                $category_titles = $category_titles . $hasil[$count] . ', ';
+            }
+        }
+        return $category_titles;
+    }
+
+    private function getAllWordpressCategoryTitles($domain, $total_pages)
+    {
+        $categoryTitles = '';
+        for ($count = 1; $count <= $total_pages; $count++) {
+            $hasil[$count] = self::get_wp_category_titles($domain, $count);
+
+            if ($count == $total_pages) {
+                $categoryTitles = $categoryTitles . $hasil[$count];
+            } else {
+                $categoryTitles = $categoryTitles . $hasil[$count] . ', ';
+            }
+        }
+        return $categoryTitles;
+    }
 
 }

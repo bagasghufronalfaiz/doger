@@ -79,20 +79,20 @@
           <div class="card-body table-responsive">
             <table class="table table-hover">
               <thead>
-                <th>Post Count</th>
-                <th>Category Count</th>
+                <th>Posts</th>
+                <th>Categories</th>
                 <th>Category Titles</th>
-                <th>Page Count</th>
+                <th>Pages</th>
                 <th>Page Titles</th>
                 <th>Theme</th>
               </thead>
               <tbody>
-                <td>somedata</td>
-                <td>somedata</td>
-                <td>somedata</td>
-                <td>somedata</td>
-                <td>somedata</td>
-                <td>somedata</td>
+                <td>{{$website->wp_posts}}</td>
+                <td>{{$website->wp_categories}}</td>
+                <td>{{$website->wp_category_titles}}</td>
+                <td>{{$website->wp_pages}}</td>
+                <td>{{$website->wp_page_titles}}</td>
+                <td>{{$website->theme}}</td>
               </tbody>
             </table>
           </div>
@@ -112,8 +112,8 @@
                 <th>Index Image</th>
               </thead>
               <tbody>
-                <td>somedata</td>
-                <td>somedata</td>
+                <td>{{$website->index_web}}</td>
+                <td>{{$website->index_image}}</td>
               </tbody>
             </table>
           </div>
@@ -137,14 +137,14 @@
                 <th>Nameserver 2</th>
               </thead>
               <tbody>
-                <td>somedata</td>
-                <td>somedata</td>
-                <td>somedata</td>
-                <td>somedata</td>
-                <td>somedata</td>
-                <td>somedata</td>
-                <td>somedata</td>
-                <td>somedata</td>
+                <td>{{$website->domain->domain}}</td>
+                <td>{{$website->domain->registrar->registrar}}</td>
+                <td>{{$website->domain->registrar->username}}</td>
+                <td>{{$website->domain->registrar->email}}</td>
+                <td>{{$website->domain->registrar->password}}</td>
+                <td>{{$website->domain->expiration}}</td>
+                <td>{{$website->domain->nameserver1}}</td>
+                <td>{{$website->domain->nameserver2}}</td>
               </tbody>
             </table>
           </div>
@@ -166,9 +166,9 @@
                 <th>Date</th>
               </thead>
               <tbody>
-                <td>somedata</td>
-                <td>somedata</td>
-                <td>somedata</td>
+                <td>@if($website->ad_id!=null){{$website->ad->name}} @else Not Yet @endif</td>
+                <td>@if($website->webmaster_id!=null){{$website->webmaster->name}} @else Not Yet @endif</td>
+                <td>{{$website->date}}</td>
               </tbody>
             </table>
           </div>
@@ -190,11 +190,11 @@
                         <th>Password</th>
                     </thead>
                     <tbody>
-                        <td>somedata</td>
-                        <td>somedata</td>
-                        <td>somedata</td>
-                        <td>somedata</td>
-                        <td>somedata</td>
+                        <td>{{$website->server->servername}}</td>
+                        <td>{{$website->server_folder}}</td>
+                        <td>{{$website->server->ip}}</td>
+                        <td>{{$website->server->username}}</td>
+                        <td>{{$website->server->password}}</td>
                     </tbody>
                     </table>
                 </div>

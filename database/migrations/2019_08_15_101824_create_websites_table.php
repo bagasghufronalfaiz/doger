@@ -27,6 +27,11 @@ class CreateWebsitesTable extends Migration
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('webmaster_id')->nullable();
             $table->string('slug');
+            $table->integer('wp_posts');
+            $table->integer('wp_pages');
+            $table->string('wp_page_titles');
+            $table->integer('wp_categories');
+            $table->string('wp_category_titles');
             $table->timestamps();
 
             $table->foreign('ad_id')->references('id')->on('ads');

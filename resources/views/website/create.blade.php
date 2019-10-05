@@ -87,10 +87,6 @@
                           </select>
                       </div>
                       <div class="form-group bmd-form-group" style="margin-top:20px;">
-                          <label class="bmd-label-floating" for="theme">Theme</label>
-                          <input class="form-control" type="text" name="theme" value="{{old('theme')}}">
-                      </div>
-                      <div class="form-group bmd-form-group" style="margin-top:20px;">
                           <label class="bmd-label-floating" for="keyword">Keyword</label>
                           <input class="form-control" type="text" name="keyword" value="{{old('keyword')}}">
                       </div>
@@ -122,8 +118,8 @@
                         <select id="ad" class="form-control selectpicker" data-style="btn btn-secondary" name="ad" style="color:#333;">
                           @foreach ($user->ads as $adsy)
                             <option style="color:#333;" value="{{$adsy->id}}">{{$adsy->name}}</option>
-                          @endforeach 
-                        </select>  
+                          @endforeach
+                        </select>
                         @endif
                        --}}
                       </div>

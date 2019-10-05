@@ -86,10 +86,6 @@
                           @endforeach
                         </select>
                     </div>
-                    <div class="form-group bmd-form-group" style="margin-top:30px;">
-                        <label class="bmd-label-floating" for="theme">Theme</label>
-                        <input class="form-control" type="text" name="theme" value="{{(old('theme')) ? old('theme') : $website->theme}}">
-                    </div>
                     <div class="form-group bmd-form-group" style="margin-top:20px;">
                         <label class="bmd-label-floating" for="keyword">Keyword</label>
                         <input class="form-control" type="text" name="keyword" value="{{(old('keyword')) ? old('keyword') : $website->keyword}}">
