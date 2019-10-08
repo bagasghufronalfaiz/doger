@@ -142,9 +142,9 @@
                 <td>{{$website->domain->registrar->username}}</td>
                 <td>{{$website->domain->registrar->email}}</td>
                 <td>{{$website->domain->registrar->password}}</td>
-                <td>{{$website->domain->expiration}}</td>
-                <td>{{$website->domain->nameserver1}}</td>
-                <td>{{$website->domain->nameserver2}}</td>
+                <td><p class="expiration pointer" data-domain="{{$website->domain->domain}}" style="margin:0px;">{{$website->domain->expiration}}</p></td>
+                <td><p class="nameserver1 pointer" data-domain="{{$website->domain->domain}}" style="margin:0px;">{{$website->domain->nameserver1}}</p></td>
+                <td><p class="nameserver2 pointer" data-domain="{{$website->domain->domain}}" style="margin:0px;">{{$website->domain->nameserver2}}</p></td>
               </tbody>
             </table>
           </div>
@@ -711,6 +711,30 @@
       domain.html('<i class="fa fa-spinner fa-spin" style="font-size:.875rem"></i>');
       $.get("{{url('wordpress-page-title')}}/" + domain.attr('data-domain'), function(e){
         domain.html(e['page-title']);
+      });
+    });
+
+
+
+    $('.expiration').click(function () {
+      var domain = $(this);
+      domain.html('<i class="fa fa-spinner fa-spin" style="font-size:.875rem"></i>');
+      $.get("{{url('expiration')}}/" + domain.attr('data-domain'), function(e){
+        domain.html(e);
+      });
+    });
+    $('.nameserver1').click(function () {
+      var domain = $(this);
+      domain.html('<i class="fa fa-spinner fa-spin" style="font-size:.875rem"></i>');
+      $.get("{{url('nameserver1')}}/" + domain.attr('data-domain'), function(e){
+        domain.html(e['nameserver1']);
+      });
+    });
+    $('.nameserver2').click(function () {
+      var domain = $(this);
+      domain.html('<i class="fa fa-spinner fa-spin" style="font-size:.875rem"></i>');
+      $.get("{{url('nameserver2')}}/" + domain.attr('data-domain'), function(e){
+        domain.html(e['nameserver2']);
       });
     });
   });

@@ -80,7 +80,14 @@
                   <form action="/domain" method="post">
                       <div class="form-group bmd-form-group" style="margin-top:20px;">
                           <label class="bmd-label-floating" for="Domain">Domain</label>
-                          <input class="form-control" type="text" name="domain" value="{{old('domain')}}" >
+                          <input class="form-control" id="inputdomain" oninput="getdomain()" type="text" name="domain" value="{{old('domain')}}" >
+                          <big class="form-text"><a id="linkwhois" target="_blank" >To generate Expiration and Nameserver, you should open this link first.</a></big>
+                          <script type="text/javascript">
+                            function getdomain() {
+                              var x = document.getElementById("inputdomain").value;
+                              document.getElementById("linkwhois").setAttribute("href", "https://www.whois.com/whois/" + x);
+                            }
+                            </script>
                       </div>
                       <div class="form-group bmd-form-group">
                           <label for="registrar_id">Registrar</label>
@@ -90,34 +97,7 @@
                             @endforeach
                           </select>
                       </div>
-                      <div class="form-group bmd-form-group" style="margin-top:20px;">
-                        <label for="expiration">Expiration</label>
-                        <input type="text" class="form-control datetimepicker" name="expiration"/>
-                        <script type="text/javascript">
-                          $('.datetimepicker').datetimepicker({
-                              icons: {
-                                  time: "fa fa-clock-o",
-                                  date: "fa fa-calendar",
-                                  up: "fa fa-chevron-up",
-                                  down: "fa fa-chevron-down",
-                                  previous: 'fa fa-chevron-left',
-                                  next: 'fa fa-chevron-right',
-                                  today: 'fa fa-screenshot',
-                                  clear: 'fa fa-trash',
-                                  close: 'fa fa-remove',
-                              },
-                              format: 'L',
-                          });
-                        </script>
-                      </div>
-                      <div class="form-group bmd-form-group" style="margin-top:20px;">
-                          <label class="bmd-label-floating" for="nameserver1">Nameserver 1</label>
-                          <input class="form-control" type="text" name="nameserver1" value="{{old('nameserver1')}}">
-                      </div>
-                      <div class="form-group bmd-form-group" style="margin-top:20px;">
-                          <label class="bmd-label-floating" for="nameserver2">Nameserver 2</label>
-                          <input class="form-control" type="text" name="nameserver2" value="{{old('nameserver2')}}">
-                      </div>
+                    
 
                       {{ csrf_field() }}
 

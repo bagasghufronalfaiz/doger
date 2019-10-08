@@ -48,20 +48,20 @@ class DomainController extends Controller
      */
     public function store(Request $request)
     {
-        $expiration = $request->expiration;
-        $time = strtotime($expiration);
-        $newexpiration = date('Y-m-d', $time);
+        // $expiration = $request->expiration;
+        // $time = strtotime($expiration);
+        // $newexpiration = date('Y-m-d', $time);
 
-        $domeng = $request->domain;
-        $statusIndex = self::getStatusIndex($domeng);
+        $domain = $request->domain;
+        $statusIndex = self::getStatusIndex($domain);
 
+        $property = self::getDomainProperty($domain);
+        
         $domain = Domain::create([
             'domain' => $request->domain,
-            'pa' => $request->pa,
-            'da' => $request->da,
-            'expiration' => $newexpiration,
-            'nameserver1' => $request->nameserver1,
-            'nameserver2' => $request->nameserver2,
+            'expiration' => $property["expiration"],
+            'nameserver1' => $property["nameserver1"],
+            'nameserver2' => $property["nameserver2"],
             'index_status' => $statusIndex,
             'registrar_id' => $request->registrar_id,
             'user_id' => Auth::user()->id,
@@ -184,4 +184,57 @@ class DomainController extends Controller
 
         return $statusIndex;
     }
+    
+    private function getDomainProperty($domain){
+        $client = new Client();
+        $url = 'https://www.whois.com/whois/'.$domain;
+        $res = $client->request('GET', $url, ['headers' => ['User-Agent' => 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36']]);
+        $hasil = $res->getBody();
+        
+        $expiration = self::getStringBetween($hasil, 'Expires On:</div><div class="df-value">', '</div>');
+        $nameserver1 = self::getStringBetween($hasil, 'Name Servers:</div><div class="df-value">', '<br>');
+        $nameserver2 = self::getStringBetween($hasil, 'Name Servers:</div><div class="df-value">'.$nameserver1.'<br>', '</div>');
+        $result = array("expiration"=>$expiration, "nameserver1"=>$nameserver1, "nameserver2"=>$nameserver2);
+
+        return $result;
+    }
+
+    public function refreshExpiration($domain){
+        $property = self::getDomainProperty($domain);
+        $expiration = $property["expiration"];
+        $domain = Domain::where('domain', $domain)->first();
+        $domain->update([
+            'expiration' => $expiration,
+        ]);
+
+        return $expiration;
+    }
+
+    public function refreshNameServer1($domain){
+        $property = self::getDomainProperty($domain);
+        $nameserver1 = $property["nameserver1"];
+        $domain = Domain::where('domain', $domain)->first();
+        $domain->update([
+            'nameserver1' => $nameserver1,
+        ]);
+        
+        return response()->json([
+            'nameserver1' => $nameserver1,
+        ]);
+    }
+
+    public function refreshNameServer2($domain){
+        $property = self::getDomainProperty($domain);
+        $nameserver2 = $property["nameserver2"];
+    
+        $domain = Domain::where('domain', $domain)->first();
+        $domain->update([
+            'nameserver2' => $nameserver2,
+        ]);
+        
+        return response()->json([
+            'nameserver2' => $nameserver2,
+        ]);
+    }
+
 }

@@ -13,9 +13,13 @@
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
-    <!-- Material Dashboard CSS -->
+    
+    <!-- Data Tables CSS -->
+    {{-- <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css"> --}}
 
+    <!-- Material Dashboard CSS -->
     <link rel="stylesheet" href="{{ asset('assets/css/material-dashboard.css')}}">
+    {{-- <link rel="stylesheet" href="https://demos.creative-tim.com/material-dashboard-pro/assets/css/material-dashboard.min.css?v=2.1.0"> --}}
 
     <!-- Self Edited CSS -->
     <link href="{{ asset('css/app-material.css') }}" rel="stylesheet">
@@ -47,7 +51,8 @@
   <script src="{{ asset('assets/js/plugins/bootstrap-datetimepicker.min.js')}}"></script>
 
   <!--  DataTables.net Plugin, full documentation here: https://datatables.net/    -->
-  <script src="{{ asset('assets/js/plugins/jquery.datatables.min.js')}}"></script>
+  <script src="{{ asset('assets/js/plugins/jquery.dataTables.min.js')}}"></script>
+    {{-- <script src="https://demos.creative-tim.com/material-dashboard-pro/assets/js/plugins/jquery.dataTables.min.js"></script> --}}
 
   <!--	Plugin for Tags, full documentation here: https://github.com/bootstrap-tagsinput/bootstrap-tagsinputs  -->
   <script src="{{ asset('assets/js/plugins/bootstrap-tagsinput.js')}}"></script>
@@ -84,6 +89,22 @@
 
   <!-- Self Edited JS -->
   <script src="{{ asset('js/app-material.js') }}"></script>
+
+
+
+
+  {{-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap.min.css"> --}}
+
+    {{-- <script src="https://code.jquery.com/jquery-3.3.1.js"></script> --}}
+    {{-- <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script> --}}
+    {{-- <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap.min.js"></script> --}}
+
+    <script type="text/javascript">
+    $(document).ready(function() {
+    $('#jajalsort').DataTable();
+} );
+    </script>
 
   </head>
   <body>
