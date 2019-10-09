@@ -1,4 +1,4 @@
-@extends('layouts.app-material')
+@extends('layouts.app-material-pro-online')
 
 @section('content')
 

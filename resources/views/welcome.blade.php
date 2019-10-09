@@ -1,4 +1,4 @@
-@extends('layouts.app-material')
+@extends('layouts.app-material-pro-online')
 
 @section('content')
 
@@ -131,7 +131,7 @@
                   </div>
                   <div class="card-body">
                     <div class="table-responsive">
-                      <table id="tablesort" class="table table-hover">
+                      <table id="datatables" class="table table-hover">
                         <thead class="text-success">
                             <th scope="col" onclick="sortTable(0)">Domain</th>
                             <th scope="col" onclick="sortTable(1)">Index Web</th>
@@ -139,11 +139,11 @@
                             <th scope="col" onclick="sortTable(3)">Theme</th>
                             <th scope="col" onclick="sortTable(4)">Keyword</th>
                             <th scope="col" onclick="sortTable(5)">Server</th>
-                            <th scope="col" onclick="sortTable(6)">Server Folder</th>
+                            {{-- <th scope="col" onclick="sortTable(6)">Server Folder</th> --}}
                             <th scope="col" onclick="sortTable(7)">Ad</th>
-                            <th scope="col" onclick="sortTable(8)">Webmaster</th>
+                            {{-- <th scope="col" onclick="sortTable(8)">Webmaster</th> --}}
                             <th scope="col" onclick="sortTable(9)">Date</th>
-                            <th scope="col">Action</th>
+                            <th scope="col" >Action</th>
                         </thead>
                         <tbody>
                             @foreach($user->websites as $websitesy)
@@ -154,9 +154,9 @@
                                 <td><p class="wordpress-theme pointer" data-domain="{{$websitesy->domain->domain}}" style="margin:0px;">{{$websitesy->theme}}</p></td>
                                 <td>{{$websitesy->keyword}}</td>
                                 <td>{{$websitesy->server->servername}}</td>
-                                <td>{{$websitesy->server_folder}}</td>
+                                {{-- <td>{{$websitesy->server_folder}}</td> --}}
                                 <td>@if($websitesy->ad_id!=null){{$websitesy->ad->name}} @else Not Yet @endif</td>
-                                <td>@if($websitesy->webmaster_id!=null){{$websitesy->webmaster->name}} @else Not Yet @endif</td>
+                                {{-- <td>@if($websitesy->webmaster_id!=null){{$websitesy->webmaster->name}} @else Not Yet @endif</td> --}}
                                 <td>{{$websitesy->date}}</td>
                                 <td class="td-actions text-right d-flex">
                                     <a href="/website/{{$websitesy->slug}}" class="btn btn-primary btn-sm" style="margin:0px 2px;"><i class="material-icons">search</i></a>
@@ -654,5 +654,21 @@
       });
     });
   });
+  $(document).ready(function() {
+      $('#datatables').DataTable({
+        "pagingType": "full_numbers",
+        "lengthMenu": [
+          [10, 25, 50, -1],
+          [10, 25, 50, "All"]
+        ],
+        responsive: true,
+        language: {
+          search: "_INPUT_",
+          searchPlaceholder: "Search records",
+        }
+      });
+
+      var table = $('#datatable').DataTable();
+    });
 </script>
 @endsection
