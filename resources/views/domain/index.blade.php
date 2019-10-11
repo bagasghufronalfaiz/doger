@@ -78,7 +78,7 @@
             <a href="{{ route('adddomain') }}"  class="btn btn-secondary btn-sm">Add Domain</a>
           </div>
           <div class="card-body table-responsive">
-            <table  id="datatables" class="table table-hover">
+            <table  id="" class="table table-hover">
               <thead class="text-success">
                   <th scope="col" >Domain</th>
                   <th scope="col" >Index Status</th>
@@ -86,7 +86,7 @@
                   <th scope="col" >Expiration</th>
                   <th scope="col" >Nameserver 1</th>
                   <th scope="col" >Nameserver 2</th>
-                  <th scope="col">Action</th>
+                  <th scope="col" class="text-right">Action</th>
               </thead>
               <tbody>
                   @foreach($user->domains as $domainy)
@@ -98,7 +98,7 @@
                       <td><p class="expiration pointer" data-domain="{{$domainy->domain}}" style="margin:0px;">{{$domainy->expiration}}</p></td>
                       <td><p class="nameserver1 pointer" data-domain="{{$domainy->domain}}" style="margin:0px;">{{$domainy->nameserver1}}</p></td>
                       <td><p class="nameserver2 pointer" data-domain="{{$domainy->domain}}" style="margin:0px;">{{$domainy->nameserver2}}</p></td>
-                      <td class="td-actions text-right d-flex">
+                      <td>
                       <a href="/domain/{{$domainy->id}}/editdomain/" class="btn btn-info  btn-sm"><i class="material-icons">edit</i></a>
                           <form action="/domain/{{$domainy->id}}" method="post">
                               {{ csrf_field() }}
@@ -611,6 +611,6 @@
 
       var table = $('#datatable').DataTable();
     });
-  
+
 </script>
 @endsection

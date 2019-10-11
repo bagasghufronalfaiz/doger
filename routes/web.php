@@ -60,6 +60,7 @@ Route::group(['middleware'=>'auth'], function(){
     Route::get('/wordpress-page/{domaing}', 'WebsiteController@refreshWordpressPage')->name('wordpress-page');
     Route::get('/wordpress-page-title/{domaing}', 'WebsiteController@refreshWordpressPageTitle')->name('wordpress-page-title');
 
+    //Domain
     Route::get('/status-index/{domaing}', 'DomainController@refreshStatusIndex')->name('status-index');
     Route::get('/expiration/{domain}', 'DomainController@refreshExpiration')->name('expiration');
     Route::get('/nameserver1/{domain}', 'DomainController@refreshNameServer1')->name('nameserver1');

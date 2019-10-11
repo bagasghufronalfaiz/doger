@@ -89,12 +89,12 @@ class HomeController extends Controller
         // $saming = 'brand-google.com';
         // $hasil = str_replace_first('.','', $saming);
         // return 'posts : '. $posts.' dan pages : '.$pages.' yaitu '.$new_page_titles.' dan category : '. $category.' yaitu '. $category_titles . ' dan theme : '. $theme;
-        
+
         // domain expiration
         $domain = 'matuisichiro.com';
-        $exp = self::getDomainProperty($domain);
-        
-        return $exp;
+        // $exp = self::getDomainProperty($domain);
+
+        return $domain;
 
     }
 
@@ -107,7 +107,7 @@ class HomeController extends Controller
         $url = 'https://mxtoolbox.com/SuperTool.aspx?action=whois%3amatuisichiro.com&run=toolpage';
         $res = $client->request('GET', $url, ['headers' => ['User-Agent' => 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36']]);
         $hasil = $res->getBody();
-        
+
         $expiration = self::get_string_between($hasil, '<span>Expires on ', '</span><br><span>Updated on ');
         // $nameserver1 = self::get_string_between($hasil, 'Name Servers</td><td>', '(has ');
         // $nameserver2 = self::get_string_between($hasil, 'domains)<br>', '(has ');
@@ -241,5 +241,5 @@ class HomeController extends Controller
         return $categoryTitles;
     }
 
-    
+
 }

@@ -1,503 +1,1651 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Jajal ya</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap.min.css">
+@extends('layouts.app-argon')
 
-    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
-    <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap.min.js"></script>
+@section('css')
 
-    <script type="text/javascript">
-    $(document).ready(function() {
-    $('#example').DataTable();
-} );
-    </script>
-</head>
-<body>
-    <table id="example" class="table table-striped table-bordered" style="width:100%">
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Position</th>
-                <th>Office</th>
-                <th>Age</th>
-                <th>Start date</th>
-                <th>Salary</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>Tiger Nixon</td>
-                <td>System Architect</td>
-                <td>Edinburgh</td>
-                <td>61</td>
-                <td>2011/04/25</td>
-                <td>$320,800</td>
-            </tr>
-            <tr>
-                <td>Garrett Winters</td>
-                <td>Accountant</td>
-                <td>Tokyo</td>
-                <td>63</td>
-                <td>2011/07/25</td>
-                <td>$170,750</td>
-            </tr>
-            <tr>
-                <td>Ashton Cox</td>
-                <td>Junior Technical Author</td>
-                <td>San Francisco</td>
-                <td>66</td>
-                <td>2009/01/12</td>
-                <td>$86,000</td>
-            </tr>
-            <tr>
-                <td>Cedric Kelly</td>
-                <td>Senior Javascript Developer</td>
-                <td>Edinburgh</td>
-                <td>22</td>
-                <td>2012/03/29</td>
-                <td>$433,060</td>
-            </tr>
-            <tr>
-                <td>Airi Satou</td>
-                <td>Accountant</td>
-                <td>Tokyo</td>
-                <td>33</td>
-                <td>2008/11/28</td>
-                <td>$162,700</td>
-            </tr>
-            <tr>
-                <td>Brielle Williamson</td>
-                <td>Integration Specialist</td>
-                <td>New York</td>
-                <td>61</td>
-                <td>2012/12/02</td>
-                <td>$372,000</td>
-            </tr>
-            <tr>
-                <td>Herrod Chandler</td>
-                <td>Sales Assistant</td>
-                <td>San Francisco</td>
-                <td>59</td>
-                <td>2012/08/06</td>
-                <td>$137,500</td>
-            </tr>
-            <tr>
-                <td>Rhona Davidson</td>
-                <td>Integration Specialist</td>
-                <td>Tokyo</td>
-                <td>55</td>
-                <td>2010/10/14</td>
-                <td>$327,900</td>
-            </tr>
-            <tr>
-                <td>Colleen Hurst</td>
-                <td>Javascript Developer</td>
-                <td>San Francisco</td>
-                <td>39</td>
-                <td>2009/09/15</td>
-                <td>$205,500</td>
-            </tr>
-            <tr>
-                <td>Sonya Frost</td>
-                <td>Software Engineer</td>
-                <td>Edinburgh</td>
-                <td>23</td>
-                <td>2008/12/13</td>
-                <td>$103,600</td>
-            </tr>
-            <tr>
-                <td>Jena Gaines</td>
-                <td>Office Manager</td>
-                <td>London</td>
-                <td>30</td>
-                <td>2008/12/19</td>
-                <td>$90,560</td>
-            </tr>
-            <tr>
-                <td>Quinn Flynn</td>
-                <td>Support Lead</td>
-                <td>Edinburgh</td>
-                <td>22</td>
-                <td>2013/03/03</td>
-                <td>$342,000</td>
-            </tr>
-            <tr>
-                <td>Charde Marshall</td>
-                <td>Regional Director</td>
-                <td>San Francisco</td>
-                <td>36</td>
-                <td>2008/10/16</td>
-                <td>$470,600</td>
-            </tr>
-            <tr>
-                <td>Haley Kennedy</td>
-                <td>Senior Marketing Designer</td>
-                <td>London</td>
-                <td>43</td>
-                <td>2012/12/18</td>
-                <td>$313,500</td>
-            </tr>
-            <tr>
-                <td>Tatyana Fitzpatrick</td>
-                <td>Regional Director</td>
-                <td>London</td>
-                <td>19</td>
-                <td>2010/03/17</td>
-                <td>$385,750</td>
-            </tr>
-            <tr>
-                <td>Michael Silva</td>
-                <td>Marketing Designer</td>
-                <td>London</td>
-                <td>66</td>
-                <td>2012/11/27</td>
-                <td>$198,500</td>
-            </tr>
-            <tr>
-                <td>Paul Byrd</td>
-                <td>Chief Financial Officer (CFO)</td>
-                <td>New York</td>
-                <td>64</td>
-                <td>2010/06/09</td>
-                <td>$725,000</td>
-            </tr>
-            <tr>
-                <td>Gloria Little</td>
-                <td>Systems Administrator</td>
-                <td>New York</td>
-                <td>59</td>
-                <td>2009/04/10</td>
-                <td>$237,500</td>
-            </tr>
-            <tr>
-                <td>Bradley Greer</td>
-                <td>Software Engineer</td>
-                <td>London</td>
-                <td>41</td>
-                <td>2012/10/13</td>
-                <td>$132,000</td>
-            </tr>
-            <tr>
-                <td>Dai Rios</td>
-                <td>Personnel Lead</td>
-                <td>Edinburgh</td>
-                <td>35</td>
-                <td>2012/09/26</td>
-                <td>$217,500</td>
-            </tr>
-            <tr>
-                <td>Jenette Caldwell</td>
-                <td>Development Lead</td>
-                <td>New York</td>
-                <td>30</td>
-                <td>2011/09/03</td>
-                <td>$345,000</td>
-            </tr>
-            <tr>
-                <td>Yuri Berry</td>
-                <td>Chief Marketing Officer (CMO)</td>
-                <td>New York</td>
-                <td>40</td>
-                <td>2009/06/25</td>
-                <td>$675,000</td>
-            </tr>
-            <tr>
-                <td>Caesar Vance</td>
-                <td>Pre-Sales Support</td>
-                <td>New York</td>
-                <td>21</td>
-                <td>2011/12/12</td>
-                <td>$106,450</td>
-            </tr>
-            <tr>
-                <td>Doris Wilder</td>
-                <td>Sales Assistant</td>
-                <td>Sidney</td>
-                <td>23</td>
-                <td>2010/09/20</td>
-                <td>$85,600</td>
-            </tr>
-            <tr>
-                <td>Angelica Ramos</td>
-                <td>Chief Executive Officer (CEO)</td>
-                <td>London</td>
-                <td>47</td>
-                <td>2009/10/09</td>
-                <td>$1,200,000</td>
-            </tr>
-            <tr>
-                <td>Gavin Joyce</td>
-                <td>Developer</td>
-                <td>Edinburgh</td>
-                <td>42</td>
-                <td>2010/12/22</td>
-                <td>$92,575</td>
-            </tr>
-            <tr>
-                <td>Jennifer Chang</td>
-                <td>Regional Director</td>
-                <td>Singapore</td>
-                <td>28</td>
-                <td>2010/11/14</td>
-                <td>$357,650</td>
-            </tr>
-            <tr>
-                <td>Brenden Wagner</td>
-                <td>Software Engineer</td>
-                <td>San Francisco</td>
-                <td>28</td>
-                <td>2011/06/07</td>
-                <td>$206,850</td>
-            </tr>
-            <tr>
-                <td>Fiona Green</td>
-                <td>Chief Operating Officer (COO)</td>
-                <td>San Francisco</td>
-                <td>48</td>
-                <td>2010/03/11</td>
-                <td>$850,000</td>
-            </tr>
-            <tr>
-                <td>Shou Itou</td>
-                <td>Regional Marketing</td>
-                <td>Tokyo</td>
-                <td>20</td>
-                <td>2011/08/14</td>
-                <td>$163,000</td>
-            </tr>
-            <tr>
-                <td>Michelle House</td>
-                <td>Integration Specialist</td>
-                <td>Sidney</td>
-                <td>37</td>
-                <td>2011/06/02</td>
-                <td>$95,400</td>
-            </tr>
-            <tr>
-                <td>Suki Burks</td>
-                <td>Developer</td>
-                <td>London</td>
-                <td>53</td>
-                <td>2009/10/22</td>
-                <td>$114,500</td>
-            </tr>
-            <tr>
-                <td>Prescott Bartlett</td>
-                <td>Technical Author</td>
-                <td>London</td>
-                <td>27</td>
-                <td>2011/05/07</td>
-                <td>$145,000</td>
-            </tr>
-            <tr>
-                <td>Gavin Cortez</td>
-                <td>Team Leader</td>
-                <td>San Francisco</td>
-                <td>22</td>
-                <td>2008/10/26</td>
-                <td>$235,500</td>
-            </tr>
-            <tr>
-                <td>Martena Mccray</td>
-                <td>Post-Sales support</td>
-                <td>Edinburgh</td>
-                <td>46</td>
-                <td>2011/03/09</td>
-                <td>$324,050</td>
-            </tr>
-            <tr>
-                <td>Unity Butler</td>
-                <td>Marketing Designer</td>
-                <td>San Francisco</td>
-                <td>47</td>
-                <td>2009/12/09</td>
-                <td>$85,675</td>
-            </tr>
-            <tr>
-                <td>Howard Hatfield</td>
-                <td>Office Manager</td>
-                <td>San Francisco</td>
-                <td>51</td>
-                <td>2008/12/16</td>
-                <td>$164,500</td>
-            </tr>
-            <tr>
-                <td>Hope Fuentes</td>
-                <td>Secretary</td>
-                <td>San Francisco</td>
-                <td>41</td>
-                <td>2010/02/12</td>
-                <td>$109,850</td>
-            </tr>
-            <tr>
-                <td>Vivian Harrell</td>
-                <td>Financial Controller</td>
-                <td>San Francisco</td>
-                <td>62</td>
-                <td>2009/02/14</td>
-                <td>$452,500</td>
-            </tr>
-            <tr>
-                <td>Timothy Mooney</td>
-                <td>Office Manager</td>
-                <td>London</td>
-                <td>37</td>
-                <td>2008/12/11</td>
-                <td>$136,200</td>
-            </tr>
-            <tr>
-                <td>Jackson Bradshaw</td>
-                <td>Director</td>
-                <td>New York</td>
-                <td>65</td>
-                <td>2008/09/26</td>
-                <td>$645,750</td>
-            </tr>
-            <tr>
-                <td>Olivia Liang</td>
-                <td>Support Engineer</td>
-                <td>Singapore</td>
-                <td>64</td>
-                <td>2011/02/03</td>
-                <td>$234,500</td>
-            </tr>
-            <tr>
-                <td>Bruno Nash</td>
-                <td>Software Engineer</td>
-                <td>London</td>
-                <td>38</td>
-                <td>2011/05/03</td>
-                <td>$163,500</td>
-            </tr>
-            <tr>
-                <td>Sakura Yamamoto</td>
-                <td>Support Engineer</td>
-                <td>Tokyo</td>
-                <td>37</td>
-                <td>2009/08/19</td>
-                <td>$139,575</td>
-            </tr>
-            <tr>
-                <td>Thor Walton</td>
-                <td>Developer</td>
-                <td>New York</td>
-                <td>61</td>
-                <td>2013/08/11</td>
-                <td>$98,540</td>
-            </tr>
-            <tr>
-                <td>Finn Camacho</td>
-                <td>Support Engineer</td>
-                <td>San Francisco</td>
-                <td>47</td>
-                <td>2009/07/07</td>
-                <td>$87,500</td>
-            </tr>
-            <tr>
-                <td>Serge Baldwin</td>
-                <td>Data Coordinator</td>
-                <td>Singapore</td>
-                <td>64</td>
-                <td>2012/04/09</td>
-                <td>$138,575</td>
-            </tr>
-            <tr>
-                <td>Zenaida Frank</td>
-                <td>Software Engineer</td>
-                <td>New York</td>
-                <td>63</td>
-                <td>2010/01/04</td>
-                <td>$125,250</td>
-            </tr>
-            <tr>
-                <td>Zorita Serrano</td>
-                <td>Software Engineer</td>
-                <td>San Francisco</td>
-                <td>56</td>
-                <td>2012/06/01</td>
-                <td>$115,000</td>
-            </tr>
-            <tr>
-                <td>Jennifer Acosta</td>
-                <td>Junior Javascript Developer</td>
-                <td>Edinburgh</td>
-                <td>43</td>
-                <td>2013/02/01</td>
-                <td>$75,650</td>
-            </tr>
-            <tr>
-                <td>Cara Stevens</td>
-                <td>Sales Assistant</td>
-                <td>New York</td>
-                <td>46</td>
-                <td>2011/12/06</td>
-                <td>$145,600</td>
-            </tr>
-            <tr>
-                <td>Hermione Butler</td>
-                <td>Regional Director</td>
-                <td>London</td>
-                <td>47</td>
-                <td>2011/03/21</td>
-                <td>$356,250</td>
-            </tr>
-            <tr>
-                <td>Lael Greer</td>
-                <td>Systems Administrator</td>
-                <td>London</td>
-                <td>21</td>
-                <td>2009/02/27</td>
-                <td>$103,500</td>
-            </tr>
-            <tr>
-                <td>Jonas Alexander</td>
-                <td>Developer</td>
-                <td>San Francisco</td>
-                <td>30</td>
-                <td>2010/07/14</td>
-                <td>$86,500</td>
-            </tr>
-            <tr>
-                <td>Shad Decker</td>
-                <td>Regional Director</td>
-                <td>Edinburgh</td>
-                <td>51</td>
-                <td>2008/11/13</td>
-                <td>$183,000</td>
-            </tr>
-            <tr>
-                <td>Michael Bruce</td>
-                <td>Javascript Developer</td>
-                <td>Singapore</td>
-                <td>29</td>
-                <td>2011/06/27</td>
-                <td>$183,000</td>
-            </tr>
-            <tr>
-                <td>Donna Snider</td>
-                <td>Customer Support</td>
-                <td>New York</td>
-                <td>27</td>
-                <td>2011/01/25</td>
-                <td>$112,000</td>
-            </tr>
-        </tbody>
-        <tfoot>
-            <tr>
-                <th>Name</th>
-                <th>Position</th>
-                <th>Office</th>
-                <th>Age</th>
-                <th>Start date</th>
-                <th>Salary</th>
-            </tr>
-        </tfoot>
-    </table>
-</body>
-</html>
+@endsection
+
+@section('content')
+<!-- Topnav -->
+<nav class="navbar navbar-top navbar-expand navbar-dark bg-primary border-bottom">
+    <div class="container-fluid">
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <!-- Search form -->
+        <form class="navbar-search navbar-search-light form-inline mr-sm-3" id="navbar-search-main">
+        <div class="form-group mb-0">
+            <div class="input-group input-group-alternative input-group-merge">
+            <div class="input-group-prepend">
+                <span class="input-group-text"><i class="fas fa-search"></i></span>
+            </div>
+            <input class="form-control" placeholder="Search" type="text">
+            </div>
+        </div>
+        <button type="button" class="close" data-action="search-close" data-target="#navbar-search-main" aria-label="Close">
+            <span aria-hidden="true">×</span>
+        </button>
+        </form>
+        <!-- Navbar links -->
+        <ul class="navbar-nav align-items-center ml-md-auto">
+        <li class="nav-item d-xl-none">
+            <!-- Sidenav toggler -->
+            <div class="pr-3 sidenav-toggler sidenav-toggler-dark" data-action="sidenav-pin" data-target="#sidenav-main">
+            <div class="sidenav-toggler-inner">
+                <i class="sidenav-toggler-line"></i>
+                <i class="sidenav-toggler-line"></i>
+                <i class="sidenav-toggler-line"></i>
+            </div>
+            </div>
+        </li>
+        <li class="nav-item d-sm-none">
+            <a class="nav-link" href="#" data-action="search-show" data-target="#navbar-search-main">
+            <i class="ni ni-zoom-split-in"></i>
+            </a>
+        </li>
+        <li class="nav-item dropdown">
+            <a class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="ni ni-bell-55"></i>
+            </a>
+            <div class="dropdown-menu dropdown-menu-xl dropdown-menu-right py-0 overflow-hidden">
+            <!-- Dropdown header -->
+            <div class="px-3 py-3">
+                <h6 class="text-sm text-muted m-0">You have <strong class="text-primary">13</strong> notifications.</h6>
+            </div>
+            <!-- List group -->
+            <div class="list-group list-group-flush">
+                <a href="#!" class="list-group-item list-group-item-action">
+                <div class="row align-items-center">
+                    <div class="col-auto">
+                    <!-- Avatar -->
+                    <img alt="Image placeholder" src="../../assets/img/theme/team-1.jpg" class="avatar rounded-circle">
+                    </div>
+                    <div class="col ml--2">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                        <h4 class="mb-0 text-sm">John Snow</h4>
+                        </div>
+                        <div class="text-right text-muted">
+                        <small>2 hrs ago</small>
+                        </div>
+                    </div>
+                    <p class="text-sm mb-0">Let's meet at Starbucks at 11:30. Wdyt?</p>
+                    </div>
+                </div>
+                </a>
+                <a href="#!" class="list-group-item list-group-item-action">
+                <div class="row align-items-center">
+                    <div class="col-auto">
+                    <!-- Avatar -->
+                    <img alt="Image placeholder" src="../../assets/img/theme/team-2.jpg" class="avatar rounded-circle">
+                    </div>
+                    <div class="col ml--2">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                        <h4 class="mb-0 text-sm">John Snow</h4>
+                        </div>
+                        <div class="text-right text-muted">
+                        <small>3 hrs ago</small>
+                        </div>
+                    </div>
+                    <p class="text-sm mb-0">A new issue has been reported for Argon.</p>
+                    </div>
+                </div>
+                </a>
+                <a href="#!" class="list-group-item list-group-item-action">
+                <div class="row align-items-center">
+                    <div class="col-auto">
+                    <!-- Avatar -->
+                    <img alt="Image placeholder" src="../../assets/img/theme/team-3.jpg" class="avatar rounded-circle">
+                    </div>
+                    <div class="col ml--2">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                        <h4 class="mb-0 text-sm">John Snow</h4>
+                        </div>
+                        <div class="text-right text-muted">
+                        <small>5 hrs ago</small>
+                        </div>
+                    </div>
+                    <p class="text-sm mb-0">Your posts have been liked a lot.</p>
+                    </div>
+                </div>
+                </a>
+                <a href="#!" class="list-group-item list-group-item-action">
+                <div class="row align-items-center">
+                    <div class="col-auto">
+                    <!-- Avatar -->
+                    <img alt="Image placeholder" src="../../assets/img/theme/team-4.jpg" class="avatar rounded-circle">
+                    </div>
+                    <div class="col ml--2">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                        <h4 class="mb-0 text-sm">John Snow</h4>
+                        </div>
+                        <div class="text-right text-muted">
+                        <small>2 hrs ago</small>
+                        </div>
+                    </div>
+                    <p class="text-sm mb-0">Let's meet at Starbucks at 11:30. Wdyt?</p>
+                    </div>
+                </div>
+                </a>
+                <a href="#!" class="list-group-item list-group-item-action">
+                <div class="row align-items-center">
+                    <div class="col-auto">
+                    <!-- Avatar -->
+                    <img alt="Image placeholder" src="../../assets/img/theme/team-5.jpg" class="avatar rounded-circle">
+                    </div>
+                    <div class="col ml--2">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                        <h4 class="mb-0 text-sm">John Snow</h4>
+                        </div>
+                        <div class="text-right text-muted">
+                        <small>3 hrs ago</small>
+                        </div>
+                    </div>
+                    <p class="text-sm mb-0">A new issue has been reported for Argon.</p>
+                    </div>
+                </div>
+                </a>
+            </div>
+            <!-- View all -->
+            <a href="#!" class="dropdown-item text-center text-primary font-weight-bold py-3">View all</a>
+            </div>
+        </li>
+        <li class="nav-item dropdown">
+            <a class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="ni ni-ungroup"></i>
+            </a>
+            <div class="dropdown-menu dropdown-menu-lg dropdown-menu-dark bg-default dropdown-menu-right">
+            <div class="row shortcuts px-4">
+                <a href="#!" class="col-4 shortcut-item">
+                <span class="shortcut-media avatar rounded-circle bg-gradient-red">
+                    <i class="ni ni-calendar-grid-58"></i>
+                </span>
+                <small>Calendar</small>
+                </a>
+                <a href="#!" class="col-4 shortcut-item">
+                <span class="shortcut-media avatar rounded-circle bg-gradient-orange">
+                    <i class="ni ni-email-83"></i>
+                </span>
+                <small>Email</small>
+                </a>
+                <a href="#!" class="col-4 shortcut-item">
+                <span class="shortcut-media avatar rounded-circle bg-gradient-info">
+                    <i class="ni ni-credit-card"></i>
+                </span>
+                <small>Payments</small>
+                </a>
+                <a href="#!" class="col-4 shortcut-item">
+                <span class="shortcut-media avatar rounded-circle bg-gradient-green">
+                    <i class="ni ni-books"></i>
+                </span>
+                <small>Reports</small>
+                </a>
+                <a href="#!" class="col-4 shortcut-item">
+                <span class="shortcut-media avatar rounded-circle bg-gradient-purple">
+                    <i class="ni ni-pin-3"></i>
+                </span>
+                <small>Maps</small>
+                </a>
+                <a href="#!" class="col-4 shortcut-item">
+                <span class="shortcut-media avatar rounded-circle bg-gradient-yellow">
+                    <i class="ni ni-basket"></i>
+                </span>
+                <small>Shop</small>
+                </a>
+            </div>
+            </div>
+        </li>
+        </ul>
+        <ul class="navbar-nav align-items-center ml-auto ml-md-0">
+        <li class="nav-item dropdown">
+            <a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <div class="media align-items-center">
+                <span class="avatar avatar-sm rounded-circle">
+                <img alt="Image placeholder" src="../../assets/img/theme/team-4.jpg">
+                </span>
+                <div class="media-body ml-2 d-none d-lg-block">
+                <span class="mb-0 text-sm  font-weight-bold">John Snow</span>
+                </div>
+            </div>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right">
+            <div class="dropdown-header noti-title">
+                <h6 class="text-overflow m-0">Welcome!</h6>
+            </div>
+            <a href="#!" class="dropdown-item">
+                <i class="ni ni-single-02"></i>
+                <span>My profile</span>
+            </a>
+            <a href="#!" class="dropdown-item">
+                <i class="ni ni-settings-gear-65"></i>
+                <span>Settings</span>
+            </a>
+            <a href="#!" class="dropdown-item">
+                <i class="ni ni-calendar-grid-58"></i>
+                <span>Activity</span>
+            </a>
+            <a href="#!" class="dropdown-item">
+                <i class="ni ni-support-16"></i>
+                <span>Support</span>
+            </a>
+            <div class="dropdown-divider"></div>
+            <a href="#!" class="dropdown-item">
+                <i class="ni ni-user-run"></i>
+                <span>Logout</span>
+            </a>
+            </div>
+        </li>
+        </ul>
+    </div>
+    </div>
+</nav>
+<!-- Header -->
+<div class="header bg-primary pb-6">
+    <div class="container-fluid">
+    <div class="header-body">
+        <div class="row align-items-center py-4">
+        <div class="col-lg-6 col-7">
+            <h6 class="h2 text-white d-inline-block mb-0">Default</h6>
+            <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
+            <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
+                <li class="breadcrumb-item"><a href="#"><i class="fas fa-home"></i></a></li>
+                <li class="breadcrumb-item"><a href="#">Dashboards</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Default</li>
+            </ol>
+            </nav>
+        </div>
+        <div class="col-lg-6 col-5 text-right">
+            <a href="#" class="btn btn-sm btn-neutral">New</a>
+            <a href="#" class="btn btn-sm btn-neutral">Filters</a>
+        </div>
+        </div>
+        <!-- Card stats -->
+        <div class="row">
+        <div class="col-xl-3 col-md-6">
+            <div class="card card-stats">
+            <!-- Card body -->
+            <div class="card-body">
+                <div class="row">
+                <div class="col">
+                    <h5 class="card-title text-uppercase text-muted mb-0">Total traffic</h5>
+                    <span class="h2 font-weight-bold mb-0">350,897</span>
+                </div>
+                <div class="col-auto">
+                    <div class="icon icon-shape bg-gradient-red text-white rounded-circle shadow">
+                    <i class="ni ni-active-40"></i>
+                    </div>
+                </div>
+                </div>
+                <p class="mt-3 mb-0 text-sm">
+                <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> 3.48%</span>
+                <span class="text-nowrap">Since last month</span>
+                </p>
+            </div>
+            </div>
+        </div>
+        <div class="col-xl-3 col-md-6">
+            <div class="card card-stats">
+            <!-- Card body -->
+            <div class="card-body">
+                <div class="row">
+                <div class="col">
+                    <h5 class="card-title text-uppercase text-muted mb-0">New users</h5>
+                    <span class="h2 font-weight-bold mb-0">2,356</span>
+                </div>
+                <div class="col-auto">
+                    <div class="icon icon-shape bg-gradient-orange text-white rounded-circle shadow">
+                    <i class="ni ni-chart-pie-35"></i>
+                    </div>
+                </div>
+                </div>
+                <p class="mt-3 mb-0 text-sm">
+                <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> 3.48%</span>
+                <span class="text-nowrap">Since last month</span>
+                </p>
+            </div>
+            </div>
+        </div>
+        <div class="col-xl-3 col-md-6">
+            <div class="card card-stats">
+            <!-- Card body -->
+            <div class="card-body">
+                <div class="row">
+                <div class="col">
+                    <h5 class="card-title text-uppercase text-muted mb-0">Sales</h5>
+                    <span class="h2 font-weight-bold mb-0">924</span>
+                </div>
+                <div class="col-auto">
+                    <div class="icon icon-shape bg-gradient-green text-white rounded-circle shadow">
+                    <i class="ni ni-money-coins"></i>
+                    </div>
+                </div>
+                </div>
+                <p class="mt-3 mb-0 text-sm">
+                <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> 3.48%</span>
+                <span class="text-nowrap">Since last month</span>
+                </p>
+            </div>
+            </div>
+        </div>
+        <div class="col-xl-3 col-md-6">
+            <div class="card card-stats">
+            <!-- Card body -->
+            <div class="card-body">
+                <div class="row">
+                <div class="col">
+                    <h5 class="card-title text-uppercase text-muted mb-0">Performance</h5>
+                    <span class="h2 font-weight-bold mb-0">49,65%</span>
+                </div>
+                <div class="col-auto">
+                    <div class="icon icon-shape bg-gradient-info text-white rounded-circle shadow">
+                    <i class="ni ni-chart-bar-32"></i>
+                    </div>
+                </div>
+                </div>
+                <p class="mt-3 mb-0 text-sm">
+                <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> 3.48%</span>
+                <span class="text-nowrap">Since last month</span>
+                </p>
+            </div>
+            </div>
+        </div>
+        </div>
+    </div>
+    </div>
+</div>
+<!-- Page content -->
+<div class="container-fluid mt--6">
+    <div class="row">
+    <div class="col-xl-8">
+        <div class="card bg-default">
+        <div class="card-header bg-transparent">
+            <div class="row align-items-center">
+            <div class="col">
+                <h6 class="text-light text-uppercase ls-1 mb-1">Overview</h6>
+                <h5 class="h3 text-white mb-0">Sales value</h5>
+            </div>
+            <div class="col">
+                <ul class="nav nav-pills justify-content-end">
+                <li class="nav-item mr-2 mr-md-0" data-toggle="chart" data-target="#chart-sales-dark" data-update='{"data":{"datasets":[{"data":[0, 20, 10, 30, 15, 40, 20, 60, 60]}]}}' data-prefix="$" data-suffix="k">
+                    <a href="#" class="nav-link py-2 px-3 active" data-toggle="tab">
+                    <span class="d-none d-md-block">Month</span>
+                    <span class="d-md-none">M</span>
+                    </a>
+                </li>
+                <li class="nav-item" data-toggle="chart" data-target="#chart-sales-dark" data-update='{"data":{"datasets":[{"data":[0, 20, 5, 25, 10, 30, 15, 40, 40]}]}}' data-prefix="$" data-suffix="k">
+                    <a href="#" class="nav-link py-2 px-3" data-toggle="tab">
+                    <span class="d-none d-md-block">Week</span>
+                    <span class="d-md-none">W</span>
+                    </a>
+                </li>
+                </ul>
+            </div>
+            </div>
+        </div>
+        <div class="card-body">
+            <!-- Chart -->
+            <div class="chart">
+            <!-- Chart wrapper -->
+            <canvas id="chart-sales-dark" class="chart-canvas"></canvas>
+            </div>
+        </div>
+        </div>
+    </div>
+    <div class="col-xl-4">
+        <div class="card">
+        <div class="card-header bg-transparent">
+            <div class="row align-items-center">
+            <div class="col">
+                <h6 class="text-uppercase text-muted ls-1 mb-1">Performance</h6>
+                <h5 class="h3 mb-0">Total orders</h5>
+            </div>
+            </div>
+        </div>
+        <div class="card-body">
+            <!-- Chart -->
+            <div class="chart">
+            <canvas id="chart-bars" class="chart-canvas"></canvas>
+            </div>
+        </div>
+        </div>
+    </div>
+    </div>
+    <div class="row">
+    <div class="col-xl-4">
+        <!-- Members list group card -->
+        <div class="card">
+        <!-- Card header -->
+        <div class="card-header">
+            <!-- Title -->
+            <h5 class="h3 mb-0">Team members</h5>
+        </div>
+        <!-- Card body -->
+        <div class="card-body">
+            <!-- List group -->
+            <ul class="list-group list-group-flush list my--3">
+            <li class="list-group-item px-0">
+                <div class="row align-items-center">
+                <div class="col-auto">
+                    <!-- Avatar -->
+                    <a href="#" class="avatar rounded-circle">
+                    <img alt="Image placeholder" src="../../assets/img/theme/team-1.jpg">
+                    </a>
+                </div>
+                <div class="col ml--2">
+                    <h4 class="mb-0">
+                    <a href="#!">John Michael</a>
+                    </h4>
+                    <span class="text-success">●</span>
+                    <small>Online</small>
+                </div>
+                <div class="col-auto">
+                    <button type="button" class="btn btn-sm btn-primary">Add</button>
+                </div>
+                </div>
+            </li>
+            <li class="list-group-item px-0">
+                <div class="row align-items-center">
+                <div class="col-auto">
+                    <!-- Avatar -->
+                    <a href="#" class="avatar rounded-circle">
+                    <img alt="Image placeholder" src="../../assets/img/theme/team-2.jpg">
+                    </a>
+                </div>
+                <div class="col ml--2">
+                    <h4 class="mb-0">
+                    <a href="#!">Alex Smith</a>
+                    </h4>
+                    <span class="text-warning">●</span>
+                    <small>In a meeting</small>
+                </div>
+                <div class="col-auto">
+                    <button type="button" class="btn btn-sm btn-primary">Add</button>
+                </div>
+                </div>
+            </li>
+            <li class="list-group-item px-0">
+                <div class="row align-items-center">
+                <div class="col-auto">
+                    <!-- Avatar -->
+                    <a href="#" class="avatar rounded-circle">
+                    <img alt="Image placeholder" src="../../assets/img/theme/team-3.jpg">
+                    </a>
+                </div>
+                <div class="col ml--2">
+                    <h4 class="mb-0">
+                    <a href="#!">Samantha Ivy</a>
+                    </h4>
+                    <span class="text-danger">●</span>
+                    <small>Offline</small>
+                </div>
+                <div class="col-auto">
+                    <button type="button" class="btn btn-sm btn-primary">Add</button>
+                </div>
+                </div>
+            </li>
+            <li class="list-group-item px-0">
+                <div class="row align-items-center">
+                <div class="col-auto">
+                    <!-- Avatar -->
+                    <a href="#" class="avatar rounded-circle">
+                    <img alt="Image placeholder" src="../../assets/img/theme/team-4.jpg">
+                    </a>
+                </div>
+                <div class="col ml--2">
+                    <h4 class="mb-0">
+                    <a href="#!">John Michael</a>
+                    </h4>
+                    <span class="text-success">●</span>
+                    <small>Online</small>
+                </div>
+                <div class="col-auto">
+                    <button type="button" class="btn btn-sm btn-primary">Add</button>
+                </div>
+                </div>
+            </li>
+            </ul>
+        </div>
+        </div>
+    </div>
+    <div class="col-xl-4">
+        <!-- Checklist -->
+        <div class="card">
+        <!-- Card header -->
+        <div class="card-header">
+            <!-- Title -->
+            <h5 class="h3 mb-0">To do list</h5>
+        </div>
+        <!-- Card body -->
+        <div class="card-body p-0">
+            <!-- List group -->
+            <ul class="list-group list-group-flush" data-toggle="checklist">
+            <li class="checklist-entry list-group-item flex-column align-items-start py-4 px-4">
+                <div class="checklist-item checklist-item-success">
+                <div class="checklist-info">
+                    <h5 class="checklist-title mb-0">Call with Dave</h5>
+                    <small>10:30 AM</small>
+                </div>
+                <div>
+                    <div class="custom-control custom-checkbox custom-checkbox-success">
+                    <input class="custom-control-input" id="chk-todo-task-1" type="checkbox" checked>
+                    <label class="custom-control-label" for="chk-todo-task-1"></label>
+                    </div>
+                </div>
+                </div>
+            </li>
+            <li class="checklist-entry list-group-item flex-column align-items-start py-4 px-4">
+                <div class="checklist-item checklist-item-warning">
+                <div class="checklist-info">
+                    <h5 class="checklist-title mb-0">Lunch meeting</h5>
+                    <small>10:30 AM</small>
+                </div>
+                <div>
+                    <div class="custom-control custom-checkbox custom-checkbox-warning">
+                    <input class="custom-control-input" id="chk-todo-task-2" type="checkbox">
+                    <label class="custom-control-label" for="chk-todo-task-2"></label>
+                    </div>
+                </div>
+                </div>
+            </li>
+            <li class="checklist-entry list-group-item flex-column align-items-start py-4 px-4">
+                <div class="checklist-item checklist-item-info">
+                <div class="checklist-info">
+                    <h5 class="checklist-title mb-0">Argon Dashboard Launch</h5>
+                    <small>10:30 AM</small>
+                </div>
+                <div>
+                    <div class="custom-control custom-checkbox custom-checkbox-info">
+                    <input class="custom-control-input" id="chk-todo-task-3" type="checkbox">
+                    <label class="custom-control-label" for="chk-todo-task-3"></label>
+                    </div>
+                </div>
+                </div>
+            </li>
+            <li class="checklist-entry list-group-item flex-column align-items-start py-4 px-4">
+                <div class="checklist-item checklist-item-danger">
+                <div class="checklist-info">
+                    <h5 class="checklist-title mb-0">Winter Hackaton</h5>
+                    <small>10:30 AM</small>
+                </div>
+                <div>
+                    <div class="custom-control custom-checkbox custom-checkbox-danger">
+                    <input class="custom-control-input" id="chk-todo-task-4" type="checkbox" checked>
+                    <label class="custom-control-label" for="chk-todo-task-4"></label>
+                    </div>
+                </div>
+                </div>
+            </li>
+            </ul>
+        </div>
+        </div>
+    </div>
+    <div class="col-xl-4">
+        <!-- Progress track -->
+        <div class="card">
+        <!-- Card header -->
+        <div class="card-header">
+            <!-- Title -->
+            <h5 class="h3 mb-0">Progress track</h5>
+        </div>
+        <!-- Card body -->
+        <div class="card-body">
+            <!-- List group -->
+            <ul class="list-group list-group-flush list my--3">
+            <li class="list-group-item px-0">
+                <div class="row align-items-center">
+                <div class="col-auto">
+                    <!-- Avatar -->
+                    <a href="#" class="avatar rounded-circle">
+                    <img alt="Image placeholder" src="../../assets/img/theme/bootstrap.jpg">
+                    </a>
+                </div>
+                <div class="col">
+                    <h5>Argon Design System</h5>
+                    <div class="progress progress-xs mb-0">
+                    <div class="progress-bar bg-orange" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;"></div>
+                    </div>
+                </div>
+                </div>
+            </li>
+            <li class="list-group-item px-0">
+                <div class="row align-items-center">
+                <div class="col-auto">
+                    <!-- Avatar -->
+                    <a href="#" class="avatar rounded-circle">
+                    <img alt="Image placeholder" src="../../assets/img/theme/angular.jpg">
+                    </a>
+                </div>
+                <div class="col">
+                    <h5>Angular Now UI Kit PRO</h5>
+                    <div class="progress progress-xs mb-0">
+                    <div class="progress-bar bg-green" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;"></div>
+                    </div>
+                </div>
+                </div>
+            </li>
+            <li class="list-group-item px-0">
+                <div class="row align-items-center">
+                <div class="col-auto">
+                    <!-- Avatar -->
+                    <a href="#" class="avatar rounded-circle">
+                    <img alt="Image placeholder" src="../../assets/img/theme/sketch.jpg">
+                    </a>
+                </div>
+                <div class="col">
+                    <h5>Black Dashboard</h5>
+                    <div class="progress progress-xs mb-0">
+                    <div class="progress-bar bg-red" role="progressbar" aria-valuenow="72" aria-valuemin="0" aria-valuemax="100" style="width: 72%;"></div>
+                    </div>
+                </div>
+                </div>
+            </li>
+            <li class="list-group-item px-0">
+                <div class="row align-items-center">
+                <div class="col-auto">
+                    <!-- Avatar -->
+                    <a href="#" class="avatar rounded-circle">
+                    <img alt="Image placeholder" src="../../assets/img/theme/react.jpg">
+                    </a>
+                </div>
+                <div class="col">
+                    <h5>React Material Dashboard</h5>
+                    <div class="progress progress-xs mb-0">
+                    <div class="progress-bar bg-teal" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" style="width: 90%;"></div>
+                    </div>
+                </div>
+                </div>
+            </li>
+            </ul>
+        </div>
+        </div>
+    </div>
+    </div>
+    <div class="row">
+    <div class="col-xl-5">
+        <div class="card">
+        <div class="card-header">
+            <h5 class="h3 mb-0">Activity feed</h5>
+        </div>
+        <div class="card-header d-flex align-items-center">
+            <div class="d-flex align-items-center">
+            <a href="#">
+                <img src="../../assets/img/theme/team-1.jpg" class="avatar">
+            </a>
+            <div class="mx-3">
+                <a href="#" class="text-dark font-weight-600 text-sm">John Snow</a>
+                <small class="d-block text-muted">3 days ago</small>
+            </div>
+            </div>
+            <div class="text-right ml-auto">
+            <button type="button" class="btn btn-sm btn-primary btn-icon">
+                <span class="btn-inner--icon"><i class="ni ni-fat-add"></i></span>
+                <span class="btn-inner--text">Follow</span>
+            </button>
+            </div>
+        </div>
+        <div class="card-body">
+            <p class="mb-4">
+            Personal profiles are the perfect way for you to grab their attention and persuade recruiters to continue reading your CV because you’re telling them from the off exactly why they should hire you.
+            </p>
+            <img alt="Image placeholder" src="../../assets/img/theme/img-1-1000x600.jpg" class="img-fluid rounded">
+            <div class="row align-items-center my-3 pb-3 border-bottom">
+            <div class="col-sm-6">
+                <div class="icon-actions">
+                <a href="#" class="like active">
+                    <i class="ni ni-like-2"></i>
+                    <span class="text-muted">150</span>
+                </a>
+                <a href="#">
+                    <i class="ni ni-chat-round"></i>
+                    <span class="text-muted">36</span>
+                </a>
+                <a href="#">
+                    <i class="ni ni-curved-next"></i>
+                    <span class="text-muted">12</span>
+                </a>
+                </div>
+            </div>
+            <div class="col-sm-6 d-none d-sm-block">
+                <div class="d-flex align-items-center justify-content-sm-end">
+                <div class="avatar-group">
+                    <a href="#" class="avatar avatar-xs rounded-circle" data-toggle="tooltip" data-original-title="Jessica Rowland">
+                    <img alt="Image placeholder" src="../../assets/img/theme/team-1.jpg" class="">
+                    </a>
+                    <a href="#" class="avatar avatar-xs rounded-circle" data-toggle="tooltip" data-original-title="Audrey Love">
+                    <img alt="Image placeholder" src="../../assets/img/theme/team-2.jpg" class="rounded-circle">
+                    </a>
+                    <a href="#" class="avatar avatar-xs rounded-circle" data-toggle="tooltip" data-original-title="Michael Lewis">
+                    <img alt="Image placeholder" src="../../assets/img/theme/team-3.jpg" class="rounded-circle">
+                    </a>
+                </div>
+                <small class="pl-2 font-weight-bold">and 30+ more</small>
+                </div>
+            </div>
+            </div>
+            <!-- Comments -->
+            <div class="mb-1">
+            <div class="media media-comment">
+                <img alt="Image placeholder" class="avatar avatar-lg media-comment-avatar rounded-circle" src="../../assets/img/theme/team-1.jpg">
+                <div class="media-body">
+                <div class="media-comment-text">
+                    <h6 class="h5 mt-0">Michael Lewis</h6>
+                    <p class="text-sm lh-160">Cras sit amet nibh libero nulla vel metus scelerisque ante sollicitudin. Cras purus odio vestibulum in vulputate viverra turpis.</p>
+                    <div class="icon-actions">
+                    <a href="#" class="like active">
+                        <i class="ni ni-like-2"></i>
+                        <span class="text-muted">3 likes</span>
+                    </a>
+                    <a href="#">
+                        <i class="ni ni-curved-next"></i>
+                        <span class="text-muted">2 shares</span>
+                    </a>
+                    </div>
+                </div>
+                </div>
+            </div>
+            <div class="media media-comment">
+                <img alt="Image placeholder" class="avatar avatar-lg media-comment-avatar rounded-circle" src="../../assets/img/theme/team-2.jpg">
+                <div class="media-body">
+                <div class="media-comment-text">
+                    <h6 class="h5 mt-0">Jessica Stones</h6>
+                    <p class="text-sm lh-160">Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis.</p>
+                    <div class="icon-actions">
+                    <a href="#" class="like active">
+                        <i class="ni ni-like-2"></i>
+                        <span class="text-muted">10 likes</span>
+                    </a>
+                    <a href="#">
+                        <i class="ni ni-curved-next"></i>
+                        <span class="text-muted">1 share</span>
+                    </a>
+                    </div>
+                </div>
+                </div>
+            </div>
+            <hr />
+            <div class="media align-items-center">
+                <img alt="Image placeholder" class="avatar avatar-lg rounded-circle mr-4" src="../../assets/img/theme/team-3.jpg">
+                <div class="media-body">
+                <form>
+                    <textarea class="form-control" placeholder="Write your comment" rows="1"></textarea>
+                </form>
+                </div>
+            </div>
+            </div>
+        </div>
+        </div>
+    </div>
+    <div class="col-xl-7">
+        <div class="row">
+        <div class="col">
+            <div class="card">
+            <!-- Card header -->
+            <div class="card-header border-0">
+                <h3 class="mb-0">Light table</h3>
+            </div>
+            <div class="table-responsive">
+                <table class="table align-items-center table-flush">
+                <thead class="thead-light">
+                    <tr>
+                    <th scope="col" class="sort" data-sort="name">Project</th>
+                    <th scope="col" class="sort" data-sort="budget">Budget</th>
+                    <th scope="col" class="sort" data-sort="status">Status</th>
+                    <th scope="col">Users</th>
+                    <th scope="col" class="sort" data-sort="completion">Completion</th>
+                    <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody class="list">
+                    <tr>
+                    <th scope="row">
+                        <div class="media align-items-center">
+                        <a href="#" class="avatar rounded-circle mr-3">
+                            <img alt="Image placeholder" src="../../assets/img/theme/bootstrap.jpg">
+                        </a>
+                        <div class="media-body">
+                            <span class="name mb-0 text-sm">Argon Design System</span>
+                        </div>
+                        </div>
+                    </th>
+                    <td class="budget">
+                        $2500 USD
+                    </td>
+                    <td>
+                        <span class="badge badge-dot mr-4">
+                        <i class="bg-warning"></i>
+                        <span class="status">pending</span>
+                        </span>
+                    </td>
+                    <td>
+                        <div class="avatar-group">
+                        <a href="#" class="avatar avatar-sm rounded-circle" data-toggle="tooltip" data-original-title="Ryan Tompson">
+                            <img alt="Image placeholder" src="../../assets/img/theme/team-1.jpg">
+                        </a>
+                        <a href="#" class="avatar avatar-sm rounded-circle" data-toggle="tooltip" data-original-title="Romina Hadid">
+                            <img alt="Image placeholder" src="../../assets/img/theme/team-2.jpg">
+                        </a>
+                        <a href="#" class="avatar avatar-sm rounded-circle" data-toggle="tooltip" data-original-title="Alexander Smith">
+                            <img alt="Image placeholder" src="../../assets/img/theme/team-3.jpg">
+                        </a>
+                        <a href="#" class="avatar avatar-sm rounded-circle" data-toggle="tooltip" data-original-title="Jessica Doe">
+                            <img alt="Image placeholder" src="../../assets/img/theme/team-4.jpg">
+                        </a>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="d-flex align-items-center">
+                        <span class="completion mr-2">60%</span>
+                        <div>
+                            <div class="progress">
+                            <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;"></div>
+                            </div>
+                        </div>
+                        </div>
+                    </td>
+                    <td class="text-right">
+                        <div class="dropdown">
+                        <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-ellipsis-v"></i>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
+                            <a class="dropdown-item" href="#">Action</a>
+                            <a class="dropdown-item" href="#">Another action</a>
+                            <a class="dropdown-item" href="#">Something else here</a>
+                        </div>
+                        </div>
+                    </td>
+                    </tr>
+                    <tr>
+                    <th scope="row">
+                        <div class="media align-items-center">
+                        <a href="#" class="avatar rounded-circle mr-3">
+                            <img alt="Image placeholder" src="../../assets/img/theme/angular.jpg">
+                        </a>
+                        <div class="media-body">
+                            <span class="name mb-0 text-sm">Angular Now UI Kit PRO</span>
+                        </div>
+                        </div>
+                    </th>
+                    <td class="budget">
+                        $1800 USD
+                    </td>
+                    <td>
+                        <span class="badge badge-dot mr-4">
+                        <i class="bg-success"></i>
+                        <span class="status">completed</span>
+                        </span>
+                    </td>
+                    <td>
+                        <div class="avatar-group">
+                        <a href="#" class="avatar avatar-sm rounded-circle" data-toggle="tooltip" data-original-title="Ryan Tompson">
+                            <img alt="Image placeholder" src="../../assets/img/theme/team-1.jpg">
+                        </a>
+                        <a href="#" class="avatar avatar-sm rounded-circle" data-toggle="tooltip" data-original-title="Romina Hadid">
+                            <img alt="Image placeholder" src="../../assets/img/theme/team-2.jpg">
+                        </a>
+                        <a href="#" class="avatar avatar-sm rounded-circle" data-toggle="tooltip" data-original-title="Alexander Smith">
+                            <img alt="Image placeholder" src="../../assets/img/theme/team-3.jpg">
+                        </a>
+                        <a href="#" class="avatar avatar-sm rounded-circle" data-toggle="tooltip" data-original-title="Jessica Doe">
+                            <img alt="Image placeholder" src="../../assets/img/theme/team-4.jpg">
+                        </a>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="d-flex align-items-center">
+                        <span class="completion mr-2">100%</span>
+                        <div>
+                            <div class="progress">
+                            <div class="progress-bar bg-success" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;"></div>
+                            </div>
+                        </div>
+                        </div>
+                    </td>
+                    <td class="text-right">
+                        <div class="dropdown">
+                        <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-ellipsis-v"></i>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
+                            <a class="dropdown-item" href="#">Action</a>
+                            <a class="dropdown-item" href="#">Another action</a>
+                            <a class="dropdown-item" href="#">Something else here</a>
+                        </div>
+                        </div>
+                    </td>
+                    </tr>
+                    <tr>
+                    <th scope="row">
+                        <div class="media align-items-center">
+                        <a href="#" class="avatar rounded-circle mr-3">
+                            <img alt="Image placeholder" src="../../assets/img/theme/sketch.jpg">
+                        </a>
+                        <div class="media-body">
+                            <span class="name mb-0 text-sm">Black Dashboard</span>
+                        </div>
+                        </div>
+                    </th>
+                    <td class="budget">
+                        $3150 USD
+                    </td>
+                    <td>
+                        <span class="badge badge-dot mr-4">
+                        <i class="bg-danger"></i>
+                        <span class="status">delayed</span>
+                        </span>
+                    </td>
+                    <td>
+                        <div class="avatar-group">
+                        <a href="#" class="avatar avatar-sm rounded-circle" data-toggle="tooltip" data-original-title="Ryan Tompson">
+                            <img alt="Image placeholder" src="../../assets/img/theme/team-1.jpg">
+                        </a>
+                        <a href="#" class="avatar avatar-sm rounded-circle" data-toggle="tooltip" data-original-title="Romina Hadid">
+                            <img alt="Image placeholder" src="../../assets/img/theme/team-2.jpg">
+                        </a>
+                        <a href="#" class="avatar avatar-sm rounded-circle" data-toggle="tooltip" data-original-title="Alexander Smith">
+                            <img alt="Image placeholder" src="../../assets/img/theme/team-3.jpg">
+                        </a>
+                        <a href="#" class="avatar avatar-sm rounded-circle" data-toggle="tooltip" data-original-title="Jessica Doe">
+                            <img alt="Image placeholder" src="../../assets/img/theme/team-4.jpg">
+                        </a>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="d-flex align-items-center">
+                        <span class="completion mr-2">72%</span>
+                        <div>
+                            <div class="progress">
+                            <div class="progress-bar bg-danger" role="progressbar" aria-valuenow="72" aria-valuemin="0" aria-valuemax="100" style="width: 72%;"></div>
+                            </div>
+                        </div>
+                        </div>
+                    </td>
+                    <td class="text-right">
+                        <div class="dropdown">
+                        <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-ellipsis-v"></i>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
+                            <a class="dropdown-item" href="#">Action</a>
+                            <a class="dropdown-item" href="#">Another action</a>
+                            <a class="dropdown-item" href="#">Something else here</a>
+                        </div>
+                        </div>
+                    </td>
+                    </tr>
+                    <tr>
+                    <th scope="row">
+                        <div class="media align-items-center">
+                        <a href="#" class="avatar rounded-circle mr-3">
+                            <img alt="Image placeholder" src="../../assets/img/theme/react.jpg">
+                        </a>
+                        <div class="media-body">
+                            <span class="name mb-0 text-sm">React Material Dashboard</span>
+                        </div>
+                        </div>
+                    </th>
+                    <td class="budget">
+                        $4400 USD
+                    </td>
+                    <td>
+                        <span class="badge badge-dot mr-4">
+                        <i class="bg-info"></i>
+                        <span class="status">on schedule</span>
+                        </span>
+                    </td>
+                    <td>
+                        <div class="avatar-group">
+                        <a href="#" class="avatar avatar-sm rounded-circle" data-toggle="tooltip" data-original-title="Ryan Tompson">
+                            <img alt="Image placeholder" src="../../assets/img/theme/team-1.jpg">
+                        </a>
+                        <a href="#" class="avatar avatar-sm rounded-circle" data-toggle="tooltip" data-original-title="Romina Hadid">
+                            <img alt="Image placeholder" src="../../assets/img/theme/team-2.jpg">
+                        </a>
+                        <a href="#" class="avatar avatar-sm rounded-circle" data-toggle="tooltip" data-original-title="Alexander Smith">
+                            <img alt="Image placeholder" src="../../assets/img/theme/team-3.jpg">
+                        </a>
+                        <a href="#" class="avatar avatar-sm rounded-circle" data-toggle="tooltip" data-original-title="Jessica Doe">
+                            <img alt="Image placeholder" src="../../assets/img/theme/team-4.jpg">
+                        </a>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="d-flex align-items-center">
+                        <span class="completion mr-2">90%</span>
+                        <div>
+                            <div class="progress">
+                            <div class="progress-bar bg-info" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" style="width: 90%;"></div>
+                            </div>
+                        </div>
+                        </div>
+                    </td>
+                    <td class="text-right">
+                        <div class="dropdown">
+                        <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-ellipsis-v"></i>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
+                            <a class="dropdown-item" href="#">Action</a>
+                            <a class="dropdown-item" href="#">Another action</a>
+                            <a class="dropdown-item" href="#">Something else here</a>
+                        </div>
+                        </div>
+                    </td>
+                    </tr>
+                    <tr>
+                    <th scope="row">
+                        <div class="media align-items-center">
+                        <a href="#" class="avatar rounded-circle mr-3">
+                            <img alt="Image placeholder" src="../../assets/img/theme/vue.jpg">
+                        </a>
+                        <div class="media-body">
+                            <span class="name mb-0 text-sm">Vue Paper UI Kit PRO</span>
+                        </div>
+                        </div>
+                    </th>
+                    <td class="budget">
+                        $2200 USD
+                    </td>
+                    <td>
+                        <span class="badge badge-dot mr-4">
+                        <i class="bg-success"></i>
+                        <span class="status">completed</span>
+                        </span>
+                    </td>
+                    <td>
+                        <div class="avatar-group">
+                        <a href="#" class="avatar avatar-sm rounded-circle" data-toggle="tooltip" data-original-title="Ryan Tompson">
+                            <img alt="Image placeholder" src="../../assets/img/theme/team-1.jpg">
+                        </a>
+                        <a href="#" class="avatar avatar-sm rounded-circle" data-toggle="tooltip" data-original-title="Romina Hadid">
+                            <img alt="Image placeholder" src="../../assets/img/theme/team-2.jpg">
+                        </a>
+                        <a href="#" class="avatar avatar-sm rounded-circle" data-toggle="tooltip" data-original-title="Alexander Smith">
+                            <img alt="Image placeholder" src="../../assets/img/theme/team-3.jpg">
+                        </a>
+                        <a href="#" class="avatar avatar-sm rounded-circle" data-toggle="tooltip" data-original-title="Jessica Doe">
+                            <img alt="Image placeholder" src="../../assets/img/theme/team-4.jpg">
+                        </a>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="d-flex align-items-center">
+                        <span class="completion mr-2">100%</span>
+                        <div>
+                            <div class="progress">
+                            <div class="progress-bar bg-success" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;"></div>
+                            </div>
+                        </div>
+                        </div>
+                    </td>
+                    <td class="text-right">
+                        <div class="dropdown">
+                        <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-ellipsis-v"></i>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
+                            <a class="dropdown-item" href="#">Action</a>
+                            <a class="dropdown-item" href="#">Another action</a>
+                            <a class="dropdown-item" href="#">Something else here</a>
+                        </div>
+                        </div>
+                    </td>
+                    </tr>
+                    <tr>
+                    <th scope="row">
+                        <div class="media align-items-center">
+                        <a href="#" class="avatar rounded-circle mr-3">
+                            <img alt="Image placeholder" src="../../assets/img/theme/bootstrap.jpg">
+                        </a>
+                        <div class="media-body">
+                            <span class="name mb-0 text-sm">Argon Design System</span>
+                        </div>
+                        </div>
+                    </th>
+                    <td class="budget">
+                        $2500 USD
+                    </td>
+                    <td>
+                        <span class="badge badge-dot mr-4">
+                        <i class="bg-warning"></i>
+                        <span class="status">pending</span>
+                        </span>
+                    </td>
+                    <td>
+                        <div class="avatar-group">
+                        <a href="#" class="avatar avatar-sm rounded-circle" data-toggle="tooltip" data-original-title="Ryan Tompson">
+                            <img alt="Image placeholder" src="../../assets/img/theme/team-1.jpg">
+                        </a>
+                        <a href="#" class="avatar avatar-sm rounded-circle" data-toggle="tooltip" data-original-title="Romina Hadid">
+                            <img alt="Image placeholder" src="../../assets/img/theme/team-2.jpg">
+                        </a>
+                        <a href="#" class="avatar avatar-sm rounded-circle" data-toggle="tooltip" data-original-title="Alexander Smith">
+                            <img alt="Image placeholder" src="../../assets/img/theme/team-3.jpg">
+                        </a>
+                        <a href="#" class="avatar avatar-sm rounded-circle" data-toggle="tooltip" data-original-title="Jessica Doe">
+                            <img alt="Image placeholder" src="../../assets/img/theme/team-4.jpg">
+                        </a>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="d-flex align-items-center">
+                        <span class="completion mr-2">60%</span>
+                        <div>
+                            <div class="progress">
+                            <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;"></div>
+                            </div>
+                        </div>
+                        </div>
+                    </td>
+                    <td class="text-right">
+                        <div class="dropdown">
+                        <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-ellipsis-v"></i>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
+                            <a class="dropdown-item" href="#">Action</a>
+                            <a class="dropdown-item" href="#">Another action</a>
+                            <a class="dropdown-item" href="#">Something else here</a>
+                        </div>
+                        </div>
+                    </td>
+                    </tr>
+                    <tr>
+                    <th scope="row">
+                        <div class="media align-items-center">
+                        <a href="#" class="avatar rounded-circle mr-3">
+                            <img alt="Image placeholder" src="../../assets/img/theme/angular.jpg">
+                        </a>
+                        <div class="media-body">
+                            <span class="name mb-0 text-sm">Angular Now UI Kit PRO</span>
+                        </div>
+                        </div>
+                    </th>
+                    <td class="budget">
+                        $1800 USD
+                    </td>
+                    <td>
+                        <span class="badge badge-dot mr-4">
+                        <i class="bg-success"></i>
+                        <span class="status">completed</span>
+                        </span>
+                    </td>
+                    <td>
+                        <div class="avatar-group">
+                        <a href="#" class="avatar avatar-sm rounded-circle" data-toggle="tooltip" data-original-title="Ryan Tompson">
+                            <img alt="Image placeholder" src="../../assets/img/theme/team-1.jpg">
+                        </a>
+                        <a href="#" class="avatar avatar-sm rounded-circle" data-toggle="tooltip" data-original-title="Romina Hadid">
+                            <img alt="Image placeholder" src="../../assets/img/theme/team-2.jpg">
+                        </a>
+                        <a href="#" class="avatar avatar-sm rounded-circle" data-toggle="tooltip" data-original-title="Alexander Smith">
+                            <img alt="Image placeholder" src="../../assets/img/theme/team-3.jpg">
+                        </a>
+                        <a href="#" class="avatar avatar-sm rounded-circle" data-toggle="tooltip" data-original-title="Jessica Doe">
+                            <img alt="Image placeholder" src="../../assets/img/theme/team-4.jpg">
+                        </a>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="d-flex align-items-center">
+                        <span class="completion mr-2">100%</span>
+                        <div>
+                            <div class="progress">
+                            <div class="progress-bar bg-success" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;"></div>
+                            </div>
+                        </div>
+                        </div>
+                    </td>
+                    <td class="text-right">
+                        <div class="dropdown">
+                        <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-ellipsis-v"></i>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
+                            <a class="dropdown-item" href="#">Action</a>
+                            <a class="dropdown-item" href="#">Another action</a>
+                            <a class="dropdown-item" href="#">Something else here</a>
+                        </div>
+                        </div>
+                    </td>
+                    </tr>
+                    <tr>
+                    <th scope="row">
+                        <div class="media align-items-center">
+                        <a href="#" class="avatar rounded-circle mr-3">
+                            <img alt="Image placeholder" src="../../assets/img/theme/sketch.jpg">
+                        </a>
+                        <div class="media-body">
+                            <span class="name mb-0 text-sm">Black Dashboard</span>
+                        </div>
+                        </div>
+                    </th>
+                    <td class="budget">
+                        $3150 USD
+                    </td>
+                    <td>
+                        <span class="badge badge-dot mr-4">
+                        <i class="bg-danger"></i>
+                        <span class="status">delayed</span>
+                        </span>
+                    </td>
+                    <td>
+                        <div class="avatar-group">
+                        <a href="#" class="avatar avatar-sm rounded-circle" data-toggle="tooltip" data-original-title="Ryan Tompson">
+                            <img alt="Image placeholder" src="../../assets/img/theme/team-1.jpg">
+                        </a>
+                        <a href="#" class="avatar avatar-sm rounded-circle" data-toggle="tooltip" data-original-title="Romina Hadid">
+                            <img alt="Image placeholder" src="../../assets/img/theme/team-2.jpg">
+                        </a>
+                        <a href="#" class="avatar avatar-sm rounded-circle" data-toggle="tooltip" data-original-title="Alexander Smith">
+                            <img alt="Image placeholder" src="../../assets/img/theme/team-3.jpg">
+                        </a>
+                        <a href="#" class="avatar avatar-sm rounded-circle" data-toggle="tooltip" data-original-title="Jessica Doe">
+                            <img alt="Image placeholder" src="../../assets/img/theme/team-4.jpg">
+                        </a>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="d-flex align-items-center">
+                        <span class="completion mr-2">72%</span>
+                        <div>
+                            <div class="progress">
+                            <div class="progress-bar bg-danger" role="progressbar" aria-valuenow="72" aria-valuemin="0" aria-valuemax="100" style="width: 72%;"></div>
+                            </div>
+                        </div>
+                        </div>
+                    </td>
+                    <td class="text-right">
+                        <div class="dropdown">
+                        <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-ellipsis-v"></i>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
+                            <a class="dropdown-item" href="#">Action</a>
+                            <a class="dropdown-item" href="#">Another action</a>
+                            <a class="dropdown-item" href="#">Something else here</a>
+                        </div>
+                        </div>
+                    </td>
+                    </tr>
+                    <tr>
+                    <th scope="row">
+                        <div class="media align-items-center">
+                        <a href="#" class="avatar rounded-circle mr-3">
+                            <img alt="Image placeholder" src="../../assets/img/theme/angular.jpg">
+                        </a>
+                        <div class="media-body">
+                            <span class="name mb-0 text-sm">Angular Now UI Kit PRO</span>
+                        </div>
+                        </div>
+                    </th>
+                    <td class="budget">
+                        $1800 USD
+                    </td>
+                    <td>
+                        <span class="badge badge-dot mr-4">
+                        <i class="bg-success"></i>
+                        <span class="status">completed</span>
+                        </span>
+                    </td>
+                    <td>
+                        <div class="avatar-group">
+                        <a href="#" class="avatar avatar-sm rounded-circle" data-toggle="tooltip" data-original-title="Ryan Tompson">
+                            <img alt="Image placeholder" src="../../assets/img/theme/team-1.jpg">
+                        </a>
+                        <a href="#" class="avatar avatar-sm rounded-circle" data-toggle="tooltip" data-original-title="Romina Hadid">
+                            <img alt="Image placeholder" src="../../assets/img/theme/team-2.jpg">
+                        </a>
+                        <a href="#" class="avatar avatar-sm rounded-circle" data-toggle="tooltip" data-original-title="Alexander Smith">
+                            <img alt="Image placeholder" src="../../assets/img/theme/team-3.jpg">
+                        </a>
+                        <a href="#" class="avatar avatar-sm rounded-circle" data-toggle="tooltip" data-original-title="Jessica Doe">
+                            <img alt="Image placeholder" src="../../assets/img/theme/team-4.jpg">
+                        </a>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="d-flex align-items-center">
+                        <span class="completion mr-2">100%</span>
+                        <div>
+                            <div class="progress">
+                            <div class="progress-bar bg-success" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;"></div>
+                            </div>
+                        </div>
+                        </div>
+                    </td>
+                    <td class="text-right">
+                        <div class="dropdown">
+                        <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-ellipsis-v"></i>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
+                            <a class="dropdown-item" href="#">Action</a>
+                            <a class="dropdown-item" href="#">Another action</a>
+                            <a class="dropdown-item" href="#">Something else here</a>
+                        </div>
+                        </div>
+                    </td>
+                    </tr>
+                </tbody>
+                </table>
+            </div>
+            </div>
+        </div>
+        </div>
+        <div class="card-deck">
+        <div class="card bg-gradient-default">
+            <div class="card-body">
+            <div class="mb-2">
+                <sup class="text-white">$</sup> <span class="h2 text-white">3,300</span>
+                <div class="text-light mt-2 text-sm">Your current balance</div>
+                <div>
+                <span class="text-success font-weight-600">+ 15%</span> <span class="text-light">($250)</span>
+                </div>
+            </div>
+            <button class="btn btn-sm btn-block btn-neutral">Add credit</button>
+            </div>
+            <div class="card-body">
+            <div class="row">
+                <div class="col">
+                <small class="text-light">Orders: 60%</small>
+                <div class="progress progress-xs my-2">
+                    <div class="progress-bar bg-success" style="width: 60%"></div>
+                </div>
+                </div>
+                <div class="col"><small class="text-light">Sales: 40%</small>
+                <div class="progress progress-xs my-2">
+                    <div class="progress-bar bg-warning" style="width: 40%"></div>
+                </div>
+                </div>
+            </div>
+            </div>
+        </div>
+        <!-- Username card -->
+        <div class="card bg-gradient-danger">
+            <!-- Card body -->
+            <div class="card-body">
+            <div class="row justify-content-between align-items-center">
+                <div class="col">
+                <img src="../../assets/img/icons/cards/bitcoin.png" alt="Image placeholder" />
+                </div>
+                <div class="col-auto">
+                <span class="badge badge-lg badge-success">Active</span>
+                </div>
+            </div>
+            <div class="my-4">
+                <span class="h6 surtitle text-light">
+                Username
+                </span>
+                <div class="h1 text-white">@johnsnow</div>
+            </div>
+            <div class="row">
+                <div class="col">
+                <span class="h6 surtitle text-light">Name</span>
+                <span class="d-block h3 text-white">John Snow</span>
+                </div>
+            </div>
+            </div>
+        </div>
+        </div>
+    </div>
+    </div>
+    <div class="row">
+    <div class="col-xl-8">
+        <div class="card">
+        <div class="card-header border-0">
+            <div class="row align-items-center">
+            <div class="col">
+                <h3 class="mb-0">Page visits</h3>
+            </div>
+            <div class="col text-right">
+                <a href="#!" class="btn btn-sm btn-primary">See all</a>
+            </div>
+            </div>
+        </div>
+        <div class="table-responsive">
+            <!-- Projects table -->
+            <table class="table align-items-center table-flush">
+            <thead class="thead-light">
+                <tr>
+                <th scope="col">Page name</th>
+                <th scope="col">Visitors</th>
+                <th scope="col">Unique users</th>
+                <th scope="col">Bounce rate</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                <th scope="row">
+                    /argon/
+                </th>
+                <td>
+                    4,569
+                </td>
+                <td>
+                    340
+                </td>
+                <td>
+                    <i class="fas fa-arrow-up text-success mr-3"></i> 46,53%
+                </td>
+                </tr>
+                <tr>
+                <th scope="row">
+                    /argon/index.html
+                </th>
+                <td>
+                    3,985
+                </td>
+                <td>
+                    319
+                </td>
+                <td>
+                    <i class="fas fa-arrow-down text-warning mr-3"></i> 46,53%
+                </td>
+                </tr>
+                <tr>
+                <th scope="row">
+                    /argon/charts.html
+                </th>
+                <td>
+                    3,513
+                </td>
+                <td>
+                    294
+                </td>
+                <td>
+                    <i class="fas fa-arrow-down text-warning mr-3"></i> 36,49%
+                </td>
+                </tr>
+                <tr>
+                <th scope="row">
+                    /argon/tables.html
+                </th>
+                <td>
+                    2,050
+                </td>
+                <td>
+                    147
+                </td>
+                <td>
+                    <i class="fas fa-arrow-up text-success mr-3"></i> 50,87%
+                </td>
+                </tr>
+                <tr>
+                <th scope="row">
+                    /argon/profile.html
+                </th>
+                <td>
+                    1,795
+                </td>
+                <td>
+                    190
+                </td>
+                <td>
+                    <i class="fas fa-arrow-down text-danger mr-3"></i> 46,53%
+                </td>
+                </tr>
+            </tbody>
+            </table>
+        </div>
+        </div>
+    </div>
+    <div class="col-xl-4">
+        <div class="card">
+        <div class="card-header border-0">
+            <div class="row align-items-center">
+            <div class="col">
+                <h3 class="mb-0">Social traffic</h3>
+            </div>
+            <div class="col text-right">
+                <a href="#!" class="btn btn-sm btn-primary">See all</a>
+            </div>
+            </div>
+        </div>
+        <div class="table-responsive">
+            <!-- Projects table -->
+            <table class="table align-items-center table-flush">
+            <thead class="thead-light">
+                <tr>
+                <th scope="col">Referral</th>
+                <th scope="col">Visitors</th>
+                <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                <th scope="row">
+                    Facebook
+                </th>
+                <td>
+                    1,480
+                </td>
+                <td>
+                    <div class="d-flex align-items-center">
+                    <span class="mr-2">60%</span>
+                    <div>
+                        <div class="progress">
+                        <div class="progress-bar bg-gradient-danger" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;"></div>
+                        </div>
+                    </div>
+                    </div>
+                </td>
+                </tr>
+                <tr>
+                <th scope="row">
+                    Facebook
+                </th>
+                <td>
+                    5,480
+                </td>
+                <td>
+                    <div class="d-flex align-items-center">
+                    <span class="mr-2">70%</span>
+                    <div>
+                        <div class="progress">
+                        <div class="progress-bar bg-gradient-success" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width: 70%;"></div>
+                        </div>
+                    </div>
+                    </div>
+                </td>
+                </tr>
+                <tr>
+                <th scope="row">
+                    Google
+                </th>
+                <td>
+                    4,807
+                </td>
+                <td>
+                    <div class="d-flex align-items-center">
+                    <span class="mr-2">80%</span>
+                    <div>
+                        <div class="progress">
+                        <div class="progress-bar bg-gradient-primary" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%;"></div>
+                        </div>
+                    </div>
+                    </div>
+                </td>
+                </tr>
+                <tr>
+                <th scope="row">
+                    Instagram
+                </th>
+                <td>
+                    3,678
+                </td>
+                <td>
+                    <div class="d-flex align-items-center">
+                    <span class="mr-2">75%</span>
+                    <div>
+                        <div class="progress">
+                        <div class="progress-bar bg-gradient-info" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%;"></div>
+                        </div>
+                    </div>
+                    </div>
+                </td>
+                </tr>
+                <tr>
+                <th scope="row">
+                    twitter
+                </th>
+                <td>
+                    2,645
+                </td>
+                <td>
+                    <div class="d-flex align-items-center">
+                    <span class="mr-2">30%</span>
+                    <div>
+                        <div class="progress">
+                        <div class="progress-bar bg-gradient-warning" role="progressbar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" style="width: 30%;"></div>
+                        </div>
+                    </div>
+                    </div>
+                </td>
+                </tr>
+            </tbody>
+            </table>
+        </div>
+        </div>
+    </div>
+    </div>
+    <!-- Footer -->
+    <footer class="footer pt-0">
+    <div class="row align-items-center justify-content-lg-between">
+        <div class="col-lg-6">
+        <div class="copyright text-center text-lg-left text-muted">
+            &copy; 2019 <a href="https://www.creative-tim.com" class="font-weight-bold ml-1" target="_blank">Creative Tim</a>
+        </div>
+        </div>
+        <div class="col-lg-6">
+        <ul class="nav nav-footer justify-content-center justify-content-lg-end">
+            <li class="nav-item">
+            <a href="https://www.creative-tim.com" class="nav-link" target="_blank">Creative Tim</a>
+            </li>
+            <li class="nav-item">
+            <a href="https://www.creative-tim.com/presentation" class="nav-link" target="_blank">About Us</a>
+            </li>
+            <li class="nav-item">
+            <a href="http://blog.creative-tim.com" class="nav-link" target="_blank">Blog</a>
+            </li>
+            <li class="nav-item">
+            <a href="https://www.creative-tim.com/license" class="nav-link" target="_blank">License</a>
+            </li>
+        </ul>
+        </div>
+    </div>
+    </footer>
+</div>
+@endsection
+
+@section('javascript-optional')
+    <!-- Chart JS -->
+    <script src="../../assets/vendor/chart.js/dist/Chart.min.js"></script>
+    <script src="../../assets/vendor/chart.js/dist/Chart.extension.js"></script>
+@endsection
+
+@section('javascript')
+    <!-- javascript -->
+@endsection
+
