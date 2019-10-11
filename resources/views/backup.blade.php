@@ -1,8 +1,9 @@
 @extends('layouts.app-argon')
 
 @section('css')
-<!-- Dropdown CSS -->
-<link rel="stylesheet" href="../../assets/vendor/select2/dist/css/select2.min.css">
+<link rel="stylesheet" href="assets/vendor/datatables.net-bs4/css/dataTables.bootstrap4.min.css">
+<link rel="stylesheet" href="assets/vendor/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css">
+<link rel="stylesheet" href="assets/vendor/datatables.net-select-bs4/css/select.bootstrap4.min.css">
 @endsection
 
 @section('content')
@@ -272,64 +273,66 @@
         <div class="col">
             <div class="card">
                 <div class="card-header">
-                    <h3 class="mb-0">Add Website</h3>
+                    <h3 class="mb-0">Website</h3>
                 </div>
-                <div class="card-body">
-                  <div class="row">
-                    <div class="col-md-12">
-                      <div class="form-group">
-                        <label class="form-control-label" for="example2cols1Input">One of two cols</label>
-                        <input type="text" class="form-control" id="example2cols1Input" placeholder="One of two cols">
-                      </div>
+                <div class="table-responsive py-4">
+                        <table class="table table-hover table-flush" id="datatable-basic">
+                            <thead class="thead-light">
+                                <tr>
+                                    <th scope="col">Domain</th>
+                                    <th scope="col">Index Web</th>
+                                    <th scope="col">Index Image</th>
+                                    <th scope="col">Theme</th>
+                                    <th scope="col">Keyword</th>
+                                    <th scope="col">Server</th>                                        
+                                    <th scope="col">Ad</th>
+                                    <th scope="col">Date</th>
+                                    <th scope="col" >Action</th>
+                                </tr>
+                            </thead>
+                            <tfoot>
+                                <tr>
+                                    <th scope="col">Domain</th>
+                                    <th scope="col">Index Web</th>
+                                    <th scope="col">Index Image</th>
+                                    <th scope="col">Theme</th>
+                                    <th scope="col">Keyword</th>
+                                    <th scope="col">Server</th>                                        
+                                    <th scope="col">Ad</th>
+                                    <th scope="col">Date</th>
+                                    <th scope="col" >Action</th>
+                                </tr>
+                            </tfoot>
+                            <tbody>
+                                @foreach($user->websites as $websitesy)
+                                <tr>
+                                    <td>{{$websitesy->domain->domain}}</td>
+                                    <td><p class="index-web pointer" data-domain="{{$websitesy->domain->domain}}" style="margin:0px;">{{$websitesy->index_web}}</p></td>
+                                    <td><p class="index-image pointer" data-domain="{{$websitesy->domain->domain}}" style="margin:0px;">{{$websitesy->index_image}}</p></td>
+                                    <td><p class="wordpress-theme pointer" data-domain="{{$websitesy->domain->domain}}" style="margin:0px;">{{$websitesy->theme}}</p></td>
+                                    <td>{{$websitesy->keyword}}</td>
+                                    <td>{{$websitesy->server->servername}}</td>
+                                    {{-- <td>{{$websitesy->server_folder}}</td> --}}
+                                    <td>@if($websitesy->ad_id!=null){{$websitesy->ad->name}} @else Not Yet @endif</td>
+                                    {{-- <td>@if($websitesy->webmaster_id!=null){{$websitesy->webmaster->name}} @else Not Yet @endif</td> --}}
+                                    <td>{{$websitesy->date}}</td>
+                                    <td>
+                                        <a href="/website/{{$websitesy->slug}}" class="btn btn-default btn-sm m-0" title="Detail" alt="details"><i class='fas fa-bullseye'></i></a>
+                                        <a href="https://www.google.com/search?q=site:{{$websitesy->domain->domain}}&tbm=isch&sout=1" class="btn btn-success btn-sm m-0" target="_blank"><i class='fab fa-google'></i></a>
+                                        <a href="http://{{$websitesy->domain->domain}}/wp-admin/" class="btn btn-danger btn-sm m-0" target="_blank"><i class='fab fa-wordpress'></i></a>
+                                        <a href="/website/{{$websitesy->id}}/editwebsite/" class="btn btn-info  btn-sm m-0"><i class="fas fa-pen"></i></a>
+                                        <form action="/website/{{$websitesy->id}}" method="post" class="m-0" style="display:inline-block;">
+                                            {{ csrf_field() }}
+                                            <input type="hidden" name="_method" value="DELETE">
+                                            <button type="submit" class="btn btn-warning btn-sm"><i class="fas fa-trash"></i></button>
+                                        </form>
+                                    </td>
+                                </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
                     </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-md-12">
-                      <div class="form-group">
-                        <label class="form-control-label" for="example2cols2Input">One of two cols</label>
-                        <input type="text" class="form-control" id="example2cols2Input" placeholder="One of two cols">
-                      </div>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-lg-12">
-                      <div class="form-group" >
-                        <div data-toggle="select">  
-                        <form>
-                              <select class="form-control" data-toggle="select" title="Simple select" data-live-search="true" data-live-search-placeholder="Search ...">
-                                  <option>Alerts</option>
-                                  <option>Badges</option>
-                                  <option>Buttons</option>
-                                  <option>Cards</option>
-                                  <option>Forms</option>
-                                  <option>Modals</option>
-                              </select>
-                          </form>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
             </div>
-            <div class="card">
-                <!-- Card header -->
-                <div class="card-header">
-                  <h3 class="mb-0">Dropdowns</h3>
-                </div>
-                <!-- Card body -->
-                <div class="card-body">
-                  <form>
-                    <select class="form-control" data-toggle="select">
-                      <option>Alerts</option>
-                      <option>Badges</option>
-                      <option>Buttons</option>
-                      <option>Cards</option>
-                      <option>Forms</option>
-                      <option>Modals</option>
-                    </select>
-                  </form>
-                </div>
-              </div>
         </div>
     </div>
     <div class="row">
@@ -1335,8 +1338,21 @@
 @endsection
 
 @section('javascript-optional')
-    <!-- Dropdown JS -->
-    <script src="../../assets/vendor/select2/dist/js/select2.min.js"></script>
+    <!-- Chart JS -->
+    <script src="../../assets/vendor/chart.js/dist/Chart.min.js"></script>
+    <script src="../../assets/vendor/chart.js/dist/Chart.extension.js"></script>
+    <script src="../../assets/vendor/jvectormap-next/jquery-jvectormap.min.js"></script>
+    <script src="../../assets/js/vendor/jvectormap/jquery-jvectormap-world-mill.js"></script>
+
+    <!-- DataTables JS -->
+    <script src="assets/vendor/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="assets/vendor/datatables.net-bs4/js/dataTables.bootstrap4.min.js"></script>
+    <script src="assets/vendor/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+    <script src="assets/vendor/datatables.net-buttons-bs4/js/buttons.bootstrap4.min.js"></script>
+    <script src="assets/vendor/datatables.net-buttons/js/buttons.html5.min.js"></script>
+    <script src="assets/vendor/datatables.net-buttons/js/buttons.flash.min.js"></script>
+    <script src="assets/vendor/datatables.net-buttons/js/buttons.print.min.js"></script>
+    <script src="assets/vendor/datatables.net-select/js/dataTables.select.min.js"></script>
 @endsection
 
 @section('javascript')
