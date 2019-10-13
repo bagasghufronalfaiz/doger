@@ -2,9 +2,9 @@
 
 @section('css')
 <!-- DataTables CSS -->
-<link rel="stylesheet" href="../../assets/vendor/datatables.net-bs4/css/dataTables.bootstrap4.min.css">
-<link rel="stylesheet" href="../../assets/vendor/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css">
-<link rel="stylesheet" href="../../assets/vendor/datatables.net-select-bs4/css/select.bootstrap4.min.css">
+<link rel="stylesheet" href="{{ asset('assets/vendor/datatables.net-bs4/css/dataTables.bootstrap4.min.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/vendor/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/vendor/datatables.net-select-bs4/css/select.bootstrap4.min.css') }}">
 @endsection
 
 @section('content')
@@ -30,7 +30,7 @@
         <ul class="navbar-nav align-items-center ml-md-auto">
             <li class="nav-item d-xl-none">
             <!-- Sidenav toggler -->
-            <div class="pr-3 sidenav-toggler sidenav-toggler-light" data-action="sidenav-pin" data-target="#sidenav-main">
+            <div class="pr-3 sidenav-toggler sidenav-toggler-dark" data-action="sidenav-pin" data-target="#sidenav-main">
                 <div class="sidenav-toggler-inner">
                 <i class="sidenav-toggler-line"></i>
                 <i class="sidenav-toggler-line"></i>
@@ -58,7 +58,7 @@
                     <div class="row align-items-center">
                     <div class="col-auto">
                         <!-- Avatar -->
-                        <img alt="Image placeholder" src="../../assets/img/theme/team-1.jpg" class="avatar rounded-circle">
+                        <img alt="Image placeholder" src="{{ asset('assets/img/theme/team-1.jpg') }}" class="avatar rounded-circle">
                     </div>
                     <div class="col ml--2">
                         <div class="d-flex justify-content-between align-items-center">
@@ -77,7 +77,7 @@
                     <div class="row align-items-center">
                     <div class="col-auto">
                         <!-- Avatar -->
-                        <img alt="Image placeholder" src="../../assets/img/theme/team-2.jpg" class="avatar rounded-circle">
+                        <img alt="Image placeholder" src="{{ asset('assets/img/theme/team-2.jpg') }}" class="avatar rounded-circle">
                     </div>
                     <div class="col ml--2">
                         <div class="d-flex justify-content-between align-items-center">
@@ -96,7 +96,7 @@
                     <div class="row align-items-center">
                     <div class="col-auto">
                         <!-- Avatar -->
-                        <img alt="Image placeholder" src="../../assets/img/theme/team-3.jpg" class="avatar rounded-circle">
+                        <img alt="Image placeholder" src="{{ asset('assets/img/theme/team-3.jpg') }}" class="avatar rounded-circle">
                     </div>
                     <div class="col ml--2">
                         <div class="d-flex justify-content-between align-items-center">
@@ -115,7 +115,7 @@
                     <div class="row align-items-center">
                     <div class="col-auto">
                         <!-- Avatar -->
-                        <img alt="Image placeholder" src="../../assets/img/theme/team-4.jpg" class="avatar rounded-circle">
+                        <img alt="Image placeholder" src="{{ asset('assets/img/theme/team-4.jpg') }}" class="avatar rounded-circle">
                     </div>
                     <div class="col ml--2">
                         <div class="d-flex justify-content-between align-items-center">
@@ -134,7 +134,7 @@
                     <div class="row align-items-center">
                     <div class="col-auto">
                         <!-- Avatar -->
-                        <img alt="Image placeholder" src="../../assets/img/theme/team-5.jpg" class="avatar rounded-circle">
+                        <img alt="Image placeholder" src="{{ asset('assets/img/theme/team-5.jpg') }}" class="avatar rounded-circle">
                     </div>
                     <div class="col ml--2">
                         <div class="d-flex justify-content-between align-items-center">
@@ -205,7 +205,7 @@
             <a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <div class="media align-items-center">
                 <span class="avatar avatar-sm rounded-circle">
-                    <img alt="Image placeholder" src="../../assets/img/theme/team-4.jpg">
+                    <img alt="Image placeholder" src="{{ asset('assets/img/theme/team-4.jpg') }}">
                 </span>
                 <div class="media-body ml-2 d-none d-lg-block">
                     <span class="mb-0 text-sm  font-weight-bold">{{ Auth::user()->name }}</span>
@@ -284,7 +284,7 @@
                                     <th scope="col">Index Image</th>
                                     <th scope="col">Theme</th>
                                     <th scope="col">Keyword</th>
-                                    <th scope="col">Server</th>                                        
+                                    <th scope="col">Server</th>
                                     <th scope="col">Ad</th>
                                     <th scope="col">Date</th>
                                     <th scope="col" >Action</th>
@@ -297,7 +297,7 @@
                                     <th scope="col">Index Image</th>
                                     <th scope="col">Theme</th>
                                     <th scope="col">Keyword</th>
-                                    <th scope="col">Server</th>                                        
+                                    <th scope="col">Server</th>
                                     <th scope="col">Ad</th>
                                     <th scope="col">Date</th>
                                     <th scope="col" >Action</th>
@@ -366,14 +366,14 @@
 
 @section('javascript-optional')
     <!-- DataTables JS -->
-    <script src="../../assets/vendor/datatables.net/js/jquery.dataTables.min.js"></script>
-    <script src="../../assets/vendor/datatables.net-bs4/js/dataTables.bootstrap4.min.js"></script>
-    <script src="../../assets/vendor/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
-    <script src="../../assets/vendor/datatables.net-buttons-bs4/js/buttons.bootstrap4.min.js"></script>
-    <script src="../../assets/vendor/datatables.net-buttons/js/buttons.html5.min.js"></script>
-    <script src="../../assets/vendor/datatables.net-buttons/js/buttons.flash.min.js"></script>
-    <script src="../../assets/vendor/datatables.net-buttons/js/buttons.print.min.js"></script>
-    <script src="../../assets/vendor/datatables.net-select/js/dataTables.select.min.js"></script>
+    <script src="{{ asset('assets/vendor/datatables.net/js/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('assets/vendor/datatables.net-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
+    <script src="{{ asset('assets/vendor/datatables.net-buttons/js/dataTables.buttons.min.js') }}"></script>
+    <script src="{{ asset('assets/vendor/datatables.net-buttons-bs4/js/buttons.bootstrap4.min.js') }}"></script>
+    <script src="{{ asset('assets/vendor/datatables.net-buttons/js/buttons.html5.min.js') }}"></script>
+    <script src="{{ asset('assets/vendor/datatables.net-buttons/js/buttons.flash.min.js') }}"></script>
+    <script src="{{ asset('assets/vendor/datatables.net-buttons/js/buttons.print.min.js') }}"></script>
+    <script src="{{ asset('assets/vendor/datatables.net-select/js/dataTables.select.min.js') }}"></script>
 @endsection
 
 @section('javascript')

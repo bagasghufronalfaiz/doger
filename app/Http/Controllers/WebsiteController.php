@@ -68,8 +68,8 @@ class WebsiteController extends Controller
             'index_web'         => $index_web,
             'index_image'       => $index_image,
             'keyword'           => $request->keyword,
-            'server_id'         => $request->servercok,
-            'server_folder'     => $request->server_folder,
+            'server_id'         => $request->servername,
+            'server_folder'     => $request->serverfolder,
             'ad_id'             => $request->ad,
             'date'              => $newdate,
             'webmaster_id'      => $request->webmaster,
@@ -103,9 +103,12 @@ class WebsiteController extends Controller
     public function edit($id)
     {
         $website = Website::findOrFail($id);
+        $date = $website->date;
+        $time = strtotime($date);
+        $newdate = date('m-d-Y', $time);
         if($website->userisOwner()){
             $user = User::findOrFail(Auth::user()->id);
-            return view('website.edit', compact('website', 'user'));
+            return view('website.edit', compact('website', 'user', 'newdate'));
         } else {
             abort(403);
         }
@@ -122,8 +125,8 @@ class WebsiteController extends Controller
           $website->update([
             'domain_id' => $request->domain,
             'keyword' => $request->keyword,
-            'server_id' => $request->servercok,
-            'server_folder' => $request->server_folder,
+            'server_id' => $request->servername,
+            'server_folder' => $request->serverfolder,
             'ad_id' => $request->ad,
             'date' => $newdate,
             'webmaster_id' => $request->webmaster,
@@ -232,10 +235,10 @@ class WebsiteController extends Controller
             ]);
             return response()->json([
                 'theme' => $theme,
-            ]);   
+            ]);
         } else {
             return 'mbuh';
-        }        
+        }
     }
 
     private function getWordpressPosts($domain)
@@ -261,10 +264,10 @@ class WebsiteController extends Controller
             ]);
             return response()->json([
                 'post' => $post,
-            ]);   
+            ]);
         } else {
             return 'mbuh';
-        }        
+        }
     }
 
     private function getWordpressPages($domain)
@@ -290,11 +293,11 @@ class WebsiteController extends Controller
             ]);
             return response()->json([
                 'page' => $page,
-            ]);   
+            ]);
         } else {
             return 'mbuh';
-        }        
-    }    
+        }
+    }
 
     private function getWordpressPageTitles($domain, $total_pages)
     {
@@ -337,10 +340,10 @@ class WebsiteController extends Controller
             ]);
             return response()->json([
                 'page-title' => $pageTitle,
-            ]);   
+            ]);
         } else {
             return 'mbuh';
-        }        
+        }
     }
 
     private function getWordpressCategories($domain)
@@ -366,10 +369,10 @@ class WebsiteController extends Controller
             ]);
             return response()->json([
                 'category' => $category,
-            ]);   
+            ]);
         } else {
             return 'mbuh';
-        }        
+        }
     }
 
     private function getWordpressCategoryTitles($domain, $total_category)
@@ -413,10 +416,10 @@ class WebsiteController extends Controller
             ]);
             return response()->json([
                 'category-title' => $categoryTitle,
-            ]);   
+            ]);
         } else {
             return 'mbuh';
-        }        
+        }
     }
 
 }

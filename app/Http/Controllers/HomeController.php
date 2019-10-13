@@ -126,7 +126,6 @@ class HomeController extends Controller
     }
 
 
-
     private function get_index($domain)
     {
         $client = new Client();

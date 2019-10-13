@@ -6,7 +6,7 @@
 <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
   <div class="container-fluid">
     <div class="navbar-wrapper">
-      <a class="navbar-brand" href="#">Add Website</a>
+      <a class="navbar-brand" href="#">Edit Website</a>
     </div>
     <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
       <span class="sr-only">Toggle navigation</span>
@@ -73,59 +73,47 @@
     <div class="row">
       <div class="col-lg-12">
           <div class="card">
-              <div class="card-header card-header-primary">
-                  <h4 class="card-title">Add Website</h4>
+              <div class="card-header card-header-warning">
+                  <h4 class="card-title">Edit Registrar</h4>
               </div>
               <div class="card-body">
-                  <form action="/website" method="post">
-                      <div class="form-group bmd-form-group" style="margin-top:20px;">
-                          <label for="domain">Domain</label>
-                          <select id="domain" class="form-control selectpicker" data-style="btn btn-secondary" name="domain">
-                            @foreach ($user->domains as $domainy)
-                              <option value="{{$domainy->id}}">{{$domainy->domain}}</option>
-                            @endforeach
-                          </select>
-                      </div>
-                      <div class="form-group bmd-form-group" style="margin-top:20px;">
-                          <label class="bmd-label-floating" for="keyword">Keyword</label>
-                          <input class="form-control" type="text" name="keyword" value="{{old('keyword')}}">
-                      </div>
-                      <div class="form-group bmd-form-group" style="margin-top:20px;">
-                        <label for="servercok">Server</label>
-                        <select id="servercok" class="form-control selectpicker" data-style="btn btn-secondary" name="servercok">
-                          @foreach ($user->servers as $servery)
-                            <option value="{{$servery->id}}">{{$servery->servername}}</option>
+                  <form action="/website/{{$website->id}}" method="post">
+                    <div class="form-group bmd-form-group">
+                        <label for="domain">Domain</label>
+                        <select id="domain" class="form-control selectpicker" data-style="btn btn-secondary" name="domain">
+                          @foreach ($user->domains as $domainy)
+                            <option @if ($domainy->id == $website->domain_id) selected @endif  value="{{$domainy->id}}">{{$domainy->domain}}</option>
                           @endforeach
                         </select>
-                      </div>
-                      <div class="form-group bmd-form-group" style="margin-top:20px;">
-                          <label class="bmd-label-floating" for="server_folder">Server Folder</label>
-                          <input class="form-control" type="text" name="server_folder" value="{{old('server_folder')}}">
-                      </div>
-                      <div class="form-group bmd-form-group" style="margin-top:20px;">
-                        <label for="ad">Ad</label>
-                        <select id="ad" class="form-control selectpicker" data-style="btn btn-secondary" name="ad">
-                            <option value="">Not Yet</option>
-                          @foreach ($user->ads as $adsy)
-                            <option value="{{$adsy->id}}">{{$adsy->name}}</option>
-                          @endforeach
-                        </select>
-
-
-                        {{-- @if (count($user->ads) == 0)
-                        <input class="form-control" type="text" name="ad" value="" disabled>
-                        @else
-                        <select id="ad" class="form-control selectpicker" data-style="btn btn-secondary" name="ad" style="color:#333;">
-                          @foreach ($user->ads as $adsy)
-                            <option style="color:#333;" value="{{$adsy->id}}">{{$adsy->name}}</option>
-                          @endforeach
-                        </select>
-                        @endif
-                       --}}
-                      </div>
-                      <div class="form-group bmd-form-group" style="margin-top:20px;">
-                        <label for="date">Date of Birth</label>
-                        <input class="form-control datetimepicker" type="text" name="date">
+                    </div>
+                    <div class="form-group bmd-form-group" style="margin-top:20px;">
+                        <label class="bmd-label-floating" for="keyword">Keyword</label>
+                        <input class="form-control" type="text" name="keyword" value="{{(old('keyword')) ? old('keyword') : $website->keyword}}">
+                    </div>
+                    <div class="form-group bmd-form-group" style="margin-top:10px;">
+                      <label for="servercok">Server</label>
+                      <select id="servercok" class="form-control selectpicker" data-style="btn btn-secondary" name="servercok">
+                        @foreach ($user->servers as $servery)
+                          <option @if ($servery->id == $website->server_id) selected @endif value="{{$servery->id}}">{{$servery->servername}}</option>
+                        @endforeach
+                      </select>
+                    </div>
+                    <div class="form-group bmd-form-group" style="margin-top:30px;">
+                        <label class="bmd-label-floating" for="server_folder">Server Folder</label>
+                        <input class="form-control" type="text" name="server_folder" value="{{(old('server_folder')) ? old('server_folder') : $website->server_folder}}">
+                    </div>
+                    <div class="form-group bmd-form-group" style="margin-top:10px;">
+                      <label for="ad">Ad</label>
+                      <select id="ad" class="form-control selectpicker" data-style="btn btn-secondary" name="ad">
+                          <option @if ($website->ad_id == null) selected @endif value="">Not Yet</option>
+                        @foreach ($user->ads as $adsy)
+                          <option @if ($adsy->id == $website->ad_id) selected @endif value="{{$adsy->id}}">{{$adsy->name}}</option>
+                        @endforeach
+                      </select>
+                    </div>
+                    <div class="form-group bmd-form-group" style="margin-top:30px;">
+                      <label for="date">Date of Birth</label>
+                      <input class="form-control datetimepicker" type="text" name="date">
                         <script type="text/javascript">
                           $('.datetimepicker').datetimepicker({
                               icons: {
@@ -142,27 +130,29 @@
                               format: 'L',
                           });
                         </script>
-                      </div>
-                      <div class="form-group bmd-form-group" style="margin-top:20px;">
-                          <label for="webmaster">Webmaster</label>
-                          <select id="webmaster" class="form-control selectpicker" data-style="btn btn-secondary" name="webmaster">
-                            <option value="">Not Yet</option>
-                            @foreach ($user->webmasters as $webmastersy)
-                            <option value="{{$webmastersy->id}}">{{$webmastersy->name}}</option>
-                            @endforeach
-                        </select>
-                      </div>
+                    </div>
+                    <div class="form-group bmd-form-group" style="margin-top:10px;">
+                      <label for="webmaster">Webmaster</label>
+                      <select id="webmaster" class="form-control selectpicker" data-style="btn btn-secondary" name="webmaster">
+                        <option @if ($website->webmaster_id == null) selected @endif value="">Not Yet</option>
+                        @foreach ($user->webmasters as $webmastersy)
+                        <option @if ($webmastersy->id == $website->webmaster_id) selected @endif value="{{$webmastersy->id}}">{{$webmastersy->name}}</option>
+                        @endforeach
+                      </select>
+                    </div>
 
-                      {{ csrf_field() }}
+                    {{ csrf_field() }}
+                    <input type="hidden" name="_method" value="PUT">
+                    @if(count($errors)>0)
+                        <div class="alert alert-danger">
+                        @foreach($errors->all() as $error)
+                        <p>{{$error}}</p>
+                        @endforeach
+                        </div>
+                    @endif
+                    <input type="submit" class="btn btn-warning" value="Edit Website"  style="margin-top:20px;">
 
-                      @if(count($errors)>0)
-                          <div class="alert alert-danger">
-                          @foreach($errors->all() as $error)
-                          <p>{{$error}}</p>
-                          @endforeach
-                          </div>
-                      @endif
-                      <input type="submit" class="btn btn-primary" value="Add Website" style="margin-top:20px;">
+
                   </form>
               </div>
           </div>

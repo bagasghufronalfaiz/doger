@@ -8,17 +8,17 @@
   <meta name="author" content="Creative Tim">
   <title>Argon Dashboard PRO - Premium Bootstrap 4 Admin Template</title>
   <!-- Favicon -->
-  <link rel="icon" href="../../assets/img/brand/favicon.png" type="image/png">
+  <link rel="icon" href="{{ asset('assets/img/brand/favicon.png') }}" type="image/png">
   <!-- Fonts -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">
   <!-- Icons -->
-  <link rel="stylesheet" href="../../assets/vendor/nucleo/css/nucleo.css" type="text/css">
-  <link rel="stylesheet" href="../../assets/vendor/@fortawesome/fontawesome-free/css/all.min.css" type="text/css">
+  <link rel="stylesheet" href="{{ asset('assets/vendor/nucleo/css/nucleo.css') }}" type="text/css">
+  <link rel="stylesheet" href="{{ asset('assets/vendor/@fortawesome/fontawesome-free/css/all.min.css') }}" type="text/css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" type="text/css">
   <!-- Page plugins -->
-  <!-- Argon CSS -->
-  <link rel="stylesheet" href="../../assets/css/argon.css?v=1.1.0" type="text/css">
   @yield('css')
+  <!-- Argon CSS -->
+  <link rel="stylesheet" href="{{ asset('assets/css/argon.css?v=1.1.0') }}" type="text/css">
 </head>
 
 <body>
@@ -29,7 +29,7 @@
       <div class="sidenav-header d-flex align-items-center">
         <a class="navbar-brand" href="{{ url('/') }}">
             <h1 class="h1 text-primary">{{ config('app.name', 'Laravel') }}</h1>
-          {{-- <img src="../../assets/img/brand/blue.png" class="navbar-brand-img" alt="..."> --}}
+          {{-- <img src="{{ asset('assets/img/brand/blue.png') }}" class="navbar-brand-img" alt="..."> --}}
         </a>
         <div class="ml-auto">
           <!-- Sidenav toggler -->
@@ -94,15 +94,15 @@
   </div>
   <!-- Argon Scripts -->
   <!-- Core -->
-  <script src="../../assets/vendor/jquery/dist/jquery.min.js"></script>
-  <script src="../../assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="../../assets/vendor/js-cookie/js.cookie.js"></script>
-  <script src="../../assets/vendor/jquery.scrollbar/jquery.scrollbar.min.js"></script>
-  <script src="../../assets/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js"></script>
+  <script src="{{ asset('assets/vendor/jquery/dist/jquery.min.js') }}"></script>
+  <script src="{{ asset('assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js') }}"></script>
+  <script src="{{ asset('assets/vendor/js-cookie/js.cookie.js') }}"></script>
+  <script src="{{ asset('assets/vendor/jquery.scrollbar/jquery.scrollbar.min.js') }}"></script>
+  <script src="{{ asset('assets/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js') }}"></script>
 
   @yield('javascript-optional')
   <!-- Argon JS -->
-  <script src="../../assets/js/argon.js?v=1.1.0"></script>
+  <script src="{{ asset('assets/js/argon.js?v=1.1.0') }}"></script>
   @yield('javascript')
 </body>
 
