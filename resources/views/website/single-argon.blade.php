@@ -305,7 +305,6 @@
                     <!-- Title -->
                     <h5 class="h3 mb-0">Wordpress</h5>
                 </div>
-                <div class="bg-gradient-warning col-lg-12" style="height:10px;"></div>
                 <!-- Card body -->
                 <div class="card-body">
                     <!-- List group -->
@@ -313,10 +312,9 @@
                         <li class="list-group-item px-0">
                             <div class="row align-items-center">
                                 <div class="col-lg-5">
-                                    <h3>Post</h3>
+                                    <h3>Post : </h3>
                                 </div>
-                                <div class="col-lg-1">:</div>
-                                <div class="col-lg-6">
+                                <div class="col-lg-7">
                                     {{$website->wp_posts}}
                                 </div>
                             </div>
@@ -324,10 +322,9 @@
                         <li class="list-group-item px-0">
                             <div class="row align-items-center">
                                 <div class="col-lg-5">
-                                    <h3>Category</h3>
+                                    <h3>Category : </h3>
                                 </div>
-                                <div class="col-lg-1">:</div>
-                                <div class="col-lg-6">
+                                <div class="col-lg-7">
                                     {{$website->wp_categories}}
                                 </div>
                             </div>
@@ -335,10 +332,9 @@
                         <li class="list-group-item px-0">
                             <div class="row align-items-center">
                                 <div class="col-lg-5">
-                                    <h3>Category Title</h3>
+                                    <h3>Category Title : </h3>
                                 </div>
-                                <div class="col-lg-1">:</div>
-                                <div class="col-lg-6">
+                                <div class="col-lg-7">
                                     {{$website->wp_category_titles}}
                                 </div>
                             </div>
@@ -346,10 +342,9 @@
                         <li class="list-group-item px-0">
                             <div class="row align-items-center">
                                 <div class="col-lg-5">
-                                    <h3>Page</h3>
+                                    <h3>Page : </h3>
                                 </div>
-                                <div class="col-lg-1">:</div>
-                                <div class="col-lg-6">
+                                <div class="col-lg-7">
                                     {{$website->wp_pages}}
                                 </div>
                             </div>
@@ -357,10 +352,9 @@
                         <li class="list-group-item px-0">
                             <div class="row align-items-center">
                                 <div class="col-lg-5">
-                                    <h3>Page Title</h3>
+                                    <h3>Page Title : </h3>
                                 </div>
-                                <div class="col-lg-1">:</div>
-                                <div class="col-lg-6">
+                                <div class="col-lg-7">
                                     {{$website->wp_page_titles}}
                                 </div>
                             </div>
@@ -368,78 +362,14 @@
                         <li class="list-group-item px-0">
                             <div class="row align-items-center">
                                 <div class="col-lg-5">
-                                    <h3>theme </h3>
+                                    <h3>theme : </h3>
                                 </div>
-                                <div class="col-lg-1">:</div>
-                                <div class="col-lg-6">
+                                <div class="col-lg-7">
                                     {{$website->theme}}
                                 </div>
                             </div>
                         </li>
 
-                    </ul>
-                </div>
-            </div>
-            <div class="card">
-                <!-- Card header -->
-                <div class="card-header bg-gradient-info">
-                    <!-- Title -->
-                    <h5 class="h3 mb-0">Server</h5>
-                </div>                
-                <!-- Card body -->
-                <div class="card-body">
-                    <!-- List group -->
-                    <ul class="list-group list-group-flush list my--3">
-                        <li class="list-group-item px-0">
-                            <div class="row align-items-center">
-                                <div class="col-lg-5">
-                                    <h3>Server : </h3>
-                                </div>
-                                <div class="col-lg-7">
-                                    {{$website->server->servername}}
-                                </div>
-                            </div>
-                        </li>
-                        <li class="list-group-item px-0">
-                            <div class="row align-items-center">
-                                <div class="col-lg-5">
-                                    <h3>Server Folder : </h3>
-                                </div>
-                                <div class="col-lg-7">
-                                    {{$website->server_folder}}
-                                </div>
-                            </div>
-                        </li>
-                        <li class="list-group-item px-0">
-                            <div class="row align-items-center">
-                                <div class="col-lg-5">
-                                    <h3>IP : </h3>
-                                </div>
-                                <div class="col-lg-7">
-                                    {{$website->server->ip}}
-                                </div>
-                            </div>
-                        </li>
-                        <li class="list-group-item px-0">
-                            <div class="row align-items-center">
-                                <div class="col-lg-5">
-                                    <h3>Username : </h3>
-                                </div>
-                                <div class="col-lg-7">
-                                    {{$website->server->username}}
-                                </div>
-                            </div>
-                        </li>
-                        <li class="list-group-item px-0">
-                            <div class="row align-items-center">
-                                <div class="col-lg-5">
-                                    <h3>Password : </h3>
-                                </div>
-                                <div class="col-lg-7">
-                                    {{$website->server->password}}
-                                </div>
-                            </div>
-                        </li>                        
                     </ul>
                 </div>
             </div>
@@ -451,7 +381,6 @@
                     <!-- Title -->
                     <h5 class="h3 mb-0">Domain</h5>
                 </div>
-                <div class="bg-gradient-warning col-lg-12" style="height:10px;"></div>
                 <!-- Card body -->
                 <div class="card-body">
                     <!-- List group -->
@@ -462,7 +391,7 @@
                                     <h3>Registrar : </h3>
                                 </div>
                                 <div class="col-lg-7">
-                                    {{$website->domain->registrar->registrar}}
+                                    {{$website->domain->registrar->email}} at {{$website->domain->registrar->registrar}}
                                 </div>
                             </div>
                         </li>
@@ -479,50 +408,11 @@
                         <li class="list-group-item px-0">
                             <div class="row align-items-center">
                                 <div class="col-lg-5">
-                                    <h3>Nameserver 1 : </h3>
+                                    <h3>Nameserver : </h3>
                                 </div>
                                 <div class="col-lg-7">
-                                    {{$website->domain->nameserver1}}                                    
-                                </div>
-                            </div>
-                        </li>
-                        <li class="list-group-item px-0">
-                            <div class="row align-items-center">
-                                <div class="col-lg-5">
-                                    <h3>Nameserver 2 : </h3>
-                                </div>
-                                <div class="col-lg-7">    
+                                    {{$website->domain->nameserver1}}
                                     {{$website->domain->nameserver2}}
-                                </div>
-                            </div>
-                        </li>
-                        <li class="list-group-item px-0">
-                            <div class="row align-items-center">
-                                <div class="col-lg-5">
-                                    <h3> Registrar Username : </h3>
-                                </div>
-                                <div class="col-lg-7">
-                                    {{$website->domain->registrar->username}}
-                                </div>
-                            </div>
-                        </li>
-                        <li class="list-group-item px-0">
-                            <div class="row align-items-center">
-                                <div class="col-lg-5">
-                                    <h3>Registrar Email : </h3>
-                                </div>
-                                <div class="col-lg-7">
-                                    {{$website->domain->registrar->email}}
-                                </div>
-                            </div>
-                        </li>
-                        <li class="list-group-item px-0">
-                            <div class="row align-items-center">
-                                <div class="col-lg-5">
-                                    <h3>Registrar  Password: </h3>
-                                </div>
-                                <div class="col-lg-7">
-                                    {{$website->domain->registrar->password}}
                                 </div>
                             </div>
                         </li>
@@ -531,9 +421,9 @@
             </div>
             <div class="card">
                 <!-- Card header -->
-                <div class="card-header bg-gradient-info">
+                <div class="card-header">
                     <!-- Title -->
-                    <h5 class="h3 mb-0">Ad & Webmaster</h5>
+                    <h5 class="h3 mb-0">Ad And Webmaster</h5>
                 </div>
                 <!-- Card body -->
                 <div class="card-body">
@@ -542,30 +432,31 @@
                         <li class="list-group-item px-0">
                             <div class="row align-items-center">
                                 <div class="col-lg-5">
-                                    <h3>Ad : </h3>
+                                    <h3>Registrar : </h3>
                                 </div>
                                 <div class="col-lg-7">
-                                    @if($website->ad_id!=null){{$website->ad->name}} @else Not Yet @endif
+                                    {{$website->domain->registrar->email}} at {{$website->domain->registrar->registrar}}
                                 </div>
                             </div>
                         </li>
                         <li class="list-group-item px-0">
                             <div class="row align-items-center">
                                 <div class="col-lg-5">
-                                    <h3>Webmaster : </h3>
+                                    <h3>Expiration : </h3>
                                 </div>
                                 <div class="col-lg-7">
-                                    @if($website->webmaster_id!=null){{$website->webmaster->name}} @else Not Yet @endif
+                                    {{$website->domain->expiration}}
                                 </div>
                             </div>
                         </li>
                         <li class="list-group-item px-0">
                             <div class="row align-items-center">
                                 <div class="col-lg-5">
-                                    <h3>Date : </h3>
+                                    <h3>Nameserver : </h3>
                                 </div>
                                 <div class="col-lg-7">
-                                    {{$website->date}}
+                                    {{$website->domain->nameserver1}}
+                                    {{$website->domain->nameserver2}}
                                 </div>
                             </div>
                         </li>
