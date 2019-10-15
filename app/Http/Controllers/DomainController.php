@@ -56,7 +56,7 @@ class DomainController extends Controller
         $statusIndex = self::getStatusIndex($domain);
 
         $property = self::getDomainProperty($domain);
-        
+
         $domain = Domain::create([
             'domain' => $request->domain,
             'expiration' => $property["expiration"],
@@ -107,19 +107,9 @@ class DomainController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $expiration = $request->expiration;
-        $time = strtotime($expiration);
-        $newexpiration = date('Y-m-d', $time);
-
         $domain = Domain::findOrFail($id);
         if ($domain->userisOwner()) {
           $domain->update([
-            'domain' => $request->domain,
-            'pa' => $request->pa,
-            'da' => $request->da,
-            'expiration' => $newexpiration,
-            'nameserver1' => $request->nameserver1,
-            'nameserver2' => $request->nameserver2,
             'registrar_id' => $request->registrar_id
           ]);
         }else {
@@ -184,13 +174,13 @@ class DomainController extends Controller
 
         return $statusIndex;
     }
-    
+
     private function getDomainProperty($domain){
         $client = new Client();
         $url = 'https://www.whois.com/whois/'.$domain;
         $res = $client->request('GET', $url, ['headers' => ['User-Agent' => 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36']]);
         $hasil = $res->getBody();
-        
+
         $expiration = self::getStringBetween($hasil, 'Expires On:</div><div class="df-value">', '</div>');
         $nameserver1 = self::getStringBetween($hasil, 'Name Servers:</div><div class="df-value">', '<br>');
         $nameserver2 = self::getStringBetween($hasil, 'Name Servers:</div><div class="df-value">'.$nameserver1.'<br>', '</div>');
@@ -217,7 +207,7 @@ class DomainController extends Controller
         $domain->update([
             'nameserver1' => $nameserver1,
         ]);
-        
+
         return response()->json([
             'nameserver1' => $nameserver1,
         ]);
@@ -226,12 +216,12 @@ class DomainController extends Controller
     public function refreshNameServer2($domain){
         $property = self::getDomainProperty($domain);
         $nameserver2 = $property["nameserver2"];
-    
+
         $domain = Domain::where('domain', $domain)->first();
         $domain->update([
             'nameserver2' => $nameserver2,
         ]);
-        
+
         return response()->json([
             'nameserver2' => $nameserver2,
         ]);

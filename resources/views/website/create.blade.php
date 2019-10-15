@@ -250,7 +250,7 @@
     <div class="container-fluid">
         <div class="header-body">
         <div class="row align-items-center py-4">
-            <div class="col-lg-6 col-7">
+            <div class="col-lg-12 col-12">
             <h6 class="h2 d-inline-block mb-0 text-white">Website</h6>
             <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
                 <ol class="breadcrumb breadcrumb-links breadcrumb-dark">

@@ -250,104 +250,205 @@
 <div class="header pb-6 bg-primary">
     <div class="container-fluid">
         <div class="header-body">
-        <div class="row align-items-center py-4">
-            <div class="col-lg-6 col-7">
-            <h6 class="h2 d-inline-block mb-0 text-white">Dashboards</h6>
-            <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
-                <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
-                <li class="breadcrumb-item"><a href="{{ url('/') }}"><i class="fas fa-home"></i></a></li>
-                <li class="breadcrumb-item active"><a href="{{ url('/') }}">Dashboards</a></li>
-                </ol>
-            </nav>
+            <div class="row align-items-center py-4">
+                <div class="col-lg-12 col-12">
+                <h6 class="h2 d-inline-block mb-0 text-white">Website</h6>
+                <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
+                    <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
+                    <li class="breadcrumb-item"><a href="{{ url('/') }}"><i class="fas fa-home"></i></a></li>
+                    <li class="breadcrumb-item"><a href="{{ url('/') }}">Website</a></li>
+                    <li class="breadcrumb-item active"><a href="">{{$website->domain->domain}}</a></li>
+                    </ol>
+                </nav>
+                </div>
             </div>
-            <div class="col-lg-6 col-5 text-right">
-            <a href="{{ route('addwebsite') }}" class="btn btn-sm btn-neutral">Add Website</a>
+            <div class="row">
+                <div class="col-xl-3 col-md-6">
+                    <div class="card card-stats">
+                    <!-- Card body -->
+                    <div class="card-body">
+                        <div class="row">
+                        <div class="col">
+                            <h5 class="card-title text-uppercase text-muted mb-0">Index Google Search</h5>
+                            <span class="h2 font-weight-bold mb-0">{{$website->index_web}}</span>
+                        </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-md-6">
+                    <div class="card card-stats">
+                    <!-- Card body -->
+                    <div class="card-body">
+                        <div class="row">
+                        <div class="col">
+                            <h5 class="card-title text-uppercase text-muted mb-0">Index Google Image</h5>
+                            <span class="h2 font-weight-bold mb-0">{{$website->index_image}}</span>
+                        </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
             </div>
-        </div>
         </div>
     </div>
+
 </div>
 <!-- Page content -->
 <div class="container-fluid mt--6">
+
     <div class="row">
-        <div class="col">
+        <div class="col-lg-6">
             <div class="card">
-          <!-- Card header -->
-          <div class="card-header">
-            <!-- Title -->
-            <h5 class="h3 mb-0">Progress track</h5>
-          </div>
-          <!-- Card body -->
-          <div class="card-body">
-            <!-- List group -->
-            <ul class="list-group list-group-flush list my--3">
-              <li class="list-group-item px-0">
-                <div class="row align-items-center">
-                  <div class="col-auto">
-                    <!-- Avatar -->
-                    <a href="#" class="avatar rounded-circle">
-                      <img alt="Image placeholder" src="../../assets/img/theme/bootstrap.jpg">
-                    </a>
-                  </div>
-                  <div class="col">
-                    <h5>Argon Design System</h5>
-                    <div class="progress progress-xs mb-0">
-                      <div class="progress-bar bg-orange" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;"></div>
-                    </div>
-                  </div>
+                <!-- Card header -->
+                <div class="card-header">
+                    <!-- Title -->
+                    <h5 class="h3 mb-0">Wordpress</h5>
                 </div>
-              </li>
-              <li class="list-group-item px-0">
-                <div class="row align-items-center">
-                  <div class="col-auto">
-                    <!-- Avatar -->
-                    <a href="#" class="avatar rounded-circle">
-                      <img alt="Image placeholder" src="../../assets/img/theme/angular.jpg">
-                    </a>
-                  </div>
-                  <div class="col">
-                    <h5>Angular Now UI Kit PRO</h5>
-                    <div class="progress progress-xs mb-0">
-                      <div class="progress-bar bg-green" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;"></div>
-                    </div>
-                  </div>
+                <!-- Card body -->
+                <div class="card-body">
+                    <!-- List group -->
+                    <ul class="list-group list-group-flush list my--3">
+                        <li class="list-group-item px-0">
+                            <div class="row align-items-center">
+                                <div class="col-lg-3">
+                                    <h3>Post : </h3>
+                                </div>
+                                <div class="col-lg-9">
+                                    {{$website->wp_posts}}
+                                </div>
+                            </div>
+                        </li>
+                        <li class="list-group-item px-0">
+                            <div class="row align-items-center">
+                                <div class="col-lg-3">
+                                    <h3>Category : </h3>
+                                </div>
+                                <div class="col-lg-6">
+                                    {{$website->wp_categories}}
+                                </div>
+                            </div>
+                        </li>
+                        <li class="list-group-item px-0">
+                            <div class="row align-items-center">
+                                <div class="col-lg-3">
+                                    <h3>Category Title : </h3>
+                                </div>
+                                <div class="col-lg-6">
+                                    {{$website->wp_category_titles}}
+                                </div>
+                            </div>
+                        </li>
+                        <li class="list-group-item px-0">
+                            <div class="row align-items-center">
+                                <div class="col-lg-3">
+                                    <h3>Page : </h3>
+                                </div>
+                                <div class="col-lg-6">
+                                    {{$website->wp_pages}}
+                                </div>
+                            </div>
+                        </li>
+                        <li class="list-group-item px-0">
+                            <div class="row align-items-center">
+                                <div class="col-lg-3">
+                                    <h3>Page Title : </h3>
+                                </div>
+                                <div class="col-lg-6">
+                                    {{$website->wp_page_titles}}
+                                </div>
+                            </div>
+                        </li>
+                        <li class="list-group-item px-0">
+                            <div class="row align-items-center">
+                                <div class="col-lg-3">
+                                    <h3>theme : </h3>
+                                </div>
+                                <div class="col-lg-6">
+                                    {{$website->theme}}
+                                </div>
+                            </div>
+                        </li>
+
+                    </ul>
                 </div>
-              </li>
-              <li class="list-group-item px-0">
-                <div class="row align-items-center">
-                  <div class="col-auto">
-                    <!-- Avatar -->
-                    <a href="#" class="avatar rounded-circle">
-                      <img alt="Image placeholder" src="../../assets/img/theme/sketch.jpg">
-                    </a>
-                  </div>
-                  <div class="col">
-                    <h5>Black Dashboard</h5>
-                    <div class="progress progress-xs mb-0">
-                      <div class="progress-bar bg-red" role="progressbar" aria-valuenow="72" aria-valuemin="0" aria-valuemax="100" style="width: 72%;"></div>
-                    </div>
-                  </div>
-                </div>
-              </li>
-              <li class="list-group-item px-0">
-                <div class="row align-items-center">
-                  <div class="col-auto">
-                    <!-- Avatar -->
-                    <a href="#" class="avatar rounded-circle">
-                      <img alt="Image placeholder" src="../../assets/img/theme/react.jpg">
-                    </a>
-                  </div>
-                  <div class="col">
-                    <h5>React Material Dashboard</h5>
-                    <div class="progress progress-xs mb-0">
-                      <div class="progress-bar bg-teal" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" style="width: 90%;"></div>
-                    </div>
-                  </div>
-                </div>
-              </li>
-            </ul>
-          </div>
+            </div>
         </div>
+        <div class="col-lg-6">
+            <div class="card">
+                <!-- Card header -->
+                <div class="card-header">
+                    <!-- Title -->
+                    <h5 class="h3 mb-0">Wordpress</h5>
+                </div>
+                <!-- Card body -->
+                <div class="card-body">
+                    <!-- List group -->
+                    <ul class="list-group list-group-flush list my--3">
+                        <li class="list-group-item px-0">
+                            <div class="row align-items-center">
+                                <div class="col-lg-3">
+                                    <h3>Post : </h3>
+                                </div>
+                                <div class="col-lg-9">
+                                    {{$website->wp_posts}}
+                                </div>
+                            </div>
+                        </li>
+                        <li class="list-group-item px-0">
+                            <div class="row align-items-center">
+                                <div class="col-lg-3">
+                                    <h3>Category : </h3>
+                                </div>
+                                <div class="col-lg-6">
+                                    {{$website->wp_categories}}
+                                </div>
+                            </div>
+                        </li>
+                        <li class="list-group-item px-0">
+                            <div class="row align-items-center">
+                                <div class="col-lg-3">
+                                    <h3>Category Title : </h3>
+                                </div>
+                                <div class="col-lg-6">
+                                    {{$website->wp_category_titles}}
+                                </div>
+                            </div>
+                        </li>
+                        <li class="list-group-item px-0">
+                            <div class="row align-items-center">
+                                <div class="col-lg-3">
+                                    <h3>Page : </h3>
+                                </div>
+                                <div class="col-lg-6">
+                                    {{$website->wp_pages}}
+                                </div>
+                            </div>
+                        </li>
+                        <li class="list-group-item px-0">
+                            <div class="row align-items-center">
+                                <div class="col-lg-3">
+                                    <h3>Page Title : </h3>
+                                </div>
+                                <div class="col-lg-6">
+                                    {{$website->wp_page_titles}}
+                                </div>
+                            </div>
+                        </li>
+                        <li class="list-group-item px-0">
+                            <div class="row align-items-center">
+                                <div class="col-lg-3">
+                                    <h3>theme : </h3>
+                                </div>
+                                <div class="col-lg-6">
+                                    {{$website->theme}}
+                                </div>
+                            </div>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
         </div>
     </div>
     <!-- Footer -->

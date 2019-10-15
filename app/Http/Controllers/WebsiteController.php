@@ -105,7 +105,7 @@ class WebsiteController extends Controller
         $website = Website::findOrFail($id);
         $date = $website->date;
         $time = strtotime($date);
-        $newdate = date('m-d-Y', $time);
+        $newdate = date('m/d/Y', $time);
         if($website->userisOwner()){
             $user = User::findOrFail(Auth::user()->id);
             return view('website.edit', compact('website', 'user', 'newdate'));

@@ -83,8 +83,13 @@ class ServerController extends Controller
     public function edit($id)
     {
         $server = Server::findOrFail($id);
+
+        $date = $server->invoice_date;
+        $time = strtotime($date);
+        $newdate = date('m/d/Y', $time);
+
         if($server->userisOwner()){
-            return view('server.edit', compact('server'));
+            return view('server.edit', compact('server', 'newdate'));
         } else {
             abort(403);
         }
