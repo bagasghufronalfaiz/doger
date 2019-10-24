@@ -19,6 +19,7 @@
   @yield('css')
   <!-- Argon CSS -->
   <link rel="stylesheet" href="{{ asset('assets/css/argon.css?v=1.1.0') }}" type="text/css">
+  <link rel="stylesheet" href="{{ asset('assets/css/app.css') }}" type="text/css">
 </head>
 
 <body>

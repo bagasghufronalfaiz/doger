@@ -1,0 +1,21 @@
+.vab{
+    vertical-align: bottom;
+}
+.pointer {
+    cursor: pointer;
+}
+.rotation{
+    -webkit-animation: mymove 1s; /* Chrome, Safari, Opera */
+    animation: mymove 1s;
+}
+
+@-webkit-keyframes mymove {
+    from {transform: rotate(0deg);}
+    to {transform: rotate(360deg);}
+}
+  
+/* Standard syntax */
+@keyframes mymove {
+    from {transform: rotate(0deg);}
+    to {transform: rotate(360deg);}
+}

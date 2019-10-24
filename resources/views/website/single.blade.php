@@ -459,20 +459,24 @@
                         <li class="list-group-item px-0">
                             <div class="row align-items-center">
                                 <div class="col-lg-5">
-                                    <h3>Registrar : </h3>
+                                    Registrar :
                                 </div>
-                                <div class="col-lg-7">
-                                    {{$website->domain->registrar->registrar}}
+                                <div class="col-lg-7">{{$website->domain->registrar->registrar}}
                                 </div>
                             </div>
                         </li>
                         <li class="list-group-item px-0">
                             <div class="row align-items-center">
                                 <div class="col-lg-5">
-                                    <h3>Expiration : </h3>
+                                    <b>Expiration</b>
                                 </div>
-                                <div class="col-lg-7">
-                                    {{$website->domain->expiration}}
+                                <div class="col-lg-1">:</div>
+                                <div class="col-lg-6 row">
+                                    <div class="col-lg-10 expiration pointer" data-domain="{{$website->domain->domain}}">{{$website->domain->expiration}}</div>
+                                    <div class="col-lg-2 text">
+                                        <i class="material-icons rotationjs vab text-right pointer">refresh</i>
+                                    </div>
+                                    
                                 </div>
                             </div>
                         </li>
@@ -616,6 +620,94 @@
 @endsection
 
 @section('javascript')
-    <!-- javascript -->
+    <script>
+        $(function() {
+          $('.index-web').click(function () {
+            var domain = $(this);
+            domain.html('<i class="fa fa-spinner fa-spin" style="font-size:.875rem"></i>');
+            $.get("{{url('index-web')}}/" + domain.attr('data-domain'), function(e){
+              domain.html(e);
+            });
+          });
+          $('.index-image').click(function () {
+            var domain = $(this);
+            domain.html('<i class="fa fa-spinner fa-spin" style="font-size:.875rem"></i>');
+            $.get("{{url('index-image')}}/" + domain.attr('data-domain'), function(e){
+              domain.html(e);
+            });
+          });
+          $('.wordpress-theme').click(function () {
+            var domain = $(this);
+            domain.html('<i class="fa fa-spinner fa-spin" style="font-size:.875rem"></i>');
+            $.get("{{url('wordpress-theme')}}/" + domain.attr('data-domain'), function(e){
+              domain.html(e['theme']);
+            });
+          });
+          $('.wordpress-post').click(function () {
+            var domain = $(this);
+            domain.html('<i class="fa fa-spinner fa-spin" style="font-size:.875rem"></i>');
+            $.get("{{url('wordpress-post')}}/" + domain.attr('data-domain'), function(e){
+              domain.html(e['post']);
+            });
+          });
+          $('.wordpress-category').click(function () {
+            var domain = $(this);
+            domain.html('<i class="fa fa-spinner fa-spin" style="font-size:.875rem"></i>');
+            $.get("{{url('wordpress-category')}}/" + domain.attr('data-domain'), function(e){
+              domain.html(e['category']);
+            });
+          });
+          $('.wordpress-category-title').click(function () {
+            var domain = $(this);
+            domain.html('<i class="fa fa-spinner fa-spin" style="font-size:.875rem"></i>');
+            $.get("{{url('wordpress-category-title')}}/" + domain.attr('data-domain'), function(e){
+              domain.html(e['category-title']);
+            });
+          });
+          $('.wordpress-page').click(function () {
+            var domain = $(this);
+            domain.html('<i class="fa fa-spinner fa-spin" style="font-size:.875rem"></i>');
+            $.get("{{url('wordpress-page')}}/" + domain.attr('data-domain'), function(e){
+              domain.html(e['page']);
+            });
+          });
+          $('.wordpress-page-title').click(function () {
+            var domain = $(this);
+            domain.html('<i class="fa fa-spinner fa-spin" style="font-size:.875rem"></i>');
+            $.get("{{url('wordpress-page-title')}}/" + domain.attr('data-domain'), function(e){
+              domain.html(e['page-title']);
+            });
+          });
+      
+      
+          $('.rotationjs').click(function(){
+              var rotate = $(this);
+              rotate.toggleClass("rotation");
+            //   rotate.addClass("rotation").animate("","slow").removeClass("rotation");
+          });
+
+          $('.expiration').click(function () {
+            var domain = $(this);
+            domain.html('<i class="fa fa-spinner fa-spin" style="font-size:.875rem"></i>');
+            $.get("{{url('expiration')}}/" + domain.attr('data-domain'), function(e){
+              domain.html(e);
+            });
+          });
+          $('.nameserver1').click(function () {
+            var domain = $(this);
+            domain.html('<i class="fa fa-spinner fa-spin" style="font-size:.875rem"></i>');
+            $.get("{{url('nameserver1')}}/" + domain.attr('data-domain'), function(e){
+              domain.html(e['nameserver1']);
+            });
+          });
+          $('.nameserver2').click(function () {
+            var domain = $(this);
+            domain.html('<i class="fa fa-spinner fa-spin" style="font-size:.875rem"></i>');
+            $.get("{{url('nameserver2')}}/" + domain.attr('data-domain'), function(e){
+              domain.html(e['nameserver2']);
+            });
+          });
+        });
+    </script>
 @endsection
 
