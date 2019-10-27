@@ -270,7 +270,15 @@
                         <div class="row">
                         <div class="col">
                             <h5 class="card-title text-uppercase text-muted mb-0">Index Google Search</h5>
-                            <span class="h2 font-weight-bold mb-0">{{$website->index_web}}</span>
+                            <div class="row">
+                                <div class="col-lg-10">
+                                    <span class="h2 mb-0 index-web pointer" data-domain="{{$website->domain->domain}}">{{$website->index_web}}</span>
+                                </div>
+                                <div class="col-lg-2">
+                                    <i class="material-icons vab index-web-refresh text-right pointer refresh-index">refresh</i>
+                                </div>
+                            </div>
+
                         </div>
                         </div>
                     </div>
@@ -283,7 +291,14 @@
                         <div class="row">
                         <div class="col">
                             <h5 class="card-title text-uppercase text-muted mb-0">Index Google Image</h5>
-                            <span class="h2 font-weight-bold mb-0">{{$website->index_image}}</span>
+                            <div class="row">
+                                <div class="col-lg-10">
+                                    <span class="h2 font-weight-bold mb-0 index-image pointer" data-domain="{{$website->domain->domain}}">{{$website->index_image}}</span>
+                                </div>
+                                <div class="col-lg-2">
+                                    <i class="material-icons vab index-image-refresh text-right pointer refresh-index">refresh</i>
+                                </div>
+                            </div>
                         </div>
                         </div>
                     </div>
@@ -303,9 +318,8 @@
                 <!-- Card header -->
                 <div class="card-header">
                     <!-- Title -->
-                    <h5 class="h3 mb-0">Wordpress</h5>
+                    <h2 class="mb-0">Wordpress</h2>
                 </div>
-                <div class="bg-gradient-warning col-lg-12" style="height:10px;"></div>
                 <!-- Card body -->
                 <div class="card-body">
                     <!-- List group -->
@@ -313,66 +327,85 @@
                         <li class="list-group-item px-0">
                             <div class="row align-items-center">
                                 <div class="col-lg-5">
-                                    <h3>Post</h3>
+                                    <h3 class="mb-0">Post</h3>
                                 </div>
                                 <div class="col-lg-1">:</div>
-                                <div class="col-lg-6">
-                                    {{$website->wp_posts}}
+                                <div class="col-lg-6 row">
+                                    <div class="col-lg-10 wordpress-post pointer" data-domain="{{$website->domain->domain}}">{{$website->wp_posts}}</div>
+                                    <div class="col-lg-2">
+                                        <i class="material-icons vab wordpress-post-refresh text-right pointer">refresh</i>
+                                    </div>
                                 </div>
                             </div>
                         </li>
                         <li class="list-group-item px-0">
                             <div class="row align-items-center">
                                 <div class="col-lg-5">
-                                    <h3>Category</h3>
+                                    <h3 class="mb-0">Category</h3>
                                 </div>
                                 <div class="col-lg-1">:</div>
-                                <div class="col-lg-6">
-                                    {{$website->wp_categories}}
+                                 <div class="col-lg-6 row">
+                                    <div class="col-lg-10 wordpress-category pointer" data-domain="{{$website->domain->domain}}">{{$website->wp_categories}}</div>
+                                    <div class="col-lg-2">
+                                        <i class="material-icons vab wordpress-category-refresh text-right pointer">refresh</i>
+                                    </div>
                                 </div>
                             </div>
                         </li>
                         <li class="list-group-item px-0">
                             <div class="row align-items-center">
                                 <div class="col-lg-5">
-                                    <h3>Category Title</h3>
+                                    <h3 class="mb-0">Category Title</h3>
                                 </div>
                                 <div class="col-lg-1">:</div>
-                                <div class="col-lg-6">
-                                    {{$website->wp_category_titles}}
+                                 <div class="col-lg-6 row">
+                                    <div class="col-lg-10 wordpress-category-title pointer" data-domain="{{$website->domain->domain}}">{{$website->wp_category_titles}}</div>
+                                    <div class="col-lg-2">
+                                        <i class="material-icons vab wordpress-category-title-refresh text-right pointer">refresh</i>
+                                    </div>
                                 </div>
                             </div>
                         </li>
                         <li class="list-group-item px-0">
                             <div class="row align-items-center">
                                 <div class="col-lg-5">
-                                    <h3>Page</h3>
+                                    <h3 class="mb-0">Page</h3>
                                 </div>
                                 <div class="col-lg-1">:</div>
-                                <div class="col-lg-6">
-                                    {{$website->wp_pages}}
+                                 <div class="col-lg-6 row">
+                                    <div class="col-lg-10 wordpress-page pointer" data-domain="{{$website->domain->domain}}">{{$website->wp_pages}}</div>
+                                    <div class="col-lg-2">
+                                        <i class="material-icons vab wordpress-page-refresh text-right pointer">refresh</i>
+                                    </div>
                                 </div>
                             </div>
                         </li>
                         <li class="list-group-item px-0">
                             <div class="row align-items-center">
                                 <div class="col-lg-5">
-                                    <h3>Page Title</h3>
+                                    <h3 class="mb-0">Page Title</h3>
                                 </div>
                                 <div class="col-lg-1">:</div>
-                                <div class="col-lg-6">
-                                    {{$website->wp_page_titles}}
+                                 <div class="col-lg-6 row">
+                                    <div class="col-lg-10 wordpress-page-title pointer" data-domain="{{$website->domain->domain}}">{{$website->wp_page_titles}}</div>
+                                    <div class="col-lg-2">
+                                        <i class="material-icons vab wordpress-page-title-refresh text-right pointer">refresh</i>
+                                    </div>
                                 </div>
                             </div>
                         </li>
                         <li class="list-group-item px-0">
                             <div class="row align-items-center">
                                 <div class="col-lg-5">
-                                    <h3>theme </h3>
+                                    <h3 class="mb-0">Theme</h3>
                                 </div>
                                 <div class="col-lg-1">:</div>
-                                <div class="col-lg-6">
-                                    {{$website->theme}}
+                                 <div class="col-lg-6 row">
+                                    <div class="col-lg-10 wordpress-theme pointer" data-domain="{{$website->domain->domain}}">
+                                    {{$website->theme}}</div>
+                                    <div class="col-lg-2">
+                                        <i class="material-icons vab wordpress-theme-refresh text-right pointer">refresh</i>
+                                    </div>
                                 </div>
                             </div>
                         </li>
@@ -382,10 +415,10 @@
             </div>
             <div class="card">
                 <!-- Card header -->
-                <div class="card-header bg-gradient-info">
+                <div class="card-header">
                     <!-- Title -->
-                    <h5 class="h3 mb-0">Server</h5>
-                </div>                
+                    <h2 class="mb-0">Server</h2>
+                </div>
                 <!-- Card body -->
                 <div class="card-body">
                     <!-- List group -->
@@ -393,9 +426,10 @@
                         <li class="list-group-item px-0">
                             <div class="row align-items-center">
                                 <div class="col-lg-5">
-                                    <h3>Server : </h3>
+                                    <h3 class="mb-0">Server</h3>
                                 </div>
-                                <div class="col-lg-7">
+                                <div class="col-lg-1">:</div>
+                                <div class="col-lg-6">
                                     {{$website->server->servername}}
                                 </div>
                             </div>
@@ -403,9 +437,10 @@
                         <li class="list-group-item px-0">
                             <div class="row align-items-center">
                                 <div class="col-lg-5">
-                                    <h3>Server Folder : </h3>
+                                    <h3 class="mb-0">Server Folder</h3>
                                 </div>
-                                <div class="col-lg-7">
+                                <div class="col-lg-1">:</div>
+                                <div class="col-lg-6">
                                     {{$website->server_folder}}
                                 </div>
                             </div>
@@ -413,9 +448,10 @@
                         <li class="list-group-item px-0">
                             <div class="row align-items-center">
                                 <div class="col-lg-5">
-                                    <h3>IP : </h3>
+                                    <h3 class="mb-0">IP</h3>
                                 </div>
-                                <div class="col-lg-7">
+                                <div class="col-lg-1">:</div>
+                                <div class="col-lg-6">
                                     {{$website->server->ip}}
                                 </div>
                             </div>
@@ -423,9 +459,10 @@
                         <li class="list-group-item px-0">
                             <div class="row align-items-center">
                                 <div class="col-lg-5">
-                                    <h3>Username : </h3>
+                                    <h3 class="mb-0">Username</h3>
                                 </div>
-                                <div class="col-lg-7">
+                                <div class="col-lg-1">:</div>
+                                <div class="col-lg-6">
                                     {{$website->server->username}}
                                 </div>
                             </div>
@@ -433,13 +470,14 @@
                         <li class="list-group-item px-0">
                             <div class="row align-items-center">
                                 <div class="col-lg-5">
-                                    <h3>Password : </h3>
+                                    <h3 class="mb-0">Password</h3>
                                 </div>
-                                <div class="col-lg-7">
+                                <div class="col-lg-1">:</div>
+                                <div class="col-lg-6">
                                     {{$website->server->password}}
                                 </div>
                             </div>
-                        </li>                        
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -449,9 +487,8 @@
                 <!-- Card header -->
                 <div class="card-header">
                     <!-- Title -->
-                    <h5 class="h3 mb-0">Domain</h5>
+                    <h2 class="mb-0">Domain</h2>
                 </div>
-                <div class="bg-gradient-warning col-lg-12" style="height:10px;"></div>
                 <!-- Card body -->
                 <div class="card-body">
                     <!-- List group -->
@@ -459,63 +496,71 @@
                         <li class="list-group-item px-0">
                             <div class="row align-items-center">
                                 <div class="col-lg-5">
-                                    Registrar :
+                                    <h3 class="mb-0">Registrar</h3>
                                 </div>
-                                <div class="col-lg-7">{{$website->domain->registrar->registrar}}
-                                </div>
+                                <div class="col-lg-1">:</div>
+                                <div class="col-lg-6">{{$website->domain->registrar->registrar}}</div>
                             </div>
                         </li>
                         <li class="list-group-item px-0">
                             <div class="row align-items-center">
                                 <div class="col-lg-5">
-                                    <b>Expiration</b>
+                                    <h3 class="mb-0">Expiration</h3>
                                 </div>
                                 <div class="col-lg-1">:</div>
                                 <div class="col-lg-6 row">
                                     <div class="col-lg-10 expiration pointer" data-domain="{{$website->domain->domain}}">{{$website->domain->expiration}}</div>
                                     <div class="col-lg-2 text">
-                                        <i class="material-icons rotationjs vab text-right pointer">refresh</i>
+                                        <i class="material-icons vab expiration-refresh text-right pointer">refresh</i>
                                     </div>
-                                    
+
                                 </div>
                             </div>
                         </li>
                         <li class="list-group-item px-0">
                             <div class="row align-items-center">
                                 <div class="col-lg-5">
-                                    <h3>Nameserver 1 : </h3>
+                                    <h3 class="mb-0">Nameserver 1</h3>
                                 </div>
-                                <div class="col-lg-7">
-                                    {{$website->domain->nameserver1}}                                    
-                                </div>
-                            </div>
-                        </li>
-                        <li class="list-group-item px-0">
-                            <div class="row align-items-center">
-                                <div class="col-lg-5">
-                                    <h3>Nameserver 2 : </h3>
-                                </div>
-                                <div class="col-lg-7">    
-                                    {{$website->domain->nameserver2}}
+                                <div class="col-lg-1">:</div>
+                                <div class="col-lg-6 row">
+                                    <div class="col-lg-10 nameserver1 pointer" data-domain="{{$website->domain->domain}}">{{$website->domain->nameserver1}}</div>
+                                    <div class="col-lg-2">
+                                        <i class="material-icons vab nameserver1-refresh text-right pointer">refresh</i>
+                                    </div>
                                 </div>
                             </div>
                         </li>
                         <li class="list-group-item px-0">
                             <div class="row align-items-center">
                                 <div class="col-lg-5">
-                                    <h3> Registrar Username : </h3>
+                                    <h3 class="mb-0">Nameserver 2</h3>
                                 </div>
-                                <div class="col-lg-7">
-                                    {{$website->domain->registrar->username}}
+                                <div class="col-lg-1">:</div>
+                                <div class="col-lg-6 row">
+                                    <div class="col-lg-10 nameserver2 pointer" data-domain="{{$website->domain->domain}}">{{$website->domain->nameserver2}}</div>
+                                    <div class="col-lg-2">
+                                        <i class="material-icons vab nameserver2-refresh text-right pointer">refresh</i>
+                                    </div>
                                 </div>
                             </div>
                         </li>
                         <li class="list-group-item px-0">
                             <div class="row align-items-center">
                                 <div class="col-lg-5">
-                                    <h3>Registrar Email : </h3>
+                                    <h3 class="mb-0">Registrar Username</h3>
                                 </div>
-                                <div class="col-lg-7">
+                                <div class="col-lg-1">:</div>
+                                <div class="col-lg-6">{{$website->domain->registrar->username}}</div>
+                            </div>
+                        </li>
+                        <li class="list-group-item px-0">
+                            <div class="row align-items-center">
+                                <div class="col-lg-5">
+                                    <h3 class="mb-0">Registrar Email</h3>
+                                </div>
+                                <div class="col-lg-1">:</div>
+                                <div class="col-lg-6">
                                     {{$website->domain->registrar->email}}
                                 </div>
                             </div>
@@ -523,9 +568,10 @@
                         <li class="list-group-item px-0">
                             <div class="row align-items-center">
                                 <div class="col-lg-5">
-                                    <h3>Registrar  Password: </h3>
+                                    <h3 class="mb-0">Registrar  Password: </h3>
                                 </div>
-                                <div class="col-lg-7">
+                                <div class="col-lg-1">:</div>
+                                <div class="col-lg-6">
                                     {{$website->domain->registrar->password}}
                                 </div>
                             </div>
@@ -535,9 +581,9 @@
             </div>
             <div class="card">
                 <!-- Card header -->
-                <div class="card-header bg-gradient-info">
+                <div class="card-header">
                     <!-- Title -->
-                    <h5 class="h3 mb-0">Ad & Webmaster</h5>
+                    <h2 class="mb-0">Ad & Webmaster</h2>
                 </div>
                 <!-- Card body -->
                 <div class="card-body">
@@ -546,9 +592,10 @@
                         <li class="list-group-item px-0">
                             <div class="row align-items-center">
                                 <div class="col-lg-5">
-                                    <h3>Ad : </h3>
+                                    <h3 class="mb-0">Ad</h3>
                                 </div>
-                                <div class="col-lg-7">
+                                <div class="col-lg-1">:</div>
+                                <div class="col-lg-6">
                                     @if($website->ad_id!=null){{$website->ad->name}} @else Not Yet @endif
                                 </div>
                             </div>
@@ -556,9 +603,10 @@
                         <li class="list-group-item px-0">
                             <div class="row align-items-center">
                                 <div class="col-lg-5">
-                                    <h3>Webmaster : </h3>
+                                    <h3 class="mb-0">Webmaster</h3>
                                 </div>
-                                <div class="col-lg-7">
+                                <div class="col-lg-1">:</div>
+                                <div class="col-lg-6">
                                     @if($website->webmaster_id!=null){{$website->webmaster->name}} @else Not Yet @endif
                                 </div>
                             </div>
@@ -566,10 +614,22 @@
                         <li class="list-group-item px-0">
                             <div class="row align-items-center">
                                 <div class="col-lg-5">
-                                    <h3>Date : </h3>
+                                    <h3 class="mb-0">Date</h3>
                                 </div>
-                                <div class="col-lg-7">
+                                <div class="col-lg-1">:</div>
+                                <div class="col-lg-6">
                                     {{$website->date}}
+                                </div>
+                            </div>
+                        </li>
+                        <li class="list-group-item px-0">
+                            <div class="row align-items-center">
+                                <div class="col-lg-5">
+                                    <h3 class="mb-0">Build Tool</h3>
+                                </div>
+                                <div class="col-lg-1">:</div>
+                                <div class="col-lg-6">
+                                    {{$website->tool}}
                                 </div>
                             </div>
                         </li>
@@ -622,92 +682,182 @@
 @section('javascript')
     <script>
         $(function() {
-          $('.index-web').click(function () {
-            var domain = $(this);
-            domain.html('<i class="fa fa-spinner fa-spin" style="font-size:.875rem"></i>');
-            $.get("{{url('index-web')}}/" + domain.attr('data-domain'), function(e){
-              domain.html(e);
+            $('.index-web-refresh').click(function(){
+                var rotate = $(this);
+                rotate.addClass('fa-spin');
+                $('.index-web').html('<i class="fa fa-spinner fa-spin text-right pointer"></i>');
+                $.get("{{url('index-web')}}/" + $('.index-web').attr('data-domain'), function(e){
+                    $('.index-web').html(e);
+                    rotate.removeClass('fa-spin');
+                });
             });
-          });
-          $('.index-image').click(function () {
-            var domain = $(this);
-            domain.html('<i class="fa fa-spinner fa-spin" style="font-size:.875rem"></i>');
-            $.get("{{url('index-image')}}/" + domain.attr('data-domain'), function(e){
-              domain.html(e);
+            $('.index-web').click(function () {
+                var domain = $(this);
+                domain.html('<i class="fa fa-spinner fa-spin"></i>');
+                $.get("{{url('index-web')}}/" + domain.attr('data-domain'), function(e){
+                domain.html(e);
+                });
             });
-          });
-          $('.wordpress-theme').click(function () {
-            var domain = $(this);
-            domain.html('<i class="fa fa-spinner fa-spin" style="font-size:.875rem"></i>');
-            $.get("{{url('wordpress-theme')}}/" + domain.attr('data-domain'), function(e){
-              domain.html(e['theme']);
+            $('.index-image-refresh').click(function(){
+                var rotate = $(this);
+                rotate.addClass('fa-spin');
+                $('.index-image').html('<i class="fa fa-spinner fa-spin text-right pointer"></i>');
+                $.get("{{url('index-image')}}/" + $('.index-image').attr('data-domain'), function(e){
+                    $('.index-image').html(e);
+                    rotate.removeClass('fa-spin');
+                });
             });
-          });
-          $('.wordpress-post').click(function () {
-            var domain = $(this);
-            domain.html('<i class="fa fa-spinner fa-spin" style="font-size:.875rem"></i>');
-            $.get("{{url('wordpress-post')}}/" + domain.attr('data-domain'), function(e){
-              domain.html(e['post']);
+            $('.index-image').click(function () {
+                var domain = $(this);
+                domain.html('<i class="fa fa-spinner fa-spin" ></i>');
+                $.get("{{url('index-image')}}/" + domain.attr('data-domain'), function(e){
+                domain.html(e);
+                });
             });
-          });
-          $('.wordpress-category').click(function () {
-            var domain = $(this);
-            domain.html('<i class="fa fa-spinner fa-spin" style="font-size:.875rem"></i>');
-            $.get("{{url('wordpress-category')}}/" + domain.attr('data-domain'), function(e){
-              domain.html(e['category']);
+            $('.wordpress-post-refresh').click(function(){
+                var rotate = $(this);
+                rotate.addClass('fa-spin');
+                $('.wordpress-post').html('<i class="fa fa-spinner fa-spin text-right pointer"></i>');
+                $.get("{{url('wordpress-post')}}/" + $('.wordpress-post').attr('data-domain'), function(e){
+                    $('.wordpress-post').html(e['post']);
+                    rotate.removeClass('fa-spin');
+                });
             });
-          });
-          $('.wordpress-category-title').click(function () {
-            var domain = $(this);
-            domain.html('<i class="fa fa-spinner fa-spin" style="font-size:.875rem"></i>');
-            $.get("{{url('wordpress-category-title')}}/" + domain.attr('data-domain'), function(e){
-              domain.html(e['category-title']);
+            $('.wordpress-post').click(function () {
+                var domain = $(this);
+                domain.html('<i class="fa fa-spinner fa-spin" ></i>');
+                $.get("{{url('wordpress-post')}}/" + domain.attr('data-domain'), function(e){
+                domain.html(e['post']);
+                });
             });
-          });
-          $('.wordpress-page').click(function () {
-            var domain = $(this);
-            domain.html('<i class="fa fa-spinner fa-spin" style="font-size:.875rem"></i>');
-            $.get("{{url('wordpress-page')}}/" + domain.attr('data-domain'), function(e){
-              domain.html(e['page']);
+            $('.wordpress-category-refresh').click(function(){
+                var rotate = $(this);
+                rotate.addClass('fa-spin');
+                $('.wordpress-category').html('<i class="fa fa-spinner fa-spin text-right pointer"></i>');
+                $.get("{{url('wordpress-category')}}/" + $('.wordpress-category').attr('data-domain'), function(e){
+                    $('.wordpress-category').html(e['category']);
+                    rotate.removeClass('fa-spin');
+                });
             });
-          });
-          $('.wordpress-page-title').click(function () {
-            var domain = $(this);
-            domain.html('<i class="fa fa-spinner fa-spin" style="font-size:.875rem"></i>');
-            $.get("{{url('wordpress-page-title')}}/" + domain.attr('data-domain'), function(e){
-              domain.html(e['page-title']);
+            $('.wordpress-category').click(function () {
+                var domain = $(this);
+                domain.html('<i class="fa fa-spinner fa-spin"  ></i>');
+                $.get("{{url('wordpress-category')}}/" + domain.attr('data-domain'), function(e){
+                domain.html(e['category']);
+                });
             });
-          });
-      
-      
-          $('.rotationjs').click(function(){
-              var rotate = $(this);
-              rotate.toggleClass("rotation");
-            //   rotate.addClass("rotation").animate("","slow").removeClass("rotation");
-          });
-
-          $('.expiration').click(function () {
-            var domain = $(this);
-            domain.html('<i class="fa fa-spinner fa-spin" style="font-size:.875rem"></i>');
-            $.get("{{url('expiration')}}/" + domain.attr('data-domain'), function(e){
-              domain.html(e);
+            $('.wordpress-category-title-refresh').click(function(){
+                var rotate = $(this);
+                rotate.addClass('fa-spin');
+                $('.wordpress-category-title').html('<i class="fa fa-spinner fa-spin text-right pointer"></i>');
+                $.get("{{url('wordpress-category-title')}}/" + $('.wordpress-category-title').attr('data-domain'), function(e){
+                    $('.wordpress-category-title').html(e['category-title']);
+                    rotate.removeClass('fa-spin');
+                });
             });
-          });
-          $('.nameserver1').click(function () {
-            var domain = $(this);
-            domain.html('<i class="fa fa-spinner fa-spin" style="font-size:.875rem"></i>');
-            $.get("{{url('nameserver1')}}/" + domain.attr('data-domain'), function(e){
-              domain.html(e['nameserver1']);
+            $('.wordpress-category-title').click(function () {
+                var domain = $(this);
+                domain.html('<i class="fa fa-spinner fa-spin"  ></i>');
+                $.get("{{url('wordpress-category-title')}}/" + domain.attr('data-domain'), function(e){
+                domain.html(e['category-title']);
+                });
             });
-          });
-          $('.nameserver2').click(function () {
-            var domain = $(this);
-            domain.html('<i class="fa fa-spinner fa-spin" style="font-size:.875rem"></i>');
-            $.get("{{url('nameserver2')}}/" + domain.attr('data-domain'), function(e){
-              domain.html(e['nameserver2']);
+            $('.wordpress-page-refresh').click(function(){
+                var rotate = $(this);
+                rotate.addClass('fa-spin');
+                $('.wordpress-page').html('<i class="fa fa-spinner fa-spin text-right pointer"></i>');
+                $.get("{{url('wordpress-page')}}/" + $('.wordpress-page').attr('data-domain'), function(e){
+                    $('.wordpress-page').html(e['page']);
+                    rotate.removeClass('fa-spin');
+                });
             });
-          });
-        });
+            $('.wordpress-page').click(function () {
+                var domain = $(this);
+                domain.html('<i class="fa fa-spinner fa-spin"  ></i>');
+                $.get("{{url('wordpress-page')}}/" + domain.attr('data-domain'), function(e){
+                domain.html(e['page']);
+                });
+            });
+            $('.wordpress-page-title-refresh').click(function(){
+                var rotate = $(this);
+                rotate.addClass('fa-spin');
+                $('.wordpress-page-title').html('<i class="fa fa-spinner fa-spin text-right pointer"></i>');
+                $.get("{{url('wordpress-page-title')}}/" + $('.wordpress-page-title').attr('data-domain'), function(e){
+                    $('.wordpress-page-title').html(e['page-title']);
+                    rotate.removeClass('fa-spin');
+                });
+            });
+            $('.wordpress-page-title').click(function () {
+                var domain = $(this);
+                domain.html('<i class="fa fa-spinner fa-spin"  ></i>');
+                $.get("{{url('wordpress-page-title')}}/" + domain.attr('data-domain'), function(e){
+                domain.html(e['page-title']);
+                });
+            });
+            $('.wordpress-theme-refresh').click(function(){
+                var rotate = $(this);
+                rotate.addClass('fa-spin');
+                $('.wordpress-theme').html('<i class="fa fa-spinner fa-spin text-right pointer"></i>');
+                $.get("{{url('wordpress-theme')}}/" + $('.wordpress-theme').attr('data-domain'), function(e){
+                    $('.wordpress-theme').html(e['theme']);
+                    rotate.removeClass('fa-spin');
+                });
+            });
+            $('.wordpress-theme').click(function () {
+                var domain = $(this);
+                domain.html('<i class="fa fa-spinner fa-spin"  ></i>');
+                $.get("{{url('wordpress-theme')}}/" + domain.attr('data-domain'), function(e){
+                domain.html(e['theme']);
+                });
+            });
+            $('.expiration-refresh').click(function(){
+                var rotate = $(this);
+                rotate.addClass('fa-spin');
+                $('.expiration').html('<i class="fa fa-spinner fa-spin text-right pointer"></i>');
+                $.get("{{url('expiration')}}/" + $('.expiration').attr('data-domain'), function(e){
+                    $('.expiration').html(e);
+                    rotate.removeClass('fa-spin');
+                });
+            });
+            $('.expiration').click(function () {
+                var domain = $(this);
+                domain.html('<i class="fa fa-spinner fa-spin"  ></i>');
+                $.get("{{url('expiration')}}/" + domain.attr('data-domain'), function(e){
+                domain.html(e);
+                });
+            });
+            $('.nameserver1-refresh').click(function(){
+                var rotate = $(this);
+                rotate.addClass('fa-spin');
+                $('.nameserver1').html('<i class="fa fa-spinner fa-spin text-right pointer"></i>');
+                $.get("{{url('nameserver1')}}/" + $('.nameserver1').attr('data-domain'), function(e){
+                    $('.nameserver1').html(e['nameserver1']);
+                    rotate.removeClass('fa-spin');
+                });
+            });
+            $('.nameserver1').click(function () {
+                var domain = $(this);
+                domain.html('<i class="fa fa-spinner fa-spin"  ></i>');
+                $.get("{{url('nameserver1')}}/" + domain.attr('data-domain'), function(e){
+                domain.html(e['nameserver1']);
+                });
+            });
+            $('.nameserver2-refresh').click(function(){
+                var rotate = $(this);
+                rotate.addClass('fa-spin');
+                $('.nameserver2').html('<i class="fa fa-spinner fa-spin text-right pointer"></i>');
+                $.get("{{url('nameserver2')}}/" + $('.nameserver2').attr('data-domain'), function(e){
+                    $('.nameserver2').html(e['nameserver2']);
+                    rotate.removeClass('fa-spin');
+                });
+            });
+            $('.nameserver2').click(function () {
+                var domain = $(this);
+                domain.html('<i class="fa fa-spinner fa-spin"></i>');
+                $.get("{{url('nameserver2')}}/" + domain.attr('data-domain'), function(e){
+                domain.html(e['nameserver2']);
+                });
+            });
+            });
     </script>
 @endsection
-

@@ -1,21 +1,10 @@
 .vab{
-    vertical-align: bottom;
+    vertical-align: bottom !important;
 }
 .pointer {
     cursor: pointer;
 }
-.rotation{
-    -webkit-animation: mymove 1s; /* Chrome, Safari, Opera */
-    animation: mymove 1s;
-}
-
-@-webkit-keyframes mymove {
-    from {transform: rotate(0deg);}
-    to {transform: rotate(360deg);}
-}
-  
-/* Standard syntax */
-@keyframes mymove {
-    from {transform: rotate(0deg);}
-    to {transform: rotate(360deg);}
+.refresh-index {
+    line-height: 1.5;
+    font-size: 1.25rem;
 }

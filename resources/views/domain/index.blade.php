@@ -366,6 +366,37 @@
 @endsection
 
 @section('javascript')
-    <!-- javascript -->
+<script>
+$(function() {
+    $('.status-index').click(function () {
+      var domain = $(this);
+      domain.html('<i class="fa fa-spinner fa-spin"></i>');
+      $.get("{{url('status-index')}}/" + domain.attr('data-domain'), function(e){
+        domain.html(e);
+      });
+    });
+    $('.expiration').click(function () {
+      var domain = $(this);
+      domain.html('<i class="fa fa-spinner fa-spin"></i>');
+      $.get("{{url('expiration')}}/" + domain.attr('data-domain'), function(e){
+        domain.html(e);
+      });
+    });
+    $('.nameserver1').click(function () {
+      var domain = $(this);
+      domain.html('<i class="fa fa-spinner fa-spin"></i>');
+      $.get("{{url('nameserver1')}}/" + domain.attr('data-domain'), function(e){
+        domain.html(e['nameserver1']);
+      });
+    });
+    $('.nameserver2').click(function () {
+      var domain = $(this);
+      domain.html('<i class="fa fa-spinner fa-spin""></i>');
+      $.get("{{url('nameserver2')}}/" + domain.attr('data-domain'), function(e){
+        domain.html(e['nameserver2']);
+      });
+    });
+  });
+</script>
 @endsection
 

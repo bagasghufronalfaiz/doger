@@ -19,6 +19,7 @@ class CreateWebsitesTable extends Migration
             $table->string('theme');
             $table->integer('index_web');
             $table->integer('index_image');
+            $table->string('tool');
             $table->string('keyword');
             $table->unsignedBigInteger('server_id');
             $table->string('server_folder')->unique();

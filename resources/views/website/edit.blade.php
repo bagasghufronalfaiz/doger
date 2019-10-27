@@ -292,6 +292,12 @@
                     </div>
                     <div class="col-md-12">
                       <div class="form-group">
+                          <label for="tool">Build Tool</label>
+                          <input class="form-control" placeholder="Tool" type="text" name="tool" value="{{(old('tool')) ? old('tool') : $website->tool}}">
+                      </div>
+                    </div>
+                    <div class="col-md-12">
+                      <div class="form-group">
                           <label for="keyword">Keyword</label>
                           <input class="form-control" placeholder="keyword" type="text" name="keyword" value="{{(old('keyword')) ? old('keyword') : $website->keyword}}">
                       </div>

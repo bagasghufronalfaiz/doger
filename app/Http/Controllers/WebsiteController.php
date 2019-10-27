@@ -68,6 +68,7 @@ class WebsiteController extends Controller
             'index_web'         => $index_web,
             'index_image'       => $index_image,
             'keyword'           => $request->keyword,
+            'tool'              => $request->tool,
             'server_id'         => $request->servername,
             'server_folder'     => $request->serverfolder,
             'ad_id'             => $request->ad,

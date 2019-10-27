@@ -292,8 +292,14 @@
                     </div>
                     <div class="col-md-12">
                       <div class="form-group">
+                          <label for="tool">Build Tool</label>
+                          <input class="form-control" placeholder="Tool" type="text" name="tool" value="{{old('tool')}}">
+                      </div>
+                    </div>
+                    <div class="col-md-12">
+                      <div class="form-group">
                           <label for="keyword">Keyword</label>
-                          <input class="form-control" placeholder="keyword" type="text" name="keyword" value="{{old('keyword')}}">
+                          <input class="form-control" placeholder="Keyword" type="text" name="keyword" value="{{old('keyword')}}">
                       </div>
                     </div>
                     <div class="col-md-12">
@@ -337,7 +343,7 @@
                     <div class="col-md-12">
                       <div class="form-group">
                         <label for="date">Date of Birth</label>
-                        <input class="form-control datepicker" placeholder="Select date" type="text" value="{{date('m/d/Y')}}" name="date">
+                        <input class="form-control datepicker" placeholder="Select Date" type="text" value="{{date('m/d/Y')}}" name="date">
                       </div>
                     </div>
                   </div>

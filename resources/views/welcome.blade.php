@@ -377,6 +377,30 @@
 @endsection
 
 @section('javascript')
-    <!-- javascript -->
+<script>
+    $(function() {
+    $('.index-web').click(function () {
+      var domain = $(this);
+      domain.html('<i class="fa fa-spinner fa-spin"></i>');
+      $.get("{{url('index-web')}}/" + domain.attr('data-domain'), function(e){
+        domain.html(e);
+      });
+    });
+    $('.index-image').click(function () {
+      var domain = $(this);
+      domain.html('<i class="fa fa-spinner fa-spin"></i>');
+      $.get("{{url('index-image')}}/" + domain.attr('data-domain'), function(e){
+        domain.html(e);
+      });
+    });
+    $('.wordpress-theme').click(function () {
+      var domain = $(this);
+      domain.html('<i class="fa fa-spinner fa-spin"></i>');
+      $.get("{{url('wordpress-theme')}}/" + domain.attr('data-domain'), function(e){
+        domain.html(e['theme']);
+      });
+    });
+  });
+</script>
 @endsection
 
