@@ -216,7 +216,7 @@
                 <div class="dropdown-header noti-title">
                 <h6 class="text-overflow m-0">Welcome!</h6>
                 </div>
-                <a href="#!" class="dropdown-item">
+                <a href="{{ url('/home') }}" class="dropdown-item">
                 <i class="ni ni-single-02"></i>
                 <span>My profile</span>
                 </a>
@@ -286,7 +286,7 @@
                                     <th scope="col">Keyword</th>
                                     <th scope="col">Server</th>
                                     <th scope="col">Ad</th>
-                                    <th scope="col">Date</th>
+                                    {{-- <th scope="col">Date</th> --}}
                                     <th scope="col" >Action</th>
                                 </tr>
                             </thead>
@@ -299,7 +299,7 @@
                                     <th scope="col">Keyword</th>
                                     <th scope="col">Server</th>
                                     <th scope="col">Ad</th>
-                                    <th scope="col">Date</th>
+                                    {{-- <th scope="col">Date</th> --}}
                                     <th scope="col" >Action</th>
                                 </tr>
                             </tfoot>
@@ -315,7 +315,7 @@
                                     {{-- <td>{{$websitesy->server_folder}}</td> --}}
                                     <td>@if($websitesy->ad_id!=null){{$websitesy->ad->name}} @else Not Yet @endif</td>
                                     {{-- <td>@if($websitesy->webmaster_id!=null){{$websitesy->webmaster->name}} @else Not Yet @endif</td> --}}
-                                    <td>{{$websitesy->date}}</td>
+                                    {{-- <td>{{$websitesy->date}}</td> --}}
                                     <td>
                                         <a href="/website/{{$websitesy->slug}}" class="btn btn-default btn-sm m-0" title="Detail" alt="details"><i class='fas fa-bullseye'></i></a>
                                         <a href="https://www.google.com/search?q=site:{{$websitesy->domain->domain}}&tbm=isch&sout=1" class="btn btn-success btn-sm m-0" target="_blank"><i class='fab fa-google'></i></a>
@@ -331,7 +331,7 @@
                                 @endforeach
                             </tbody>
                         </table>
-                    </div>
+                    </div>                
             </div>
         </div>
     </div>

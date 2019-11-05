@@ -12,6 +12,9 @@
 */
 
 Route::group(['middleware'=>'auth'], function(){
+    Route::get('/profile/{id}/editprofile', 'HomeController@edit')->name('editprofile');
+    Route::put('/profile/{id}', 'HomeController@update');
+
     Route::get('/domain/adddomain', 'DomainController@create')->name('adddomain');
     Route::post('/domain', 'DomainController@store');
     Route::get('/domain/{id}/editdomain', 'DomainController@edit')->name('editdomain');
@@ -66,20 +69,6 @@ Route::group(['middleware'=>'auth'], function(){
     Route::get('/nameserver1/{domain}', 'DomainController@refreshNameServer1')->name('nameserver1');
     Route::get('/nameserver2/{domain}', 'DomainController@refreshNameServer2')->name('nameserver2');
 });
-
-// Route::get('/', function () {
-//     return view('welcome-copy');
-// });
-
-
-// Route::get('/', function () {
-//     if(Auth::check())
-//     {
-//         return view('welcome');
-//     } else {
-//         return view('welcome-copy');
-//     }
-// })->name('dashboard');
 
 Route::get('/', 'WebsiteController@index')->name('dashboard');
 

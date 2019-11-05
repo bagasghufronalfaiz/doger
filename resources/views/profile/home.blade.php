@@ -1,14 +1,15 @@
 @extends('layouts.app-argon')
 
 @section('css')
-<!-- Dropdown CSS -->
-<link rel="stylesheet" href="{{ asset('assets/vendor/select2/dist/css/select2.min.css') }}">
-  <link rel="stylesheet" href="{{ asset('assets/vendor/quill/dist/quill.core.css') }}">
+<!-- DataTables CSS -->
+<link rel="stylesheet" href="{{ asset('assets/vendor/datatables.net-bs4/css/dataTables.bootstrap4.min.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/vendor/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/vendor/datatables.net-select-bs4/css/select.bootstrap4.min.css') }}">
 @endsection
 
 @section('content')
 <!-- Topnav -->
-<nav class="navbar navbar-top navbar-expand navbar-dark bg-primary border-bottom">
+<nav class="navbar navbar-top navbar-expand navbar-dark bg-default border-bottom">
     <div class="container-fluid">
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <!-- Search form -->
@@ -29,7 +30,7 @@
         <ul class="navbar-nav align-items-center ml-md-auto">
             <li class="nav-item d-xl-none">
             <!-- Sidenav toggler -->
-            <div class="pr-3 sidenav-toggler sidenav-toggler-dard" data-action="sidenav-pin" data-target="#sidenav-main">
+            <div class="pr-3 sidenav-toggler sidenav-toggler-dark" data-action="sidenav-pin" data-target="#sidenav-main">
                 <div class="sidenav-toggler-inner">
                 <i class="sidenav-toggler-line"></i>
                 <i class="sidenav-toggler-line"></i>
@@ -246,163 +247,131 @@
     </div>
 </nav>
 <!-- Header -->
-<div class="header pb-6 bg-primary">
+<div class="header pb-6 bg-default">
     <div class="container-fluid">
         <div class="header-body">
         <div class="row align-items-center py-4">
             <div class="col-lg-12 col-12">
-            <h6 class="h2 d-inline-block mb-0 text-white">Website</h6>
+            <h6 class="h2 d-inline-block mb-0 text-white">Profile</h6>
             <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
                 <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
                 <li class="breadcrumb-item"><a href="{{ url('/') }}"><i class="fas fa-home"></i></a></li>
-                <li class="breadcrumb-item"><a href="{{ url('/') }}">Website</a></li>
-                <li class="breadcrumb-item active"><a href="">Edit Website</a></li>
+                <li class="breadcrumb-item active"><a href="{{ url('/home') }}">Profile</a></li>
                 </ol>
             </nav>
             </div>
+            
         </div>
         </div>
     </div>
 </div>
 <!-- Page content -->
 <div class="container-fluid mt--6">
-      <div class="row">
-        <div class="col-lg-12">
-          <div class="card-wrapper">
-            <!-- Input groups -->
-            <div class="card">
-              <!-- Card header -->
-              <div class="card-header">
-                <h3 class="mb-0">Edit Website</h3>
-              </div>
-              <!-- Card body -->
-              <div class="card-body">
-                <form action="/website/{{$website->id}}" method="post">
-                  <!-- Input groups with icon -->
-                  <div class="row">
-                    <div class="col-md-12">
-                      <div class="form-group">
-                        <label for="domain">Domain</label>
-                        <select class="form-control" data-toggle="select" name="domain">
-                        @foreach ($user->domains as $domainy)
-                            <option @if ($domainy->id == $website->domain_id) selected @endif  value="{{$domainy->id}}">{{$domainy->domain}}</option>
-                        @endforeach
-                        </select>
-                      </div>
-                    </div>
-                    <div class="col-md-12">
-                      <div class="form-group">
-                          <label for="tool">Build Tool</label>
-                          <input class="form-control" placeholder="Tool" type="text" name="tool" value="{{(old('tool')) ? old('tool') : $website->tool}}">
-                      </div>
-                    </div>
-                    <div class="col-md-12">
-                      <div class="form-group">
-                          <label for="keyword">Keyword</label>
-                          <input class="form-control" placeholder="keyword" type="text" name="keyword" value="{{(old('keyword')) ? old('keyword') : $website->keyword}}">
-                      </div>
-                    </div>
-                    <div class="col-md-12">
-                      <div class="form-group">
-                        <label for="servername">Server</label>
-                        <select class="form-control" data-toggle="select" name="servername">
-                        @foreach ($user->servers as $servery)
-                            <option @if ($servery->id == $website->server_id) selected @endif value="{{$servery->id}}">{{$servery->servername}}</option>
-                          @endforeach
-                        </select>
-                      </div>
-                    </div>
-                    <div class="col-md-12">
-                      <div class="form-group">
-                          <label for="serverfolder">Server Folder</label>
-                          <input class="form-control" placeholder="Server Folder" type="text" name="serverfolder" value="{{(old('server_folder')) ? old('server_folder') : $website->server_folder}}">
-                      </div>
-                    </div>
-                    <div class="col-md-12">
-                      <div class="form-group">
-                        <label for="ad">Ad</label>
-                        <select class="form-control" data-toggle="select" name="ad">
-                            <option @if ($website->ad_id == null) selected @endif value="">Not Yet</option>
-                        @foreach ($user->ads as $adsy)
-                            <option @if ($adsy->id == $website->ad_id) selected @endif value="{{$adsy->id}}">{{$adsy->name}}</option>
-                        @endforeach
-                        </select>
-                      </div>
-                    </div>
-                    <div class="col-md-12">
-                      <div class="form-group">
-                        <label for="webmaster">Webmaster</label>
-                        <select class="form-control" data-toggle="select" name="webmaster">
-                            <option @if ($website->webmaster_id == null) selected @endif value="">Not Yet</option>
-                        @foreach ($user->webmasters as $webmastersy)
-                            <option @if ($webmastersy->id == $website->webmaster_id) selected @endif value="{{$webmastersy->id}}">{{$webmastersy->name}}</option>
-                        @endforeach
-                        </select>
-                      </div>
-                    </div>
-                    <div class="col-md-12">
-                      <div class="form-group">
-                        <label for="date">Date of Birth</label>
-                      <input class="form-control datepicker" placeholder="Select date" type="text" value="{{(old('newdate')) ? old('newdate') : $newdate}}" name="date">
-                      </div>
-                    </div>
-                  </div>
-                   {{ csrf_field() }}
-                    <input type="hidden" name="_method" value="PUT">
-                    @if(count($errors)>0)
-                        <div class="alert alert-danger">
-                        @foreach($errors->all() as $error)
-                        <p>{{$error}}</p>
-                        @endforeach
+    <div class="row">
+        <div class="col-xl-4 order-xl-1">
+            <div class="card card-profile">
+                <img src="{{ asset('assets/img/theme/img-1-1000x600.jpg') }}" alt="Image placeholder" class="card-img-top">
+                <div class="row justify-content-center">
+                    <div class="col-lg-3 order-lg-2">
+                        <div class="card-profile-image">
+                        <a href="#">
+                            <img src="{{ asset('assets/img/theme/team-4.jpg') }}" class="rounded-circle">
+                        </a>
                         </div>
-                    @endif
-                    <input type="submit" class="btn btn-primary" value="Edit Website" >
-                </form>
-              </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="text-center mt-60">
+                        <h5 class="h3">{{ $user->name }}</h5>                        
+                        <div><i class='fas fa-envelope'></i>   {{ $user->email }}</div>
+                        <div class="mt-3">
+                            <a href="/profile/{{$user->id}}/editprofile/" class="btn btn-icon btn-primary" role="button">
+                                <span class="btn-inner--icon"><i class='fas fa-user-edit'></i></span>
+                                <span class="btn-inner--text">Edit Profile</span>
+                            </a>
+                        </div>
+                        
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
-      <!-- Footer -->
-      <footer class="footer pt-0">
-        <div class="row align-items-center justify-content-lg-between">
-          <div class="col-lg-6">
-            <div class="copyright text-center text-lg-left text-muted">
-              &copy; 2019 <a href="https://www.creative-tim.com" class="font-weight-bold ml-1" target="_blank">Creative Tim</a>
+        <div class="col-xl-8 order-xl-2">
+            <div class="card">
+                <div class="card-body">
+                    <ul class="list-group">
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            Website
+                            <span class="badge badge-primary badge-pill">{{count($user->websites)}}</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            Domain
+                            <span class="badge badge-primary badge-pill">{{count($user->domains)}}</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            Registrar
+                            <span class="badge badge-primary badge-pill">{{count($user->registrars)}}</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            Server
+                            <span class="badge badge-primary badge-pill">{{count($user->servers)}}</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            Ad Unit
+                            <span class="badge badge-primary badge-pill">{{count($user->ads)}}</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            Webmaster
+                            <span class="badge badge-primary badge-pill">{{count($user->webmasters)}}</span>
+                        </li>
+                    </ul>
+                </div>
             </div>
-          </div>
-          <div class="col-lg-6">
-            <ul class="nav nav-footer justify-content-center justify-content-lg-end">
-              <li class="nav-item">
-                <a href="https://www.creative-tim.com" class="nav-link" target="_blank">Creative Tim</a>
-              </li>
-              <li class="nav-item">
-                <a href="https://www.creative-tim.com/presentation" class="nav-link" target="_blank">About Us</a>
-              </li>
-              <li class="nav-item">
-                <a href="http://blog.creative-tim.com" class="nav-link" target="_blank">Blog</a>
-              </li>
-              <li class="nav-item">
-                <a href="https://www.creative-tim.com/license" class="nav-link" target="_blank">License</a>
-              </li>
-            </ul>
-          </div>
         </div>
-      </footer>
     </div>
+    <!-- Footer -->
+    <footer class="footer pt-0">
+        <div class="row align-items-center justify-content-lg-between">
+        <div class="col-lg-6">
+            <div class="copyright text-center text-lg-left text-muted">
+            &copy; 2019 <a href="https://www.creative-tim.com" class="font-weight-bold ml-1" target="_blank">Creative Tim</a>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <ul class="nav nav-footer justify-content-center justify-content-lg-end">
+            <li class="nav-item">
+                <a href="https://www.creative-tim.com" class="nav-link" target="_blank">Creative Tim</a>
+            </li>
+            <li class="nav-item">
+                <a href="https://www.creative-tim.com/presentation" class="nav-link" target="_blank">About Us</a>
+            </li>
+            <li class="nav-item">
+                <a href="http://blog.creative-tim.com" class="nav-link" target="_blank">Blog</a>
+            </li>
+            <li class="nav-item">
+                <a href="https://www.creative-tim.com/license" class="nav-link" target="_blank">License</a>
+            </li>
+            </ul>
+        </div>
+        </div>
+    </footer>
+</div>
 @endsection
 
 @section('javascript-optional')
-    <!-- Dropdown JS -->
-    <script src="{{ asset('assets/vendor/select2/dist/js/select2.min.js') }}"></script>
-    <script src="{{ asset('assets/vendor/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js') }}"></script>
-    <script src="{{ asset('assets/vendor/nouislider/distribute/nouislider.min.js') }}"></script>
-    <script src="{{ asset('assets/vendor/quill/dist/quill.min.js') }}"></script>
-    <script src="{{ asset('assets/vendor/dropzone/dist/min/dropzone.min.js') }}"></script>
-
+    <!-- DataTables JS -->
+    <script src="{{ asset('assets/vendor/datatables.net/js/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('assets/vendor/datatables.net-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
+    <script src="{{ asset('assets/vendor/datatables.net-buttons/js/dataTables.buttons.min.js') }}"></script>
+    <script src="{{ asset('assets/vendor/datatables.net-buttons-bs4/js/buttons.bootstrap4.min.js') }}"></script>
+    <script src="{{ asset('assets/vendor/datatables.net-buttons/js/buttons.html5.min.js') }}"></script>
+    <script src="{{ asset('assets/vendor/datatables.net-buttons/js/buttons.flash.min.js') }}"></script>
+    <script src="{{ asset('assets/vendor/datatables.net-buttons/js/buttons.print.min.js') }}"></script>
+    <script src="{{ asset('assets/vendor/datatables.net-select/js/dataTables.select.min.js') }}"></script>
 @endsection
 
 @section('javascript')
-    <!-- javascript -->
+<script>
+    
+</script>
 @endsection
 

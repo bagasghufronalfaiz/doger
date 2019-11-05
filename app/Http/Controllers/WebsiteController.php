@@ -124,13 +124,14 @@ class WebsiteController extends Controller
         $website = Website::findOrFail($id);
         if ($website->userisOwner()) {
           $website->update([
-            'domain_id' => $request->domain,
-            'keyword' => $request->keyword,
-            'server_id' => $request->servername,
-            'server_folder' => $request->serverfolder,
-            'ad_id' => $request->ad,
-            'date' => $newdate,
-            'webmaster_id' => $request->webmaster,
+            'domain_id'         => $request->domain,
+            'keyword'           => $request->keyword,
+            'server_id'         => $request->servername,
+            'server_folder'     => $request->serverfolder,
+            'ad_id'             => $request->ad,
+            'tool'              => $request->tool,
+            'date'              => $newdate,
+            'webmaster_id'      => $request->webmaster,
           ]);
         }else {
           abort(403);

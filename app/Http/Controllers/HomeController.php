@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
 use App\Models\User;
 use App\Models\Domain;
 use Illuminate\Http\Request;
@@ -26,76 +27,23 @@ class HomeController extends Controller
      */
     public function index()
     {
-        // cron job
-        // $dummy = Jajal::create([
-        //     'index' => 'home'
-        // ]);
-        // return view('home');
+        $user = User::findOrFail(Auth::user()->id);
+        return view('profile.home', compact('user'));
+    }
 
-        // wordpress API
-        // $damin = 'supercampquin.com';
-        // $hasil = self::get_wp_categories($damin);
-        // // $kacang = var_dump(json_decode($hasil));
-        // $panjang = json_decode($hasil, true);
-        // $itung = count($panjang);
-        // // return $panjang[1];
-        // return $itung;
-
-        //get total post
-        // $damin = 'besthdwallpaper.co';
-        // $posts = self::get_wp_post_count($damin);
-        // return $posts;
-
-        // get total pages
-        // $damin = 'besthdwallpaper.co';
-        // $pages = self::get_wp_page_count($damin);
-
-        // // get wp pages title
-        // $damin = 'besthdwallpaper.co';
-        // $coba = 'worldivided.com';
-        // $page_titles = self::get_wp_page_count($damin);
-        // $new_page_titles = '';
-        // for($i=1;$i<= $pages;$i++){
-        //     $hasil[$i] = self::get_wp_pages_title($damin, $i);
-        //     if ($i == $pages) {
-        //         $new_page_titles = $new_page_titles . $hasil[$i];
-        //     } else {
-        //         $new_page_titles = $new_page_titles . $hasil[$i] . ', ';
-        //     }
-        // }
-        // $new_page_titles = $hasil[1] . ', ' . $hasil[2] . ', ' . $hasil[3] . ', ' . $hasil[4];
-
-        // // get theme
-        // $saming = 'bestwallpapers.co';
-        // $theme = self::get_theme($damin);
-        // return $result;
-
-        // get categories
-        // $category = self::get_wp_categories($damin);
-        // get category titles
-        // $category_titles = '';
-        // for ($j = 1; $j <= $category; $j++) {
-        //     $hasil[$j] = self::get_wp_category_titles($damin, $j);
-        //     if($j == $category){
-        //         $category_titles = $category_titles . $hasil[$j];
-        //     } else {
-        //         $category_titles = $category_titles . $hasil[$j] . ', ';
-        //     }
-        //     // $category_titles = $category_titles . $hasil[$j] . ', ';
-        // }
-        // $category_titles = self::getAllWpPages($damin, $category);
-
-        // coba str remove dot
-        // $saming = 'brand-google.com';
-        // $hasil = str_replace_first('.','', $saming);
-        // return 'posts : '. $posts.' dan pages : '.$pages.' yaitu '.$new_page_titles.' dan category : '. $category.' yaitu '. $category_titles . ' dan theme : '. $theme;
-
-        // domain expiration
-        $domain = 'matuisichiro.com';
-        // $exp = self::getDomainProperty($domain);
-
-        return $domain;
-
+    public function edit($id)
+    {
+        $user = User::findOrFail(Auth::user()->id);
+        return view('profile.edit', compact('user'));
+    }
+    public function update(Request $request, $id)
+    {
+        $user = User::findOrFail($id);
+        $user->update([
+            'name'      => $request->name,
+            'email'     => $request->email,
+        ]);
+        return redirect('/home');
     }
 
     private function getNameServer($domain){
