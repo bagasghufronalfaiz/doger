@@ -15839,7 +15839,6 @@ button.section-darker:focus
 .btn-inner--icon i:not(.fa)
 {
     position: relative;
-    top: 2px;
 }
 
 .btn-link

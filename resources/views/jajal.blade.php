@@ -5,16 +5,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="Start your development with a Design System for Bootstrap 4.">
   <meta name="author" content="Creative Tim">
-  <title>Argon Design System - Free Design System for Bootstrap 4</title>
+  <title>{{ config('app.name', 'Laravel') }}</title>
   <!-- Favicon -->
-  <link rel="icon" href="{{ asset('assets/landing/img/brand/favicon.png') }}" type="image/png">
+  <link rel="icon" href="{{ asset('assets/img/brand/favicon.png') }}" type="image/png">
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
   <!-- Icons -->
-  <link href="{{ asset('assets/landing/vendor/nucleo/css/nucleo.css') }}" rel="stylesheet">
-  <link href="{{ asset('assets/landing/vendor/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
+  <link href="{{ asset('assets/vendor/nucleo/css/nucleo.css') }}" rel="stylesheet">
+  <link rel="stylesheet" href="{{ asset('assets/vendor/@fortawesome/fontawesome-free/css/all.min.css') }}" type="text/css">
+  {{-- <link href="{{ asset('assets/landing/vendor/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet"> --}}
   <!-- Argon CSS -->
-  <link type="text/css" href="{{ asset('assets/landing/css/argon.css?v=1.1.0') }}" rel="stylesheet">
+  <link type="text/css" href="{{ asset('assets/css/argon-landing.css?v=1.1.0') }}" rel="stylesheet">
 </head>
 
 <body>
@@ -43,57 +44,6 @@
               </div>
             </div>
           </div>
-          {{-- <ul class="navbar-nav navbar-nav-hover align-items-lg-center">
-            <li class="nav-item dropdown">
-              <a href="#" class="nav-link" data-toggle="dropdown" role="button">
-                <i class="ni ni-ui-04 d-lg-none"></i>
-                <span class="nav-link-inner--text">Components</span>
-              </a>
-              <div class="dropdown-menu dropdown-menu-xl">
-                <div class="dropdown-menu-inner">
-                  <a href="https://demos.creative-tim.com/argon-design-system/docs/getting-started/overview.html" class="media d-flex align-items-center">
-                    <div class="icon icon-shape bg-gradient-primary rounded-circle text-white">
-                      <i class="ni ni-spaceship"></i>
-                    </div>
-                    <div class="media-body ml-3">
-                      <h6 class="heading text-primary mb-md-1">Getting started</h6>
-                      <p class="description d-none d-md-inline-block mb-0">Learn how to use Argon compiling Scss, change brand colors and more.</p>
-                    </div>
-                  </a>
-                  <a href="https://demos.creative-tim.com/argon-design-system/docs/foundation/colors.html" class="media d-flex align-items-center">
-                    <div class="icon icon-shape bg-gradient-success rounded-circle text-white">
-                      <i class="ni ni-palette"></i>
-                    </div>
-                    <div class="media-body ml-3">
-                      <h6 class="heading text-primary mb-md-1">Foundation</h6>
-                      <p class="description d-none d-md-inline-block mb-0">Learn more about colors, typography, icons and the grid system we used for Argon.</p>
-                    </div>
-                  </a>
-                  <a href="https://demos.creative-tim.com/argon-design-system/docs/components/alerts.html" class="media d-flex align-items-center">
-                    <div class="icon icon-shape bg-gradient-warning rounded-circle text-white">
-                      <i class="ni ni-ui-04"></i>
-                    </div>
-                    <div class="media-body ml-3">
-                      <h5 class="heading text-warning mb-md-1">Components</h5>
-                      <p class="description d-none d-md-inline-block mb-0">Browse our 50 beautiful handcrafted components offered in the Free version.</p>
-                    </div>
-                  </a>
-                </div>
-              </div>
-            </li>
-            <li class="nav-item dropdown">
-              <a href="#" class="nav-link" data-toggle="dropdown" role="button">
-                <i class="ni ni-collection d-lg-none"></i>
-                <span class="nav-link-inner--text">Examples</span>
-              </a>
-              <div class="dropdown-menu">
-                <a href="../examples/landing.html" class="dropdown-item">Landing</a>
-                <a href="../examples/profile.html" class="dropdown-item">Profile</a>
-                <a href="../examples/login.html" class="dropdown-item">Login</a>
-                <a href="../examples/register.html" class="dropdown-item">Register</a>
-              </div>
-            </li>
-          </ul> --}}
           <ul class="navbar-nav align-items-lg-center ml-lg-auto">
             <li class="nav-item">
               <a class="nav-link nav-link-icon" href="https://www.facebook.com/" target="_blank" data-toggle="tooltip" title="Like us on Facebook">
@@ -120,11 +70,11 @@
               </a>
             </li>
             <li class="nav-item d-none d-lg-block ml-lg-4">
-              <a href="{{ route('register') }}" target="_blank" class="btn btn-neutral btn-icon">
+              <a href="{{ route('login') }}" target="_blank" class="btn btn-neutral btn-icon">
                 <span class="btn-inner--icon">
-                  <i class="fa fa-user-plus mr-2"></i>
+                  <i class="fa fa-sign-in	"></i>
                 </span>
-                <span class="nav-link-inner--text">{{ __('Register') }}</span>
+                <span class="nav-link-inner--text">{{ __('Login') }}</span>
               </a>
             </li>
           </ul>
@@ -155,7 +105,7 @@
                 <p class="lead  text-white">The design system comes with four pre-built pages to help you get started faster. You can change the text and images and you're good to go.</p>
                 <div class="btn-wrapper">
                   <a href="{{ route('login') }}" class="btn btn-white btn-icon mb-3 mb-sm-0">
-                    <span class="btn-inner--icon"><i class="fa fa-sign-in	"></i></span>
+                    <span class="btn-inner--icon"><i class="fas fa-sign-in-alt"></i></span>
                     <span class="btn-inner--text">{{ __('Login') }}</span>
                   </a>
                   <a href="{{ route('register') }}" class="btn btn-success btn-icon mb-3 mb-sm-0">
@@ -324,68 +274,6 @@
         </div>
       </div>
     </section>
-    <section class="section pb-0 bg-gradient-warning">
-      <div class="container">
-        <div class="row row-grid align-items-center">
-          <div class="col-md-6 order-lg-2 ml-lg-auto">
-            <div class="position-relative pl-md-5">
-              <img src="{{ asset('assets/landing/img/ill/ill-2.svg') }}" class="img-center img-fluid" alt="image">
-            </div>
-          </div>
-          <div class="col-lg-6 order-lg-1">
-            <div class="d-flex px-3">
-              <div>
-                <div class="icon icon-lg icon-shape bg-gradient-white shadow rounded-circle text-primary">
-                  <i class="ni ni-building text-primary"></i>
-                </div>
-              </div>
-              <div class="pl-4">
-                <h4 class="display-3 text-white">Modern Interface</h4>
-                <p class="text-white">The Arctic Ocean freezes every winter and much of the sea-ice then thaws every summer, and that process will continue whatever.</p>
-              </div>
-            </div>
-            <div class="card shadow shadow-lg--hover mt-5">
-              <div class="card-body">
-                <div class="d-flex px-3">
-                  <div>
-                    <div class="icon icon-shape bg-gradient-success rounded-circle text-white">
-                      <i class="ni ni-satisfied"></i>
-                    </div>
-                  </div>
-                  <div class="pl-4">
-                    <h5 class="title text-success">Awesome Support</h5>
-                    <p>The Arctic Ocean freezes every winter and much of the sea-ice then thaws every summer, and that process will continue whatever.</p>
-                    <a href="#" class="text-success">Learn more</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="card shadow shadow-lg--hover mt-5">
-              <div class="card-body">
-                <div class="d-flex px-3">
-                  <div>
-                    <div class="icon icon-shape bg-gradient-warning rounded-circle text-white">
-                      <i class="ni ni-active-40"></i>
-                    </div>
-                  </div>
-                  <div class="pl-4">
-                    <h5 class="title text-warning">Modular Components</h5>
-                    <p>The Arctic Ocean freezes every winter and much of the sea-ice then thaws every summer, and that process will continue whatever.</p>
-                    <a href="#" class="text-warning">Learn more</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- SVG separator -->
-      <div class="separator separator-bottom separator-skew zindex-100">
-        <svg x="0" y="0" viewBox="0 0 2560 100" preserveAspectRatio="none" version="1.1" xmlns="http://www.w3.org/2000/svg">
-          <polygon class="fill-white" points="2560 0 2560 100 0 100"></polygon>
-        </svg>
-      </div>
-    </section>
     <section class="section section-lg">
       <div class="container">
         <div class="row justify-content-center text-center mb-lg">
@@ -486,23 +374,6 @@
         </div>
       </div>
     </section>
-    <section class="section section-lg pt-0">
-      <div class="container">
-        <div class="card bg-gradient-warning shadow-lg border-0">
-          <div class="p-5">
-            <div class="row align-items-center">
-              <div class="col-lg-8">
-                <h3 class="text-white">We made website building easier for you.</h3>
-                <p class="lead text-white mt-3">I will be the leader of a company that ends up being worth billions of dollars, because I got the answers. I understand culture.</p>
-              </div>
-              <div class="col-lg-3 ml-lg-auto">
-                <a href="https://www.creative-tim.com/product/argon-design-system" class="btn btn-lg btn-block btn-white">Download HTML</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
     <section class="section section-lg bg-gradient-default">
       <div class="container pt-lg pb-300">
         <div class="row text-center justify-content-center">
@@ -584,69 +455,12 @@
           <div class="col-lg-8 text-center">
             <h2 class="display-3">Do you love this awesome <span class="text-success">Design System for Bootstrap 4?</span></h2>
             <p class="lead">Cause if you do, it can be yours for FREE. Hit the button below to navigate to Creative Tim where you can find the Design System in HTML. Start a new project or give an old Bootstrap project a new look!</p>
-            <div class="btn-wrapper">
-              <a href="https://www.creative-tim.com/product/argon-design-system" class="btn btn-primary mb-3 mb-sm-0">Download HTML</a>
-              <a href="https://www.creative-tim.com/product/argon-design-system" class="btn btn-default">Download PSD/Sketch</a>
-            </div>
-            <div class="text-center">
-              <h4 class="display-4 mb-5 mt-5">Available on these technologies</h4>
-              <div class="row justify-content-center">
-                <div class="col-lg-2 col-4">
-                  <a href="https://www.creative-tim.com/product/argon-design-system" target="_blank" data-toggle="tooltip" data-original-title="Bootstrap 4 - Most popular front-end component library">
-                    <img alt="image" src="https://s3.amazonaws.com/creativetim_bucket/tim_static_images/presentation-page/bootstrap.jpg" class="img-fluid">
-                  </a>
-                </div>
-                <div class="col-lg-2 col-4">
-                  <a href=" https://www.creative-tim.com/product/vue-argon-design-system" target="_blank" data-toggle="tooltip" data-original-title="Vue.js - The progressive javascript framework">
-                    <img alt="image" src="https://s3.amazonaws.com/creativetim_bucket/tim_static_images/presentation-page/vue.jpg" class="img-fluid">
-                  </a>
-                </div>
-                <div class="col-lg-2 col-4">
-                  <a href=" https://www.sketchapp.com/" target="_blank" data-toggle="tooltip" data-original-title="[Coming Soon] Sketch - Digital design toolkit">
-                    <img alt="image" src="https://s3.amazonaws.com/creativetim_bucket/tim_static_images/presentation-page/sketch.jpg" class="img-fluid opacity-3">
-                  </a>
-                </div>
-                <div class="col-lg-2 col-4">
-                  <a href=" https://www.adobe.com/products/photoshop.html" target="_blank" data-toggle="tooltip" data-original-title="[Coming Soon] Adobe Photoshop - Software for digital images manipulation">
-                    <img alt="image" src="https://s3.amazonaws.com/creativetim_bucket/tim_static_images/presentation-page/ps.jpg" class="img-fluid opacity-3">
-                  </a>
-                </div>
-                <div class="col-lg-2 col-4">
-                  <a href=" https://angularjs.org/" target="_blank" data-toggle="tooltip" data-original-title="[Coming Soon] Angular - One framework. Mobile &amp; desktop">
-                    <img alt="image" src="https://s3.amazonaws.com/creativetim_bucket/tim_static_images/presentation-page/angular.jpg" class="img-fluid opacity-3">
-                  </a>
-                </div>
-                <div class="col-lg-2 col-4">
-                  <a href=" https://angularjs.org/" target="_blank" data-toggle="tooltip" data-original-title="[Coming Soon] React - A JavaScript library for building user interfaces">
-                    <img alt="image" src="https://s3.amazonaws.com/creativetim_bucket/tim_static_images/presentation-page/react.jpg" class="img-fluid opacity-3">
-                  </a>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       </div>
     </section>
   </main>
   <footer class="footer has-cards">
-    <div class="container container-lg">
-      <div class="row">
-        <div class="col-md-6 mb-5 mb-md-0">
-          <div class="card card-lift--hover shadow border-0">
-            <a href="../examples/landing.html" title="Landing Page">
-              <img alt="image" src="{{ asset('assets/landing/img/theme/landing.jpg') }}" class="card-img">
-            </a>
-          </div>
-        </div>
-        <div class="col-md-6 mb-5 mb-lg-0">
-          <div class="card card-lift--hover shadow border-0">
-            <a href="../examples/profile.html" title="Profile Page">
-              <img alt="image" src="{{ asset('assets/landing/img/theme/profile.jpg') }}" class="card-img">
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
     <div class="container">
       <div class="row row-grid align-items-center my-md">
         <div class="col-lg-6">
@@ -654,42 +468,24 @@
           <h4 class="mb-0 font-weight-light">Let's get in touch on any of these platforms.</h4>
         </div>
         <div class="col-lg-6 text-lg-center btn-wrapper">
-          <a target="_blank" href="https://twitter.com/creativetim" class="btn btn-neutral btn-icon-only btn-twitter btn-round btn-lg" data-toggle="tooltip" data-original-title="Follow us">
+          <a target="_blank" href="https://twitter.com/" class="btn btn-neutral btn-icon-only btn-twitter btn-round btn-lg" data-toggle="tooltip" data-original-title="Follow us">
             <i class="fa fa-twitter"></i>
           </a>
-          <a target="_blank" href="https://www.facebook.com/creativetim" class="btn btn-neutral btn-icon-only btn-facebook btn-round btn-lg" data-toggle="tooltip" data-original-title="Like us">
+          <a target="_blank" href="https://www.facebook.com/" class="btn btn-neutral btn-icon-only btn-facebook btn-round btn-lg" data-toggle="tooltip" data-original-title="Like us">
             <i class="fa fa-facebook-square"></i>
           </a>
-          <a target="_blank" href="https://dribbble.com/creativetim" class="btn btn-neutral btn-icon-only btn-dribbble btn-lg btn-round" data-toggle="tooltip" data-original-title="Follow us">
+          <a target="_blank" href="https://dribbble.com/" class="btn btn-neutral btn-icon-only btn-dribbble btn-lg btn-round" data-toggle="tooltip" data-original-title="Follow us">
             <i class="fa fa-dribbble"></i>
           </a>
-          <a target="_blank" href="https://github.com/creativetimofficial" class="btn btn-neutral btn-icon-only btn-github btn-round btn-lg" data-toggle="tooltip" data-original-title="Star on Github">
+          <a target="_blank" href="https://github.com/" class="btn btn-neutral btn-icon-only btn-github btn-round btn-lg" data-toggle="tooltip" data-original-title="Star on Github">
             <i class="fa fa-github"></i>
           </a>
         </div>
       </div>
       <hr>
-      <div class="row align-items-center justify-content-md-between">
-        <div class="col-md-6">
-          <div class="copyright">
-            &copy; 2019 <a href="https://www.creative-tim.com" target="_blank">Creative Tim</a>.
-          </div>
-        </div>
-        <div class="col-md-6">
-          <ul class="nav nav-footer justify-content-end">
-            <li class="nav-item">
-              <a href="https://www.creative-tim.com" class="nav-link" target="_blank">Creative Tim</a>
-            </li>
-            <li class="nav-item">
-              <a href="https://www.creative-tim.com/presentation" class="nav-link" target="_blank">About Us</a>
-            </li>
-            <li class="nav-item">
-              <a href="http://blog.creative-tim.com" class="nav-link" target="_blank">Blog</a>
-            </li>
-            <li class="nav-item">
-              <a href="https://github.com/creativetimofficial/argon-design-system/blob/master/LICENSE.md" class="nav-link" target="_blank">MIT License</a>
-            </li>
-          </ul>
+      <div class="align-items-center justify-content-md-between">
+        <div class="copyright">
+          &copy; 2019 <a href="{{ url('/') }}" target="_blank">{{ config('app.name', 'Laravel') }}</a>.
         </div>
       </div>
     </div>

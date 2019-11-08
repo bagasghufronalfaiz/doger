@@ -1,406 +1,501 @@
-@extends('layouts.app-argon')
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Start your development with a Design System for Bootstrap 4.">
+  <meta name="author" content="Creative Tim">
+  <title>{{ config('app.name', 'Laravel') }}</title>
+  <!-- Favicon -->
+  <link rel="icon" href="{{ asset('assets/img/brand/favicon.png') }}" type="image/png">
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+  <!-- Icons -->
+  <link href="{{ asset('assets/landing/vendor/nucleo/css/nucleo.css') }}" rel="stylesheet">
+  <link href="{{ asset('assets/landing/vendor/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
+  <!-- Argon CSS -->
+  <link type="text/css" href="{{ asset('assets/css/argon-landing.css?v=1.1.0') }}" rel="stylesheet">
+</head>
 
-@section('css')
-<!-- DataTables CSS -->
-<link rel="stylesheet" href="{{ asset('assets/vendor/datatables.net-bs4/css/dataTables.bootstrap4.min.css') }}">
-<link rel="stylesheet" href="{{ asset('assets/vendor/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css') }}">
-<link rel="stylesheet" href="{{ asset('assets/vendor/datatables.net-select-bs4/css/select.bootstrap4.min.css') }}">
-@endsection
-
-@section('content')
-<!-- Topnav -->
-<nav class="navbar navbar-top navbar-expand navbar-dark bg-primary border-bottom">
-    <div class="container-fluid">
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <!-- Search form -->
-        <form class="navbar-search navbar-search-light form-inline mr-sm-3" id="navbar-search-main">
-            <div class="form-group mb-0">
-            <div class="input-group input-group-alternative input-group-merge">
-                <div class="input-group-prepend">
-                <span class="input-group-text"><i class="fas fa-search"></i></span>
-                </div>
-                <input class="form-control" placeholder="Search" type="text">
+<body>
+  <header class="header-global">
+    <nav id="navbar-main" class="navbar navbar-main navbar-expand-lg navbar-transparent navbar-light ">
+      <div class="container">
+        <a class="navbar-brand mr-lg-5" href="../index.html">          
+          <h1 class="text-white">Doger</h1>
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar_global" aria-controls="navbar_global" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="navbar_global">
+          <div class="navbar-collapse-header">
+            <div class="row">
+              <div class="col-6 collapse-brand">
+                <a href="../index.html">          
+                  <h1>Doger</h1>
+                </a>
+              </div>
+              <div class="col-6 collapse-close">
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar_global" aria-controls="navbar_global" aria-expanded="false" aria-label="Toggle navigation">
+                  <span></span>
+                  <span></span>
+                </button>
+              </div>
             </div>
-            </div>
-            <button type="button" class="close" data-action="search-close" data-target="#navbar-search-main" aria-label="Close">
-            <span aria-hidden="true">×</span>
-            </button>
-        </form>
-        <!-- Navbar links -->
-        <ul class="navbar-nav align-items-center ml-md-auto">
-            <li class="nav-item d-xl-none">
-            <!-- Sidenav toggler -->
-            <div class="pr-3 sidenav-toggler sidenav-toggler-dark" data-action="sidenav-pin" data-target="#sidenav-main">
-                <div class="sidenav-toggler-inner">
-                <i class="sidenav-toggler-line"></i>
-                <i class="sidenav-toggler-line"></i>
-                <i class="sidenav-toggler-line"></i>
-                </div>
-            </div>
+          </div>
+          <ul class="navbar-nav align-items-lg-center ml-lg-auto">
+            <li class="nav-item">
+              <a class="nav-link nav-link-icon" href="https://www.facebook.com/" target="_blank" data-toggle="tooltip" title="Like us on Facebook">
+                <i class="fa fa-facebook-square"></i>
+                <span class="nav-link-inner--text d-lg-none">Facebook</span>
+              </a>
             </li>
-            <li class="nav-item d-sm-none">
-            <a class="nav-link" href="#" data-action="search-show" data-target="#navbar-search-main">
-                <i class="ni ni-zoom-split-in"></i>
-            </a>
+            <li class="nav-item">
+              <a class="nav-link nav-link-icon" href="https://www.instagram.com/" target="_blank" data-toggle="tooltip" title="Follow us on Instagram">
+                <i class="fa fa-instagram"></i>
+                <span class="nav-link-inner--text d-lg-none">Instagram</span>
+              </a>
             </li>
-            <li class="nav-item dropdown">
-            <a class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <i class="ni ni-bell-55"></i>
-            </a>
-            <div class="dropdown-menu dropdown-menu-xl dropdown-menu-right py-0 overflow-hidden">
-                <!-- Dropdown header -->
-                <div class="px-3 py-3">
-                <h6 class="text-sm text-muted m-0">You have <strong class="text-primary">13</strong> notifications.</h6>
-                </div>
-                <!-- List group -->
-                <div class="list-group list-group-flush">
-                <a href="#!" class="list-group-item list-group-item-action">
-                    <div class="row align-items-center">
-                    <div class="col-auto">
-                        <!-- Avatar -->
-                        <img alt="Image placeholder" src="{{ asset('assets/img/theme/team-1.jpg') }}" class="avatar rounded-circle">
-                    </div>
-                    <div class="col ml--2">
-                        <div class="d-flex justify-content-between align-items-center">
-                        <div>
-                            <h4 class="mb-0 text-sm">John Snow</h4>
-                        </div>
-                        <div class="text-right text-muted">
-                            <small>2 hrs ago</small>
-                        </div>
-                        </div>
-                        <p class="text-sm mb-0">Let's meet at Starbucks at 11:30. Wdyt?</p>
-                    </div>
-                    </div>
-                </a>
-                <a href="#!" class="list-group-item list-group-item-action">
-                    <div class="row align-items-center">
-                    <div class="col-auto">
-                        <!-- Avatar -->
-                        <img alt="Image placeholder" src="{{ asset('assets/img/theme/team-2.jpg') }}" class="avatar rounded-circle">
-                    </div>
-                    <div class="col ml--2">
-                        <div class="d-flex justify-content-between align-items-center">
-                        <div>
-                            <h4 class="mb-0 text-sm">John Snow</h4>
-                        </div>
-                        <div class="text-right text-muted">
-                            <small>3 hrs ago</small>
-                        </div>
-                        </div>
-                        <p class="text-sm mb-0">A new issue has been reported for Argon.</p>
-                    </div>
-                    </div>
-                </a>
-                <a href="#!" class="list-group-item list-group-item-action">
-                    <div class="row align-items-center">
-                    <div class="col-auto">
-                        <!-- Avatar -->
-                        <img alt="Image placeholder" src="{{ asset('assets/img/theme/team-3.jpg') }}" class="avatar rounded-circle">
-                    </div>
-                    <div class="col ml--2">
-                        <div class="d-flex justify-content-between align-items-center">
-                        <div>
-                            <h4 class="mb-0 text-sm">John Snow</h4>
-                        </div>
-                        <div class="text-right text-muted">
-                            <small>5 hrs ago</small>
-                        </div>
-                        </div>
-                        <p class="text-sm mb-0">Your posts have been liked a lot.</p>
-                    </div>
-                    </div>
-                </a>
-                <a href="#!" class="list-group-item list-group-item-action">
-                    <div class="row align-items-center">
-                    <div class="col-auto">
-                        <!-- Avatar -->
-                        <img alt="Image placeholder" src="{{ asset('assets/img/theme/team-4.jpg') }}" class="avatar rounded-circle">
-                    </div>
-                    <div class="col ml--2">
-                        <div class="d-flex justify-content-between align-items-center">
-                        <div>
-                            <h4 class="mb-0 text-sm">John Snow</h4>
-                        </div>
-                        <div class="text-right text-muted">
-                            <small>2 hrs ago</small>
-                        </div>
-                        </div>
-                        <p class="text-sm mb-0">Let's meet at Starbucks at 11:30. Wdyt?</p>
-                    </div>
-                    </div>
-                </a>
-                <a href="#!" class="list-group-item list-group-item-action">
-                    <div class="row align-items-center">
-                    <div class="col-auto">
-                        <!-- Avatar -->
-                        <img alt="Image placeholder" src="{{ asset('assets/img/theme/team-5.jpg') }}" class="avatar rounded-circle">
-                    </div>
-                    <div class="col ml--2">
-                        <div class="d-flex justify-content-between align-items-center">
-                        <div>
-                            <h4 class="mb-0 text-sm">John Snow</h4>
-                        </div>
-                        <div class="text-right text-muted">
-                            <small>3 hrs ago</small>
-                        </div>
-                        </div>
-                        <p class="text-sm mb-0">A new issue has been reported for Argon.</p>
-                    </div>
-                    </div>
-                </a>
-                </div>
-                <!-- View all -->
-                <a href="#!" class="dropdown-item text-center text-primary font-weight-bold py-3">View all</a>
-            </div>
+            <li class="nav-item">
+              <a class="nav-link nav-link-icon" href="https://twitter.com/" target="_blank" data-toggle="tooltip" title="Follow us on Twitter">
+                <i class="fa fa-twitter-square"></i>
+                <span class="nav-link-inner--text d-lg-none">Twitter</span>
+              </a>
             </li>
-            <li class="nav-item dropdown">
-            <a class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <i class="ni ni-ungroup"></i>
-            </a>
-            <div class="dropdown-menu dropdown-menu-lg dropdown-menu-dark bg-default dropdown-menu-right">
-                <div class="row shortcuts px-4">
-                <a href="#!" class="col-4 shortcut-item">
-                    <span class="shortcut-media avatar rounded-circle bg-gradient-red">
-                    <i class="ni ni-calendar-grid-58"></i>
-                    </span>
-                    <small>Calendar</small>
-                </a>
-                <a href="#!" class="col-4 shortcut-item">
-                    <span class="shortcut-media avatar rounded-circle bg-gradient-orange">
-                    <i class="ni ni-email-83"></i>
-                    </span>
-                    <small>Email</small>
-                </a>
-                <a href="#!" class="col-4 shortcut-item">
-                    <span class="shortcut-media avatar rounded-circle bg-gradient-info">
-                    <i class="ni ni-credit-card"></i>
-                    </span>
-                    <small>Payments</small>
-                </a>
-                <a href="#!" class="col-4 shortcut-item">
-                    <span class="shortcut-media avatar rounded-circle bg-gradient-green">
-                    <i class="ni ni-books"></i>
-                    </span>
-                    <small>Reports</small>
-                </a>
-                <a href="#!" class="col-4 shortcut-item">
-                    <span class="shortcut-media avatar rounded-circle bg-gradient-purple">
-                    <i class="ni ni-pin-3"></i>
-                    </span>
-                    <small>Maps</small>
-                </a>
-                <a href="#!" class="col-4 shortcut-item">
-                    <span class="shortcut-media avatar rounded-circle bg-gradient-yellow">
-                    <i class="ni ni-basket"></i>
-                    </span>
-                    <small>Shop</small>
-                </a>
-                </div>
-            </div>
+            <li class="nav-item">
+              <a class="nav-link nav-link-icon" href="https://github.com/" target="_blank" data-toggle="tooltip" title="Star us on Github">
+                <i class="fa fa-github"></i>
+                <span class="nav-link-inner--text d-lg-none">Github</span>
+              </a>
             </li>
-        </ul>
-        <ul class="navbar-nav align-items-center ml-auto ml-md-0">
-            <li class="nav-item dropdown">
-            <a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <div class="media align-items-center">
-                <span class="avatar avatar-sm rounded-circle">
-                    <img alt="Image placeholder" src="{{ asset('assets/img/theme/team-4.jpg') }}">
+            <li class="nav-item d-none d-lg-block ml-lg-4">
+              <a href="{{ route('login') }}" target="_blank" class="btn btn-neutral btn-icon">
+                <span class="btn-inner--icon">
+                  <i class="fa fa-sign-in	"></i>
                 </span>
-                <div class="media-body ml-2 d-none d-lg-block">
-                    <span class="mb-0 text-sm  font-weight-bold">{{ Auth::user()->name }}</span>
-                </div>
-                </div>
-            </a>
-            <div class="dropdown-menu dropdown-menu-right">
-                <div class="dropdown-header noti-title">
-                <h6 class="text-overflow m-0">Welcome!</h6>
-                </div>
-                <a href="#!" class="dropdown-item">
-                <i class="ni ni-single-02"></i>
-                <span>My profile</span>
-                </a>
-                <a href="#!" class="dropdown-item">
-                <i class="ni ni-settings-gear-65"></i>
-                <span>Settings</span>
-                </a>
-                <a href="#!" class="dropdown-item">
-                <i class="ni ni-calendar-grid-58"></i>
-                <span>Activity</span>
-                </a>
-                <a href="#!" class="dropdown-item">
-                <i class="ni ni-support-16"></i>
-                <span>Support</span>
-                </a>
-                <div class="dropdown-divider"></div>
-                <a href="{{ route('logout') }}" class="dropdown-item" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                <i class="ni ni-user-run"></i>
-                <span>Logout</span>
-                </a>
-                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                    @csrf
-                </form>
-            </div>
+                <span class="nav-link-inner--text">{{ __('Login') }}</span>
+              </a>
             </li>
-        </ul>
+          </ul>
         </div>
-    </div>
-</nav>
-<!-- Header -->
-<div class="header pb-6 bg-primary">
-    <div class="container-fluid">
-        <div class="header-body">
-        <div class="row align-items-center py-4">
-            <div class="col-lg-6 col-7">
-            <h6 class="h2 d-inline-block mb-0 text-white">Dashboards</h6>
-            <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
-                <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
-                <li class="breadcrumb-item"><a href="{{ url('/') }}"><i class="fas fa-home"></i></a></li>
-                <li class="breadcrumb-item active"><a href="{{ url('/') }}">Dashboards</a></li>
-                </ol>
-            </nav>
-            </div>
-            <div class="col-lg-6 col-5 text-right">
-            <a href="{{ route('addwebsite') }}" class="btn btn-sm btn-neutral">Add Website</a>
-            </div>
+      </div>
+    </nav>
+  </header>
+  <main>
+    <div class="position-relative">
+      <!-- shape Hero -->
+      <section class="section section-lg section-shaped pb-250">
+        <div class="shape shape-style-1 shape-default">
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
         </div>
-        </div>
-    </div>
-</div>
-<!-- Page content -->
-<div class="container-fluid mt--6">
-    <div class="row">
-        <div class="col">
-            <div class="card">
-                <div class="card-header">
-                    <h3 class="mb-0">Website</h3>
+        <div class="container py-lg-md d-flex">
+          <div class="col px-0">
+            <div class="row">
+              <div class="col-lg-6">
+                <h1 class="display-3  text-white">A beautiful Design System<span>completed with examples</span></h1>
+                <p class="lead  text-white">The design system comes with four pre-built pages to help you get started faster. You can change the text and images and you're good to go.</p>
+                <div class="btn-wrapper">
+                  <a href="{{ route('login') }}" class="btn btn-white btn-icon mb-3 mb-sm-0">
+                    <span class="btn-inner--icon"><i class="fa fa-sign-in	"></i></span>
+                    <span class="btn-inner--text">{{ __('Login') }}</span>
+                  </a>
+                  <a href="{{ route('register') }}" class="btn btn-success btn-icon mb-3 mb-sm-0">
+                    <span class="btn-inner--icon"><i class="fa fa-user-plus"></i></span>
+                    <span class="btn-inner--text">{{ __('Register') }}</span>
+                  </a>
                 </div>
-                <div class="table-responsive py-4">
-                        <table class="table table-hover table-flush" id="datatable-basic">
-                            <thead class="thead-light">
-                                <tr>
-                                    <th scope="col">Domain</th>
-                                    <th scope="col">Index Web</th>
-                                    <th scope="col">Index Image</th>
-                                    <th scope="col">Theme</th>
-                                    <th scope="col">Keyword</th>
-                                    <th scope="col">Server</th>
-                                    <th scope="col">Ad</th>
-                                    <th scope="col">Date</th>
-                                    <th scope="col" >Action</th>
-                                </tr>
-                            </thead>
-                            <tfoot>
-                                <tr>
-                                    <th scope="col">Domain</th>
-                                    <th scope="col">Index Web</th>
-                                    <th scope="col">Index Image</th>
-                                    <th scope="col">Theme</th>
-                                    <th scope="col">Keyword</th>
-                                    <th scope="col">Server</th>
-                                    <th scope="col">Ad</th>
-                                    <th scope="col">Date</th>
-                                    <th scope="col" >Action</th>
-                                </tr>
-                            </tfoot>
-                            <tbody>
-                                @foreach($user->websites as $websitesy)
-                                <tr>
-                                    <td>{{$websitesy->domain->domain}}</td>
-                                    <td><p class="index-web pointer" data-domain="{{$websitesy->domain->domain}}" style="margin:0px;">{{$websitesy->index_web}}</p></td>
-                                    <td><p class="index-image pointer" data-domain="{{$websitesy->domain->domain}}" style="margin:0px;">{{$websitesy->index_image}}</p></td>
-                                    <td><p class="wordpress-theme pointer" data-domain="{{$websitesy->domain->domain}}" style="margin:0px;">{{$websitesy->theme}}</p></td>
-                                    <td>{{$websitesy->keyword}}</td>
-                                    <td>{{$websitesy->server->servername}}</td>
-                                    {{-- <td>{{$websitesy->server_folder}}</td> --}}
-                                    <td>@if($websitesy->ad_id!=null){{$websitesy->ad->name}} @else Not Yet @endif</td>
-                                    {{-- <td>@if($websitesy->webmaster_id!=null){{$websitesy->webmaster->name}} @else Not Yet @endif</td> --}}
-                                    <td>{{$websitesy->date}}</td>
-                                    <td>
-                                        <a href="/website/{{$websitesy->slug}}" class="btn btn-default btn-sm m-0" title="Detail" alt="details"><i class='fas fa-bullseye'></i></a>
-                                        <a href="https://www.google.com/search?q=site:{{$websitesy->domain->domain}}&tbm=isch&sout=1" class="btn btn-success btn-sm m-0" target="_blank"><i class='fab fa-google'></i></a>
-                                        <a href="http://{{$websitesy->domain->domain}}/wp-admin/" class="btn btn-danger btn-sm m-0" target="_blank"><i class='fab fa-wordpress'></i></a>
-                                        <a href="/website/{{$websitesy->id}}/editwebsite/" class="btn btn-info  btn-sm m-0"><i class="fas fa-pen"></i></a>
-                                        <form action="/website/{{$websitesy->id}}" method="post" class="m-0" style="display:inline-block;">
-                                            {{ csrf_field() }}
-                                            <input type="hidden" name="_method" value="DELETE">
-                                            <button type="submit" class="btn btn-warning btn-sm"><i class="fas fa-trash"></i></button>
-                                        </form>
-                                    </td>
-                                </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- SVG separator -->
+        <div class="separator separator-bottom separator-skew">
+          <svg x="0" y="0" viewBox="0 0 2560 100" preserveAspectRatio="none" version="1.1" xmlns="http://www.w3.org/2000/svg">
+            <polygon class="fill-white" points="2560 0 2560 100 0 100"></polygon>
+          </svg>
+        </div>
+      </section>
+      <!-- 1st Hero Variation -->
+    </div>
+    <section class="section section-lg pt-lg-0 mt--200">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-12">
+            <div class="row row-grid">
+              <div class="col-lg-4">
+                <div class="card card-lift--hover shadow border-0">
+                  <div class="card-body py-5">
+                    <div class="icon icon-shape icon-shape-primary rounded-circle mb-4">
+                      <i class="ni ni-check-bold"></i>
                     </div>
+                    <h6 class="text-primary text-uppercase">Download Argon</h6>
+                    <p class="description mt-3">Argon is a great free UI package based on Bootstrap 4 that includes the most important components and features.</p>
+                    <div>
+                      <span class="badge badge-pill badge-primary">design</span>
+                      <span class="badge badge-pill badge-primary">system</span>
+                      <span class="badge badge-pill badge-primary">creative</span>
+                    </div>
+                    <a href="#" class="btn btn-primary mt-4">Learn more</a>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-4">
+                <div class="card card-lift--hover shadow border-0">
+                  <div class="card-body py-5">
+                    <div class="icon icon-shape icon-shape-success rounded-circle mb-4">
+                      <i class="ni ni-istanbul"></i>
+                    </div>
+                    <h6 class="text-success text-uppercase">Build Something</h6>
+                    <p class="description mt-3">Argon is a great free UI package based on Bootstrap 4 that includes the most important components and features.</p>
+                    <div>
+                      <span class="badge badge-pill badge-success">business</span>
+                      <span class="badge badge-pill badge-success">vision</span>
+                      <span class="badge badge-pill badge-success">success</span>
+                    </div>
+                    <a href="#" class="btn btn-success mt-4">Learn more</a>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-4">
+                <div class="card card-lift--hover shadow border-0">
+                  <div class="card-body py-5">
+                    <div class="icon icon-shape icon-shape-warning rounded-circle mb-4">
+                      <i class="ni ni-planet"></i>
+                    </div>
+                    <h6 class="text-warning text-uppercase">Prepare Launch</h6>
+                    <p class="description mt-3">Argon is a great free UI package based on Bootstrap 4 that includes the most important components and features.</p>
+                    <div>
+                      <span class="badge badge-pill badge-warning">marketing</span>
+                      <span class="badge badge-pill badge-warning">product</span>
+                      <span class="badge badge-pill badge-warning">launch</span>
+                    </div>
+                    <a href="#" class="btn btn-warning mt-4">Learn more</a>
+                  </div>
+                </div>
+              </div>
             </div>
+          </div>
         </div>
+      </div>
+    </section>
+    <section class="section section-lg">
+      <div class="container">
+        <div class="row row-grid align-items-center">
+          <div class="col-md-6 order-md-2">
+            <img src="{{ asset('assets/landing/img/theme/promo-1.png') }}" class="img-fluid floating" alt="image">
+          </div>
+          <div class="col-md-6 order-md-1">
+            <div class="pr-md-5">
+              <div class="icon icon-lg icon-shape icon-shape-success shadow rounded-circle mb-5">
+                <i class="ni ni-settings-gear-65"></i>
+              </div>
+              <h3>Awesome features</h3>
+              <p>The kit comes with three pre-built pages to help you get started faster. You can change the text and images and you're good to go.</p>
+              <ul class="list-unstyled mt-5">
+                <li class="py-2">
+                  <div class="d-flex align-items-center">
+                    <div>
+                      <div class="badge badge-circle badge-success mr-3">
+                        <i class="ni ni-settings-gear-65"></i>
+                      </div>
+                    </div>
+                    <div>
+                      <h6 class="mb-0">Carefully crafted components</h6>
+                    </div>
+                  </div>
+                </li>
+                <li class="py-2">
+                  <div class="d-flex align-items-center">
+                    <div>
+                      <div class="badge badge-circle badge-success mr-3">
+                        <i class="ni ni-html5"></i>
+                      </div>
+                    </div>
+                    <div>
+                      <h6 class="mb-0">Amazing page examples</h6>
+                    </div>
+                  </div>
+                </li>
+                <li class="py-2">
+                  <div class="d-flex align-items-center">
+                    <div>
+                      <div class="badge badge-circle badge-success mr-3">
+                        <i class="ni ni-satisfied"></i>
+                      </div>
+                    </div>
+                    <div>
+                      <h6 class="mb-0">Super friendly support team</h6>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="section bg-secondary">
+      <div class="container">
+        <div class="row row-grid align-items-center">
+          <div class="col-md-6">
+            <div class="card bg-default shadow border-0">
+              <img src="{{ asset('assets/landing/img/theme/img-1-1200x1000.jpg') }}" class="card-img-top" alt="image">
+              <blockquote class="card-blockquote">
+                <svg preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 583 95" class="svg-bg">
+                  <polygon points="0,52 583,95 0,95" class="fill-default" />
+                  <polygon points="0,42 583,95 683,0 0,95" opacity=".2" class="fill-default" />
+                </svg>
+                <h4 class="display-3 font-weight-bold text-white">Design System</h4>
+                <p class="lead text-italic text-white">The Arctic Ocean freezes every winter and much of the sea-ice then thaws every summer, and that process will continue whatever happens.</p>
+              </blockquote>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="pl-md-5">
+              <div class="icon icon-lg icon-shape icon-shape-warning shadow rounded-circle mb-5">
+                <i class="ni ni-settings"></i>
+              </div>
+              <h3>Our customers</h3>
+              <p class="lead">Don't let your uses guess by attaching tooltips and popoves to any element. Just make sure you enable them first via JavaScript.</p>
+              <p>The kit comes with three pre-built pages to help you get started faster. You can change the text and images and you're good to go.</p>
+              <p>The kit comes with three pre-built pages to help you get started faster. You can change the text and images and you're good to go.</p>
+              <a href="#" class="font-weight-bold text-warning mt-5">A beautiful UI Kit for impactful websites</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="section section-lg">
+      <div class="container">
+        <div class="row justify-content-center text-center mb-lg">
+          <div class="col-lg-8">
+            <h2 class="display-3">The amazing Team</h2>
+            <p class="lead text-muted">According to the National Oceanic and Atmospheric Administration, Ted, Scambos, NSIDClead scentist, puts the potentially record maximum.</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6 col-lg-3 mb-5 mb-lg-0">
+            <div class="px-4">
+              <img src="{{ asset('assets/landing/img/theme/team-1-800x800.jpg') }}" class="rounded-circle img-center img-fluid shadow shadow-lg--hover" style="width: 200px;" alt="image">
+              <div class="pt-4 text-center">
+                <h5 class="title">
+                  <span class="d-block mb-1">Ryan Tompson</span>
+                  <small class="h6 text-muted">Web Developer</small>
+                </h5>
+                <div class="mt-3">
+                  <a href="#" class="btn btn-warning btn-icon-only rounded-circle">
+                    <i class="fa fa-twitter"></i>
+                  </a>
+                  <a href="#" class="btn btn-warning btn-icon-only rounded-circle">
+                    <i class="fa fa-facebook"></i>
+                  </a>
+                  <a href="#" class="btn btn-warning btn-icon-only rounded-circle">
+                    <i class="fa fa-dribbble"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-3 mb-5 mb-lg-0">
+            <div class="px-4">
+              <img src="{{ asset('assets/landing/img/theme/team-2-800x800.jpg') }}" class="rounded-circle img-center img-fluid shadow shadow-lg--hover" style="width: 200px;" alt="image">
+              <div class="pt-4 text-center">
+                <h5 class="title">
+                  <span class="d-block mb-1">Romina Hadid</span>
+                  <small class="h6 text-muted">Marketing Strategist</small>
+                </h5>
+                <div class="mt-3">
+                  <a href="#" class="btn btn-primary btn-icon-only rounded-circle">
+                    <i class="fa fa-twitter"></i>
+                  </a>
+                  <a href="#" class="btn btn-primary btn-icon-only rounded-circle">
+                    <i class="fa fa-facebook"></i>
+                  </a>
+                  <a href="#" class="btn btn-primary btn-icon-only rounded-circle">
+                    <i class="fa fa-dribbble"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-3 mb-5 mb-lg-0">
+            <div class="px-4">
+              <img alt="image" src="{{ asset('assets/landing/img/theme/team-3-800x800.jpg') }}" class="rounded-circle img-center img-fluid shadow shadow-lg--hover" style="width: 200px;">
+              <div class="pt-4 text-center">
+                <h5 class="title">
+                  <span class="d-block mb-1">Alexander Smith</span>
+                  <small class="h6 text-muted">UI/UX Designer</small>
+                </h5>
+                <div class="mt-3">
+                  <a href="#" class="btn btn-info btn-icon-only rounded-circle">
+                    <i class="fa fa-twitter"></i>
+                  </a>
+                  <a href="#" class="btn btn-info btn-icon-only rounded-circle">
+                    <i class="fa fa-facebook"></i>
+                  </a>
+                  <a href="#" class="btn btn-info btn-icon-only rounded-circle">
+                    <i class="fa fa-dribbble"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-3 mb-5 mb-lg-0">
+            <div class="px-4">
+              <img alt="image" src="{{ asset('assets/landing/img/theme/team-4-800x800.jpg') }}" class="rounded-circle img-center img-fluid shadow shadow-lg--hover" style="width: 200px;">
+              <div class="pt-4 text-center">
+                <h5 class="title">
+                  <span class="d-block mb-1">John Doe</span>
+                  <small class="h6 text-muted">Founder and CEO</small>
+                </h5>
+                <div class="mt-3">
+                  <a href="#" class="btn btn-success btn-icon-only rounded-circle">
+                    <i class="fa fa-twitter"></i>
+                  </a>
+                  <a href="#" class="btn btn-success btn-icon-only rounded-circle">
+                    <i class="fa fa-facebook"></i>
+                  </a>
+                  <a href="#" class="btn btn-success btn-icon-only rounded-circle">
+                    <i class="fa fa-dribbble"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="section section-lg bg-gradient-default">
+      <div class="container pt-lg pb-300">
+        <div class="row text-center justify-content-center">
+          <div class="col-lg-10">
+            <h2 class="display-3 text-white">Build something</h2>
+            <p class="lead text-white">According to the National Oceanic and Atmospheric Administration, Ted, Scambos, NSIDClead scentist, puts the potentially record low maximum sea ice extent tihs year down to low ice.</p>
+          </div>
+        </div>
+        <div class="row row-grid mt-5">
+          <div class="col-lg-4">
+            <div class="icon icon-lg icon-shape bg-gradient-white shadow rounded-circle text-primary">
+              <i class="ni ni-settings text-primary"></i>
+            </div>
+            <h5 class="text-white mt-3">Building tools</h5>
+            <p class="text-white mt-3">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          </div>
+          <div class="col-lg-4">
+            <div class="icon icon-lg icon-shape bg-gradient-white shadow rounded-circle text-primary">
+              <i class="ni ni-ruler-pencil text-primary"></i>
+            </div>
+            <h5 class="text-white mt-3">Grow your market</h5>
+            <p class="text-white mt-3">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          </div>
+          <div class="col-lg-4">
+            <div class="icon icon-lg icon-shape bg-gradient-white shadow rounded-circle text-primary">
+              <i class="ni ni-atom text-primary"></i>
+            </div>
+            <h5 class="text-white mt-3">Launch time</h5>
+            <p class="text-white mt-3">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          </div>
+        </div>
+      </div>
+      <!-- SVG separator -->
+      <div class="separator separator-bottom separator-skew zindex-100">
+        <svg x="0" y="0" viewBox="0 0 2560 100" preserveAspectRatio="none" version="1.1" xmlns="http://www.w3.org/2000/svg">
+          <polygon class="fill-white" points="2560 0 2560 100 0 100"></polygon>
+        </svg>
+      </div>
+    </section>
+    <section class="section section-lg pt-lg-0 section-contact-us">
+      <div class="container">
+        <div class="row justify-content-center mt--300">
+          <div class="col-lg-8">
+            <div class="card bg-gradient-secondary shadow">
+              <div class="card-body p-lg-5">
+                <h4 class="mb-1">Want to work with us?</h4>
+                <p class="mt-0">Your project is very important to us.</p>
+                <div class="form-group mt-5">
+                  <div class="input-group input-group-alternative">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="ni ni-user-run"></i></span>
+                    </div>
+                    <input class="form-control" placeholder="Your name" type="text">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="input-group input-group-alternative">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="ni ni-email-83"></i></span>
+                    </div>
+                    <input class="form-control" placeholder="Email address" type="email">
+                  </div>
+                </div>
+                <div class="form-group mb-4">
+                  <textarea class="form-control form-control-alternative" name="name" rows="4" cols="80" placeholder="Type a message..."></textarea>
+                </div>
+                <div>
+                  <button type="button" class="btn btn-default btn-round btn-block btn-lg">Send Message</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="section section-lg">
+      <div class="container">
+        <div class="row row-grid justify-content-center">
+          <div class="col-lg-8 text-center">
+            <h2 class="display-3">Do you love this awesome <span class="text-success">Design System for Bootstrap 4?</span></h2>
+            <p class="lead">Cause if you do, it can be yours for FREE. Hit the button below to navigate to Creative Tim where you can find the Design System in HTML. Start a new project or give an old Bootstrap project a new look!</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="footer has-cards">
+    <div class="container">
+      <div class="row row-grid align-items-center my-md">
+        <div class="col-lg-6">
+          <h3 class="text-primary font-weight-light mb-2">Thank you for supporting us!</h3>
+          <h4 class="mb-0 font-weight-light">Let's get in touch on any of these platforms.</h4>
+        </div>
+        <div class="col-lg-6 text-lg-center btn-wrapper">
+          <a target="_blank" href="https://twitter.com/" class="btn btn-neutral btn-icon-only btn-twitter btn-round btn-lg" data-toggle="tooltip" data-original-title="Follow us">
+            <i class="fa fa-twitter"></i>
+          </a>
+          <a target="_blank" href="https://www.facebook.com/" class="btn btn-neutral btn-icon-only btn-facebook btn-round btn-lg" data-toggle="tooltip" data-original-title="Like us">
+            <i class="fa fa-facebook-square"></i>
+          </a>
+          <a target="_blank" href="https://dribbble.com/" class="btn btn-neutral btn-icon-only btn-dribbble btn-lg btn-round" data-toggle="tooltip" data-original-title="Follow us">
+            <i class="fa fa-dribbble"></i>
+          </a>
+          <a target="_blank" href="https://github.com/" class="btn btn-neutral btn-icon-only btn-github btn-round btn-lg" data-toggle="tooltip" data-original-title="Star on Github">
+            <i class="fa fa-github"></i>
+          </a>
+        </div>
+      </div>
+      <hr>
+      <div class="align-items-center justify-content-md-between">
+        <div class="copyright">
+          &copy; 2019 <a href="{{ url('/') }}" target="_blank">{{ config('app.name', 'Laravel') }}</a>.
+        </div>
+      </div>
     </div>
-    <!-- Footer -->
-    <footer class="footer pt-0">
-        <div class="row align-items-center justify-content-lg-between">
-        <div class="col-lg-6">
-            <div class="copyright text-center text-lg-left text-muted">
-            &copy; 2019 <a href="https://www.creative-tim.com" class="font-weight-bold ml-1" target="_blank">Creative Tim</a>
-            </div>
-        </div>
-        <div class="col-lg-6">
-            <ul class="nav nav-footer justify-content-center justify-content-lg-end">
-            <li class="nav-item">
-                <a href="https://www.creative-tim.com" class="nav-link" target="_blank">Creative Tim</a>
-            </li>
-            <li class="nav-item">
-                <a href="https://www.creative-tim.com/presentation" class="nav-link" target="_blank">About Us</a>
-            </li>
-            <li class="nav-item">
-                <a href="http://blog.creative-tim.com" class="nav-link" target="_blank">Blog</a>
-            </li>
-            <li class="nav-item">
-                <a href="https://www.creative-tim.com/license" class="nav-link" target="_blank">License</a>
-            </li>
-            </ul>
-        </div>
-        </div>
-    </footer>
-</div>
-@endsection
+  </footer>
+  <!-- Core -->
+  <script src="{{ asset('assets/landing/vendor/jquery/jquery.min.js') }}"></script>
+  <script src="{{ asset('assets/landing/vendor/popper/popper.min.js') }}"></script>
+  <script src="{{ asset('assets/landing/vendor/bootstrap/bootstrap.min.js') }}"></script>
+  <script src="{{ asset('assets/landing/vendor/headroom/headroom.min.js') }}"></script>
+  <!-- Argon JS -->
+  <script src="{{ asset('assets/landing/js/argon.js?v=1.1.0') }}"></script>
+</body>
 
-@section('javascript-optional')
-    <!-- DataTables JS -->
-    <script src="{{ asset('assets/vendor/datatables.net/js/jquery.dataTables.min.js') }}"></script>
-    <script src="{{ asset('assets/vendor/datatables.net-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
-    <script src="{{ asset('assets/vendor/datatables.net-buttons/js/dataTables.buttons.min.js') }}"></script>
-    <script src="{{ asset('assets/vendor/datatables.net-buttons-bs4/js/buttons.bootstrap4.min.js') }}"></script>
-    <script src="{{ asset('assets/vendor/datatables.net-buttons/js/buttons.html5.min.js') }}"></script>
-    <script src="{{ asset('assets/vendor/datatables.net-buttons/js/buttons.flash.min.js') }}"></script>
-    <script src="{{ asset('assets/vendor/datatables.net-buttons/js/buttons.print.min.js') }}"></script>
-    <script src="{{ asset('assets/vendor/datatables.net-select/js/dataTables.select.min.js') }}"></script>
-@endsection
-
-@section('javascript')
-<script>
-    $(function() {
-    $('.index-web').click(function () {
-      var domain = $(this);
-      domain.html('<i class="fa fa-spinner fa-spin"></i>');
-      $.get("{{url('index-web')}}/" + domain.attr('data-domain'), function(e){
-        domain.html(e);
-      });
-    });
-    $('.index-image').click(function () {
-      var domain = $(this);
-      domain.html('<i class="fa fa-spinner fa-spin"></i>');
-      $.get("{{url('index-image')}}/" + domain.attr('data-domain'), function(e){
-        domain.html(e);
-      });
-    });
-    $('.wordpress-theme').click(function () {
-      var domain = $(this);
-      domain.html('<i class="fa fa-spinner fa-spin"></i>');
-      $.get("{{url('wordpress-theme')}}/" + domain.attr('data-domain'), function(e){
-        domain.html(e['theme']);
-      });
-    });
-  });
-</script>
-@endsection
-
+</html>
