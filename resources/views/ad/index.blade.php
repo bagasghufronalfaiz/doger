@@ -303,11 +303,11 @@
                                     <td>{{$adsy->name}}</td>
                                     <td>{{$adsy->code}}</td>
                                     <td>
-                                    <a href="/ad/{{$adsy->id}}/editad/" class="btn btn-info btn-sm m-0"><i class="fas fa-pen"></i></a>
+                                    <a href="/ad/{{$adsy->id}}/editad/" class="btn btn-info btn-sm m-0" data-toggle="tooltip" title="Edit Ad"><i class="fas fa-pen"></i></a>
                                         <form action="/ad/{{$adsy->id}}" method="post" class="m-0" style="display:inline-block;" >
                                             {{ csrf_field() }}
                                             <input type="hidden" name="_method" value="DELETE">
-                                            <button type="submit" class="btn btn-warning btn-sm"><i class="fas fa-trash"></i></button>
+                                            <button type="submit" class="btn btn-warning btn-sm" data-toggle="tooltip" title="Delete Ad"><i class="fas fa-trash"></i></button>
                                         </form>
                                     </td>
                                 </tr>

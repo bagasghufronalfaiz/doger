@@ -303,11 +303,11 @@
                                     <td>{{$registrary->email}}</td>
                                     <td>{{$registrary->password}}</td>
                                     <td>
-                                        <a href="/registrar/{{$registrary->id}}/editregistrar/"class="btn btn-info btn-sm m-0"><i class="fas fa-pen"></i></a>
+                                        <a href="/registrar/{{$registrary->id}}/editregistrar/"class="btn btn-info btn-sm m-0" data-toggle="tooltip" title="Edit Registrar"><i class="fas fa-pen"></i></a>
                                         <form action="/registrar/{{$registrary->id}}" method="post" class="m-0" style="display:inline-block;">
                                             {{ csrf_field() }}
                                             <input type="hidden" name="_method" value="DELETE">
-                                            <button type="submit" class="btn btn-warning  btn-sm"><i class="fas fa-trash"></i></button>
+                                            <button type="submit" class="btn btn-warning btn-sm" data-toggle="tooltip" title="Delete Registrar"><i class="fas fa-trash"></i></button>
                                         </form>
                                     </td>
                                 </tr>

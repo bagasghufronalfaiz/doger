@@ -317,14 +317,14 @@
                                     {{-- <td>@if($websitesy->webmaster_id!=null){{$websitesy->webmaster->name}} @else Not Yet @endif</td> --}}
                                     {{-- <td>{{$websitesy->date}}</td> --}}
                                     <td>
-                                        <a href="/website/{{$websitesy->slug}}" class="btn btn-default btn-sm m-0" title="Detail" alt="details"><i class='fas fa-bullseye'></i></a>
-                                        <a href="https://www.google.com/search?q=site:{{$websitesy->domain->domain}}&tbm=isch&sout=1" class="btn btn-success btn-sm m-0" target="_blank"><i class='fab fa-google'></i></a>
-                                        <a href="http://{{$websitesy->domain->domain}}/wp-admin/" class="btn btn-danger btn-sm m-0" target="_blank"><i class='fab fa-wordpress'></i></a>
-                                        <a href="/website/{{$websitesy->id}}/editwebsite/" class="btn btn-info  btn-sm m-0"><i class="fas fa-pen"></i></a>
+                                        <a href="/website/{{$websitesy->slug}}" class="btn btn-default btn-sm m-0" data-toggle="tooltip" title="Detail"><i class='fas fa-bullseye'></i></a>
+                                        <a href="https://www.google.com/search?q=site:{{$websitesy->domain->domain}}&tbm=isch&sout=1" class="btn btn-success btn-sm m-0" target="_blank" data-toggle="tooltip" title="Index Google"><i class='fab fa-google'></i></a>
+                                        <a href="http://{{$websitesy->domain->domain}}/wp-admin/" class="btn btn-danger btn-sm m-0" target="_blank" data-toggle="tooltip" title="Dashboard Website"><i class='fab fa-wordpress'></i></a>
+                                        <a href="/website/{{$websitesy->id}}/editwebsite/" class="btn btn-info  btn-sm m-0" data-toggle="tooltip" title="Edit Website"><i class="fas fa-pen"></i></a>
                                         <form action="/website/{{$websitesy->id}}" method="post" class="m-0" style="display:inline-block;">
                                             {{ csrf_field() }}
                                             <input type="hidden" name="_method" value="DELETE">
-                                            <button type="submit" class="btn btn-warning btn-sm"><i class="fas fa-trash"></i></button>
+                                            <button type="submit" class="btn btn-warning btn-sm" data-toggle="tooltip" title="Delete Website"><i class="fas fa-trash"></i></button>
                                         </form>
                                     </td>
                                 </tr>

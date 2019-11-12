@@ -309,11 +309,11 @@
                                     <td><p class="nameserver1 pointer" data-domain="{{$domainy->domain}}" style="margin:0px;">{{$domainy->nameserver1}}</p></td>
                                     <td><p class="nameserver2 pointer" data-domain="{{$domainy->domain}}" style="margin:0px;">{{$domainy->nameserver2}}</p></td>
                                     <td>
-                                    <a href="/domain/{{$domainy->id}}/editdomain/" class="btn btn-info btn-sm m-0"><i class="fas fa-pen"></i></a>
+                                    <a href="/domain/{{$domainy->id}}/editdomain/" class="btn btn-info btn-sm m-0" data-toggle="tooltip" title="Edit Domain"><i class="fas fa-pen"></i></a>
                                         <form action="/domain/{{$domainy->id}}" method="post" class="m-0" style="display:inline-block;">
                                             {{ csrf_field() }}
                                             <input type="hidden" name="_method" value="DELETE">
-                                            <button type="submit" class="btn btn-warning btn-sm"><i class="fas fa-trash"></i></button>
+                                            <button type="submit" class="btn btn-warning btn-sm" data-toggle="tooltip" title="Delete Domain"><i class="fas fa-trash"></i></button>
                                         </form>
                                     </td>
                                 </tr>

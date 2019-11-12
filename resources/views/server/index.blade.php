@@ -315,11 +315,11 @@
                                     <td>{{$servery->price}}</td>
                                     <td>{{$servery->invoice_date}}</td>
                                     <td>
-                                        <a href="/server/{{$servery->id}}/editserver/" class="btn btn-info btn-sm m-0"><i class="fas fa-pen"></i></a>
+                                        <a href="/server/{{$servery->id}}/editserver/" class="btn btn-info btn-sm m-0" data-toggle="tooltip" title="Edit Server"><i class="fas fa-pen"></i></a>
                                         <form action="/server/{{$servery->id}}" method="post" class="m-0" style="display:inline-block;">
                                             {{ csrf_field() }}
                                             <input type="hidden" name="_method" value="DELETE">
-                                            <button type="submit" class="btn btn-warning btn-sm"><i class="fas fa-trash"></i></button>
+                                            <button type="submit" class="btn btn-warning btn-sm" data-toggle="tooltip" title="Delete Server"><i class="fas fa-trash"></i></button>
                                         </form>
                                     </td>
                                 </tr>

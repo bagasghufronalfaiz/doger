@@ -22,7 +22,7 @@
   <header class="header-global">
     <nav id="navbar-main" class="navbar navbar-main navbar-expand-lg navbar-transparent navbar-light ">
       <div class="container">
-        <a class="navbar-brand mr-lg-5" href="../index.html">          
+        <a class="navbar-brand mr-lg-5" href="../index.html">
           <h1 class="text-white">Doger</h1>
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar_global" aria-controls="navbar_global" aria-expanded="false" aria-label="Toggle navigation">
@@ -32,7 +32,7 @@
           <div class="navbar-collapse-header">
             <div class="row">
               <div class="col-6 collapse-brand">
-                <a href="../index.html">          
+                <a href="../index.html">
                   <h1>Doger</h1>
                 </a>
               </div>
@@ -47,32 +47,32 @@
           <ul class="navbar-nav align-items-lg-center ml-lg-auto">
             <li class="nav-item">
               <a class="nav-link nav-link-icon" href="https://www.facebook.com/" target="_blank" data-toggle="tooltip" title="Like us on Facebook">
-                <i class="fa fa-facebook-square"></i>
+                <i class="fab fa-facebook-square	"></i>
                 <span class="nav-link-inner--text d-lg-none">Facebook</span>
               </a>
             </li>
             <li class="nav-item">
               <a class="nav-link nav-link-icon" href="https://www.instagram.com/" target="_blank" data-toggle="tooltip" title="Follow us on Instagram">
-                <i class="fa fa-instagram"></i>
+                <i class="fab fa-instagram	"></i>
                 <span class="nav-link-inner--text d-lg-none">Instagram</span>
               </a>
             </li>
             <li class="nav-item">
               <a class="nav-link nav-link-icon" href="https://twitter.com/" target="_blank" data-toggle="tooltip" title="Follow us on Twitter">
-                <i class="fa fa-twitter-square"></i>
+                <i class="fab fa-twitter-square"></i>
                 <span class="nav-link-inner--text d-lg-none">Twitter</span>
               </a>
             </li>
             <li class="nav-item">
               <a class="nav-link nav-link-icon" href="https://github.com/" target="_blank" data-toggle="tooltip" title="Star us on Github">
-                <i class="fa fa-github"></i>
+                <i class="fab fa-github"></i>
                 <span class="nav-link-inner--text d-lg-none">Github</span>
               </a>
             </li>
             <li class="nav-item d-none d-lg-block ml-lg-4">
               <a href="{{ route('login') }}" target="_blank" class="btn btn-neutral btn-icon">
                 <span class="btn-inner--icon">
-                  <i class="fa fa-sign-in	"></i>
+                  <i class="fas fa-sign-in-alt"></i>
                 </span>
                 <span class="nav-link-inner--text">{{ __('Login') }}</span>
               </a>
@@ -109,7 +109,7 @@
                     <span class="btn-inner--text">{{ __('Login') }}</span>
                   </a>
                   <a href="{{ route('register') }}" class="btn btn-success btn-icon mb-3 mb-sm-0">
-                    <span class="btn-inner--icon"><i class="fa fa-user-plus"></i></span>
+                    <span class="btn-inner--icon"><i class='fas fa-user-plus'></i></span>
                     <span class="btn-inner--text">{{ __('Register') }}</span>
                   </a>
                 </div>
@@ -293,13 +293,13 @@
                 </h5>
                 <div class="mt-3">
                   <a href="#" class="btn btn-warning btn-icon-only rounded-circle">
-                    <i class="fa fa-twitter"></i>
+                    <i class="fab fa-twitter"></i>
                   </a>
                   <a href="#" class="btn btn-warning btn-icon-only rounded-circle">
-                    <i class="fa fa-facebook"></i>
+                    <i class="fab fa-facebook"></i>
                   </a>
                   <a href="#" class="btn btn-warning btn-icon-only rounded-circle">
-                    <i class="fa fa-dribbble"></i>
+                    <i class="fab fa-dribbble"></i>
                   </a>
                 </div>
               </div>
@@ -315,13 +315,13 @@
                 </h5>
                 <div class="mt-3">
                   <a href="#" class="btn btn-primary btn-icon-only rounded-circle">
-                    <i class="fa fa-twitter"></i>
+                    <i class="fab fa-twitter"></i>
                   </a>
                   <a href="#" class="btn btn-primary btn-icon-only rounded-circle">
-                    <i class="fa fa-facebook"></i>
+                    <i class="fab fa-facebook"></i>
                   </a>
                   <a href="#" class="btn btn-primary btn-icon-only rounded-circle">
-                    <i class="fa fa-dribbble"></i>
+                    <i class="fab fa-dribbble"></i>
                   </a>
                 </div>
               </div>
@@ -337,13 +337,13 @@
                 </h5>
                 <div class="mt-3">
                   <a href="#" class="btn btn-info btn-icon-only rounded-circle">
-                    <i class="fa fa-twitter"></i>
+                    <i class="fab fa-twitter"></i>
                   </a>
                   <a href="#" class="btn btn-info btn-icon-only rounded-circle">
-                    <i class="fa fa-facebook"></i>
+                    <i class="fab fa-facebook"></i>
                   </a>
                   <a href="#" class="btn btn-info btn-icon-only rounded-circle">
-                    <i class="fa fa-dribbble"></i>
+                    <i class="fab fa-dribbble"></i>
                   </a>
                 </div>
               </div>
@@ -359,13 +359,13 @@
                 </h5>
                 <div class="mt-3">
                   <a href="#" class="btn btn-success btn-icon-only rounded-circle">
-                    <i class="fa fa-twitter"></i>
+                    <i class="fab fa-twitter"></i>
                   </a>
                   <a href="#" class="btn btn-success btn-icon-only rounded-circle">
-                    <i class="fa fa-facebook"></i>
+                    <i class="fab fa-facebook"></i>
                   </a>
                   <a href="#" class="btn btn-success btn-icon-only rounded-circle">
-                    <i class="fa fa-dribbble"></i>
+                    <i class="fab fa-dribbble"></i>
                   </a>
                 </div>
               </div>
@@ -469,16 +469,16 @@
         </div>
         <div class="col-lg-6 text-lg-center btn-wrapper">
           <a target="_blank" href="https://twitter.com/" class="btn btn-neutral btn-icon-only btn-twitter btn-round btn-lg" data-toggle="tooltip" data-original-title="Follow us">
-            <i class="fa fa-twitter"></i>
+            <i class="fab fa-twitter"></i>
           </a>
           <a target="_blank" href="https://www.facebook.com/" class="btn btn-neutral btn-icon-only btn-facebook btn-round btn-lg" data-toggle="tooltip" data-original-title="Like us">
-            <i class="fa fa-facebook-square"></i>
+            <i class="fab fa-facebook"></i>
           </a>
           <a target="_blank" href="https://dribbble.com/" class="btn btn-neutral btn-icon-only btn-dribbble btn-lg btn-round" data-toggle="tooltip" data-original-title="Follow us">
-            <i class="fa fa-dribbble"></i>
+            <i class="fab fa-dribbble"></i>
           </a>
           <a target="_blank" href="https://github.com/" class="btn btn-neutral btn-icon-only btn-github btn-round btn-lg" data-toggle="tooltip" data-original-title="Star on Github">
-            <i class="fa fa-github"></i>
+            <i class="fab fa-github"></i>
           </a>
         </div>
       </div>
