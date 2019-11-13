@@ -28,7 +28,7 @@ class HomeController extends Controller
     public function index()
     {
         $user = User::findOrFail(Auth::user()->id);
-        return view('profile.home', compact('user'));
+        return view('profile.index', compact('user'));
     }
 
     public function edit($id)

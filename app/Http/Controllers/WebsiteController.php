@@ -17,9 +17,9 @@ class WebsiteController extends Controller
         if(Auth::check())
         {
             $user = User::findOrFail(Auth::user()->id);
-            return view('welcome', compact('user'));
+            return view('home', compact('user'));
         } else {
-            return view('welcome-copy');
+            return view('landing');
         }
     }
 

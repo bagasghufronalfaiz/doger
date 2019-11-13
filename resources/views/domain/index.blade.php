@@ -1,4 +1,4 @@
-@extends('layouts.app-argon')
+@extends('layouts.app')
 
 @section('css')
 <!-- DataTables CSS -->

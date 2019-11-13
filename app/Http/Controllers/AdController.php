@@ -36,9 +36,9 @@ class AdController extends Controller
     public function store(Request $request)
     {
         $ad = Ad::create([
-            'adnetwork' => $request->adnetwork, 
+            'adnetwork' => $request->adnetwork,
             'email'     => $request->email,
-            'name'      => $request->name, 
+            'name'      => $request->name,
             'code'      => $request->code,
             'user_id'   => Auth::user()->id,
         ]);
@@ -65,16 +65,16 @@ class AdController extends Controller
         }
     }
 
-    
-    
+
+
     public function update(Request $request, $id)
     {
         $ad = Ad::findOrFail($id);
         if($ad->userisOwner()){
             $ad->update([
-                'adnetwork' => $request->adnetwork, 
+                'adnetwork' => $request->adnetwork,
                 'email'     => $request->email,
-                'name'      => $request->name, 
+                'name'      => $request->name,
                 'code'      => $request->code
             ]);
         } else {
@@ -84,8 +84,8 @@ class AdController extends Controller
         return redirect('ad');
     }
 
-    
-    
+
+
     public function destroy($id)
     {
         $ad = Ad::findOrFail($id);

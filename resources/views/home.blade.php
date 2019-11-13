@@ -1,9 +1,10 @@
 @extends('layouts.app')
 
 @section('css')
-<!-- Dropdown CSS -->
-    <link rel="stylesheet" href="{{ asset('assets/vendor/select2/dist/css/select2.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/vendor/quill/dist/quill.core.css') }}">
+<!-- DataTables CSS -->
+<link rel="stylesheet" href="{{ asset('assets/vendor/datatables.net-bs4/css/dataTables.bootstrap4.min.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/vendor/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/vendor/datatables.net-select-bs4/css/select.bootstrap4.min.css') }}">
 @endsection
 
 @section('content')
@@ -251,14 +252,16 @@
         <div class="header-body">
         <div class="row align-items-center py-4">
             <div class="col-lg-6 col-7">
-            <h6 class="h2 d-inline-block mb-0 text-white">Domain</h6>
+            <h6 class="h2 d-inline-block mb-0 text-white">Dashboards</h6>
             <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
                 <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
                 <li class="breadcrumb-item"><a href="{{ url('/') }}"><i class="fas fa-home"></i></a></li>
-                <li class="breadcrumb-item active"><a href="{{ route('domain') }}">Domain</a></li>
-                <li class="breadcrumb-item active"><a href="">Edit Domain</a></li>
+                <li class="breadcrumb-item active"><a href="{{ url('/') }}">Dashboards</a></li>
                 </ol>
             </nav>
+            </div>
+            <div class="col-lg-6 col-5 text-right">
+            <a href="{{ route('addwebsite') }}" class="btn btn-sm btn-neutral">Add Website</a>
             </div>
         </div>
         </div>
@@ -266,80 +269,113 @@
 </div>
 <!-- Page content -->
 <div class="container-fluid mt--6">
-      <div class="row">
-        <div class="col-lg-12">
-          <div class="card-wrapper">
-            <!-- Input groups -->
+    <div class="row">
+        <div class="col">
             <div class="card">
-              <!-- Card header -->
-              <div class="card-header">
-                <h3 class="mb-0">Add Website</h3>
-              </div>
-              <!-- Card body -->
-              <div class="card-body">
-                <form action="/domain/{{$domain->id}}" method="post">
-                  <!-- Input groups with icon -->
-                  <div class="row">
-                    <div class="col-md-12">
-                      <div class="form-group">
-                        <label for="domain">Domain</label>
-                        <input class="form-control" id="inputdomain" oninput="getdomain()" type="text" name="domain" value="{{(old('domain')) ? old('domain') : $domain->domain}}" placeholder="Domain">
-                        <p class="form-text"><a id="linkwhois" target="_blank" >To generate Expiration and Nameserver, you should open this link first.</a></p>
-                        <script type="text/javascript">
-                        function getdomain() {
-                            var x = document.getElementById("inputdomain").value;
-                            document.getElementById("linkwhois").setAttribute("href", "https://www.whois.com/whois/" + x);
-                        }
-                        </script>
-                      </div>
+                <div class="card-header">
+                    <h3 class="mb-0">Website</h3>
+                </div>
+                <div class="table-responsive py-4">
+                        <table class="table table-hover table-flush" id="datatable-basic">
+                            <thead class="thead-light">
+                                <tr>
+                                    <th scope="col">Domain</th>
+                                    <th scope="col">Index Web</th>
+                                    <th scope="col">Index Image</th>
+                                    <th scope="col">Theme</th>
+                                    <th scope="col">Keyword</th>
+                                    <th scope="col">Server</th>
+                                    <th scope="col">Ad</th>
+                                    <th scope="col" >Action</th>
+                                </tr>
+                            </thead>
+                            <tfoot>
+                                <tr>
+                                    <th scope="col">Domain</th>
+                                    <th scope="col">Index Web</th>
+                                    <th scope="col">Index Image</th>
+                                    <th scope="col">Theme</th>
+                                    <th scope="col">Keyword</th>
+                                    <th scope="col">Server</th>
+                                    <th scope="col">Ad</th>
+                                    <th scope="col" >Action</th>
+                                </tr>
+                            </tfoot>
+                            <tbody>
+                                @foreach($user->websites as $websitesy)
+                                <tr>
+                                    <td>{{$websitesy->domain->domain}}</td>
+                                    <td><p class="index-web pointer" data-domain="{{$websitesy->domain->domain}}" style="margin:0px;">{{$websitesy->index_web}}</p></td>
+                                    <td><p class="index-image pointer" data-domain="{{$websitesy->domain->domain}}" style="margin:0px;">{{$websitesy->index_image}}</p></td>
+                                    <td><p class="wordpress-theme pointer" data-domain="{{$websitesy->domain->domain}}" style="margin:0px;">{{$websitesy->theme}}</p></td>
+                                    <td>{{$websitesy->keyword}}</td>
+                                    <td>{{$websitesy->server->servername}}</td>
+                                    <td>@if($websitesy->ad_id!=null){{$websitesy->ad->name}} @else Not Yet @endif</td>
+                                    <td>
+                                        <a href="/website/{{$websitesy->slug}}" class="btn btn-default btn-sm m-0" data-toggle="tooltip" title="Detail"><i class='fas fa-bullseye'></i></a>
+                                        <a href="https://www.google.com/search?q=site:{{$websitesy->domain->domain}}&tbm=isch&sout=1" class="btn btn-success btn-sm m-0" target="_blank" data-toggle="tooltip" title="Index Google"><i class='fab fa-google'></i></a>
+                                        <a href="http://{{$websitesy->domain->domain}}/wp-admin/" class="btn btn-danger btn-sm m-0" target="_blank" data-toggle="tooltip" title="Dashboard Website"><i class='fab fa-wordpress'></i></a>
+                                        <a href="/website/{{$websitesy->id}}/editwebsite/" class="btn btn-info  btn-sm m-0" data-toggle="tooltip" title="Edit Website"><i class="fas fa-pen"></i></a>
+                                        <form action="/website/{{$websitesy->id}}" method="post" class="m-0" style="display:inline-block;">
+                                            {{ csrf_field() }}
+                                            <input type="hidden" name="_method" value="DELETE">
+                                            <button type="submit" class="btn btn-warning btn-sm" data-toggle="tooltip" title="Delete Website"><i class="fas fa-trash"></i></button>
+                                        </form>
+                                    </td>
+                                </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
                     </div>
-                    <div class="col-md-12">
-                      <div class="form-group">
-                        <label for="registrar_id">Registrar</label>
-                        <select class="form-control" data-toggle="select" name="registrar_id">
-                            @foreach ($user->registrars as $registrary)
-                            <option @if($registrary->id == $domain->registrar_id ) selected @endif value="{{$registrary->id}}">{{$registrary->email}} at {{$registrary->registrar}}</option>
-                            @endforeach
-                        </select>
-                      </div>
-                    </div>
-                  </div>
-                  {{ csrf_field() }}
-                  <input type="hidden" name="_method" value="PUT">
-                      @if(count($errors)>0)
-                          <div class="alert alert-danger">
-                          @foreach($errors->all() as $error)
-                          <p>{{$error}}</p>
-                          @endforeach
-                          </div>
-                      @endif
-                    <input type="submit" class="btn btn-primary" value="Edit Domain">
-                </form>
-              </div>
             </div>
-          </div>
         </div>
-      </div>
-      <!-- Footer -->
-      <footer class="footer pt-0">
+    </div>
+    <!-- Footer -->
+    <footer class="footer pt-0">
         <div class="copyright text-center text-lg-left text-muted">
             &copy; 2019 <a href="{{ url('/') }}" class="font-weight-bold ml-1" target="_blank">{{ config('app.name', 'Laravel') }}</a>
         </div>
     </footer>
-    </div>
+</div>
 @endsection
 
 @section('javascript-optional')
-    <!-- Dropdown JS -->
-    <script src="{{ asset('assets/vendor/select2/dist/js/select2.min.js') }}"></script>
-    <script src="{{ asset('assets/vendor/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js') }}"></script>
-    <script src="{{ asset('assets/vendor/nouislider/distribute/nouislider.min.js') }}"></script>
-    <script src="{{ asset('assets/vendor/quill/dist/quill.min.js') }}"></script>
-    <script src="{{ asset('assets/vendor/dropzone/dist/min/dropzone.min.js') }}"></script>
-
+    <!-- DataTables JS -->
+    <script src="{{ asset('assets/vendor/datatables.net/js/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('assets/vendor/datatables.net-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
+    <script src="{{ asset('assets/vendor/datatables.net-buttons/js/dataTables.buttons.min.js') }}"></script>
+    <script src="{{ asset('assets/vendor/datatables.net-buttons-bs4/js/buttons.bootstrap4.min.js') }}"></script>
+    <script src="{{ asset('assets/vendor/datatables.net-buttons/js/buttons.html5.min.js') }}"></script>
+    <script src="{{ asset('assets/vendor/datatables.net-buttons/js/buttons.flash.min.js') }}"></script>
+    <script src="{{ asset('assets/vendor/datatables.net-buttons/js/buttons.print.min.js') }}"></script>
+    <script src="{{ asset('assets/vendor/datatables.net-select/js/dataTables.select.min.js') }}"></script>
 @endsection
 
 @section('javascript')
-    <!-- javascript -->
+<script>
+    $(function() {
+    $('.index-web').click(function () {
+      var domain = $(this);
+      domain.html('<i class="fa fa-spinner fa-spin"></i>');
+      $.get("{{url('index-web')}}/" + domain.attr('data-domain'), function(e){
+        domain.html(e);
+      });
+    });
+    $('.index-image').click(function () {
+      var domain = $(this);
+      domain.html('<i class="fa fa-spinner fa-spin"></i>');
+      $.get("{{url('index-image')}}/" + domain.attr('data-domain'), function(e){
+        domain.html(e);
+      });
+    });
+    $('.wordpress-theme').click(function () {
+      var domain = $(this);
+      domain.html('<i class="fa fa-spinner fa-spin"></i>');
+      $.get("{{url('wordpress-theme')}}/" + domain.attr('data-domain'), function(e){
+        domain.html(e['theme']);
+      });
+    });
+  });
+</script>
 @endsection
 

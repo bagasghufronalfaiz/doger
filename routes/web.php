@@ -79,8 +79,3 @@ Route::get('/domain', 'DomainController@index')->name('domain');
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/server', 'ServerController@index')->name('server');
 Route::get('/ad', 'AdController@index')->name('ad');
-
-// Jajal
-Route::get('/jajal', function () {
-        return view('jajal');
-});
