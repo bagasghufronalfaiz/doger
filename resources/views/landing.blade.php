@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="Doger - Website Manager">
+  <meta name="description" content="Website Manager">
   <meta name="author" content="Doger">
   <title>{{ config('app.name', 'Laravel') }}</title>
   <!-- Favicon -->
