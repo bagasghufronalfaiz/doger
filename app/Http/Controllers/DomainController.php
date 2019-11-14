@@ -11,12 +11,6 @@ use GuzzleHttp\Client;
 
 class DomainController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-
     public function __construct()
     {
         $this->middleware('auth');
@@ -29,29 +23,15 @@ class DomainController extends Controller
         return view('domain.index', compact('user'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    
     public function create()
     {
         $user = User::findOrFail(Auth::user()->id);
         return view('domain.create', compact('user'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        // $expiration = $request->expiration;
-        // $time = strtotime($expiration);
-        // $newexpiration = date('Y-m-d', $time);
-
         $domain = $request->domain;
         $statusIndex = self::getStatusIndex($domain);
 
@@ -70,23 +50,7 @@ class DomainController extends Controller
         return redirect('domain');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Domain  $domain
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Domain $domain)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Domain  $domain
-     * @return \Illuminate\Http\Response
-     */
+    
     public function edit($id)
     {
         $domain = Domain::findOrFail($id);
@@ -98,13 +62,6 @@ class DomainController extends Controller
         }
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Domain  $domain
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
         $domain = Domain::findOrFail($id);
@@ -116,15 +73,9 @@ class DomainController extends Controller
           abort(403);
         }
 
-        return redirect('domain')->with('msg', 'domain  berhasil di edit');
+        return redirect('domain');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Domain  $domain
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
         $domain = Domain::findOrFail($id);
@@ -146,12 +97,10 @@ class DomainController extends Controller
         return substr($string, $ini, $len);
     }
 
-
-
-    private function getStatusIndex($domaing)
+    private function getStatusIndex($domain)
     {
         $client = new Client();
-        $url = 'https://www.google.com/search?q=site:'.$domaing.'&tbm=isch&sout=1';
+        $url = 'https://www.google.com/search?q=site:'.$domain.'&tbm=isch&sout=1';
         $res = $client->request('GET', $url);
         $hasil = $res->getBody();
 
@@ -164,15 +113,24 @@ class DomainController extends Controller
         return $indexStatus;
     }
 
-    public function refreshStatusIndex($domaing){
-        $statusIndex = self::getStatusIndex($domaing);
+    public function refreshStatusIndex($domain){
+        $domainDB = Domain::where('domain', $domain)->first();
+        if ($domainDB->userisOwner()) {
+            $statusIndex = self::getStatusIndex($domain);
 
-        $domain = Domain::where('domain', $domaing)->first();
-        $domain->update([
-            'index_status' => $statusIndex,
-        ]);
+            $domainDB->update([
+                'index_status' => $statusIndex,
+            ]);
 
-        return $statusIndex;
+            return response()->json([
+                'status-index' => $statusIndex,
+            ]);
+        } else {
+            $statusIndex = 'Access Denied';
+            return response()->json([
+                'status-index' => $statusIndex,
+            ]);
+        }
     }
 
     private function getDomainProperty($domain){
@@ -190,41 +148,66 @@ class DomainController extends Controller
     }
 
     public function refreshExpiration($domain){
-        $property = self::getDomainProperty($domain);
-        $expiration = $property["expiration"];
-        $domain = Domain::where('domain', $domain)->first();
-        $domain->update([
-            'expiration' => $expiration,
-        ]);
+        $domainDB = Domain::where('domain', $domain)->first();
+        if ($domainDB->userisOwner()) {
+            $property = self::getDomainProperty($domain);
+            $expiration = $property["expiration"];
+            
+            $domainDB->update([
+                'expiration' => $expiration,
+            ]);
 
-        return $expiration;
+            return response()->json([
+                'expiration' => $expiration,
+            ]);
+        } else {
+            $expiration = 'Access Denied';
+            return response()->json([
+                'expiration' => $expiration,
+            ]);
+        }
     }
 
     public function refreshNameServer1($domain){
-        $property = self::getDomainProperty($domain);
-        $nameserver1 = $property["nameserver1"];
-        $domain = Domain::where('domain', $domain)->first();
-        $domain->update([
-            'nameserver1' => $nameserver1,
-        ]);
+        $domainDB = Domain::where('domain', $domain)->first();
+        if ($domainDB->userisOwner()) {
+            $property = self::getDomainProperty($domain);
+            $nameserver1 = $property["nameserver1"];
+            
+            $domainDB->update([
+                'nameserver1' => $nameserver1,
+            ]);
 
-        return response()->json([
-            'nameserver1' => $nameserver1,
-        ]);
+            return response()->json([
+                'nameserver1' => $nameserver1,
+            ]);
+        } else {
+            $nameserver1 = 'Access Denied';
+            return response()->json([
+                'nameserver1' => $nameserver1,
+            ]);
+        }
     }
 
     public function refreshNameServer2($domain){
-        $property = self::getDomainProperty($domain);
-        $nameserver2 = $property["nameserver2"];
+        $domainDB = Domain::where('domain', $domain)->first();
+        if ($domainDB->userisOwner()) {
+            $property = self::getDomainProperty($domain);
+            $nameserver2 = $property["nameserver2"];
 
-        $domain = Domain::where('domain', $domain)->first();
-        $domain->update([
-            'nameserver2' => $nameserver2,
-        ]);
+            $domainDB->update([
+                'nameserver2' => $nameserver2,
+            ]);
 
-        return response()->json([
-            'nameserver2' => $nameserver2,
-        ]);
+            return response()->json([
+                'nameserver2' => $nameserver2,
+            ]);
+        } else {
+            $nameserver2 = 'Access Denied';
+            return response()->json([
+                'nameserver2' => $nameserver2,
+            ]);
+        }          
     }
 
 }

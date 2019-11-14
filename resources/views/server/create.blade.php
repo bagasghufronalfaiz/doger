@@ -294,8 +294,8 @@
                     </div>
                     <div class="col-md-12">
                       <div class="form-group">
-                          <label for="servername">Server Name</label>
-                          <input class="form-control" placeholder="Server Name" type="text" name="servername" value="{{old('servername')}}">
+                          <label for="serverName">Server Name</label>
+                          <input class="form-control" placeholder="Server Name" type="text" name="serverName" value="{{old('serverName')}}">
                       </div>
                     </div>
                     <div class="col-md-12">
@@ -324,8 +324,8 @@
                     </div>
                     <div class="col-md-12">
                       <div class="form-group">
-                        <label for="invoice_date">Invoice Date</label>
-                        <input class="form-control datepicker" placeholder="Invoice Date" type="text" value="{{date('m/d/Y')}}" name="invoice_date">
+                        <label for="invoiceDate">Invoice Date</label>
+                        <input class="form-control datepicker" placeholder="Invoice Date" type="text" value="{{date('m/d/Y')}}" name="invoiceDate">
                       </div>
                     </div>
                   </div>

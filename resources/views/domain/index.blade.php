@@ -352,14 +352,14 @@ $(function() {
       var domain = $(this);
       domain.html('<i class="fa fa-spinner fa-spin"></i>');
       $.get("{{url('status-index')}}/" + domain.attr('data-domain'), function(e){
-        domain.html(e);
+        domain.html(e['status-index']);
       });
     });
     $('.expiration').click(function () {
       var domain = $(this);
       domain.html('<i class="fa fa-spinner fa-spin"></i>');
       $.get("{{url('expiration')}}/" + domain.attr('data-domain'), function(e){
-        domain.html(e);
+        domain.html(e['expiration']);
       });
     });
     $('.nameserver1').click(function () {

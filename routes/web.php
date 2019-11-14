@@ -54,17 +54,17 @@ Route::group(['middleware'=>'auth'], function(){
     Route::delete('/webmaster/{id}', 'WebmasterController@destroy')->name('deletewebmaster');
 
     //Index
-    Route::get('/index-web/{domaing}', 'WebsiteController@refreshIndexWeb')->name('index-web');
-    Route::get('/index-image/{domaing}', 'WebsiteController@refreshIndexImage')->name('index-image');
-    Route::get('/wordpress-theme/{domaing}', 'WebsiteController@refreshWordpressTheme')->name('wordpress-theme');
-    Route::get('/wordpress-post/{domaing}', 'WebsiteController@refreshWordpressPost')->name('wordpress-post');
-    Route::get('/wordpress-category/{domaing}', 'WebsiteController@refreshWordpressCategory')->name('wordpress-category');
-    Route::get('/wordpress-category-title/{domaing}', 'WebsiteController@refreshWordpressCategoryTitle')->name('wordpress-category-title');
-    Route::get('/wordpress-page/{domaing}', 'WebsiteController@refreshWordpressPage')->name('wordpress-page');
-    Route::get('/wordpress-page-title/{domaing}', 'WebsiteController@refreshWordpressPageTitle')->name('wordpress-page-title');
+    Route::get('/index-web/{domain}', 'WebsiteController@refreshIndexWeb')->name('index-web');
+    Route::get('/index-image/{domain}', 'WebsiteController@refreshIndexImage')->name('index-image');
+    Route::get('/wordpress-theme/{domain}', 'WebsiteController@refreshWordpressTheme')->name('wordpress-theme');
+    Route::get('/wordpress-post/{domain}', 'WebsiteController@refreshWordpressPost')->name('wordpress-post');
+    Route::get('/wordpress-category/{domain}', 'WebsiteController@refreshWordpressCategory')->name('wordpress-category');
+    Route::get('/wordpress-category-title/{domain}', 'WebsiteController@refreshWordpressCategoryTitle')->name('wordpress-category-title');
+    Route::get('/wordpress-page/{domain}', 'WebsiteController@refreshWordpressPage')->name('wordpress-page');
+    Route::get('/wordpress-page-title/{domain}', 'WebsiteController@refreshWordpressPageTitle')->name('wordpress-page-title');
 
     //Domain
-    Route::get('/status-index/{domaing}', 'DomainController@refreshStatusIndex')->name('status-index');
+    Route::get('/status-index/{domain}', 'DomainController@refreshStatusIndex')->name('status-index');
     Route::get('/expiration/{domain}', 'DomainController@refreshExpiration')->name('expiration');
     Route::get('/nameserver1/{domain}', 'DomainController@refreshNameServer1')->name('nameserver1');
     Route::get('/nameserver2/{domain}', 'DomainController@refreshNameServer2')->name('nameserver2');
