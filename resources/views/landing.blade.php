@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="Start your development with a Design System for Bootstrap 4.">
-  <meta name="author" content="Creative Tim">
+  <meta name="description" content="Doger - Website Manager">
+  <meta name="author" content="Doger">
   <title>{{ config('app.name', 'Laravel') }}</title>
   <!-- Favicon -->
   <link rel="icon" href="{{ asset('assets/img/brand/favicon.png') }}" type="image/png">
@@ -46,13 +46,13 @@
           <ul class="navbar-nav align-items-lg-center ml-lg-auto">
             <li class="nav-item">
               <a class="nav-link nav-link-icon" href="https://www.facebook.com/" target="_blank" data-toggle="tooltip" title="Like us on Facebook">
-                <i class="fab fa-facebook-square	"></i>
+                <i class="fab fa-facebook-square"></i>
                 <span class="nav-link-inner--text d-lg-none">Facebook</span>
               </a>
             </li>
             <li class="nav-item">
               <a class="nav-link nav-link-icon" href="https://www.instagram.com/" target="_blank" data-toggle="tooltip" title="Follow us on Instagram">
-                <i class="fab fa-instagram	"></i>
+                <i class="fab fa-instagram"></i>
                 <span class="nav-link-inner--text d-lg-none">Instagram</span>
               </a>
             </li>
@@ -484,12 +484,12 @@
     </div>
   </footer>
   <!-- Core -->
-  <script src="{{ asset('assets/vendor/jquery/jquery.min.js') }}"></script>
+  <script src="{{ asset('assets/vendor/jquery/landing/jquery.min.js') }}"></script>
   <script src="{{ asset('assets/vendor/popper/popper.min.js') }}"></script>
-  <script src="{{ asset('assets/vendor/bootstrap/bootstrap.min.js') }}"></script>
-  <script src="{{ asset('assets/vendor/headroom/headroom.min.js') }}"></script>
+  <script src="{{ asset('assets/vendor/bootstrap/dist/js/bootstrap.min.js') }}"></script>
+  <script src="{{ asset('assets/vendor/headroom.js/dist/headroom.min.js') }}"></script>
   <!-- Argon JS -->
-  <script src="{{ asset('assets/js/argon.js?v=1.1.0') }}"></script>
+  <script src="{{ asset('assets/js/argon-landing.js?v=1.1.0') }}"></script>
 </body>
 
 </html>
