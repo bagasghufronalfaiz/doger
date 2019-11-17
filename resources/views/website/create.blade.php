@@ -304,18 +304,18 @@
                     </div>
                     <div class="col-md-12">
                       <div class="form-group">
-                        <label for="servername">Server</label>
-                        <select class="form-control" data-toggle="select" name="servername">
+                        <label for="server_name">Server</label>
+                        <select class="form-control" data-toggle="select" name="server_name">
                         @foreach ($user->servers as $servery)
-                            <option value="{{$servery->id}}">{{$servery->servername}}</option>
+                            <option value="{{$servery->id}}">{{$servery->name}}</option>
                           @endforeach
                         </select>
                       </div>
                     </div>
                     <div class="col-md-12">
                       <div class="form-group">
-                          <label for="serverfolder">Server Folder</label>
-                          <input class="form-control" placeholder="Server Folder" type="text" name="serverfolder" value="{{old('serverfolder')}}">
+                          <label for="server_folder">Server Folder</label>
+                          <input class="form-control" placeholder="Server Folder" type="text" name="server_folder" value="{{old('server_folder')}}">
                       </div>
                     </div>
                     <div class="col-md-12">

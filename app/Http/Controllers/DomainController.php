@@ -23,7 +23,7 @@ class DomainController extends Controller
         return view('domain.index', compact('user'));
     }
 
-    
+
     public function create()
     {
         $user = User::findOrFail(Auth::user()->id);
@@ -50,7 +50,7 @@ class DomainController extends Controller
         return redirect('domain');
     }
 
-    
+
     public function edit($id)
     {
         $domain = Domain::findOrFail($id);
@@ -126,9 +126,8 @@ class DomainController extends Controller
                 'status-index' => $statusIndex,
             ]);
         } else {
-            $statusIndex = 'Access Denied';
             return response()->json([
-                'status-index' => $statusIndex,
+                'status-index' => 'Access Denied',
             ]);
         }
     }
@@ -152,7 +151,7 @@ class DomainController extends Controller
         if ($domainDB->userisOwner()) {
             $property = self::getDomainProperty($domain);
             $expiration = $property["expiration"];
-            
+
             $domainDB->update([
                 'expiration' => $expiration,
             ]);
@@ -161,9 +160,8 @@ class DomainController extends Controller
                 'expiration' => $expiration,
             ]);
         } else {
-            $expiration = 'Access Denied';
             return response()->json([
-                'expiration' => $expiration,
+                'expiration' => 'Access Denied',
             ]);
         }
     }
@@ -173,7 +171,7 @@ class DomainController extends Controller
         if ($domainDB->userisOwner()) {
             $property = self::getDomainProperty($domain);
             $nameserver1 = $property["nameserver1"];
-            
+
             $domainDB->update([
                 'nameserver1' => $nameserver1,
             ]);
@@ -182,9 +180,8 @@ class DomainController extends Controller
                 'nameserver1' => $nameserver1,
             ]);
         } else {
-            $nameserver1 = 'Access Denied';
             return response()->json([
-                'nameserver1' => $nameserver1,
+                'nameserver1' => 'Access Denied',
             ]);
         }
     }
@@ -203,11 +200,10 @@ class DomainController extends Controller
                 'nameserver2' => $nameserver2,
             ]);
         } else {
-            $nameserver2 = 'Access Denied';
             return response()->json([
-                'nameserver2' => $nameserver2,
+                'nameserver2' => 'Access Denied',
             ]);
-        }          
+        }
     }
 
 }

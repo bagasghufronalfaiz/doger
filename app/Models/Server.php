@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Server extends Model
 {
     protected $fillable = [
-        'seller', 'location', 'servername', 'ip', 'username', 'password', 'price', 'invoice_date', 'user_id'
+        'seller', 'location', 'name', 'ip', 'username', 'password', 'price', 'invoice_date', 'user_id'
     ];
 
     public function user()

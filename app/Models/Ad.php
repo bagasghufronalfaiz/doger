@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Ad extends Model
 {
     protected $fillable = [
-        'adnetwork', 'email', 'name', 'code', 'user_id'
+        'ad_network', 'email', 'name', 'code', 'user_id'
     ];
 
     public function user()

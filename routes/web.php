@@ -56,6 +56,8 @@ Route::group(['middleware'=>'auth'], function(){
     //Index
     Route::get('/index-web/{domain}', 'WebsiteController@refreshIndexWeb')->name('index-web');
     Route::get('/index-image/{domain}', 'WebsiteController@refreshIndexImage')->name('index-image');
+
+    //Wordpress
     Route::get('/wordpress-theme/{domain}', 'WebsiteController@refreshWordpressTheme')->name('wordpress-theme');
     Route::get('/wordpress-post/{domain}', 'WebsiteController@refreshWordpressPost')->name('wordpress-post');
     Route::get('/wordpress-category/{domain}', 'WebsiteController@refreshWordpressCategory')->name('wordpress-category');

@@ -331,7 +331,7 @@
                                 </div>
                                 <div class="col-lg-1">:</div>
                                 <div class="col-lg-6 row">
-                                    <div class="col-lg-10 wordpress-post pointer" data-domain="{{$website->domain->domain}}">{{$website->wp_posts}}</div>
+                                    <div class="col-lg-10 wordpress-post pointer" data-domain="{{$website->domain->domain}}">{{$website->wp_post}}</div>
                                     <div class="col-lg-2">
                                         <i class="material-icons vab wordpress-post-refresh text-right pointer">refresh</i>
                                     </div>
@@ -345,7 +345,7 @@
                                 </div>
                                 <div class="col-lg-1">:</div>
                                  <div class="col-lg-6 row">
-                                    <div class="col-lg-10 wordpress-category pointer" data-domain="{{$website->domain->domain}}">{{$website->wp_categories}}</div>
+                                    <div class="col-lg-10 wordpress-category pointer" data-domain="{{$website->domain->domain}}">{{$website->wp_category}}</div>
                                     <div class="col-lg-2">
                                         <i class="material-icons vab wordpress-category-refresh text-right pointer">refresh</i>
                                     </div>
@@ -373,7 +373,7 @@
                                 </div>
                                 <div class="col-lg-1">:</div>
                                  <div class="col-lg-6 row">
-                                    <div class="col-lg-10 wordpress-page pointer" data-domain="{{$website->domain->domain}}">{{$website->wp_pages}}</div>
+                                    <div class="col-lg-10 wordpress-page pointer" data-domain="{{$website->domain->domain}}">{{$website->wp_page}}</div>
                                     <div class="col-lg-2">
                                         <i class="material-icons vab wordpress-page-refresh text-right pointer">refresh</i>
                                     </div>
@@ -387,7 +387,7 @@
                                 </div>
                                 <div class="col-lg-1">:</div>
                                  <div class="col-lg-6 row">
-                                    <div class="col-lg-10 wordpress-page-title pointer" data-domain="{{$website->domain->domain}}">{{$website->wp_page_titles}}</div>
+                                    <div class="col-lg-10 wordpress-page-title pointer" data-domain="{{$website->domain->domain}}">{{$website->wp_page_title}}</div>
                                     <div class="col-lg-2">
                                         <i class="material-icons vab wordpress-page-title-refresh text-right pointer">refresh</i>
                                     </div>
@@ -430,7 +430,7 @@
                                 </div>
                                 <div class="col-lg-1">:</div>
                                 <div class="col-lg-6">
-                                    {{$website->server->servername}}
+                                    {{$website->server->name}}
                                 </div>
                             </div>
                         </li>
@@ -667,7 +667,7 @@
                 rotate.addClass('fa-spin');
                 $('.index-web').html('<i class="fa fa-spinner fa-spin text-right pointer"></i>');
                 $.get("{{url('index-web')}}/" + $('.index-web').attr('data-domain'), function(e){
-                    $('.index-web').html(e);
+                    $('.index-web').html(e['index-web']);
                     rotate.removeClass('fa-spin');
                 });
             });
@@ -675,7 +675,7 @@
                 var domain = $(this);
                 domain.html('<i class="fa fa-spinner fa-spin"></i>');
                 $.get("{{url('index-web')}}/" + domain.attr('data-domain'), function(e){
-                domain.html(e);
+                domain.html(e['index-web']);
                 });
             });
             $('.index-image-refresh').click(function(){
@@ -683,7 +683,7 @@
                 rotate.addClass('fa-spin');
                 $('.index-image').html('<i class="fa fa-spinner fa-spin text-right pointer"></i>');
                 $.get("{{url('index-image')}}/" + $('.index-image').attr('data-domain'), function(e){
-                    $('.index-image').html(e);
+                    $('.index-image').html(e['index-image']);
                     rotate.removeClass('fa-spin');
                 });
             });
@@ -691,7 +691,7 @@
                 var domain = $(this);
                 domain.html('<i class="fa fa-spinner fa-spin" ></i>');
                 $.get("{{url('index-image')}}/" + domain.attr('data-domain'), function(e){
-                domain.html(e);
+                domain.html(e['index-image']);
                 });
             });
             $('.wordpress-post-refresh').click(function(){
@@ -795,7 +795,7 @@
                 rotate.addClass('fa-spin');
                 $('.expiration').html('<i class="fa fa-spinner fa-spin text-right pointer"></i>');
                 $.get("{{url('expiration')}}/" + $('.expiration').attr('data-domain'), function(e){
-                    $('.expiration').html(e);
+                    $('.expiration').html(e['expiration']);
                     rotate.removeClass('fa-spin');
                 });
             });
@@ -803,7 +803,7 @@
                 var domain = $(this);
                 domain.html('<i class="fa fa-spinner fa-spin"  ></i>');
                 $.get("{{url('expiration')}}/" + domain.attr('data-domain'), function(e){
-                domain.html(e);
+                domain.html(e['expiration']);
                 });
             });
             $('.nameserver1-refresh').click(function(){

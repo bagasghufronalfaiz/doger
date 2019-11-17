@@ -14,7 +14,7 @@ class ServerController extends Controller
     {
         $this->middleware('auth');
     }
-    
+
     public function index()
     {
         $user = User::findOrFail(Auth::user()->id);
@@ -35,7 +35,7 @@ class ServerController extends Controller
 
         $server = Server::create([
             'seller'        => $request->seller,
-            'servername'    => $request->serverName,
+            'name'          => $request->name,
             'location'      => $request->location,
             'ip'            => $request->ip,
             'username'      => $request->username,
@@ -74,7 +74,7 @@ class ServerController extends Controller
         if($server->userisOwner()){
             $server->update([
                 'seller'        => $request->seller,
-                'servername'    => $request->serverName,
+                'name'          => $request->name,
                 'location'      => $request->location,
                 'ip'            => $request->ip,
                 'username'      => $request->username,

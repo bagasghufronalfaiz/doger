@@ -294,8 +294,8 @@
                     </div>
                     <div class="col-md-12">
                       <div class="form-group">
-                          <label for="serverName">Server Name</label>
-                          <input class="form-control" placeholder="Server Name" type="text" name="serverName" value="{{old('serverName')}}">
+                          <label for="name">Server Name</label>
+                          <input class="form-control" placeholder="Server Name" type="text" name="name" value="{{old('name')}}">
                       </div>
                     </div>
                     <div class="col-md-12">

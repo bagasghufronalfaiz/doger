@@ -280,8 +280,8 @@
                   <div class="row">
                     <div class="col-md-12">
                       <div class="form-group">
-                          <label for="adnetwork">Ad Network</label>
-                          <input class="form-control" placeholder="Ad Network" type="text" name="adnetwork" value="{{(old('adnetwork')) ? old('adnetwork') : $ad->adnetwork}}">
+                          <label for="ad_network">Ad Network</label>
+                          <input class="form-control" placeholder="Ad Network" type="text" name="ad_network" value="{{(old('ad_network')) ? old('ad_network') : $ad->ad_network}}">
                       </div>
                     </div>
                     <div class="col-md-12">

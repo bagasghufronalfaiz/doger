@@ -308,7 +308,7 @@
                                 <tr>
                                     <td>{{$servery->seller}}</td>
                                     <td>{{$servery->location}}</td>
-                                    <td>{{$servery->servername}}</td>
+                                    <td>{{$servery->name}}</td>
                                     <td>{{$servery->ip}}</td>
                                     <td>{{$servery->username}}</td>
                                     <td>{{$servery->password}}</td>

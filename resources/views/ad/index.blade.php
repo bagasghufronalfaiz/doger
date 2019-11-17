@@ -298,7 +298,7 @@
                             <tbody>
                                 @foreach($user->ads as $adsy)
                                 <tr>
-                                    <td>{{$adsy->adnetwork}}</td>
+                                    <td>{{$adsy->ad_network}}</td>
                                     <td>{{$adsy->email}}</td>
                                     <td>{{$adsy->name}}</td>
                                     <td>{{$adsy->code}}</td>

@@ -17,7 +17,7 @@ class CreateServersTable extends Migration
             $table->bigIncrements('id');
             $table->string('seller');
             $table->string('location');
-            $table->string('servername');
+            $table->string('name');
             $table->string('ip');
             $table->string('username');
             $table->string('password');

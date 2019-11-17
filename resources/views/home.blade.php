@@ -309,7 +309,7 @@
                                     <td><p class="index-image pointer" data-domain="{{$websitesy->domain->domain}}" style="margin:0px;">{{$websitesy->index_image}}</p></td>
                                     <td><p class="wordpress-theme pointer" data-domain="{{$websitesy->domain->domain}}" style="margin:0px;">{{$websitesy->theme}}</p></td>
                                     <td>{{$websitesy->keyword}}</td>
-                                    <td>{{$websitesy->server->servername}}</td>
+                                    <td>{{$websitesy->server->name}}</td>
                                     <td>@if($websitesy->ad_id!=null){{$websitesy->ad->name}} @else Not Yet @endif</td>
                                     <td>
                                         <a href="/website/{{$websitesy->slug}}" class="btn btn-default btn-sm m-0" data-toggle="tooltip" title="Detail"><i class='fas fa-bullseye'></i></a>
@@ -358,14 +358,14 @@
       var domain = $(this);
       domain.html('<i class="fa fa-spinner fa-spin"></i>');
       $.get("{{url('index-web')}}/" + domain.attr('data-domain'), function(e){
-        domain.html(e);
+        domain.html(e['index-web']);
       });
     });
     $('.index-image').click(function () {
       var domain = $(this);
       domain.html('<i class="fa fa-spinner fa-spin"></i>');
       $.get("{{url('index-image')}}/" + domain.attr('data-domain'), function(e){
-        domain.html(e);
+        domain.html(e['index-image']);
       });
     });
     $('.wordpress-theme').click(function () {

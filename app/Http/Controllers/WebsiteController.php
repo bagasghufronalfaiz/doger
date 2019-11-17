@@ -32,55 +32,55 @@ class WebsiteController extends Controller
     public function store(Request $request)
     {
         //select domain name from table domain
-        $selectdomain = Domain::where('id', $request->domain)->first();
-        $domeng = $selectdomain->domain;
+        $selectDomain = Domain::where('id', $request->domain)->first();
+        $domain = $selectDomain->domain;
 
         // get index web and index image
-        $index_image = self::getIndexImage($domeng);
-        $index_web = self::getIndexWeb($domeng);
+        $indexImage = self::getIndexImage($domain);
+        $indexWeb = self::getIndexWeb($domain);
 
         // set date from string to date
         $date = $request->date;
         $time = strtotime($date);
-        $newdate = date('Y-m-d', $time);
+        $newDate = date('Y-m-d', $time);
 
         // get wordpress theme
-        $theme = self::getWordpressTheme($domeng);
+        $theme = self::getWordpressTheme($domain);
 
         //slug
-        $slug = str_replace_first('.', '', $domeng);
+        $slug = str_replace_first('.', '', $domain);
 
         // Wordpress
         // Get Posts
-        $posts = self::getWordpressPosts($domeng);
+        $post = self::getWordpressPost($domain);
         // Get Pages
-        $pages = self::getWordpressPages($domeng);
+        $page = self::getWordpressPage($domain);
         // Get All Page Titles
-        $pageTitles = self::getAllWordpressPageTitles($domeng, $pages);
+        $pageTitle = self::getAllWordpressPageTitle($domain, $page);
         // Get Categories
-        $categories = self::getWordpressCategories($domeng);
+        $category = self::getWordpressCategory($domain);
         // Get All Category Titles
-        $categoryTitles = self::getAllWordpressCategoryTitles($domeng, $categories);
+        $categoryTitle = self::getAllWordpressCategoryTitle($domain, $category);
 
         $website = Website::create([
             'domain_id'         => $request->domain,
             'theme'             => $theme,
-            'index_web'         => $index_web,
-            'index_image'       => $index_image,
+            'index_web'         => $indexWeb,
+            'index_image'       => $indexImage,
             'keyword'           => $request->keyword,
             'tool'              => $request->tool,
-            'server_id'         => $request->servername,
-            'server_folder'     => $request->serverfolder,
+            'server_id'         => $request->server_name,
+            'server_folder'     => $request->server_folder,
             'ad_id'             => $request->ad,
-            'date'              => $newdate,
+            'date'              => $newDate,
             'webmaster_id'      => $request->webmaster,
             'slug'              => $slug,
-            'wp_posts'          => $posts,
-            'wp_pages'          => $pages,
-            'wp_page_titles'    => $pageTitles,
-            'wp_categories'     => $categories,
-            'wp_category_titles'=> $categoryTitles,
-            'user_id'       => Auth::user()->id,
+            'wp_post'           => $post,
+            'wp_page'           => $page,
+            'wp_page_title'     => $pageTitle,
+            'wp_category'       => $category,
+            'wp_category_title' => $categoryTitle,
+            'user_id'           => Auth::user()->id,
         ]);
 
         return redirect('/');
@@ -106,10 +106,10 @@ class WebsiteController extends Controller
         $website = Website::findOrFail($id);
         $date = $website->date;
         $time = strtotime($date);
-        $newdate = date('m/d/Y', $time);
+        $newDate = date('m/d/Y', $time);
         if($website->userisOwner()){
             $user = User::findOrFail(Auth::user()->id);
-            return view('website.edit', compact('website', 'user', 'newdate'));
+            return view('website.edit', compact('website', 'user', 'newDate'));
         } else {
             abort(403);
         }
@@ -119,18 +119,18 @@ class WebsiteController extends Controller
     {
         $date = $request->date;
         $time = strtotime($date);
-        $newdate = date('Y-m-d', $time);
+        $newDate = date('Y-m-d', $time);
 
         $website = Website::findOrFail($id);
         if ($website->userisOwner()) {
           $website->update([
             'domain_id'         => $request->domain,
             'keyword'           => $request->keyword,
-            'server_id'         => $request->servername,
-            'server_folder'     => $request->serverfolder,
+            'server_id'         => $request->server_name,
+            'server_folder'     => $request->server_folder,
             'ad_id'             => $request->ad,
             'tool'              => $request->tool,
-            'date'              => $newdate,
+            'date'              => $newDate,
             'webmaster_id'      => $request->webmaster,
           ]);
         }else {
@@ -161,56 +161,70 @@ class WebsiteController extends Controller
         return substr($string, $ini, $len);
     }
 
-    private function getIndexImage($domaing)
+    private function getIndexImage($domain)
     {
         $client = new Client();
 
-        $url = 'https://www.google.com/search?q=site:'.$domaing.'&tbm=isch&sout=1';
+        $url = 'https://www.google.com/search?q=site:'.$domain.'&tbm=isch&sout=1';
         $res = $client->request('GET', $url, ['headers' => ['User-Agent' => 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36']]);
         $hasil = $res->getBody();
 
-        $strindex = self::getStringBetween($hasil, '<div class="sd" id="resultStats">Sekitar ', ' hasil</div>');
-        $index = (int) filter_var($strindex, FILTER_SANITIZE_NUMBER_INT);
+        $strIndex = self::getStringBetween($hasil, '<div class="sd" id="resultStats">Sekitar ', ' hasil</div>');
+        $index = (int) filter_var($strIndex, FILTER_SANITIZE_NUMBER_INT);
         return $index;
     }
 
-    private function getIndexWeb($domaing)
+    private function getIndexWeb($domain)
     {
         $client = new Client();
 
-        $url = 'https://www.google.com/search?q=site:'.$domaing.'&sout=1';
+        $url = 'https://www.google.com/search?q=site:'.$domain.'&sout=1';
         $res = $client->request('GET', $url, ['headers' => ['User-Agent' => 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36']]);
         $hasil = $res->getBody();
 
-        $strindex = self::getStringBetween($hasil, '<div id="resultStats">Sekitar ', ' hasil<nobr>');
-        $index = (int) filter_var($strindex, FILTER_SANITIZE_NUMBER_INT);
+        $strIndex = self::getStringBetween($hasil, '<div id="resultStats">Sekitar ', ' hasil<nobr>');
+        $index = (int) filter_var($strIndex, FILTER_SANITIZE_NUMBER_INT);
         return $index;
     }
 
-    public function refreshIndexImage($domaing)
+    public function refreshIndexImage($domain)
     {
-        $index = self::getIndexImage($domaing);
-
-        $domainname = Domain::where('domain', $domaing)->first();
-        $domainid = $domainname->id;
-        $website = Website::where('domain_id', $domainid)->first();
+        $domainName = Domain::where('domain', $domain)->first();
+        $domainId = $domainName->id;
+        $website = Website::where('domain_id', $domainId)->first();
+        if ($website->userisOwner()) {
+            $index = self::getIndexImage($domain);
             $website->update([
                 'index_image' => $index,
             ]);
-        return $index;
+            return response()->json([
+                'index-image' => $index,
+            ]);
+        } else {
+            return response()->json([
+                'index-image' => 'Access Denied',
+            ]);
+        }
     }
 
-    public function refreshIndexWeb($domaing)
+    public function refreshIndexWeb($domain)
     {
-        $index = self::getIndexWeb($domaing);
-
-        $domainname = Domain::where('domain', $domaing)->first();
-        $domainid = $domainname->id;
-        $website = Website::where('domain_id', $domainid)->first();
-        $website->update([
-            'index_web' => $index,
-        ]);
-        return $index;
+        $domainName = Domain::where('domain', $domain)->first();
+        $domainId = $domainName->id;
+        $website = Website::where('domain_id', $domainId)->first();
+        if ($website->userisOwner()) {
+            $index = self::getIndexWeb($domain);
+            $website->update([
+                'index_web' => $index,
+            ]);
+            return response()->json([
+                'index-web' => $index,
+            ]);
+        } else {
+            return response()->json([
+                'index-web' => 'Access Denied',
+            ]);
+        }
     }
 
     private function getWordpressTheme($domain)
@@ -224,14 +238,13 @@ class WebsiteController extends Controller
         return $theme;
     }
 
-    public function refreshWordpressTheme($domaing)
+    public function refreshWordpressTheme($domain)
     {
-        $theme = self::getWordpressTheme($domaing);
-
-        $domainName = Domain::where('domain', $domaing)->first();
+        $domainName = Domain::where('domain', $domain)->first();
         $domainId = $domainName->id;
         $website = Website::where('domain_id', $domainId)->first();
         if ($website->userisOwner()) {
+            $theme = self::getWordpressTheme($domain);
             $website->update([
                 'theme' => $theme,
             ]);
@@ -239,11 +252,13 @@ class WebsiteController extends Controller
                 'theme' => $theme,
             ]);
         } else {
-            return 'mbuh';
+            return response()->json([
+                'theme' => 'Access Denied',
+            ]);
         }
     }
 
-    private function getWordpressPosts($domain)
+    private function getWordpressPost($domain)
     {
         $client = new Client();
         $url = 'http://' . $domain . '/wp-json/wp/v2/posts';
@@ -253,26 +268,27 @@ class WebsiteController extends Controller
         return $posts;
     }
 
-    public function refreshWordpressPost($domaing)
+    public function refreshWordpressPost($domain)
     {
-        $post = self::getWordpressPosts($domaing);
-
-        $domainName = Domain::where('domain', $domaing)->first();
+        $domainName = Domain::where('domain', $domain)->first();
         $domainId = $domainName->id;
         $website = Website::where('domain_id', $domainId)->first();
         if ($website->userisOwner()) {
+            $post = self::getWordpressPost($domain);
             $website->update([
-                'wp_posts' => $post,
+                'wp_post' => $post,
             ]);
             return response()->json([
                 'post' => $post,
             ]);
         } else {
-            return 'mbuh';
+            return response()->json([
+                'post' => 'Access Denied',
+            ]);
         }
     }
 
-    private function getWordpressPages($domain)
+    private function getWordpressPage($domain)
     {
         $client = new Client();
         $url = 'http://' . $domain . '/wp-json/wp/v2/pages';
@@ -282,29 +298,30 @@ class WebsiteController extends Controller
         return $pages;
     }
 
-    public function refreshWordpressPage($domaing)
+    public function refreshWordpressPage($domain)
     {
-        $page = self::getWordpressPages($domaing);
-
-        $domainName = Domain::where('domain', $domaing)->first();
+        $domainName = Domain::where('domain', $domain)->first();
         $domainId = $domainName->id;
         $website = Website::where('domain_id', $domainId)->first();
         if ($website->userisOwner()) {
+            $page = self::getWordpressPage($domain);
             $website->update([
-                'wp_pages' => $page,
+                'wp_page' => $page,
             ]);
             return response()->json([
                 'page' => $page,
             ]);
         } else {
-            return 'mbuh';
+            return response()->json([
+                'page' => 'Access Denied',
+            ]);
         }
     }
 
-    private function getWordpressPageTitles($domain, $total_pages)
+    private function getWordpressPageTitle($domain, $totalPage)
     {
         $client = new Client();
-        $url = 'http://' . $domain . '/wp-json/wp/v2/pages?per_page=1&page=' . $total_pages;
+        $url = 'http://' . $domain . '/wp-json/wp/v2/pages?per_page=1&page=' . $totalPage;
         $res = $client->request('GET', $url, ['headers' => ['User-Agent' => 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36']]);
         $hasil = $res->getBody();
         $kacang = json_decode($hasil, true);
@@ -312,43 +329,44 @@ class WebsiteController extends Controller
         return $panjang;
     }
 
-    private function getAllWordpressPageTitles($domain, $total_pages)
+    private function getAllWordpressPageTitle($domain, $totalPage)
     {
-        $pageTitles = '';
-        for ($count = 1; $count <= $total_pages; $count++) {
-            $hasil[$count] = self::getWordpressPageTitles($domain, $count);
+        $pageTitle = '';
+        for ($count = 1; $count <= $totalPage; $count++) {
+            $hasil[$count] = self::getWordpressPageTitle($domain, $count);
 
-            if ($count == $total_pages) {
-                $pageTitles = $pageTitles . $hasil[$count];
+            if ($count == $totalPage) {
+                $pageTitle = $pageTitle . $hasil[$count];
             } else {
-                $pageTitles = $pageTitles . $hasil[$count] . ', ';
+                $pageTitle = $pageTitle . $hasil[$count] . ', ';
             }
         }
-        return $pageTitles;
+        return $pageTitle;
     }
 
-    public function refreshWordpressPageTitle($domaing)
+    public function refreshWordpressPageTitle($domain)
     {
-        $domainName = Domain::where('domain', $domaing)->first();
+        $domainName = Domain::where('domain', $domain)->first();
         $domainId = $domainName->id;
         $website = Website::where('domain_id', $domainId)->first();
 
-        $websitePage = $website->wp_pages;
-        $pageTitle = self::getAllWordpressPageTitles($domaing, $websitePage);
-
         if ($website->userisOwner()) {
+            $websitePage = $website->wp_page;
+            $pageTitle = self::getAllWordpressPageTitle($domain, $websitePage);
             $website->update([
-                'wp_page_titles' => $pageTitle,
+                'wp_page_title' => $pageTitle,
             ]);
             return response()->json([
                 'page-title' => $pageTitle,
             ]);
         } else {
-            return 'mbuh';
+            return response()->json([
+                'page-title' => 'Access Denied',
+            ]);
         }
     }
 
-    private function getWordpressCategories($domain)
+    private function getWordpressCategory($domain)
     {
         $client = new Client();
         $url = 'http://' . $domain . '/wp-json/wp/v2/categories';
@@ -358,29 +376,30 @@ class WebsiteController extends Controller
         return $header;
     }
 
-    public function refreshWordpressCategory($domaing)
+    public function refreshWordpressCategory($domain)
     {
-        $category = self::getWordpressCategories($domaing);
-
-        $domainName = Domain::where('domain', $domaing)->first();
+        $domainName = Domain::where('domain', $domain)->first();
         $domainId = $domainName->id;
         $website = Website::where('domain_id', $domainId)->first();
         if ($website->userisOwner()) {
+            $category = self::getWordpressCategory($domain);
             $website->update([
-                'wp_categories' => $category,
+                'wp_category' => $category,
             ]);
             return response()->json([
                 'category' => $category,
             ]);
         } else {
-            return 'mbuh';
+            return response()->json([
+                'category' => 'Access Denied',
+            ]);
         }
     }
 
-    private function getWordpressCategoryTitles($domain, $total_category)
+    private function getWordpressCategoryTitle($domain, $totalCategory)
     {
         $client = new Client();
-        $url = 'http://' . $domain . '/wp-json/wp/v2/categories?per_page=1&page=' . $total_category;
+        $url = 'http://' . $domain . '/wp-json/wp/v2/categories?per_page=1&page=' . $totalCategory;
         $res = $client->request('GET', $url, ['headers' => ['User-Agent' => 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36']]);
         $hasil = $res->getBody();
         $kacang = json_decode($hasil, true);
@@ -388,40 +407,40 @@ class WebsiteController extends Controller
         return $panjang;
     }
 
-    private function getAllWordpressCategoryTitles($domain, $total_pages)
+    private function getAllWordpressCategoryTitle($domain, $totalPage)
     {
-        $categoryTitles = '';
-        for ($count = 1; $count <= $total_pages; $count++) {
-            $hasil[$count] = self::getWordpressCategoryTitles($domain, $count);
+        $categoryTitle = '';
+        for ($count = 1; $count <= $totalPage; $count++) {
+            $hasil[$count] = self::getWordpressCategoryTitle($domain, $count);
 
-            if ($count == $total_pages) {
-                $categoryTitles = $categoryTitles . $hasil[$count];
+            if ($count == $totalPage) {
+                $categoryTitle = $categoryTitle . $hasil[$count];
             } else {
-                $categoryTitles = $categoryTitles . $hasil[$count] . ', ';
+                $categoryTitle = $categoryTitle . $hasil[$count] . ', ';
             }
         }
-        return $categoryTitles;
+        return $categoryTitle;
     }
 
-    public function refreshWordpressCategoryTitle($domaing)
+    public function refreshWordpressCategoryTitle($domain)
     {
-        $domainName = Domain::where('domain', $domaing)->first();
+        $domainName = Domain::where('domain', $domain)->first();
         $domainId = $domainName->id;
         $website = Website::where('domain_id', $domainId)->first();
 
-        $websiteCategory = $website->wp_categories;
-        $categoryTitle = self::getAllWordpressCategoryTitles($domaing, $websiteCategory);
-
         if ($website->userisOwner()) {
+            $websiteCategory = $website->wp_category;
+            $categoryTitle = self::getAllWordpressCategoryTitle($domain, $websiteCategory);
             $website->update([
-                'wp_category_titles' => $categoryTitle,
+                'wp_category_title' => $categoryTitle,
             ]);
             return response()->json([
                 'category-title' => $categoryTitle,
             ]);
         } else {
-            return 'mbuh';
+            return response()->json([
+                'category-title' => 'Access Denied',
+            ]);
         }
     }
-
 }
