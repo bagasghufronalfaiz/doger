@@ -359,7 +359,7 @@
                                 </div>
                                 <div class="col-lg-1">:</div>
                                  <div class="col-lg-6 row">
-                                    <div class="col-lg-10 wordpress-category-title pointer" data-domain="{{$website->domain->domain}}">{{$website->wp_category_titles}}</div>
+                                    <div class="col-lg-10 wordpress-category-title pointer" data-domain="{{$website->domain->domain}}">{{$website->wp_category_title}}</div>
                                     <div class="col-lg-2">
                                         <i class="material-icons vab wordpress-category-title-refresh text-right pointer">refresh</i>
                                     </div>
