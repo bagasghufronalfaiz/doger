@@ -72,10 +72,14 @@ Route::group(['middleware'=>'auth'], function(){
 
 Route::get('/', 'WebsiteController@index')->name('dashboard');
 
-Auth::routes();
+// With Registration
+// Auth::routes();
+// Without Registration
+Auth::routes(['register' => false]);
 
 Route::get('/registrar', 'RegistrarController@index')->name('registrar');
 Route::get('/domain', 'DomainController@index')->name('domain');
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/server', 'ServerController@index')->name('server');
 Route::get('/ad', 'AdController@index')->name('ad');
+

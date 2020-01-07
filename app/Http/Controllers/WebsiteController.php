@@ -15,7 +15,7 @@ class WebsiteController extends Controller
     public function index()
     {
         if(Auth::check())
-        {
+        {            
             $user = User::findOrFail(Auth::user()->id);
             return view('home', compact('user'));
         } else {
@@ -169,7 +169,7 @@ class WebsiteController extends Controller
         $res = $client->request('GET', $url, ['headers' => ['User-Agent' => 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36']]);
         $hasil = $res->getBody();
 
-        $strindex = self::getStringBetween($hasil, '<div class="sd" id="resultStats">Sekitar ', ' hasil</div>');
+        $strindex = self::getStringBetween($hasil, '<font size="-1">Sekitar ', ' hasil (<b>');
         $index = (int) filter_var($strindex, FILTER_SANITIZE_NUMBER_INT);
         return $index;
     }

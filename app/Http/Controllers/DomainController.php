@@ -101,10 +101,10 @@ class DomainController extends Controller
     {
         $client = new Client();
         $url = 'https://www.google.com/search?q=site:'.$domain.'&tbm=isch&sout=1';
-        $res = $client->request('GET', $url);
+        $res = $client->request('GET', $url, ['headers' => ['User-Agent' => 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36']]);
         $hasil = $res->getBody();
 
-        $index = self::getStringBetween($hasil, '<div class="sd" id="resultStats">Sekitar ', ' hasil</div>');
+        $index = self::getStringBetween($hasil, '<font size="-1">Sekitar ', ' hasil (<b>');
         if ($index == '') {
             $indexStatus = 'No';
         } else {

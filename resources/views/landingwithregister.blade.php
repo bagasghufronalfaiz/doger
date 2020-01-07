@@ -107,9 +107,9 @@
                     <span class="btn-inner--icon"><i class="fas fa-sign-in-alt"></i></span>
                     <span class="btn-inner--text">{{ __('Login') }}</span>
                   </a>
-                  <a href="" class="btn btn-success btn-icon mb-3 mb-sm-0">
+                  <a href="{{ route('register') }}" class="btn btn-success btn-icon mb-3 mb-sm-0">
                     <span class="btn-inner--icon"><i class='fas fa-user-plus'></i></span>
-                    <span class="btn-inner--text">Register</span>
+                    <span class="btn-inner--text">{{ __('Register') }}</span>
                   </a>
                 </div>
               </div>
