@@ -73,9 +73,9 @@ Route::group(['middleware'=>'auth'], function(){
 Route::get('/', 'WebsiteController@index')->name('dashboard');
 
 // With Registration
-// Auth::routes();
+Auth::routes();
 // Without Registration
-Auth::routes(['register' => false]);
+// Auth::routes(['register' => false]);
 
 Route::get('/registrar', 'RegistrarController@index')->name('registrar');
 Route::get('/domain', 'DomainController@index')->name('domain');

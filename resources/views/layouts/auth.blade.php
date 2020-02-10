@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="Website Manager">
     <meta name="author" content="Doger">
-    <title>@if(request()->is('login')) {{'Login'}} @elseif(request()->is('password/reset')) {{'Forgot Password?'}} @endif</title>
+    <title>@if(request()->is('login')) {{'Login'}} @elseif(request()->is('register')) {{'Register'}} @elseif(request()->is('password/reset')) {{'Forgot Password?'}} @endif</title>
     <!-- Favicon -->
     <link rel="icon" href="{{ asset('assets/img/brand/favicon.png') }}" type="image/png">
     <!-- Fonts -->
@@ -55,11 +55,13 @@
                     <span class="nav-link-inner--text">Login</span>
                     </a>
                 </li>
+                @if(Route::has('register'))
                 <li class="nav-item">
-                    <a href="" class="nav-link">
+                    <a href="{{ route('register') }}" class="nav-link">
                     <span class="nav-link-inner--text">Register</span>
                     </a>
                 </li>
+                @endif
                 </ul>
                 <hr class="d-lg-none" />
                 <ul class="navbar-nav align-items-lg-center ml-lg-auto">

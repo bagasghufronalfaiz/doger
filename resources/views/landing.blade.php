@@ -21,7 +21,7 @@
   <header class="header-global">
     <nav id="navbar-main" class="navbar navbar-main navbar-expand-lg navbar-transparent navbar-light ">
       <div class="container">
-        <a class="navbar-brand mr-lg-5" href="../index.html">
+        <a class="navbar-brand mr-lg-5" href="{{ url('/') }}">
           <h1 class="text-white">{{ config('app.name', 'Laravel') }}</h1>
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar_global" aria-controls="navbar_global" aria-expanded="false" aria-label="Toggle navigation">
@@ -103,14 +103,18 @@
                 <h1 class="display-3  text-white">Website Manager<span>Managa your website list here</span></h1>
                 <p class="lead  text-white">Many websites and you are very confused managing it, doger came to give a solution to manage it.</p>
                 <div class="btn-wrapper">
-                  <a href="{{ route('login') }}" class="btn btn-white btn-icon mb-3 mb-sm-0">
+                  @if(Route::has('login'))
+                  <a href="{{ route('login') }}" class="btn btn-neutral btn-icon mb-3 mb-sm-0">
                     <span class="btn-inner--icon"><i class="fas fa-sign-in-alt"></i></span>
                     <span class="btn-inner--text">{{ __('Login') }}</span>
                   </a>
-                  <a href="" class="btn btn-success btn-icon mb-3 mb-sm-0">
+                  @endif
+                  @if(Route::has('register'))
+                  <a href="{{ route('register') }}" class="btn btn-success btn-icon mb-3 mb-sm-0">
                     <span class="btn-inner--icon"><i class='fas fa-user-plus'></i></span>
-                    <span class="btn-inner--text">Register</span>
+                    <span class="btn-inner--text">{{ __('Register') }}</span>
                   </a>
+                  @endif
                 </div>
               </div>
             </div>

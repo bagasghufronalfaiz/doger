@@ -15,14 +15,14 @@ class CreateWebsitesTable extends Migration
     {
         Schema::create('websites', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('domain_id')->unique();
+            $table->unsignedBigInteger('domain_id');
             $table->string('theme');
             $table->integer('index_web');
             $table->integer('index_image');
             $table->string('tool');
             $table->string('keyword');
             $table->unsignedBigInteger('server_id');
-            $table->string('server_folder')->unique();
+            $table->string('server_folder');
             $table->unsignedBigInteger('ad_id')->nullable();
             $table->date('date');
             $table->unsignedBigInteger('user_id');

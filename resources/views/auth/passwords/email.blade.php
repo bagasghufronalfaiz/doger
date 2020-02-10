@@ -55,7 +55,9 @@
         <div class="row mt-3">
         <div class="col-6">
             @guest
-                <a class="text-light" href=""><small>Register</small></a>
+                @if(Route::has('register'))
+                <a class="text-light" href="{{ route('register') }}"><small>{{ __('Register') }}</small></a>
+                @endif
             @endguest
         </div>
         <div class="col-6 text-right">
